@@ -79,7 +79,7 @@ async function probe(name, ep, { method = "POST", params } = {}) {
   try {
     const res = await fetch(API_BASE + "guild/3/detail?guildSeasonId=5&weekNo=9", { headers: HEADERS });
     const j = await res.json();
-    ids = ((j.result && j.result.members) || []).slice(0, 3).map((m) => String(m.mbrId));
+    ids = ((j.result && j.result.members) || []).slice(0, 12).map((m) => String(m.mbrId));
   } catch (e) { console.log("\uba85\ubd80 \uc2e4\ud328:", e.message); }
 
   const post = (ep, params) => fetch(API_BASE + ep, {
@@ -88,15 +88,18 @@ async function probe(name, ep, { method = "POST", params } = {}) {
     body: new URLSearchParams(params).toString(),
   }).then(async (r) => { let j = null; try { j = JSON.parse(await r.text()); } catch (_) {} return { http: r.status, j }; });
 
-  // 1) 멤버별 mbrSearch — 행 수/상태코드 분포/최다 보유자
+  // 1) 멤버별 mbrSearch — 행 보유자 발견 시 즉시 상세로
   let best = null; const cdCount = {};
   for (const id of ids) {
     await sleep(400);
     const { http, j } = await post("ev/request/mbrSearch/searchList", { mbrId: id, instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" });
-    const arr = j && Array.isArray(j.result) ? j.result : [];
+    const isArr = j && Array.isArray(j.result);
+    const arr = isArr ? j.result : [];
+    if (!isArr && j) console.log("  shape:", typeof j.result, JSON.stringify(mask(j.result)).slice(0, 100));
     for (const r of arr) { const k = `${r.evlStusCd}/${r.evlResltCd}`; cdCount[k] = (cdCount[k] || 0) + 1; }
     console.log(`  mbr \u203b\u203b\u203b: rows=${arr.length} (http ${http}, code=${j && j.code})`);
     if (!best || arr.length > best.rows.length) best = { id, rows: arr };
+    if (arr.length > 0) break; // 첫 보유자에서 바로 상세 실험
   }
   console.log("\uc0c1\ud0dc/\uacb0\uacfc \ucf54\ub4dc \ubd84\ud3ec (stus/reslt):", JSON.stringify(cdCount));
 
