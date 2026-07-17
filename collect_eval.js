@@ -92,24 +92,32 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const pad = (n) => String(n).padStart(2, "0");
 const dotYmd = (y, m, d) => `${y}.${pad(m)}.${pad(d)}`;
 
-async function fetchJson(url, { body } = {}) {
+async function fetchJson(url, { body, method = "POST" } = {}) {
+  // 레퍼런스(codyssey_Jail_Tracker)와 동일한 헤더 구성: 브라우저 UA + ko Accept-Language
+  const headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+    Accept: "application/json, text/plain, */*",
+    "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
+    "X-Requested-With": "XMLHttpRequest",
+    Cookie: SESSION,
+  };
+  if (method !== "GET") headers["Content-Type"] = "application/json";
   const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "X-Requested-With": "XMLHttpRequest",
-      Cookie: SESSION,
-    },
-    body: body === undefined ? "null" : body,
+    method,
+    headers,
+    ...(method === "GET" ? {} : { body: body === undefined ? "null" : body }),
   });
   if (res.status === 401 || res.status === 403) {
     const err = new Error(`SESSION_EXPIRED(${res.status})`);
     err.sessionExpired = true;
     throw err;
   }
-  const json = await res.json().catch(() => null);
-  if (!json || json.code !== 200) throw new Error(`${url} → code=${json && json.code}`);
+  const text = await res.text();
+  let json = null;
+  try { json = JSON.parse(text); } catch (_) { /* 아래 에러에서 진단 로그 */ }
+  if (!json || json.code !== 200) {
+    throw new Error(`${url} → code=${json && json.code} (HTTP ${res.status}) body[:200]=${text.slice(0, 200)}`);
+  }
   return json.result;
 }
 
@@ -127,7 +135,7 @@ async function fetchRoster(cfg) {
   for (const gid of cfg.guilds) {
     const url = `${API_BASE}guild/${gid}/detail?guildSeasonId=${CONF.guildSeasonId}&weekNo=${CONF.weekNo}`;
     try {
-      const result = await fetchJson(url, { body: "null" });
+      const result = await fetchJson(url, { method: "GET" });
       const guildNm = result && result.guildInfo && result.guildInfo.guildNm;
       const members = (result && result.members) || [];
       for (const m of members) {
