@@ -5,11 +5,9 @@
     "month": 5,
     "mock": false,
     "eventCount": 436,
-    "slotCount": 14,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
-    "slotsSource": "scheduleAllList(세션 소유자 슬롯만)",
     "feedbackCollected": false,
     "droppedOutOfRange": 496
   },
@@ -10076,104 +10074,5 @@
       "detail": null
     }
   ],
-  "slots": [
-    {
-      "d": "2026-05-18",
-      "t": "17:00",
-      "m": null,
-      "id": 627170,
-      "matched": false
-    },
-    {
-      "d": "2026-05-18",
-      "t": "17:30",
-      "m": null,
-      "id": 627171,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "10:30",
-      "m": null,
-      "id": 635023,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "11:00",
-      "m": null,
-      "id": 635024,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "11:30",
-      "m": null,
-      "id": 635025,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "13:00",
-      "m": null,
-      "id": 635032,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "13:30",
-      "m": null,
-      "id": 635026,
-      "matched": false
-    },
-    {
-      "d": "2026-05-26",
-      "t": "14:30",
-      "m": null,
-      "id": 580003,
-      "matched": true
-    },
-    {
-      "d": "2026-05-26",
-      "t": "17:00",
-      "m": null,
-      "id": 580011,
-      "matched": true
-    },
-    {
-      "d": "2026-05-26",
-      "t": "17:30",
-      "m": null,
-      "id": 635035,
-      "matched": false
-    },
-    {
-      "d": "2026-05-27",
-      "t": "13:00",
-      "m": null,
-      "id": 636176,
-      "matched": false
-    },
-    {
-      "d": "2026-05-27",
-      "t": "13:30",
-      "m": null,
-      "id": 636177,
-      "matched": false
-    },
-    {
-      "d": "2026-05-27",
-      "t": "14:00",
-      "m": null,
-      "id": 636178,
-      "matched": false
-    },
-    {
-      "d": "2026-05-27",
-      "t": "16:00",
-      "m": null,
-      "id": 581003,
-      "matched": true
-    }
-  ]
+  "slots": []
 }

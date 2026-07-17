@@ -139,40 +139,6 @@ function sideName(mm, ev, side) {
   return id ? String(id) : "-";
 }
 
-/* 재예약 신호 판정:
- * 취소자가 취소한 슬롯과 같은 날 ±2시간 내, "다른 상대"와 확정된 평가가 있으면 true.
- * 주의: API가 취소 시각/요청 시각을 주지 않아 시간 순서는 알 수 없고,
- *       슬롯 시각 근접성으로 근사한다. 재예약 상대가 원래 그 사람이면(재시도 성공) 제외.
- */
-const REBOOK_WINDOW_MS = 2 * 60 * 60 * 1000;
-function isRebookedCancel(confirmedEvts, ev) {
-  const t = Date.parse(ev.slotDateTime || "");
-  if (isNaN(t)) return false;
-  const c = ev.cancel || {};
-  if (!c.byId && !c.byName) return false;
-  const day = dayKey(ev.slotDateTime);
-  const isMe = (id, name) => (c.byId && id === c.byId) || (c.byName && name === c.byName);
-  const otherSides = [{ id: ev.evaluatorId, name: ev.evaluatorName }, { id: ev.evaluateeId, name: ev.evaluateeName }]
-    .filter((s) => !(c.byId && s.id === c.byId) && !(c.byName && s.name === c.byName));
-  for (const o of confirmedEvts) {
-    if (o.evalId === ev.evalId) continue;
-    const ot = Date.parse(o.slotDateTime || "");
-    if (isNaN(ot) || Math.abs(ot - t) > REBOOK_WINDOW_MS || dayKey(o.slotDateTime) !== day) continue;
-    const meAsEvaluator = isMe(o.evaluatorId, o.evaluatorName);
-    const meAsEvaluatee = isMe(o.evaluateeId, o.evaluateeName);
-    if (!meAsEvaluator && !meAsEvaluatee) continue;
-    const other = meAsEvaluator
-      ? { id: o.evaluateeId, name: o.evaluateeName }
-      : { id: o.evaluatorId, name: o.evaluatorName };
-    // 취소 건의 상대방과 같은 사람이면 "재시도 성공"이므로 기피 신호 아님
-    const sameCounter = otherSides.some(
-      (s) => (s.id && s.id === other.id) || (s.name && s.name === other.name)
-    );
-    if (!sameCounter) return true;
-  }
-  return false;
-}
-
 function computeStats(data) {
   const mm = memberMap(data);
   const per = new Map(); // mbrId → 집계 (식별 가능한 멤버만)
@@ -180,18 +146,13 @@ function computeStats(data) {
     if (!per.has(id)) {
       per.set(id, {
         mbrId: id, name: nameOf(mm, id),
-        given: 0, received: 0, cancelledByMe: 0, cancelledOnMe: 0, involved: 0,
+        given: 0, received: 0,
       });
     }
     return per.get(id);
   };
   const byDay = new Map();
   const total = { requested: 0, completed: 0, cancelled: 0 };
-  // 페어 취소: 식별자가 없으면 이름 기준으로라도 집계
-  const pairs = new Map(); // key → {count, rebooked, byId, byName, counterId, counterName, role}
-
-  // 재예약 신호 판정용: 확정(비취소) 이벤트만 따로 모아둠
-  const confirmedEvts = (data.events || []).filter((e) => e.status !== "CANCELLED");
 
   for (const ev of data.events) {
     const dk = dayKey(ev.slotDateTime || ev.regDateTime);
@@ -201,37 +162,16 @@ function computeStats(data) {
     total.requested++;
     const a = ev.evaluatorId ? ensure(ev.evaluatorId) : null;
     const b = ev.evaluateeId ? ensure(ev.evaluateeId) : null;
-    if (a) a.involved++;
-    if (b) b.involved++;
 
     if (ev.status === "CANCELLED") {
       total.cancelled++;
-      const c = ev.cancel || {};
-      const byId = c.byId || null;
-      const byName = c.byName || (byId ? nameOf(mm, byId) : null);
-      const counterId = byId && byId === ev.evaluatorId ? ev.evaluateeId
-        : byId && byId === ev.evaluateeId ? ev.evaluatorId : null;
-      const counterName = counterId ? nameOf(mm, counterId)
-        : (c.by === "EVALUATOR" ? ev.evaluateeName : c.by === "EVALUATEE" ? ev.evaluatorName : null);
-
-      if (byId) ensure(byId).cancelledByMe++;
-      if (counterId) ensure(counterId).cancelledOnMe++;
-
-      const role = c.by === "EVALUATOR" ? "평가자로서 취소" : c.by === "EVALUATEE" ? "피평가자로서 취소" : "기타 취소";
-      const pairKey = `${byId || byName || "?"}|${counterId || counterName || "?"}|${role}`;
-      if (!pairs.has(pairKey)) {
-        pairs.set(pairKey, { count: 0, rebooked: 0, byId, byName, counterId, counterName, role });
-      }
-      pairs.get(pairKey).count++;
-      // 재예약 신호: 같은 날 ±2시간 내 "다른 상대"와 확정 평가가 잡혀 있으면 기피 패턴 후보
-      if (isRebookedCancel(confirmedEvts, ev)) pairs.get(pairKey).rebooked++;
     } else if (ev.status === "COMPLETED") {
       total.completed++;
       if (a) a.given++;
       if (b) b.received++;
     }
   }
-  return { mm, per, byDay, total, pairs };
+  return { mm, per, byDay, total };
 }
 
 /* ================= 렌더: 요약 카드 ================= */
@@ -314,10 +254,7 @@ function renderCalendar(stats) {
 
 /* ================= 렌더: 랭킹 테이블 ================= */
 function renderRank(stats) {
-  const rows = [...stats.per.values()].map((p) => ({
-    ...p,
-    cancelRate: p.involved ? Math.round(((p.cancelledByMe + p.cancelledOnMe) / p.involved) * 100) : 0,
-  }));
+  const rows = [...stats.per.values()];
   rows.sort((a, b) => {
     const k = state.sortKey;
     const va = a[k], vb = b[k];
@@ -331,10 +268,7 @@ function renderRank(stats) {
       <td>${p.name}</td>
       <td class="num">${p.given}</td>
       <td class="num">${p.received}</td>
-      <td class="num">${p.cancelledByMe ? `<span class="badge cx">${p.cancelledByMe}</span>` : 0}</td>
-      <td class="num">${p.cancelledOnMe ? `<span class="badge cx">${p.cancelledOnMe}</span>` : 0}</td>
-      <td class="num">${p.cancelRate}%</td>
-    </tr>`).join("") || `<tr><td colspan="7" style="color:var(--muted)">데이터 없음</td></tr>`;
+    </tr>`).join("") || `<tr><td colspan="4" style="color:var(--muted)">데이터 없음</td></tr>`;
 }
 
 /* ================= 렌더: 히트맵 (요일×시간) ================= */
@@ -365,100 +299,6 @@ function renderHeatmap(stats, data) {
     }
   }
   $("#heatmap").innerHTML = html;
-}
-
-/* ================= 렌더: 기피 분석 ================= */
-/* 판정 등급: score = 취소횟수×2 + 재예약×1
- *  🚨 반복 — 같은 상대에게 2회 이상 취소
- *  ⚠️ 재예약 — 취소 슬롯 근처(같은 날 ±2시간)에 다른 상대와 확정 평가
- */
-function pairVerdict(p) {
-  if (p.count >= 2) return { label: "🚨 반복", cls: "verdict-strong" };
-  if ((p.rebooked || 0) >= 1) return { label: "⚠️ 재예약", cls: "verdict-warn" };
-  return null;
-}
-
-function renderAvoidance(stats) {
-  const rows = [...stats.pairs.values()]
-    .map((p) => ({
-      ...p,
-      byName: p.byName || (p.byId ? nameOf(stats.mm, p.byId) : "?"),
-      counterName: p.counterName || (p.counterId ? nameOf(stats.mm, p.counterId) : "?"),
-      score: p.count * 2 + (p.rebooked || 0),
-      verdict: pairVerdict(p),
-    }))
-    .sort((a, b) => b.score - a.score || b.count - a.count)
-    .slice(0, 30);
-
-  $("#pairTable tbody").innerHTML = rows.map((r, i) => `
-    <tr${r.verdict ? ` class="${r.verdict.cls === "verdict-strong" ? "sus-strong" : "sus-warn"}"` : ""}>
-      <td>${i + 1}</td>
-      <td>${r.byName}</td>
-      <td><span class="badge ${r.role.includes("평가자로") ? "rq" : "ip"}">${r.role}</span></td>
-      <td>${r.counterName}</td>
-      <td class="num"><b>${r.count}</b></td>
-      <td class="num">${r.rebooked ? `<b>${r.rebooked}</b>` : "-"}</td>
-      <td>${r.verdict ? `<span class="badge ${r.verdict.cls}">${r.verdict.label}</span>` : `<span class="verdict-none">단순 취소</span>`}</td>
-    </tr>`).join("") || `<tr><td colspan="7" style="color:var(--muted)">취소 데이터가 없습니다. (수집기가 cancel 정보를 포함해야 합니다)</td></tr>`;
-
-  // 취소자별 요약 카드: 상위 취소자 + 가장 많이 엮인 상대 top3
-  const byCanceler = new Map();
-  for (const r of rows) {
-    const cid = r.byId || r.byName;
-    if (!cid) continue;
-    if (!byCanceler.has(cid)) byCanceler.set(cid, { name: r.byName, total: 0, rebooked: 0, targets: [] });
-    const c = byCanceler.get(cid);
-    c.total += r.count;
-    c.rebooked += r.rebooked || 0;
-    c.targets.push(r);
-  }
-  const cards = [...byCanceler.values()]
-    .sort((a, b) => b.total - a.total)
-    .slice(0, 6);
-  $("#avoidanceSummary").innerHTML = cards.map((c) => `
-    <div class="avoid-card">
-      <div class="who">${c.name} — 취소 ${c.total}회${c.rebooked ? ` (재예약 ${c.rebooked})` : ""}</div>
-      <div class="targets">
-        ${c.targets.slice(0, 3).map((t) => `${t.counterName} 상대 <b>${t.count}회</b> (${t.role.replace("으로서 취소", "")})${t.verdict ? ` ${t.verdict.label}` : ""}`).join("<br>")}
-      </div>
-    </div>`).join("");
-}
-
-/* ================= 렌더: 슬롯 오픈 분석 ================= */
-function renderSlots(stats, data) {
-  const panel = $("#slotPanel");
-  const slots = Array.isArray(data.slots) ? data.slots : [];
-  if (!slots.length) { panel.hidden = true; return; }
-  panel.hidden = false;
-
-  const matched = slots.filter((s) => s.matched).length;
-  const owners = new Set(slots.map((s) => s.m));
-  const openNow = slots.length - matched;
-  const conv = slots.length ? Math.round((matched / slots.length) * 100) : 0;
-
-  $("#slotSummary").innerHTML = [
-    { label: "총 오픈 슬롯", value: slots.length, cls: "accent", sub: `${owners.size}명이 오픈` },
-    { label: "평가로 매칭", value: matched, cls: "good", sub: `전환율 ${conv}%` },
-    { label: "매칭 없이 유지", value: openNow, cls: "warn", sub: "수집 시점 기준" },
-  ].map((c) => `<div class="card ${c.cls}"><div class="label">${c.label}</div><div class="value">${c.value}</div><div class="sub">${c.sub}</div></div>`).join("");
-
-  // 시간대별
-  const hours = new Array(24).fill(0);
-  for (const s of slots) {
-    const h = Number(String(s.t).slice(0, 2));
-    if (Number.isFinite(h)) hours[h]++;
-  }
-  const maxH = Math.max(1, ...hours);
-  $("#slotHours").innerHTML = hours.map((v, h) => `
-    <div class="bar" style="height:${Math.max(2, Math.round((v / maxH) * 78))}px" title="${h}시: ${v}슬롯"></div>`).join("")
-    + `<div style="grid-column:1/-1;display:flex;justify-content:space-between" class="bar-lbl"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>23시</span></div>`;
-
-  // 오픈 많은 멤버 (selfOnly 모드: 소유자가 세션 소유자 1명 = null)
-  const perMbr = new Map();
-  for (const s of slots) perMbr.set(s.m, (perMbr.get(s.m) || 0) + 1);
-  const tops = [...perMbr.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
-  $("#slotTop").innerHTML = tops.map(([id, n], i) => `
-    <div class="row"><span>${i + 1}. ${id == null ? "세션 소유자" : nameOf(stats.mm, id)}</span><span class="num">${n}</span></div>`).join("");
 }
 
 /* ================= 모달 ================= */
@@ -574,8 +414,6 @@ async function refresh() {
   renderCalendar(stats);
   renderRank(stats);
   renderHeatmap(stats, data);
-  renderSlots(stats, data);
-  renderAvoidance(stats);
 }
 
 function shiftMonth(delta) {
