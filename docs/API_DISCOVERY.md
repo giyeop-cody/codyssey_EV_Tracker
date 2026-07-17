@@ -118,3 +118,27 @@ GitHub Actions 실수행(149명 순회) 결과:
 2. 이벤트/슬롯 소유자는 쿼리 멤버가 아닌 **세션 소유자**(`--self <mbrId>` 또는 repo 변수 `SELF_MBR_ID`, 없으면 null)로 귀속
 3. 수집 범위 = **세션 소유자가 참여한 평가 전부**(상대방 이름 포함, 명부 일치 시 mbrId로 연결) + 소유자 오픈 슬롯
 4. mbrId 미기재 시 R행만 있는 이벤트의 평가자 이름(scdlReqUsr)이 누락되던 버그도 함께 수정
+
+---
+
+## v2 확정 체계 (2026-07-17) — 크로스 멤버 수집
+
+실사용 (collect_eval.js):
+- `ev/request/mbrSearch/searchList` (POST form) — 멤버별 평가 목록. **mbrId 반영 확정**.
+  - 지원 파라미터(번들 확인): mbrId, instCd, evlStusCd, projectNm, evlBgngDt/evlEndDt, orderBy, page/pagePerRows, pstartSn, kwajungStr
+  - 응답 = `result.list`. 행 상태 코드 체계: 00001=요청(미매칭/진행), 00003=완료 계열 (txn 체계 00004/00005/00006과 별개!)
+  - 상태 필터를 줘도 기본 목록의 부분집합만 나옴 (숨은 건 없음, 라운드4 실측)
+  - ⚠️ 기간 파라미터는 `YYYY.MM.DD` 형식으로 본 send하면 0건 — 포맷 별도 (미사용)
+- `ev/request/mtlEvlTxnDtoByPkList` (form: evlNo+evlDegr) — 평가 "케이스"의 txn 전부(수락 후 취소/거절 포함
+  array(3~4)): 평가자 실명/ID, 상태, 점수, 요청시각(regDt), 취소사유(본문), 수정시각.
+- `ev/request/mbrSearch/evlDetail` (form: projectNo+lcorsNo+uqstnNo+instCd+mbrId+lrnTmcnt) — 멤버×과제 상세.
+  `result.mtlEvlDataTxnDtoList`를 주지만 **최근 유효 시도만(완료 위주, 취소/거절 행 제외)** → pkList의 하위호환. lrnTmcnt 값 무관하게 동일 응답 (실측).
+
+### "수락 전 요청 단계 거절/취소" 수집 불가 — 검증 완료 (라운드 4~7, 2026-07-17)
+- 수락돼 txn이 만들어지기 전에 끊긴 요청(평가자가 "거절" 누른 순간 끝난 건)은:
+  - 멤버 본인의 mbrSearch/searchList에도 **안 뜸** (세션 소유자로 직접 검증 — 6월 4건 중 1건(수락 후 거절)만 존재)
+  - evlDetail의 txn에도 없음 (완료 건3만 반환, 거절/취소 제외)
+  - "내 평가요청"(ev/request/searchList, 세션 한정)에서 evlStusCd=00004/00005로 필터필터필겨 **0건**
+  - participation 계열은 mbrId 무시 → 세션 스코프, 타인 조회 불가
+- 유일하게 보이는 곳: 본인 스케줄 화면(scheduleAllList) = **실그인한 사람 것만**. 타인 건 서버가 미제공.
+- 결론: **전원 균등 기준으로는 "수락 후 취소/거절"까지가 수집 가능한 최대치.** 요청 단계 거절은 모든 멤버에게 동일하게 제외됨(대칭).
