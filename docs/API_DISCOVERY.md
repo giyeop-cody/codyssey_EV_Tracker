@@ -65,7 +65,7 @@ GET https://api.usr.codyssey.kr/guild/{guildId}/detail?guildSeasonId=5&weekNo=9
 3. **취소 시각 없음** — 상태(거절/요청취소)와 주체 역할만 확정됩니다.
 4. 상대방은 이름만 오는 경우가 있어(명부에 없는 사람), 이름이 명부 내에서 **고유할 때만** mbrId로 연결합니다. 동명이인은 이름 표기로 남습니다.
 5. **점수/코멘트 상세 미확정** — 평가 결과 상세 화면의 XHR을 추가로 캡처하면 `detail`을 채울 수 있습니다. (없어도 랭킹/캘린더/기피 분석은 전부 동작)
-6. `instCd=00021`(이노베이션아칼데미) 확인. 다른 기관이면 `INST_CD` 환경변수나 `--inst`로 변경.
+6. `instCd=00021`(이노베이션아카데미) 확인. 다른 기관이면 `INST_CD` 환경변수나 `--inst`로 변경.
 
 ## 로컬 검증 순서
 
@@ -81,3 +81,27 @@ CODYSSEY_SESSION="JSESSIONID=..." node collect_eval.js --month 7 --guilds 3,4,5,
 
 # 4) 출력 확인 후 워크플로 수동 실행
 ```
+
+## 부록. 레퍼런스 레포(codyssey_Jail_Tracker) 운영 검증 엔드포인트
+
+아래 3개는 같은 서비스 계열에서 실운영 중인 동작 확인된 API입니다 (30분 주기 수집에 사용 중).
+
+```
+# 인증 — JSESSIONID 발급. 이 트래커의 세션-싱크 서버와 동일 엔드포인트 사용
+POST https://api.ams.codyssey.kr/authenticate
+Content-Type: application/x-www-form-urlencoded
+Body: userId=...&password=...
+응답: Set-Cookie에 JSESSIONID (성공 판정: 쿠키 수신 또는 /main  리다이렉트)
+
+# 길드 상세(명부) — 이 트래커의 멤버 수집과 동일. 세션 유효성 프로브로도 사용
+GET https://api.usr.codyssey.kr/guild/{guildId}/detail?guildSeasonId={season}&weekNo={week}
+응답: result.guildInfo{guildNm,currentRanking,totalScore} + result.members[]{mbrId,mbrNm,level,emlAddr,personalScore,...}
+
+# SECOM 출입 상세 — ★ mbrId를 파라미터로 받아 타인 데이터 조회 가능 (실운영 증거)
+GET https://api.usr.codyssey.kr/rest/secom/detail?mbrId={mbrId}&year={year}&month={month}
+```
+
+시사점: `/rest/secom/detail`이 `mbrId`를 받아 타인까지 조회되므로,
+우리가 쓰는 `schedule/scheduleAllList/?mbrId=...`도 **타인 교차 조회가 허용될 가능성이 높습니다.**
+그래도 수집기의 `selfOnlyWarning`(R행 소유권 충돌 감지)은 그대로 둡니다 — 실제 거부 시 자동 경고.
+세션 유효성 프로브는 이 부록의 길드 상세 API를 쓰도록 서버를 맞춰뒀습니다 (`dashboard/server.js`의 `validateSession`).
