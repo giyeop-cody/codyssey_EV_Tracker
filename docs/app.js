@@ -503,6 +503,37 @@ function shiftMonth(delta) {
   refresh();
 }
 
+/* ================= 자동 갱신 (30분 수집 주기 동기화) =================
+ * 수집 워크플로가 30분마다 docs/data/*.json 을 갱신하므로,
+ * 5분마다 generatedAt을 비교해 새 수집본이 올라왔으면 자동 리렌더한다.
+ * (MOCK 모드였다가 첫 실데이터가 도착한 경우도 자동으로 실데이터로 전환됨)
+ */
+const AUTO_REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+
+async function autoRefreshCheck() {
+  if (!state.data) return; // 최초 refresh() 이후에만 동작
+  try {
+    const file = `data/${state.year}-${pad(state.month)}.json`;
+    const res = await fetch(file, { cache: "no-store" });
+    if (!res.ok) return; // 실데이터가 아직 없으면 그대로
+    const fresh = await res.json();
+    const gen = fresh && fresh.meta && fresh.meta.generatedAt;
+    const cur = state.data.meta && state.data.meta.generatedAt;
+    if (gen && gen !== cur) refresh();
+  } catch (_) {
+    /* 네트워크 오류는 무시하고 다음 주기에 재시도 */
+  }
+}
+
+setInterval(() => {
+  if (!document.hidden) autoRefreshCheck();
+}, AUTO_REFRESH_INTERVAL_MS);
+
+// 다른 탭에 있다가 돌아왔을 때도 즉시 확인
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) autoRefreshCheck();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   $("#btnPrev").addEventListener("click", () => shiftMonth(-1));
   $("#btnNext").addEventListener("click", () => shiftMonth(1));
