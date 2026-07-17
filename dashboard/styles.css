@@ -1,0 +1,185 @@
+:root {
+  --bg: #0f1420;
+  --panel: #171f30;
+  --panel-2: #1f2940;
+  --line: #2a3653;
+  --text: #e8ecf5;
+  --muted: #8b96ad;
+  --accent: #4f8cff;
+  --good: #3ecf8e;
+  --bad: #ec3e5f;
+  --warn: #f7a726;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", sans-serif;
+}
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  padding: 14px 20px; background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.topbar h1 { font-size: 18px; margin: 0; }
+.month-nav { display: flex; gap: 6px; align-items: center; }
+.nav-btn {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 6px 12px; cursor: pointer; font-size: 14px;
+}
+.nav-btn:hover { border-color: var(--accent); }
+.nav-btn.today { background: var(--accent); border-color: var(--accent); color: #fff; }
+#ymInput {
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
+  color-scheme: dark;
+}
+.mock-banner {
+  background: #4a3406; color: #ffd98a; padding: 8px 20px; font-size: 13px;
+}
+.mock-banner code { background: rgba(255,255,255,.1); padding: 1px 5px; border-radius: 4px; }
+.status-line { color: var(--muted); font-size: 12px; padding: 6px 20px 0; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid; gap: 16px; }
+
+/* 요약 카드 */
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px; min-height: 84px;
+}
+.card .label { color: var(--muted); font-size: 12px; }
+.card .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+.card .sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.card.good .value { color: var(--good); }
+.card.bad .value { color: var(--bad); }
+.card.warn .value { color: var(--warn); }
+.card.accent .value { color: var(--accent); }
+
+.panel {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 16px;
+}
+.panel h2 { margin: 0 0 12px; font-size: 16px; }
+.hint { color: var(--muted); font-size: 12px; font-weight: 400; margin-left: 8px; }
+.warn { color: var(--warn); font-size: 12px; margin: 0 0 10px; }
+
+/* 캘린더 */
+.calendar-head, .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendar-head span {
+  text-align: center; color: var(--muted); font-size: 12px; padding: 6px 0;
+}
+.calendar-head span:first-child { color: #ff8489; }
+.calendar-head span:last-child { color: #6ea8ff; }
+.day {
+  min-height: 86px; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 7px; cursor: pointer; overflow: hidden;
+}
+.day:hover { border-color: var(--accent); }
+.day.empty { background: transparent; border-color: transparent; cursor: default; }
+.day.today-cell { border-color: var(--accent); }
+.day .dnum { font-weight: 700; font-size: 13px; }
+.day .counts { font-size: 11px; margin: 2px 0; display: flex; gap: 8px; }
+.day .ok { color: var(--good); }
+.day .cx { color: var(--bad); }
+.day .names { font-size: 10.5px; color: var(--muted); line-height: 1.35; }
+.day .names .more { color: var(--accent); }
+
+/* 테이블 */
+.table-wrap { overflow-x: auto; }
+.rank-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rank-table th, .rank-table td {
+  padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left;
+  white-space: nowrap;
+}
+.rank-table th { color: var(--muted); font-size: 12px; user-select: none; }
+.rank-table th[data-key] { cursor: pointer; }
+.rank-table th[data-key]:hover { color: var(--accent); }
+.rank-table th.num, .rank-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.rank-table tbody tr:hover { background: var(--panel-2); }
+.badge {
+  display: inline-block; padding: 1px 8px; border-radius: 20px;
+  font-size: 11px; font-weight: 600;
+}
+.badge.ok { background: rgba(62,207,142,.15); color: var(--good); }
+.badge.cx { background: rgba(236,62,95,.15); color: var(--bad); }
+.badge.rq { background: rgba(79,140,255,.15); color: var(--accent); }
+.badge.ip { background: rgba(247,167,38,.15); color: var(--warn); }
+
+/* 히트맵 */
+.filter-row { display: flex; gap: 6px; margin-bottom: 12px; }
+.chip {
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--muted);
+  border-radius: 20px; padding: 4px 14px; cursor: pointer; font-size: 12px;
+}
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.heatmap { display: grid; grid-template-columns: 34px repeat(24, 1fr); gap: 2px; align-items: center; }
+.heatmap .hlabel { color: var(--muted); font-size: 11px; text-align: right; padding-right: 4px; }
+.heatmap .hcell {
+  aspect-ratio: 1; border-radius: 3px; background: var(--panel-2); min-width: 10px;
+}
+.heatmap .hcell[title] { cursor: help; }
+.heatmap .haxis { color: var(--muted); font-size: 10px; text-align: center; }
+
+/* 슬롯 오픈 분석 */
+.slot-cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; }
+.sub-title { font-size: 13px; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.bar-grid { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; align-items: end; height: 90px; }
+.bar-grid .bar { background: var(--accent); border-radius: 3px 3px 0 0; min-height: 2px; opacity: .9; }
+.bar-grid .bar-lbl { color: var(--muted); font-size: 9px; text-align: center; height: 12px; overflow: visible; }
+.slot-top .row {
+  display: flex; justify-content: space-between; padding: 6px 8px;
+  border-bottom: 1px solid var(--line); font-size: 13px;
+}
+.slot-top .row .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* 기피 분석 */
+.avoid-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.avoid-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.avoid-card .who { font-weight: 700; margin-bottom: 4px; }
+.avoid-card .targets { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.avoid-card .targets b { color: var(--bad); }
+
+/* 모달 */
+.modal-bg {
+  position: fixed; inset: 0; background: rgba(0,0,0,.55);
+  display: flex; align-items: center; justify-content: center; z-index: 100; padding: 16px;
+}
+.modal {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  width: min(680px, 100%); max-height: 84vh; display: flex; flex-direction: column;
+}
+.modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+}
+.modal-head h3 { margin: 0; font-size: 15px; }
+.modal .close {
+  background: none; border: none; color: var(--muted); font-size: 16px; cursor: pointer;
+}
+.modal-body { padding: 12px 16px; overflow-y: auto; }
+.ev-row {
+  display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center;
+  padding: 9px 8px; border-bottom: 1px solid var(--line); cursor: pointer; border-radius: 8px;
+}
+.ev-row:hover { background: var(--panel-2); }
+.ev-row .time { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+.ev-row .who { font-size: 13px; }
+.ev-row .who .arr { color: var(--muted); margin: 0 6px; }
+.ev-row .proj { color: var(--muted); font-size: 12px; }
+.ev-row .meta { text-align: right; font-size: 11px; color: var(--muted); }
+.detail-kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 12px; font-size: 13px; }
+.detail-kv dt { color: var(--muted); }
+.detail-kv dd { margin: 0; white-space: pre-wrap; word-break: break-word; }
+.detail-items { margin-top: 12px; width: 100%; border-collapse: collapse; font-size: 12px; }
+.detail-items th, .detail-items td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+
+@media (max-width: 640px) {
+  .day { min-height: 64px; }
+  .day .names { display: none; }
+  .heatmap { grid-template-columns: 28px repeat(24, minmax(8px, 1fr)); }
+  .slot-cols { grid-template-columns: 1fr; }
+}

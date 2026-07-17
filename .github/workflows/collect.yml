@@ -1,0 +1,62 @@
+name: Collect Evaluation Data
+
+on:
+  schedule:
+    # 30분 주기 (UTC). KST 24시간 커버.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "수집 연도 (비우면 현재)"
+        required: false
+      month:
+        description: "수집 월 (비우면 현재)"
+        required: false
+      days:
+        description: "최근 N일만 수집 (비우면 해당 월 전체)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: eval-collect
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Collect evaluations
+        env:
+          CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+          YEAR: ${{ inputs.year }}
+          MONTH: ${{ inputs.month }}
+          DAYS: ${{ inputs.days }}
+        run: |
+          ARGS=""
+          [ -n "$YEAR" ] && ARGS="$ARGS --year $YEAR"
+          [ -n "$MONTH" ] && ARGS="$ARGS --month $MONTH"
+          [ -n "$DAYS" ] && ARGS="$ARGS --days $DAYS"
+          node collect_eval.js $ARGS
+
+      - name: Commit data
+        run: |
+          git config user.name "eval-tracker-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add dashboard/data/
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "data: update evaluation data $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase
+            git push
+          fi

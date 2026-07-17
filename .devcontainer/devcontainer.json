@@ -1,0 +1,27 @@
+{
+  "name": "Codyssey Eval Tracker",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Session Sync Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "cd dashboard && npm install",
+  // Codespaces는 GITHUB_REPOSITORY를 자동 주입한다.
+  // Actions Secret 쓰기 권한이 있는 PAT는 Codespaces Secret GH_PAT_SYNC로 받고,
+  // 없으면 Codespaces 기본 GITHUB_TOKEN으로 시도한다.
+  "postStartCommand": "cd dashboard && GITHUB_TOKEN=\"${GH_PAT_SYNC:-$GITHUB_TOKEN}\" npm start",
+  "waitFor": "postCreateCommand",
+  "secrets": {
+    "GH_PAT_SYNC": {
+      "description": "Repository Actions Secrets 쓰기 + Actions workflow dispatch 권한이 있는 GitHub PAT. Codyssey JSESSIONID를 CODYSSEY_SESSION 시크릿으로 저장하고 Collect workflow를 즉시 실행합니다."
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "eval-tracker-session-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Codyssey 로그인 폼 + JSESSIONID를 GitHub Actions Secret으로 동기화하는 Codespace 서버",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check lib/github-sync.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "libsodium-wrappers": "^0.8.4"
+  }
+}
