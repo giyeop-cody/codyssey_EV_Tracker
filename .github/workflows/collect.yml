@@ -64,6 +64,7 @@ jobs:
 
       - name: Commit data
         if: steps.check.outputs.skip != 'true'
+        id: commit
         run: |
           git config user.name "eval-tracker-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -74,4 +75,13 @@ jobs:
             git commit -m "data: update evaluation data $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull --rebase
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # GITHUB_TOKEN으로 한 push는 다른 워크플로를 트리거하지 못하므로(GitHub 재귀 방지)
+      # 데이터가 실제로 바뀐 경우에만 Pages 배포 워크플로를 직접 디스패치한다.
+      - name: Trigger Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages.yml
