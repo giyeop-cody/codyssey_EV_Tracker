@@ -183,3 +183,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid
   .heatmap { grid-template-columns: 28px repeat(24, minmax(8px, 1fr)); }
   .slot-cols { grid-template-columns: 1fr; }
 }
+
+/* 기피 분석 판정 배지/행 강조 */
+.badge.verdict-strong { background: rgba(236,62,95,.18); color: var(--bad); }
+.badge.verdict-warn { background: rgba(255,183,77,.15); color: #ffb74d; }
+.verdict-none { color: var(--muted); font-size: 12px; }
+.rank-table tr.sus-strong td { background: rgba(236,62,95,.07); }
+.rank-table tr.sus-warn td { background: rgba(255,183,77,.06); }
