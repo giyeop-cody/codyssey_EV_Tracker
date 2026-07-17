@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-17T12:45:40.246Z",
+    "generatedAt": "2026-07-17T14:33:21.020Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "source": "mbrSearch+pkList",
     "slotsSource": "scheduleAllList(세션 소유자 슬롯만)",
     "feedbackCollected": false,
-    "droppedOutOfRange": 771
+    "droppedOutOfRange": 775
   },
   "members": [
     {
@@ -159,6 +159,30 @@
       "guild": "오션"
     },
     {
+      "mbrId": "sha1:bd63aa71",
+      "name": "김수정",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:40eb6a3b",
+      "name": "김승우",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:01afc40a",
+      "name": "정현석",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:0f052b0a",
+      "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
       "mbrId": "sha1:e83ffab8",
       "name": "김명재",
       "level": 1,
@@ -201,30 +225,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "sha1:bd63aa71",
-      "name": "김수정",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:40eb6a3b",
-      "name": "김승우",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:01afc40a",
-      "name": "정현석",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:0f052b0a",
-      "name": "고한결",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "sha1:a014b8bb",
       "name": "박성현",
       "level": 1,
@@ -255,14 +255,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:0153224d",
-      "name": "반가희",
+      "mbrId": "sha1:bf005853",
+      "name": "장현준",
       "level": 3,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:bf005853",
-      "name": "장현준",
+      "mbrId": "sha1:0153224d",
+      "name": "반가희",
       "level": 3,
       "guild": "오로라"
     },
@@ -381,14 +381,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:de42a127",
-      "name": "김은수",
+      "mbrId": "sha1:98dfc86c",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:98dfc86c",
-      "name": "김동조",
+      "mbrId": "sha1:de42a127",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
@@ -401,24 +401,6 @@
     {
       "mbrId": "sha1:143eca29",
       "name": "정호준",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:52536857",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:63e034da",
-      "name": "양용택",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:e7daaa76",
-      "name": "호정숙",
       "level": 1,
       "guild": "오로라"
     },
@@ -455,6 +437,24 @@
     {
       "mbrId": "sha1:03cffad8",
       "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:52536857",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:63e034da",
+      "name": "양용택",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:e7daaa76",
+      "name": "호정숙",
       "level": 1,
       "guild": "오로라"
     },
@@ -627,6 +627,12 @@
       "guild": "앰버"
     },
     {
+      "mbrId": "sha1:4e03dd17",
+      "name": "나영흠",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
       "mbrId": "sha1:b7fd1c02",
       "name": "구자원",
       "level": 1,
@@ -671,12 +677,6 @@
     {
       "mbrId": "sha1:a98dfa69",
       "name": "이용규",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "sha1:4e03dd17",
-      "name": "나영흠",
       "level": 1,
       "guild": "앰버"
     },
@@ -3230,6 +3230,27 @@
       "detail": null
     },
     {
+      "evalId": "s559010-1",
+      "evlNo": "559010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T23:07:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:df194166",
+      "evaluateeName": "정창석",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -4564,27 +4585,6 @@
       "evaluateeName": "최성민",
       "projectName": "시스템 관제 자동화 스크립트 개발",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s559010-1",
-      "evlNo": "559010",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:df194166",
-      "evaluateeName": "정창석",
-      "projectName": "SQL로 만드는 나만의 데이터베이스",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
