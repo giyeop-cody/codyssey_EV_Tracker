@@ -177,7 +177,6 @@ function computeStats(data) {
 /* ================= 렌더: 요약 카드 ================= */
 function renderSummary(stats, data) {
   const { total, per } = stats;
-  const rate = total.requested ? Math.round((total.cancelled / total.requested) * 100) : 0;
 
   // 피크 시간대
   const hourCount = new Array(24).fill(0);
@@ -187,10 +186,6 @@ function renderSummary(stats, data) {
   }
   const peakHour = hourCount.indexOf(Math.max(...hourCount));
 
-  // 취소 vs 거절 분해 (거절 = 평가자가 끊은 건)
-  const isReject = (e) => e.status === "CANCELLED" && ((e.stusNm || "").includes("거절") || e.stusCd === "00004" || (e.cancel && e.cancel.by === "EVALUATOR"));
-  const rejectN = (data.events || []).filter(isReject).length;
-  const cancelN = total.cancelled - rejectN;
 
   const top = (key) => {
     let best = null;
@@ -201,7 +196,6 @@ function renderSummary(stats, data) {
   const cards = [
     { label: "총 평가 요청", value: total.requested, cls: "accent", sub: `${state.year}-${pad(state.month)}` },
     { label: "완료된 평가", value: total.completed, cls: "good", sub: `완료율 ${total.requested ? Math.round((total.completed / total.requested) * 100) : 0}%` },
-    { label: "취소/거절된 평가", value: total.cancelled, cls: "bad", sub: `취소 ${cancelN} · 거절 ${rejectN} (${rate}%)` },
     { label: "피크 시간대", value: total.requested ? `${pad(peakHour)}시` : "-", cls: "warn", sub: `누적 ${Math.max(...hourCount)}건` },
     { label: "최다 평가자", value: top("given"), cls: "", sub: "완료 기준" },
     { label: "최다 피평가자", value: top("received"), cls: "", sub: "완료 기준" },
@@ -399,6 +393,8 @@ async function refresh() {
     emptyMonth = true;
     data = { meta: { generatedAt: null, year: state.year, month: state.month, mock: false }, members: [], events: [], slots: [] };
   }
+  // 취소/거절(불참 등) 기록은 표시하지 않음 (2026-07-18 요청) — 데이터는 JSON에 유지
+  data.events = (data.events || []).filter((e) => e.status !== "CANCELLED");
   state.data = data;
   const stats = computeStats(data);
 
