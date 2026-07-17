@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Codyssey 동료평가 트래커</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>📊 Codyssey 동료평가 트래커</h1>
+  <div class="month-nav">
+    <button id="btnPrev" class="nav-btn">‹</button>
+    <input id="ymInput" type="month" aria-label="연월 선택">
+    <button id="btnNext" class="nav-btn">›</button>
+    <button id="btnToday" class="nav-btn today">오늘</button>
+  </div>
+</header>
+
+<div id="mockBanner" class="mock-banner" hidden>
+  ⚠️ 가상 데이터(MOCK)로 표시 중입니다. <code>data/YYYY-MM.json</code>을 수집기로 생성하면 실데이터로 전환됩니다.
+</div>
+<div id="statusLine" class="status-line"></div>
+
+<main>
+  <!-- 요약 카드 -->
+  <section id="summary" class="summary-grid"></section>
+
+  <!-- 캘린더 -->
+  <section class="panel">
+    <h2>📅 월간 캘린더 <span class="hint">날짜 클릭 → 당일 평가 목록</span></h2>
+    <div class="calendar-head">
+      <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+    </div>
+    <div id="calendar" class="calendar"></div>
+  </section>
+
+  <!-- 멤버 랭킹 -->
+  <section class="panel">
+    <h2>🏆 멤버별 평가 통계 <span class="hint">헤더 클릭으로 정렬</span></h2>
+    <div class="table-wrap">
+      <table id="rankTable" class="rank-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-key="name">이름</th>
+            <th data-key="given" class="num">평가한 횟수</th>
+            <th data-key="received" class="num">피평가 횟수</th>
+            <th data-key="cancelledByMe" class="num">취소한 횟수</th>
+            <th data-key="cancelledOnMe" class="num">취소당한 횟수</th>
+            <th data-key="cancelRate" class="num">관여 평가 취소율</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 시간대 분석 -->
+  <section class="panel">
+    <h2>⏰ 평가 시간대 분석</h2>
+    <div class="filter-row">
+      <button class="chip active" data-filter="ALL">전체</button>
+      <button class="chip" data-filter="COMPLETED">완료만</button>
+      <button class="chip" data-filter="CANCELLED">취소만</button>
+    </div>
+    <div id="heatmap" class="heatmap"></div>
+    <p class="hint">행: 요일 (일→토) / 열: 시각 (0~23시). 색이 진할수록 평가 많음. 기준: 슬롯 시각</p>
+  </section>
+
+  <!-- 슬롯 오픈 분석 -->
+  <section id="slotPanel" class="panel" hidden>
+    <h2>🕒 슬롯 오픈 분석 <span class="hint">멤버가 "평가 가능"으로 열어둔 슬롯</span></h2>
+    <div id="slotSummary" class="summary-grid" style="margin-bottom:12px"></div>
+    <div class="slot-cols">
+      <div>
+        <h3 class="sub-title">시간대별 오픈 슬롯</h3>
+        <div id="slotHours" class="bar-grid"></div>
+      </div>
+      <div>
+        <h3 class="sub-title">가장 많이 연 멤버</h3>
+        <div id="slotTop" class="slot-top"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 기피 분석 -->
+  <section class="panel">
+    <h2>🚫 기피 분석 <span class="hint">취소 주체가 누구와 엮였을 때 취소하는지</span></h2>
+    <p class="warn">⚠️ 취소 사유는 다양합니다(일정 문제 등). 이 패널은 "패턴이 있을 때만" 참고용으로 해석하세요.</p>
+    <div id="avoidanceSummary" class="avoid-summary"></div>
+    <div class="table-wrap">
+      <table id="pairTable" class="rank-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>취소한 사람</th>
+            <th>취소 역할</th>
+            <th>상대방</th>
+            <th class="num">횟수</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- 일별 이벤트 모달 -->
+<div id="dayModal" class="modal-bg" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="dayModalTitle"></h3>
+      <button class="close" data-close>✕</button>
+    </div>
+    <div id="dayModalBody" class="modal-body"></div>
+  </div>
+</div>
+
+<!-- 평가 상세 모달 -->
+<div id="detailModal" class="modal-bg" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="detailModalTitle"></h3>
+      <button class="close" data-close>✕</button>
+    </div>
+    <div id="detailModalBody" class="modal-body"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

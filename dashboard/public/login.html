@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐 Codyssey 세션-싱크 서버</title>
+<style>
+  :root { --bg:#0f1420; --panel:#171f30; --panel2:#1f2940; --line:#2a3653; --text:#e8ecf5; --muted:#8b96ad; --accent:#4f8cff; --good:#3ecf8e; --bad:#ec3e5f; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","Pretendard",sans-serif; display:flex; justify-content:center; padding:32px 16px; }
+  .wrap { width:min(520px,100%); display:grid; gap:14px; }
+  h1 { font-size:19px; margin:0; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .card h2 { font-size:14px; margin:0 0 10px; color:var(--muted); font-weight:600; }
+  label { display:block; color:var(--muted); font-size:12px; margin:10px 0 4px; }
+  input { width:100%; background:var(--panel2); border:1px solid var(--line); border-radius:8px; color:var(--text); padding:9px 10px; font-size:14px; }
+  input:focus { outline:none; border-color:var(--accent); }
+  button { margin-top:12px; width:100%; background:var(--accent); border:none; color:#fff; font-size:14px; font-weight:700; padding:10px; border-radius:8px; cursor:pointer; }
+  button.ghost { background:var(--panel2); border:1px solid var(--line); color:var(--text); }
+  button:hover { filter:brightness(1.1); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .kv { display:grid; grid-template-columns:120px 1fr; gap:4px 10px; font-size:13px; }
+  .kv dt { color:var(--muted); margin:0; }
+  .kv dd { margin:0; word-break:break-all; }
+  .ok { color:var(--good); } .bad { color:var(--bad); } .muted { color:var(--muted); }
+  #msg { font-size:13px; margin-top:10px; white-space:pre-wrap; }
+  .note { font-size:12px; color:var(--muted); line-height:1.6; }
+  code { background:rgba(255,255,255,.08); padding:1px 5px; border-radius:4px; font-size:12px; }
+  #staticWarn { display:none; background:#4a3406; color:#ffd98a; border-radius:8px; padding:8px 10px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔐 Codyssey 세션-싱크 서버</h1>
+  <div id="staticWarn">⚠️ 지금은 정적 호스팅(GitHub Pages)으로 보입니다. 이 로그인 폼은 <b>Codespace의 서버(포트 3000)</b>에서 열어야 동작합니다.</div>
+
+  <div class="card">
+    <h2>현재 상태</h2>
+    <dl class="kv" id="statusBox"><dt>확인 중...</dt><dd></dd></dl>
+    <div class="row">
+      <button class="ghost" id="btnResync">🔄 Secret 재동기화 + 수집 실행</button>
+      <button class="ghost" id="btnLogout">🗑 세션 삭제</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>1) Codyssey 계정으로 로그인</h2>
+    <form id="loginForm">
+      <label>아이디</label>
+      <input name="userId" autocomplete="username" required>
+      <label>비밀번호</label>
+      <input name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">로그인 → Secret 등록 + 수집 실행</button>
+    </form>
+    <div id="msg" class="muted"></div>
+    <p class="note">🔒 아이디/비밀번호는 이 서버를 통해 <b>Codyssey 인증 서버로만</b> 전달되며 저장되지 않습니다.<br>
+    Codespaces Secret <code>GH_PAT_SYNC</code>가 설정되어 있으면 로그인과 동시에 <code>JSESSIONID</code>가 저장소 Actions Secret <code>CODYSSEY_SESSION</code>으로 자동 등록/갱신되고 <code>collect.yml</code>이 즉시 실행됩니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>2) 또는 JSESSIONID 직접 입력</h2>
+    <form id="sessionForm">
+      <label>JSESSIONID (DevTools → Application → Cookies)</label>
+      <input name="jsessionid" placeholder="예: 9F1A... (세션 쿠키 값)">
+      <button type="submit" class="ghost">세션 값으로 등록</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const msg = (t, ok) => { const m = $("#msg"); m.textContent = t; m.className = ok ? "ok" : (t ? "bad" : "muted"); };
+
+async function api(path, body) {
+  const res = await fetch(path, body
+    ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }
+    : undefined);
+  return res.json().catch(() => ({ success: false, error: "HTTP " + res.status }));
+}
+
+async function refreshStatus() {
+  let s;
+  try { s = await api("/api/status"); }
+  catch (_) { $("#staticWarn").style.display = "block"; $("#statusBox").innerHTML = "<dt>서버</dt><dd class='bad'>연결 불가 (정적 페이지)</dd>"; return; }
+  const g = s.github || {};
+  const rows = [
+    ["세션", s.loggedIn ? (s.valid ? "<span class='ok'>유효 ✅</span>" : "<span class='bad'>만료됨</span>") : "<span class='muted'>없음</span>"],
+    ["계정", s.userId || "-"],
+    ["로그인 시각", s.loggedInAt ? s.loggedInAt.slice(0, 19).replace("T", " ") : "-"],
+    ["저장소", g.repository || "<span class='bad'>미확인</span>"],
+    ["토큰 소스", g.tokenSource || "-"],
+    ["최근 Secret 동기화", g.lastSync ? g.lastSync.slice(0, 19).replace("T", " ") : "-"],
+    ["워크플로 실행", g.workflowTriggered ? "<span class='ok'>요청됨 ✅</span>" : (g.lastWorkflowDispatch || "-")],
+  ];
+  if (g.lastError) rows.push(["최근 오류", "<span class='bad'>" + g.lastError + "</span>"]);
+  $("#statusBox").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+}
+
+$("#loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msg("로그인 중...");
+  const fd = new FormData(e.target);
+  const r = await api("/api/login", { userId: fd.get("userId"), password: fd.get("password") });
+  if (r.success) {
+    msg(r.github && r.github.success
+      ? "✅ 로그인 + Secret 동기화 + 수집 실행 완료"
+      : "⚠️ 로그인은 됐지만 GitHub 동기화 실패: " + ((r.github && r.github.error) || "?"), !r.github || !r.github.error);
+    e.target.password.value = "";
+  } else msg("❌ " + (r.error || "실패"));
+  refreshStatus();
+});
+
+$("#sessionForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msg("세션 검증 중...");
+  const fd = new FormData(e.target);
+  const r = await api("/api/session-id", { jsessionid: fd.get("jsessionid") });
+  msg(r.success ? "✅ 세션 등록 + 동기화 시도 완료" + (r.github && r.github.error ? " (동기화 오류: " + r.github.error + ")" : "") : "❌ " + (r.error || "실패"), r.success);
+  if (r.success) e.target.jsessionid.value = "";
+  refreshStatus();
+});
+
+$("#btnResync").addEventListener("click", async () => {
+  msg("재동기화 중...");
+  const r = await api("/api/resync", {});
+  msg(r.success ? "✅ 완료" : "❌ " + (r.error || "실패"), r.success);
+  refreshStatus();
+});
+
+$("#btnLogout").addEventListener("click", async () => {
+  await api("/api/logout", {});
+  msg("세션을 삭제했습니다.", true);
+  refreshStatus();
+});
+
+refreshStatus();
+</script>
+</body>
+</html>
