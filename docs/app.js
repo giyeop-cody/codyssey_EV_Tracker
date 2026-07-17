@@ -440,12 +440,12 @@ function renderSlots(stats, data) {
     <div class="bar" style="height:${Math.max(2, Math.round((v / maxH) * 78))}px" title="${h}시: ${v}슬롯"></div>`).join("")
     + `<div style="grid-column:1/-1;display:flex;justify-content:space-between" class="bar-lbl"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>23시</span></div>`;
 
-  // 오픈 많은 멤버
+  // 오픈 많은 멤버 (selfOnly 모드: 소유자가 세션 소유자 1명 = null)
   const perMbr = new Map();
   for (const s of slots) perMbr.set(s.m, (perMbr.get(s.m) || 0) + 1);
   const tops = [...perMbr.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
   $("#slotTop").innerHTML = tops.map(([id, n], i) => `
-    <div class="row"><span>${i + 1}. ${nameOf(stats.mm, id)}</span><span class="num">${n}</span></div>`).join("");
+    <div class="row"><span>${i + 1}. ${id == null ? "세션 소유자" : nameOf(stats.mm, id)}</span><span class="num">${n}</span></div>`).join("");
 }
 
 /* ================= 모달 ================= */
@@ -537,7 +537,7 @@ async function refresh() {
 
   $("#mockBanner").hidden = !data.meta.mock;
   $("#statusLine").textContent = data.meta.generatedAt
-    ? `마지막 수집: ${data.meta.generatedAt.replace("T", " ").slice(0, 19)} · 이벤트 ${data.events.length}건`
+    ? `마지막 수집: ${data.meta.generatedAt.replace("T", " ").slice(0, 19)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
     : "";
 
   $("#ymInput").value = `${state.year}-${pad(state.month)}`;

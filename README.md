@@ -108,7 +108,11 @@ GitHub **Settings → Codespaces → Codespaces secrets → New secret**:
 3. 상태 카드에서 "최근 Secret 동기화 / 워크플로 실행 요청됨" 확인
 4. 수동 확인이 필요하면: Secret `CODYSSEY_SESSION`에 `JSESSIONID` 값을 직접 넣고
    `Collect Evaluation Data` 워크플로를 workflow_dispatch로 직접 실행할 수도 있습니다(코드스페이스 없이도 가능).
-5. 수집기는 **실측 확정 API(`schedule/scheduleAllList/`)를 이미 반영**했습니다. 잔여 한계(상세 점수 미확정, 취소 시각 없음 등)는 `docs/API_DISCOVERY.md` 참조.
+5. 수집기는 **실측 확정 API(`schedule/scheduleAllList/`)를 반영**했습니다.
+   - ❗ 2026-07-17 실측 확정: 이 API는 `mbrId`를 무시하고 **세션 소유자 스케줄만** 반환합니다.
+     따라서 수집 범위는 **세션 소유자가 참여한 평가 + 소유자 오픈 슬롯**입니다. (타인 전체 이력 수집 불가)
+   - 소유자 mbrId를 알면 저장소 **Settings → Variables → `SELF_MBR_ID`**로 지정하면 데이터에 정확히 귀속됩니다.
+   - 그 외 한계(상세 점수 미확정, 취소 시각 없음 등)는 `docs/API_DISCOVERY.md` 참조.
 
 ## 보안 모델
 
