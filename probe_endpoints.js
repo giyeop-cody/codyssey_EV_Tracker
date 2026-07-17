@@ -1,16 +1,12 @@
 "use strict";
-/* 프로브 라운드 6 — 지정 멤버(PROBE_MBR_ID)의 evlDetail 시도이력 검증.
- * 목적: searchList에 없는 "요청 단계 거절/취소" txn이 evlDetail에는 있는지 확인.
- *
- * 참고: 검증 대상 ID는 data/*.json에 이미 공개된 식별자와 동일한 성질이며,
- *       이 스크립트는 검증 후 삭제 예정. Actions 로그엔 이름/ID가 마스킹됨.
+/* 프로브 라운드 7 (최종 스윕) — 남은 읽기 후보들의 구조만 확인.
+ * H: 요청 단계 거절/취소를 멤버 단위로 주는 엔드포인트가 더 있나.
+ * 출력 마스킹. CODYSSEY_SESSION="JSESSIONID=..." node probe_endpoints.js
  */
-
 const API_BASE = "https://api.usr.codyssey.kr/";
 const SESSION_RAW = process.env.CODYSSEY_SESSION || "";
 if (!SESSION_RAW) { console.error("CODYSSEY_SESSION 필요"); process.exit(2); }
 const SESSION = SESSION_RAW.includes("=") ? SESSION_RAW : `JSESSIONID=${SESSION_RAW}`;
-const TARGET = process.env.PROBE_MBR_ID || "1000271067"; // 세션 소유자(검증 협조자) — env로 교체 가능
 const HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
   Accept: "application/json, text/plain, */*",
@@ -18,72 +14,46 @@ const HEADERS = {
   Cookie: SESSION,
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function post(ep, params) {
-  await sleep(400);
-  const res = await fetch(API_BASE + ep, {
-    method: "POST",
-    headers: { ...HEADERS, "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(params).toString(),
-  });
-  let j = null; try { j = JSON.parse(await res.text()); } catch (_) {}
-  return { http: res.status, j };
-}
-const arrOf = (j) => {
-  const r = j && j.result;
-  return Array.isArray(r) ? r : (r && Array.isArray(r.list)) ? r.list : [];
+const mask = (v) => {
+  if (v == null) return v;
+  if (Array.isArray(v)) return v.slice(0, 2).map(mask);
+  if (typeof v === "object") { const o = {}; for (const [k, x] of Object.entries(v)) o[k] = mask(x); return o; }
+  return String(v).replace(/[가-힣]/g, "ㅋ").replace(/\d/g, "0").slice(0, 24);
 };
-const ym = (s) => String(s || "").slice(0, 7) || "?";
+async function hit(name, ep, { method = "POST", params, body } = {}) {
+  await sleep(400);
+  try {
+    const res = await fetch(API_BASE + ep, {
+      method,
+      headers: method === "GET" ? HEADERS : { ...HEADERS, "Content-Type": "application/x-www-form-urlencoded" },
+      ...(method === "GET" ? {} : { body: body !== undefined ? body : new URLSearchParams(params || {}).toString() }),
+    });
+    let j = null; try { j = JSON.parse(await res.text()); } catch (_) {}
+    const r = j && j.result;
+    const arr = Array.isArray(r) ? r : (r && Array.isArray(r.list)) ? r.list : null;
+    let desc = `http=${res.status} code=${j && j.code} `;
+    if (arr) desc += `array(${arr.length}) keys=${arr.length ? Object.keys(arr[0]).join(",") : "-"}`;
+    else if (r && typeof r === "object") desc += `object keys=${Object.keys(r).slice(0, 12).join(",")}`;
+    else desc += `type=${typeof r}`;
+    console.log(`### ${name}\n  ${desc}`);
+    if (arr && arr.length) console.log("  sample:", JSON.stringify(mask(arr[0])).slice(0, 400));
+    else if (r && typeof r === "object") console.log("  sample:", JSON.stringify(mask(r)).slice(0, 400));
+  } catch (e) { console.log(`### ${name}\n  예외: ${e.message}`); }
+}
 
 (async () => {
-  console.log("▶ 라운드 6 — 지정 멤버 시도이력 정밀 검증");
-  const base = { instCd: "00021", orderBy: "DESC" };
-
-  // 1) searchList 전페이지 + 행별 요약
-  const rows = [];
-  for (let p = 1; p <= 5; p++) {
-    const { j } = await post("ev/request/mbrSearch/searchList", { mbrId: TARGET, ...base, page: String(p), pagePerRows: "50" });
-    const rs = arrOf(j);
-    rows.push(...rs);
-    if (rs.length < 50) break;
+  console.log("▶ 라운드 7 — 최종 스윕");
+  // 세션 기준 "최근 평가" — 거절 포함 여부
+  await hit("lastEvList (GET)", "ev/request/lastEvList", { method: "GET" });
+  // 평가자 후보 타임라인 계열 — 기존 알려진 스케줄 세션 한정과 동일 계열인지
+  await hit("mainScheduleCntList", "schedule/mainScheduleCntList", { params: { bgngYmd: "2026.06.01", endYmd: "2026.06.30" } });
+  await hit("selectCase1MbrIdList", "ev/request/selectCase1MbrIdList", { params: { instCd: "00021" } });
+  await hit("selectCase2MbrIdList", "ev/request/selectCase2MbrIdList", { params: { instCd: "00021" } });
+  await hit("selectScheduleList", "ev/request/selectScheduleList", { params: { projectNo: "0", lcorsNo: "0", instCd: "00021" } });
+  // 세션 "내 요청 목록" — 거절 상태로 필터 시 뭐가 나오나 (세션 한정이지만 코드 체계 확인용)
+  for (const cd of ["00004", "00005"]) {
+    await hit(`searchList(session) evlStusCd=${cd}`, "ev/request/searchList", { params: { instCd: "00021", page: "1", pagePerRows: "50", evlStusCd: cd } });
   }
-  console.log(`searchList ${rows.length}건:`);
-  for (const r of rows) {
-    console.log(`  ${String(r.evlNo).slice(0, 3)}…|d${r.evlDegr} st=${r.evlStusCd} uqstn=${String(r.uqstnNm || "").replace(/[0-9]/g, "0")} 기간=${String(r.evlBgngDt || "").slice(0, 10)}~${String(r.evlEndDt || "").slice(0, 10)}`);
-  }
-  const listKeys = new Set(rows.map((r) => `${r.evlNo}|${r.evlDegr}`));
-
-  // 2) 콤보 × lrnTmcnt 전수 → evlDetail txn
-  const combos = new Map();
-  for (const r of rows) {
-    const ck = `${r.projectNo}|${r.lcorsNo}|${r.uqstnNo}`;
-    if (!combos.has(ck)) combos.set(ck, r);
-  }
-  console.log(`\n콤보 ${combos.size}개 × lrnTmcnt 시도:`);
-  let onlyDetail = 0, inList = 0, cx = 0;
-  for (const [, pick] of combos) {
-    const tag = String(pick.uqstnNm || "").replace(/[가-힣]/g, "ㅋ").replace(/\d/g, "0").slice(0, 24);
-    const txAll = new Map();
-    for (const tm of [1, 2, 3, 4, 0]) {
-      const { http, j } = await post("ev/request/mbrSearch/evlDetail", {
-        projectNo: String(pick.projectNo), lcorsNo: String(pick.lcorsNo), uqstnNo: String(pick.uqstnNo),
-        instCd: pick.instCd || "00021", mbrId: TARGET, lrnTmcnt: String(tm),
-      });
-      const r = j && j.result;
-      const tx = (j && j.code === 200 && r && Array.isArray(r.mtlEvlDataTxnDtoList)) ? r.mtlEvlDataTxnDtoList : [];
-      console.log(`  [${tag}] tm=${tm}: http=${http} code=${j && j.code} txn=${tx.length}`);
-      for (const t of tx) txAll.set(`${tm}|${t.mtlEvlSn}`, t);
-    }
-    if (!txAll.size) continue;
-    for (const [k, t] of txAll) {
-      const listed = listKeys.has(`${t.evlNo}|${t.evlDegr}`);
-      if (listed) inList++; else onlyDetail++;
-      if (["00004", "00005"].includes(String(t.mtlEvlStusCd))) cx++;
-      console.log(`  [${tag}] txn(${k.split("|")[0]}) st=${t.mtlEvlStusCd} @${ym(t.mtlEvlPamBgngDt)} reg=${ym(t.regDt)} mod=${ym(t.mdfcnDt)} ${listed ? "" : "★searchList없음"}`);
-    }
-  }
-  console.log(`\n합계: 목록존재 ${inList} / ★evlDetail에만 ${onlyDetail} / 취소·거절코드 ${cx}`);
-  console.log(onlyDetail > 0
-    ? "★★ 요청 단계 거절이 evlDetail 경유로 수집 가능 → 수집기 통합 가치 있음"
-    : "→ 이 멤버에선 숨은 거절 확인 안 됨 (없거나, evlDetail도 못 보여주거나)");
+  // participation(평가자 입장) — 타인 mbrId 테스트
+  await hit("seachParticipationList (mbrId 고정)", "ev/participation/seachParticipationList", { params: { mbrId: "1000275117", instCd: "00021", page: "1", pagePerRows: "50" } });
 })().catch((e) => { console.error("실패:", e.message); process.exit(1); });
