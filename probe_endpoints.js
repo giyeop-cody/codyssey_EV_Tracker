@@ -72,48 +72,50 @@ async function probe(name, ep, { method = "POST", params } = {}) {
 }
 
 (async () => {
-  console.log("▶ 후보 엔드포인트 프로브 (값 마스킹 적용)");
+  console.log("\u25b6 2\ub77c\uc6b4\ub4dc \ud504\ub85c\ube0c (\uac12 \ub9c8\uc2a4\ud0b9 \uc801\uc6a9)");
 
-  // 1) 참여(받은/준 평가) 검색 — 전체/페이징. 타인 기록이 섞여 나오는지가 핵심
-  await probe("참여 검색(전체)", "ev/participation/searchParticipationAllList", {
-    params: { evlInstCd: "00021" },
-  });
-  await probe("참여 검색(페이지)", "ev/participation/seachParticipationList", {
-    params: { evlInstCd: "00021", page: "1", pagePerRows: "20" },
-  });
+  // 길드 3 명부에서 멤버 mbrId 2개 확보 (비교용, 이름은 출력 안 함)
+  let ids = [];
+  try {
+    const res = await fetch(API_BASE + "guild/3/detail?guildSeasonId=5&weekNo=9", { headers: HEADERS });
+    const j = await res.json();
+    ids = ((j.result && j.result.members) || []).slice(0, 3).map((m) => String(m.mbrId));
+  } catch (e) { console.log("명부 실패:", e.message); }
+  console.log("비교 멤버 수:", ids.length);
 
-  // 2) 멤버별 평가 검색 (mbrSearch)
-  await probe("멤버 평가 검색", "ev/request/mbrSearch/searchList", {
-    params: {
-      page: "1", pagePerRows: "20", orderBy: "DESC",
-      evlBgngDt: "2026-05-01", evlEndDt: "2026-07-31",
-    },
-  });
+  const sha = (x) => require("crypto").createHash("sha256").update(x).digest("hex").slice(0, 12);
+  const evlSig = (arr) => (arr || []).map((r) => String(r.evlNo) + ":" + String(r.evlDegr) + ":" + String(r.evlStusCd)).sort().join(",");
 
-  // 3) ev/request/searchList (내 요청 검색과 비교용)
-  await probe("요청 검색", "ev/request/searchList", {
-    params: { page: "1", pagePerRows: "20", instCd: "00021" },
-  });
-
-  // 4) 최근 평가 목록
-  await probe("최근 평가", "ev/request/lastEvList", { method: "GET" });
-
-  // 5) 스케줄 목록(다른 엔드포인트 실험)
-  await probe("스케줄 목록", "schedule/scheduleList/", {
-    params: { mbrId: "", instCd: "00021", bgngYmd: "2026.07.01", endYmd: "2026.07.31", scheduleType: "request" },
-  });
-
-  // 다양성 체크: 수집된 행들에서 mbr 계열 필드의 서로 다른 값 개수(값 자체는 출력 안 함)
-  const keys = ["mbrId", "evlMbrId", "reqMbrId", "reqMbrNm", "evlMbrNm", "scdlSn", "mtlEvlSn"];
-  const sets = {};
-  for (const row of rowsForDistinct) {
-    for (const k of keys) {
-      if (row[k] != null && row[k] !== "") {
-        if (!sets[k]) sets[k] = new Set();
-        sets[k].add(String(row[k]));
-      }
+  // 1) mbrSearch/searchList — mbrId를 바꿔가며 응답이 달라지는지 (교차 조회 결정적 검증)
+  const sigs = {};
+  for (const id of ids.slice(0, 2)) {
+    await sleep(400);
+    const res = await fetch(API_BASE + "ev/request/mbrSearch/searchList", {
+      method: "POST",
+      headers: { ...HEADERS, "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ mbrId: id, instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" }).toString(),
+    });
+    const text = await res.text();
+    let j = null; try { j = JSON.parse(text); } catch (_) {}
+    const arr = j && Array.isArray(j.result) ? j.result : null;
+    if (arr) sigs[id] = sha(evlSig(arr));
+    console.log(`\nmbrSearch mbrId=\u203b\u203b\u203b | HTTP ${res.status} | code=${j && j.code} | rows=${arr ? arr.length : "-"} | sig=${sigs[id] || "-"}`);
+    if (arr && arr.length) {
+      console.log("  rowKeys:", Object.keys(arr[0]).join(","));
+      console.log("  sample:", JSON.stringify(mask(arr[0])).replace(/\n/g, " ").slice(0, 500));
     }
   }
-  console.log("\n▶ 다양성(서로 다른 값 개수 — 타인 데이터면 > 1):",
-    Object.fromEntries(Object.entries(sets).map(([k, s]) => [k, s.size])));
-})().catch((e) => { console.error("실패:", e.message); process.exit(1); });
+  if (Object.keys(sigs).length >= 2) {
+    const same = new Set(Object.values(sigs)).size === 1;
+    console.log("\n\u25b6 \uacb0\ud310: mbrSearch\uac00 mbrId\ub97c", same ? "\ubb34\uc2dc\ud569\ub2c8\ub2e4 (\ubaa8\ub450 \ub3d9\uc77c \uc751\ub2f5)" : "\ubc18\uc601\ud569\ub2c8\ub2e4 \u2605 \uad50\ucc28 \uc870\ud68c \uac00\ub2a5");
+  }
+
+  // 2) 참여 검색 — 화면과 동일하게 전부 빈 문자열
+  await probe("\ucc38\uc5ec \uac80\uc0c9(\ud654\uba74 \uae30\ubcf8)", "ev/participation/seachParticipationList", {
+    params: { projectNm: "", reqMbrNm: "", mtlEvlStusCd: "", mtlEvlPamBgngDt: "", mtlEvlPamBgngDted: "", evlStdtFirst: "", evlStdtLast: "", mtlEvlResltCd: "", evlMbrId: "", evlInstCd: "", page: "1", pagePerRows: "20" },
+  });
+  // 3) 참여 검색 — 기간 지정(20260501 ~ 20260731)
+  await probe("\ucc38\uc5ec \uac80\uc0c9(\uae30\uac04 \uc9c0\uc815)", "ev/participation/seachParticipationList", {
+    params: { mtlEvlPamBgngDt: "20260501", mtlEvlPamBgngDted: "20260731", page: "1", pagePerRows: "20" },
+  });
+})().catch((e) => { console.error("\uc2e4\ud328:", e.message); process.exit(1); });
