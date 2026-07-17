@@ -97,9 +97,14 @@ async function probe(name, ep, { method = "POST", params } = {}) {
     });
     const text = await res.text();
     let j = null; try { j = JSON.parse(text); } catch (_) {}
-    const arr = j && Array.isArray(j.result) ? j.result : null;
+    let arr = null, total = null;
+    if (j) {
+      if (Array.isArray(j.result)) arr = j.result;
+      else if (j.result && Array.isArray(j.result.list)) { arr = j.result.list; total = j.result.totalCnt; }
+    }
     if (arr) sigs[id] = sha(evlSig(arr));
-    console.log(`\nmbrSearch mbrId=\u203b\u203b\u203b | HTTP ${res.status} | code=${j && j.code} | rows=${arr ? arr.length : "-"} | sig=${sigs[id] || "-"}`);
+    console.log(`\nmbrSearch mbrId=\u203b\u203b\u203b | HTTP ${res.status} | code=${j && j.code} | rows=${arr ? arr.length : "-"} | total=${total} | sig=${sigs[id] || "-"}`);
+    if (!arr && j) console.log("  result shape:", typeof j.result, JSON.stringify(mask(j.result || j)).slice(0, 160));
     if (arr && arr.length) {
       console.log("  rowKeys:", Object.keys(arr[0]).join(","));
       console.log("  sample:", JSON.stringify(mask(arr[0])).replace(/\n/g, " ").slice(0, 500));
