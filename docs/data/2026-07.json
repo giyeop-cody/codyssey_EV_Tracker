@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-17T14:33:21.020Z",
+    "generatedAt": "2026-07-17T16:02:25.538Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 177,
+    "eventCount": 178,
     "slotCount": 50,
     "roster": 149,
     "selfOnlyWarning": false,
@@ -159,42 +159,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "1000276103",
-      "name": "김수정",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000266041",
-      "name": "김승우",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000275088",
-      "name": "정현석",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000275118",
-      "name": "고한결",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000271074",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000276046",
-      "name": "최대한",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "1000276053",
       "name": "정인철",
       "level": 1,
@@ -221,6 +185,42 @@
     {
       "mbrId": "1000270070",
       "name": "김준태",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275088",
+      "name": "정현석",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276103",
+      "name": "김수정",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000266041",
+      "name": "김승우",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275118",
+      "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000271074",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276046",
+      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -255,14 +255,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000272076",
-      "name": "장현준",
+      "mbrId": "1000267033",
+      "name": "반가희",
       "level": 3,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000267033",
-      "name": "반가희",
+      "mbrId": "1000272076",
+      "name": "장현준",
       "level": 3,
       "guild": "오로라"
     },
@@ -381,14 +381,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275036",
-      "name": "김동조",
+      "mbrId": "1000272087",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000272087",
-      "name": "김은수",
+      "mbrId": "1000275036",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
@@ -401,6 +401,24 @@
     {
       "mbrId": "1000276047",
       "name": "정호준",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276190",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276193",
+      "name": "양용택",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276231",
+      "name": "호정숙",
       "level": 1,
       "guild": "오로라"
     },
@@ -423,38 +441,20 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000276033",
-      "name": "조영래",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "1000267034",
       "name": "오철호",
       "level": 1,
       "guild": "오로라"
     },
     {
+      "mbrId": "1000276033",
+      "name": "조영래",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
       "mbrId": "1000276224",
       "name": "이호규",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276190",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276193",
-      "name": "양용택",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276231",
-      "name": "호정숙",
       "level": 1,
       "guild": "오로라"
     },
@@ -639,14 +639,14 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "1000266038",
-      "name": "변재혁",
+      "mbrId": "1000276180",
+      "name": "이교원",
       "level": 1,
       "guild": "앰버"
     },
     {
-      "mbrId": "1000276180",
-      "name": "이교원",
+      "mbrId": "1000266038",
+      "name": "변재혁",
       "level": 1,
       "guild": "앰버"
     },
@@ -861,12 +861,6 @@
       "guild": "시에나"
     },
     {
-      "mbrId": "1000276228",
-      "name": "한택진",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
       "mbrId": "1000276084",
       "name": "이연재",
       "level": 1,
@@ -893,6 +887,12 @@
     {
       "mbrId": "1000276172",
       "name": "조창래",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276228",
+      "name": "한택진",
       "level": 1,
       "guild": "시에나"
     },
@@ -3248,6 +3248,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "633057",
+      "evlNo": "559010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-18T00:00:00+09:00",
+      "endTime": "00:30",
+      "evaluatorId": "1000267033",
+      "evaluatorName": "반가희",
+      "evaluateeId": "1000276131",
+      "evaluateeName": "정창석",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-17T23:06:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
