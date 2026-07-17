@@ -8,7 +8,7 @@
  *      - reqList 중 scdlGubunCd === "EV" 만 수집
  *      - reqDetail "R||" = 해당 멤버가 피평가자(요청자), "A||" = 해당 멤버가 평가자
  *   3) scdlId 기준으로 멤버 간 병합 → 평가자/피평가자 양쪽 식별
- *   4) dashboard/data/YYYY-MM.json 저장
+ *   4) docs/data/YYYY-MM.json 저장
  *
  * 사용법:
  *   CODYSSEY_SESSION="JSESSIONID=xxxx" node collect_eval.js --month 7
@@ -47,7 +47,7 @@ function parseArgs() {
     members: null,      // "id1,id2" → 명부 없이 직접 지정
     rosterFile: null,   // JSON 파일 [{mbrId,name,level,guild}]
     guilds: (process.env.GUILDS || "3,4,5,6").split(",").map((s) => parseInt(s, 10)).filter(Boolean),
-    outDir: path.join(__dirname, "dashboard", "data"),
+    outDir: path.join(__dirname, "docs", "data"),
     delay: 300,
     dryRun: false,
   };
