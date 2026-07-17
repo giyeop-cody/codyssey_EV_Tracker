@@ -1,14 +1,13 @@
 "use strict";
-/* 프로브 라운드 4 — "요청 단계 거절/취소를 mbrId 단위로 수집할 수 있는가" 검증.
+/* 프로브 라운드 5 — evlDetail이 "searchList에 안 뜨는 요청 단계 거절"까지 보여주는가 검증.
  *
- * 가설:
- *  H1) mbrSearch/searchList 기본 호출은 상태 필터 없이도 전부 주는가, 아니면
- *      evlStusCd 필터(00004 거절/00005 요청취소)를 줘야 숨은 건이 나오는가
- *  H2) 기본 호출의 기간 기본값이 있어서 evlBgngDt/evlEndDt 명시 시 더 나오는가
- *  H3) mbrSearch/evlDetail (멤버×과제 상세)이 "시도 전체 이력"(수락 전 거절 포함)을 주는가
+ * 방법: 거절/취소 이력이 있는 멤버를 명부에서 찾고(개별 ID 출력 없음),
+ *  그 멤버의 searchList 행들 → 고유 (projectNo,lcorsNo,uqstnNo) 조합별로
+ *  mbrSearch/evlDetail 호출 → mtlEvlDataTxnDtoList의 (evlNo,evlDegr) 집합과
+ *  searchList의 (evlNo,evlDegr) 집합을 비교.
+ *   - evlDetail에만 있는 txn이 있고, 그게 거절/취소 코드면 → "모든 멤버의 요청거절 수집 가능" 확정
  *
- * 출력은 마스킹된 구조만 (Actions 로그 공개).
- *   CODYSSEY_SESSION="JSESSIONID=..." node probe_endpoints.js
+ * 출력: 상태코드/날짜-월 같은 열거형 값은 원형, 이름/식별자는 마스킹 (Actions 로그 공개).
  */
 
 const API_BASE = "https://api.usr.codyssey.kr/";
@@ -22,17 +21,6 @@ const HEADERS = {
   Cookie: SESSION,
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function mask(v) {
-  if (v == null) return v;
-  if (Array.isArray(v)) return v.slice(0, 3).map(mask);
-  if (typeof v === "object") {
-    const o = {};
-    for (const [k, x] of Object.entries(v)) o[k] = mask(x);
-    return o;
-  }
-  return String(v).replace(/[가-힣]/g, "ㅋ").replace(/\d/g, "0").slice(0, 40);
-}
 
 async function post(ep, params) {
   await sleep(400);
@@ -49,89 +37,88 @@ const arrOf = (j) => {
   const r = j && j.result;
   return Array.isArray(r) ? r : (r && Array.isArray(r.list)) ? r.list : [];
 };
+const stusOfRow = (r) => String(r.evlStusNm || "");
+const keyOf = (r) => `${r.evlNo}|${r.evlDegr}`;
+const ymdLen = (s) => (s ? String(s).slice(0, 7) : "null"); // 연-월만 (구조 확인용)
 
 (async () => {
-  console.log("▶ 라운드 4 — 요청 거절 수집 가능성 검증 (값 마스킹)");
+  console.log("▶ 라운드 5 — evlDetail 시도이력 vs searchList 비교");
 
+  // 1) 전 길드 명부 순회: 거절/취소 포함 멤버 탐색 (최대 2명)
   const base = { instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" };
-  const search = (mbrId, extra = {}) => post("ev/request/mbrSearch/searchList", { mbrId, ...base, ...extra });
-
-  // 명부에서 세션 소유자 + 데이터 보유 멤버 1명 확보
-  let ids = [];
-  try {
-    const res = await fetch(API_BASE + "guild/3/detail?guildSeasonId=5&weekNo=9", { headers: HEADERS });
-    ids = ((await res.json()).result.members || []).map((m) => String(m.mbrId));
-  } catch (e) { console.log("명부 실패:", e.message); process.exit(1); }
-  // 세션 소유자는 가장 활동 많은 멤버로 추정됨 — 상위 5명 중 rows 최다를 "주 피검자"로
-  let main = null;
-  for (const id of ids.slice(0, 8)) {
-    const { j } = await search(id);
-    const rows = arrOf(j);
-    console.log(`  mbr ※※※: default rows=${rows.length}`);
-    if (!main || rows.length > main.rows.length) main = { id, rows };
-  }
-  if (!main || !main.rows.length) { console.log("행 보유 멤버 없음 — 중단"); return; }
-
-  // ---- H1: 상태 필터 검증 ----
-  console.log("\n## H1: evlStusCd 필터");
-  const def = main.rows;
-  const defKeys = new Set(def.map((r) => `${r.evlNo}|${r.evlDegr}`));
-  const defStus = {};
-  for (const r of def) defStus[`${r.evlStusCd}:${r.evlStusNm}`] = (defStus[`${r.evlStusCd}:${r.evlStusNm}`] || 0) + 1;
-  console.log("  기본 목록 상태 분포:", JSON.stringify(defStus).replace(/[가-힣]/g, "ㅋ").replace(/\d/g, "0"));
-  for (const cd of ["00004", "00005", "00006", "00001", "00002", "00003"]) {
-    const { http, j } = await search(main.id, { evlStusCd: cd });
-    const rows = arrOf(j);
-    const missing = rows.filter((r) => !defKeys.has(`${r.evlNo}|${r.evlDegr}`)).length;
-    console.log(`  evlStusCd=${cd}: rows=${rows.length} (기본목록에 없던 건 ${missing}) http=${http} code=${j && j.code}`);
-  }
-
-  // ---- H2: 기간 파라미터 ----
-  console.log("\n## H2: 기간 명시 vs 기본");
-  {
-    const { j } = await search(main.id, { evlBgngDt: "2026.01.01", evlEndDt: "2026.12.31" });
-    const rows = arrOf(j);
-    const missing = rows.filter((r) => !defKeys.has(`${r.evlNo}|${r.evlDegr}`)).length;
-    console.log(`  기간(01.01~12.31): rows=${rows.length} (기본 대비 +${rows.length - def.length}, 기본에 없던 ${missing})`);
-  }
-
-  // ---- H3: mbrSearch/evlDetail — 멤버×과제 "시도 전체 이력"? ----
-  console.log("\n## H3: mbrSearch/evlDetail");
-  // 취소/거절 건이 있는 행 우선, 없으면 완료 건
-  const pick = def.find((r) => /거절|취소/.test(String(r.evlStusNm || ""))) || def[0];
-  console.log("  대상 행 keys:", Object.keys(pick).join(","));
-  console.log("  대상 행 sample:", JSON.stringify(mask(pick)).replace(/\n/g, " ").slice(0, 600));
-  for (const tm of [pick.lrnTmcnt, 1, 0].filter((x, i, a) => x != null && a.indexOf(x) === i)) {
-    const { http, j } = await post("ev/request/mbrSearch/evlDetail", {
-      projectNo: String(pick.projectNo), lcorsNo: String(pick.lcorsNo), uqstnNo: String(pick.uqstnNo),
-      instCd: pick.instCd || "00021", mbrId: main.id, lrnTmcnt: String(tm),
-    });
-    const r = j && j.result;
-    console.log(`  lrnTmcnt=${tm}: http=${http} code=${j && j.code} type=${Array.isArray(r) ? `array(${r.length})` : typeof r}`);
-    if (r && typeof r === "object" && !Array.isArray(r)) {
-      console.log("  keys:", Object.keys(r).join(","));
-      for (const [k, v] of Object.entries(r)) {
-        if (Array.isArray(v) && v.length && typeof v[0] === "object") {
-          console.log(`  [${k}] array(${v.length}) rowKeys:`, Object.keys(v[0]).slice(0, 30).join(","));
-          const st = v.map((x) => `${x.mtlEvlStusCd || x.evlStusCd || "?"}`).join(",");
-          console.log(`  [${k}] 상태코드 시퀀스:`, st.replace(/\d/g, "0"));
-          console.log(`  [${k}] sample:`, JSON.stringify(mask(v[0])).replace(/\n/g, " ").slice(0, 500));
-        }
+  const found = [];
+  let scanned = 0;
+  outer:
+  for (const gid of [3, 4, 5, 6]) {
+    let ids = [];
+    try {
+      const res = await fetch(API_BASE + `guild/${gid}/detail?guildSeasonId=5&weekNo=9`, { headers: HEADERS });
+      ids = (((await res.json()).result || {}).members || []).map((m) => String(m.mbrId));
+    } catch (e) { console.log("명부 실패:", e.message); continue; }
+    for (const id of ids) {
+      scanned++;
+      const { j } = await post("ev/request/mbrSearch/searchList", { mbrId: id, ...base });
+      const rows = arrOf(j);
+      if (rows.some((r) => /거절|취소/.test(stusOfRow(r)))) {
+        found.push({ id, rows });
+        console.log(`  거절/취소 보유 멤버 발견 #${found.length} (rows=${rows.length}, scan ${scanned}명째)`);
+        if (found.length >= 2) break outer;
       }
-    } else if (Array.isArray(r) && r.length) {
-      console.log("  rowKeys:", Object.keys(r[0]).join(","));
-      console.log("  sample:", JSON.stringify(mask(r[0])).replace(/\n/g, " ").slice(0, 500));
     }
-    if (r && (Array.isArray(r) ? r.length : Object.keys(r).length)) break; // 유효 응답이면 lrnTmcnt 추가 시도 중단
+  }
+  if (!found.length) { console.log("대상 멤버 없음 — 중단"); return; }
+
+  // 2) 멤버별: 고유 과제키별 evlDetail → txn vs searchList 비교
+  for (const f of found) {
+    console.log(`\n## 멤버 #${found.indexOf(f) + 1} 분석`);
+    const listKeys = new Set(f.rows.map(keyOf));
+    console.log(`  searchList: ${f.rows.length}건, 고유 (evlNo,evlDegr) ${listKeys.size}개`);
+    console.log("  상태 분포:", JSON.stringify(f.rows.reduce((o, r) => {
+      const k = `${r.evlStusCd}(len${stusOfRow(r).length})`; o[k] = (o[k] || 0) + 1; return o;
+    }, {})));
+    const combos = new Map();
+    for (const r of f.rows) {
+      const ck = `${r.projectNo}|${r.lcorsNo}|${r.uqstnNo}`;
+      if (!combos.has(ck)) combos.set(ck, r);
+    }
+    console.log(`  고유 (project,lcors,uqstn) 조합 ${combos.size}개`);
+    let totalTx = 0, inList = 0, onlyDetail = 0;
+    for (const [ck, pick] of combos) {
+      let detail = null, usedTm = null;
+      for (const tm of [pick.lrnTmcnt, 1, 2, 0].filter((x, i, a) => x != null && a.indexOf(x) === i)) {
+        const { j } = await post("ev/request/mbrSearch/evlDetail", {
+          projectNo: String(pick.projectNo), lcorsNo: String(pick.lcorsNo), uqstnNo: String(pick.uqstnNo),
+          instCd: pick.instCd || "00021", mbrId: f.id, lrnTmcnt: String(tm),
+        });
+        const r = j && j.result;
+        const tx = r && Array.isArray(r.mtlEvlDataTxnDtoList) ? r.mtlEvlDataTxnDtoList : [];
+        if (j && j.code === 200 && tx.length) { detail = r; usedTm = tm; break; }
+      }
+      if (!detail) { console.log(`  조합 ※: txn 없음 (어떤 lrnTmcnt로도)`); continue; }
+      const tx = detail.mtlEvlDataTxnDtoList;
+      const seqs = [];
+      for (const t of tx) {
+        totalTx++;
+        const k = keyOf(t);
+        const listed = listKeys.has(k);
+        if (listed) inList++; else { onlyDetail++; }
+        seqs.push(`${t.mtlEvlStusCd}${/거절|취소/.test(String(t.mtlEvlStusNm || "")) ? "✕" : ""}@${ymdLen(t.mtlEvlPamBgngDt)}${listed ? "" : " ★비목록"}`);
+      }
+      console.log(`  조합 ※ (lrnTmcnt=${usedTm}): txn ${tx.length}건 → ${seqs.join(" ")}`);
+    }
+    console.log(`  합계: txn ${totalTx}건 중 searchList에 존재 ${inList}, evlDetail에만 존재 ${onlyDetail}`);
+    if (onlyDetail > 0) console.log("  ★★ searchList에 안 뜨는 시도가 evlDetail에는 있음 → 전 멤버 거절 이력 수집 가능!");
   }
 
-  // ---- 별첨: 상태 코드 사전 ----
-  console.log("\n## 부록: evlStusCdList");
-  for (const g of [undefined, "EVL_STUS", "MTL_STUS", "000"]) {
-    const res = await fetch(API_BASE + "ev/request/evlStusCdList" + (g ? `?groupCd=${g}` : ""), { headers: HEADERS });
-    let j = null; try { j = JSON.parse(await res.text()); } catch (_) {}
-    const rows = arrOf(j);
-    console.log(`  groupCd=${g || "(없음)"}: code=${j && j.code} rows=${rows.length}${rows.length ? " " + JSON.stringify(mask(rows.slice(0, 8))).slice(0, 400) : ""}`);
-    await sleep(400);
+  // 3) 부록: 기간 파라미터 포맷 실험
+  console.log("\n## 부록: 기간 파라미터 포맷");
+  {
+    const f0 = found[0];
+    for (const fmt of { dot: "2026.01.01", dash: "2026-01-01", compact: "20260101", dotTime: "2026.01.01 00:00:00" }) {
+      const { j } = await post("ev/request/mbrSearch/searchList", {
+        mbrId: f0.id, ...base, evlBgngDt: fmt, evlEndDt: fmt.replace("01.01", "12.31").replace("01-01", "12-31").replace(/0101$/, "1231").replace(/01\.01/, "12.31"),
+      });
+      console.log(`  fmt=${JSON.stringify(fmt)}: rows=${arrOf(j).length}`);
+    }
   }
 })().catch((e) => { console.error("실패:", e.message); process.exit(1); });
