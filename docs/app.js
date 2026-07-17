@@ -19,6 +19,7 @@ const state = {
   year: kstToday().year,
   month: kstToday().month,
   data: null,
+  everHadReal: false, // 한 번이라도 실데이터를 봤으면 이후 빈 달은 MOCK 대신 빈 달 표시
   sortKey: "given",
   sortAsc: false,
   heatFilter: "ALL",
@@ -100,8 +101,11 @@ function mockMonth(year, month) {
   };
 }
 
-/* ================= 데이터 로드 ================= */
-async function loadMonth(year, month) {
+/* ================= 데이터 로드 =================
+ * 월별 JSON은 저장소에 영구 커밋된 캐시 — 대시보드는 파일만 읽는다.
+ * 파일이 없으면 null 반환 (MOCK 데모는 실데이터를 한 번도 못 본 초기 상태에서만 표시).
+ */
+async function fetchMonth(year, month) {
   const file = `data/${year}-${pad(month)}.json`;
   try {
     const res = await fetch(file, { cache: "no-store" });
@@ -110,7 +114,7 @@ async function loadMonth(year, month) {
     if (!Array.isArray(data.events)) throw new Error("bad schema");
     return data;
   } catch (_) {
-    return mockMonth(year, month);
+    return null;
   }
 }
 
@@ -535,14 +539,26 @@ function openDetailModal(ev, stats) {
 /* ================= 메인 ================= */
 async function refresh() {
   $("#statusLine").textContent = "불러오는 중...";
-  const data = await loadMonth(state.year, state.month);
+  let data = await fetchMonth(state.year, state.month);
+  let emptyMonth = false;
+  if (data) {
+    state.everHadReal = true;
+  } else if (!state.everHadReal) {
+    data = mockMonth(state.year, state.month); // 초기 데모 상태
+  } else {
+    // 과거/미래의 미수집 달: MOCK 대신 빈 달로 표시 (가짜 데이터 혼동 방지)
+    emptyMonth = true;
+    data = { meta: { generatedAt: null, year: state.year, month: state.month, mock: false }, members: [], events: [], slots: [] };
+  }
   state.data = data;
   const stats = computeStats(data);
 
   $("#mockBanner").hidden = !data.meta.mock;
-  $("#statusLine").textContent = data.meta.generatedAt
-    ? `마지막 수집: ${data.meta.generatedAt.replace("T", " ").slice(0, 19)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
-    : "";
+  $("#statusLine").textContent = emptyMonth
+    ? `${state.year}-${pad(state.month)} · 수집된 데이터가 없습니다`
+    : data.meta.generatedAt
+      ? `마지막 수집: ${data.meta.generatedAt.replace("T", " ").slice(0, 19)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
+      : "";
 
   $("#ymInput").value = `${state.year}-${pad(state.month)}`;
   renderSummary(stats, data);
