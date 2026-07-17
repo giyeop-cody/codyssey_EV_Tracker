@@ -247,6 +247,11 @@ function renderSummary(stats, data) {
   }
   const peakHour = hourCount.indexOf(Math.max(...hourCount));
 
+  // 취소 vs 거절 분해 (거절 = 평가자가 끊은 건)
+  const isReject = (e) => e.status === "CANCELLED" && ((e.stusNm || "").includes("거절") || e.stusCd === "00004" || (e.cancel && e.cancel.by === "EVALUATOR"));
+  const rejectN = (data.events || []).filter(isReject).length;
+  const cancelN = total.cancelled - rejectN;
+
   const top = (key) => {
     let best = null;
     for (const p of per.values()) if (!best || p[key] > best[key]) best = p;
@@ -256,7 +261,7 @@ function renderSummary(stats, data) {
   const cards = [
     { label: "총 평가 요청", value: total.requested, cls: "accent", sub: `${state.year}-${pad(state.month)}` },
     { label: "완료된 평가", value: total.completed, cls: "good", sub: `완료율 ${total.requested ? Math.round((total.completed / total.requested) * 100) : 0}%` },
-    { label: "취소된 평가", value: total.cancelled, cls: "bad", sub: `취소율 ${rate}%` },
+    { label: "취소/거절된 평가", value: total.cancelled, cls: "bad", sub: `취소 ${cancelN} · 거절 ${rejectN} (${rate}%)` },
     { label: "피크 시간대", value: total.requested ? `${pad(peakHour)}시` : "-", cls: "warn", sub: `누적 ${Math.max(...hourCount)}건` },
     { label: "최다 평가자", value: top("given"), cls: "", sub: "완료 기준" },
     { label: "최다 피평가자", value: top("received"), cls: "", sub: "완료 기준" },
@@ -463,7 +468,11 @@ function closeModal(el) { el.closest(".modal-bg").hidden = true; }
 function statusBadge(ev) {
   switch (ev.status) {
     case "COMPLETED": return `<span class="badge ok">완료</span>`;
-    case "CANCELLED": return `<span class="badge cx">취소</span>`;
+    case "CANCELLED":
+      // stusNm/stusCd 기준으로 평가자 '거절'과 피평가자 '요청취소'를 구분 표시
+      if ((ev.stusNm || "").includes("거절") || ev.stusCd === "00004" || (ev.cancel && ev.cancel.by === "EVALUATOR"))
+        return `<span class="badge rj">거절</span>`;
+      return `<span class="badge cx">취소</span>`;
     case "IN_PROGRESS": return `<span class="badge ip">진행</span>`;
     default: return `<span class="badge rq">요청</span>`;
   }
