@@ -1,0 +1,1362 @@
+{
+  "meta": {
+    "generatedAt": "2026-07-17T02:36:00.699Z",
+    "year": 2026,
+    "month": 7,
+    "mock": false,
+    "eventCount": 6,
+    "slotCount": 50,
+    "roster": 149,
+    "selfOnlyWarning": true
+  },
+  "members": [
+    {
+      "mbrId": "1000274056",
+      "name": "이주성",
+      "level": 3,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000271067",
+      "name": "김기엽",
+      "level": 3,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000272108",
+      "name": "김도희",
+      "level": 3,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275122",
+      "name": "서채훈",
+      "level": 3,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276075",
+      "name": "정세영",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276202",
+      "name": "이세형",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275063",
+      "name": "김명률",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000272068",
+      "name": "이종석",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000268041",
+      "name": "김대웅",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000270048",
+      "name": "주현호",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000265036",
+      "name": "민병우",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000274037",
+      "name": "이동현",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275114",
+      "name": "임준현",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275098",
+      "name": "서예영",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276147",
+      "name": "이송하",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276145",
+      "name": "김시현",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000272109",
+      "name": "이현민",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276165",
+      "name": "박영세",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000271070",
+      "name": "김희준",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276044",
+      "name": "신재은",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276079",
+      "name": "박채연",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275094",
+      "name": "김진우",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000270038",
+      "name": "김서원",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000270054",
+      "name": "임익화",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000271074",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276046",
+      "name": "최대한",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276053",
+      "name": "정인철",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000272079",
+      "name": "유성훈",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000264033",
+      "name": "최민수",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275112",
+      "name": "이우태",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000270070",
+      "name": "김준태",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275088",
+      "name": "정현석",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276103",
+      "name": "김수정",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000266041",
+      "name": "김승우",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275118",
+      "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275108",
+      "name": "박성현",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000273049",
+      "name": "박주영",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276122",
+      "name": "이현민",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000267035",
+      "name": "이상헌",
+      "level": 6,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000269049",
+      "name": "권창범",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000272076",
+      "name": "장현준",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000270035",
+      "name": "김현중",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276225",
+      "name": "백동재",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276070",
+      "name": "김우종",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000274060",
+      "name": "김예주",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000270063",
+      "name": "성원모",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000267033",
+      "name": "반가희",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275046",
+      "name": "황정현",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275035",
+      "name": "남상훈",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275051",
+      "name": "김민영",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276198",
+      "name": "이지영",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000271084",
+      "name": "이초롱",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275048",
+      "name": "이지헌",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000272065",
+      "name": "백예지",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000270043",
+      "name": "장현준",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000272070",
+      "name": "윤솔지",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000270057",
+      "name": "박주선",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275107",
+      "name": "김성휘",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000273054",
+      "name": "이희정",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275080",
+      "name": "김현서",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000272095",
+      "name": "최건영",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000272087",
+      "name": "김은수",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275036",
+      "name": "김동조",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000271076",
+      "name": "이건탁",
+      "level": 2,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276047",
+      "name": "정호준",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276190",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276193",
+      "name": "양용택",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276231",
+      "name": "호정숙",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275058",
+      "name": "권영후",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275083",
+      "name": "안재혁",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000277045",
+      "name": "오상진",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276033",
+      "name": "조영래",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000267034",
+      "name": "오철호",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276224",
+      "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275086",
+      "name": "서강식",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000275043",
+      "name": "김병철",
+      "level": 4,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000271068",
+      "name": "고준석",
+      "level": 3,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000271063",
+      "name": "김창환",
+      "level": 3,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276213",
+      "name": "박범규",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000263033",
+      "name": "류성은",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276036",
+      "name": "손보람",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276108",
+      "name": "임종한",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000273035",
+      "name": "채민성",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000273039",
+      "name": "김성훈",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275061",
+      "name": "정재윤",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000272117",
+      "name": "이상우",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000274038",
+      "name": "조명환",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276099",
+      "name": "허준",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275078",
+      "name": "김태우",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276116",
+      "name": "모성우",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000271071",
+      "name": "김완태",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000277040",
+      "name": "김두운",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276158",
+      "name": "이규민",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000274073",
+      "name": "이동용",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000265035",
+      "name": "강희영",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275113",
+      "name": "황채연",
+      "level": 2,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276111",
+      "name": "정찬호",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000270066",
+      "name": "김종은",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275117",
+      "name": "김성호",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276068",
+      "name": "권태현",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276073",
+      "name": "권민혁",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000271062",
+      "name": "이아랑",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276095",
+      "name": "서지민",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275067",
+      "name": "권영찬",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000269047",
+      "name": "이용규",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000272110",
+      "name": "최채원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275100",
+      "name": "나영흠",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276048",
+      "name": "구자원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276180",
+      "name": "이교원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000266038",
+      "name": "변재혁",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276107",
+      "name": "김태우",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275074",
+      "name": "배지원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000265034",
+      "name": "신희수",
+      "level": 5,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000270053",
+      "name": "배재민",
+      "level": 3,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000275127",
+      "name": "강성현",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000274071",
+      "name": "변승언",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000272048",
+      "name": "송지윤",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276117",
+      "name": "손재현",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276142",
+      "name": "이재훈",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276125",
+      "name": "주재문",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000271033",
+      "name": "임대균",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276080",
+      "name": "권순형",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000269045",
+      "name": "문선곤",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276130",
+      "name": "이진걸",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276059",
+      "name": "송근영",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000273036",
+      "name": "황준호",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276166",
+      "name": "차종민",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000275121",
+      "name": "정경재",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000270062",
+      "name": "김한규",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000272118",
+      "name": "윤대영",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276034",
+      "name": "이성준",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000271060",
+      "name": "김윤기",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276201",
+      "name": "이여원",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000275072",
+      "name": "김민준",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276062",
+      "name": "설영빈",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276065",
+      "name": "김재영",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276081",
+      "name": "정재웅",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276105",
+      "name": "문성현",
+      "level": 2,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000272056",
+      "name": "강민경",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276182",
+      "name": "곽현일",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000271079",
+      "name": "조동현",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000275053",
+      "name": "김명서",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276040",
+      "name": "이동섭",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276204",
+      "name": "이민경",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276172",
+      "name": "조창래",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276228",
+      "name": "한택진",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276084",
+      "name": "이연재",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276045",
+      "name": "최성민",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276131",
+      "name": "정창석",
+      "level": 1,
+      "guild": "시에나"
+    }
+  ],
+  "events": [
+    {
+      "evalId": "619005",
+      "slotDateTime": "2026-07-06T14:30:00+09:00",
+      "endTime": "15:00",
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000265036",
+      "evaluateeName": "민병우",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "JAVA",
+      "fixedCd": "00006",
+      "status": "COMPLETED",
+      "detail": null
+    },
+    {
+      "evalId": "623025",
+      "slotDateTime": "2026-07-07T14:30:00+09:00",
+      "endTime": "15:00",
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000271063",
+      "evaluateeName": "김창환",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "DevOps",
+      "fixedCd": "00004",
+      "status": "CANCELLED",
+      "detail": null,
+      "cancel": {
+        "by": "EVALUATOR",
+        "byId": null,
+        "byName": null,
+        "reasonCd": null,
+        "reasonNm": "평가거절",
+        "at": null
+      }
+    },
+    {
+      "evalId": "630003",
+      "slotDateTime": "2026-07-14T09:00:00+09:00",
+      "endTime": "09:30",
+      "evaluatorId": "1000271067",
+      "evaluatorName": "김기엽",
+      "evaluateeId": null,
+      "evaluateeName": null,
+      "projectName": "Mini Redis 구축",
+      "trackName": "C Language",
+      "fixedCd": "00006",
+      "status": "COMPLETED",
+      "detail": null
+    },
+    {
+      "evalId": "630004",
+      "slotDateTime": "2026-07-14T10:00:00+09:00",
+      "endTime": "10:30",
+      "evaluatorId": "1000271067",
+      "evaluatorName": "김기엽",
+      "evaluateeId": null,
+      "evaluateeName": null,
+      "projectName": "Mini Redis 구축",
+      "trackName": "C Language",
+      "fixedCd": "00005",
+      "status": "CANCELLED",
+      "detail": null,
+      "cancel": {
+        "by": "EVALUATEE",
+        "byId": null,
+        "byName": null,
+        "reasonCd": "00001",
+        "reasonNm": "평가요청취소",
+        "at": null
+      }
+    },
+    {
+      "evalId": "630026",
+      "slotDateTime": "2026-07-14T12:30:00+09:00",
+      "endTime": "13:00",
+      "evaluatorId": "1000271067",
+      "evaluatorName": "김기엽",
+      "evaluateeId": null,
+      "evaluateeName": null,
+      "projectName": "Mini Redis 구축",
+      "trackName": "C Language",
+      "fixedCd": "00006",
+      "status": "COMPLETED",
+      "detail": null
+    },
+    {
+      "evalId": "630021",
+      "slotDateTime": "2026-07-14T15:00:00+09:00",
+      "endTime": "15:30",
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276070",
+      "evaluateeName": "김우종",
+      "projectName": "AI 기반 Git 커밋 & PR 자동 생성기 개발",
+      "trackName": "DevOps(2022)",
+      "fixedCd": "00006",
+      "status": "COMPLETED",
+      "detail": null
+    }
+  ],
+  "slots": [
+    {
+      "d": "2026-07-06",
+      "t": "14:30",
+      "m": null,
+      "id": 619005,
+      "matched": true
+    },
+    {
+      "d": "2026-07-08",
+      "t": "14:30",
+      "m": null,
+      "id": 682569,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "15:00",
+      "m": null,
+      "id": 682570,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "15:30",
+      "m": null,
+      "id": 682571,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "16:00",
+      "m": null,
+      "id": 682572,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "16:30",
+      "m": null,
+      "id": 682573,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "17:00",
+      "m": null,
+      "id": 682574,
+      "matched": false
+    },
+    {
+      "d": "2026-07-08",
+      "t": "17:30",
+      "m": null,
+      "id": 682575,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "09:30",
+      "m": null,
+      "id": 690037,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "10:30",
+      "m": null,
+      "id": 690039,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "11:00",
+      "m": null,
+      "id": 690040,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "14:00",
+      "m": null,
+      "id": 690046,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "14:30",
+      "m": null,
+      "id": 690047,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "15:00",
+      "m": null,
+      "id": 630021,
+      "matched": true
+    },
+    {
+      "d": "2026-07-14",
+      "t": "15:30",
+      "m": null,
+      "id": 690049,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "16:00",
+      "m": null,
+      "id": 690050,
+      "matched": false
+    },
+    {
+      "d": "2026-07-14",
+      "t": "16:30",
+      "m": null,
+      "id": 690051,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "11:00",
+      "m": null,
+      "id": 692092,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "11:30",
+      "m": null,
+      "id": 692093,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "13:00",
+      "m": null,
+      "id": 691915,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "13:30",
+      "m": null,
+      "id": 691916,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "14:00",
+      "m": null,
+      "id": 691917,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "14:30",
+      "m": null,
+      "id": 691918,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "15:00",
+      "m": null,
+      "id": 691919,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "15:30",
+      "m": null,
+      "id": 691920,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "16:00",
+      "m": null,
+      "id": 691921,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "16:30",
+      "m": null,
+      "id": 691922,
+      "matched": false
+    },
+    {
+      "d": "2026-07-16",
+      "t": "17:00",
+      "m": null,
+      "id": 691923,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "08:30",
+      "m": null,
+      "id": 693047,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "09:00",
+      "m": null,
+      "id": 693048,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "09:30",
+      "m": null,
+      "id": 693049,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "10:00",
+      "m": null,
+      "id": 693050,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "10:30",
+      "m": null,
+      "id": 693051,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "11:00",
+      "m": null,
+      "id": 693052,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "11:30",
+      "m": null,
+      "id": 693053,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "12:00",
+      "m": null,
+      "id": 693054,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "12:30",
+      "m": null,
+      "id": 693055,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "13:00",
+      "m": null,
+      "id": 693056,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "13:30",
+      "m": null,
+      "id": 693057,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "14:00",
+      "m": null,
+      "id": 693058,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "14:30",
+      "m": null,
+      "id": 693059,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "15:00",
+      "m": null,
+      "id": 693060,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "15:30",
+      "m": null,
+      "id": 693061,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "16:00",
+      "m": null,
+      "id": 693062,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "16:30",
+      "m": null,
+      "id": 693063,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "17:00",
+      "m": null,
+      "id": 693064,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "17:30",
+      "m": null,
+      "id": 693065,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "18:00",
+      "m": null,
+      "id": 693066,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "18:30",
+      "m": null,
+      "id": 693067,
+      "matched": false
+    },
+    {
+      "d": "2026-07-17",
+      "t": "19:00",
+      "m": null,
+      "id": 693068,
+      "matched": false
+    }
+  ]
+}
