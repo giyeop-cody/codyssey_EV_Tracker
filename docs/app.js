@@ -124,6 +124,14 @@ function memberMap(data) {
   (data.members || []).forEach((x) => m.set(String(x.mbrId), x));
   return m;
 }
+/* ISO(UTC) → 한국시간 표시 (생성시각이 UTC라 그대로 찍으면 9시간 과거로 보임) */
+function fmtKst(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d)) return String(iso).replace("T", " ").slice(0, 19);
+  return d.toLocaleString("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+}
+
 function nameOf(mm, id) {
   const m = id && mm.get(String(id));
   return (m && m.name) || (id ? String(id) : "-");
@@ -402,7 +410,7 @@ async function refresh() {
   $("#statusLine").textContent = emptyMonth
     ? `${state.year}-${pad(state.month)} · 수집된 데이터가 없습니다`
     : data.meta.generatedAt
-      ? `마지막 수집: ${data.meta.generatedAt.replace("T", " ").slice(0, 19)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
+      ? `마지막 수집: ${fmtKst(data.meta.generatedAt)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
       : "";
 
   $("#ymInput").value = `${state.year}-${pad(state.month)}`;
