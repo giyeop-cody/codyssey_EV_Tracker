@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 /**
- * Codyssey 동료평가 이력 수집기 (실측 확정판)
+ * Codyssey 동료평가 이력 수집기 v2 (2026-07-17 개편)
  *
- * 동작:
- *   1) 길드 detail API로 멤버 명부(mbrId/이름/레벨) 수집 (또는 --members 직접 지정)
- *   2) 멤버별 schedule/scheduleAllList/ 호출 (본인 스케줄 조회 API, mbrId 쿼리 파라미터)
- *      - reqList 중 scdlGubunCd === "EV" 만 수집
- *      - reqDetail "R||" = 해당 멤버가 피평가자(요청자), "A||" = 해당 멤버가 평가자
- *   3) scdlId 기준으로 멤버 간 병합 → 평가자/피평가자 양쪽 식별
- *   4) docs/data/YYYY-MM.json 저장
+ * 수집 경로:
+ *   1) 길드 detail API → 멤버 명부 (또는 --members 직접 지정)
+ *   2) 오픈 슬롯: schedule/scheduleAllList/ — ⚠️ mbrId 무시(세션 소유자 슬롯만) 임의 1회 호출
+ *   3) 평가 목록: ev/request/mbrSearch/searchList — ✅ mbrId 반영 (타인 평가 목록 수집 가능)
+ *   4) 평가 상세: ev/request/mtlEvlTxnDtoByPkList (evlNo+evlDegr) — 평가자 mbrId/실명,
+ *      상태, 점수, 취소 사유, 요청 시각(regDt) 포함. 신규/상태변경 건에만 증분 호출
+ *   5) docs/data/YYYY-MM.json 병합 저장
  *
  * 사용법:
  *   CODYSSEY_SESSION="JSESSIONID=xxxx" node collect_eval.js --month 7
- *   node collect_eval.js --month 7 --members 1000271067,1000275060   # 명부 없이 소수만 테스트
- *   node collect_eval.js --month 7 --guilds 3,4,5,6 --season 5 --week 9
+ *   node collect_eval.js --members 1000271067,1000275060 --dry-run   # 소수 테스트
+ *   COLLECT_FEEDBACK=1  # 피드백 본문까지 수집 (기본 OFF — 민감정보)
  *
  * 필요 환경변수:
  *   CODYSSEY_SESSION (필수)  "JSESSIONID=xxx" 또는 값만
- *   INST_CD         (선택, 기본 00021)
+ *   INST_CD         (선택, 기본 00021) / SELF_MBR_ID (선택, 슬롯 귀속)
  */
 
 const fs = require("fs");
@@ -120,6 +120,30 @@ async function fetchJson(url, { body, method = "POST" } = {}) {
   if (!json || json.code !== 200) {
     throw new Error(`${url} → code=${json && json.code} (HTTP ${res.status}) body[:200]=${text.slice(0, 200)}`);
   }
+  return json.result;
+}
+
+/* form-urlencoded POST 버전 (mbrSearch/PkList 계열용) */
+async function fetchFormJson(endpoint, params) {
+  const res = await fetch(API_BASE + endpoint, {
+    method: "POST",
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      Accept: "application/json, text/plain, */*",
+      "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8",
+      "X-Requested-With": "XMLHttpRequest",
+      "Content-Type": "application/x-www-form-urlencoded",
+      Cookie: SESSION,
+    },
+    body: new URLSearchParams(params).toString(),
+  });
+  if (res.status === 401 || res.status === 403) {
+    const err = new Error(`SESSION_EXPIRED(${res.status})`);
+    err.sessionExpired = true;
+    throw err;
+  }
+  const json = await res.json().catch(() => null);
+  if (!json || json.code !== 200) throw new Error(`${endpoint} → code=${json && json.code} (HTTP ${res.status})`);
   return json.result;
 }
 
@@ -297,113 +321,236 @@ function buildFinalEvents(partials, roster) {
   return events;
 }
 
+/* ---------------- 4) mbrSearch 계열 (타인 mbrId 반영 확정, 2026-07-17) ----------------
+ * ev/request/mbrSearch/searchList  : 멤버별 평가 목록 (evlNo/evlDegr/상태/과제/기간)
+ * ev/request/mtlEvlTxnDtoByPkList  : 평가 1건의 트랜잭션 행들 — 평가자 mbrId/실명,
+ *                                    상태, 점수, 취소 사유, 요청 시각(regDt) 포함
+ */
+function toIso(dt) {
+  const s2 = String(dt || "").trim();
+  const m = s2.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+  return m ? `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00+09:00` : null;
+}
+
+async function fetchMemberEvals(mbrId, cfg) {
+  const out = [];
+  for (let page = 1; page <= 10; page++) {
+    const result = await fetchFormJson("ev/request/mbrSearch/searchList", {
+      mbrId: String(mbrId),
+      instCd: CONF.instCd,
+      page: String(page),
+      pagePerRows: "50",
+      orderBy: "DESC",
+    });
+    const list = Array.isArray(result) ? result : (result && result.list) || [];
+    out.push(...list);
+    if (list.length < 50) break;
+    await sleep(cfg.delay);
+  }
+  return out;
+}
+
+async function fetchEvalDetail(evlNo, evlDegr) {
+  const result = await fetchFormJson("ev/request/mtlEvlTxnDtoByPkList", {
+    evlNo: String(evlNo),
+    evlDegr: String(evlDegr),
+  });
+  return Array.isArray(result) ? result : (result && result.list) || [];
+}
+
+// 상태 판정은 API가 주는 한글 명(mtlEvlStusNm) 기준 (코드 체계 추정 회피)
+function classifyStus(nm) {
+  const t = String(nm || "");
+  if (t.includes("완료")) return "COMPLETED";
+  if (t.includes("취소") || t.includes("거절")) return "CANCELLED";
+  if (t.includes("진행")) return "IN_PROGRESS";
+  return "REQUESTED";
+}
+function cancelRoleFromNm(nm) {
+  const t = String(nm || "");
+  if (t.includes("거절")) return "EVALUATOR";        // 평가거절 → 평가자가 취소
+  if (t.includes("취소")) return "EVALUATEE";        // 평가요청취소 → 피평가자(요청자)가 취소
+  return null;
+}
+
+function txnToEvent(tx, summary, evaluatee, feedbackOn) {
+  const planned = toIso(tx.mtlEvlPamBgngDt) || toIso(tx.mtlEvlBgngDt)
+    || (summary ? toIso(summary.evlBgngDt) : null);
+  const stusNm = tx.mtlEvlStusNm || (summary && summary.evlStusNm) || "";
+  const status = classifyStus(stusNm);
+  const ev = {
+    evalId: String(tx.mtlEvlSn || `x${(summary && summary.evlNo) || tx.evlNo}-${tx.evlMbrId || "?"}`),
+    evlNo: String(tx.evlNo || (summary && summary.evlNo) || ""),
+    evlDegr: String(tx.evlDegr != null ? tx.evlDegr : (summary && summary.evlDegr) || ""),
+    slotDateTime: planned,
+    endTime: toIso(tx.mtlEvlPamEndDt || tx.mtlEvlEndDt) ? String(toIso(tx.mtlEvlPamEndDt || tx.mtlEvlEndDt)).slice(11, 16) : null,
+    evaluatorId: tx.evlMbrId ? String(tx.evlMbrId) : null,
+    evaluatorName: tx.evlMbrNm || null,
+    evaluateeId: String(evaluatee.mbrId),
+    evaluateeName: evaluatee.name || null,
+    projectName: (summary && (summary.uqstnNm || summary.projectNm)) || "",
+    trackName: (summary && summary.lcorsNm) || "",
+    status,
+    stusCd: String(tx.mtlEvlStusCd || ""),
+    stusNm,
+    score: tx.mtlEvlScr != null ? tx.mtlEvlScr : (summary && summary.evlScr != null ? summary.evlScr : null),
+    resultNm: tx.mtlEvlResltNm || (summary && summary.evlResltNm) || null,
+    requestedAt: toIso(tx.regDt), // 요청(등록) 시각 — scheduleAllList엔 없던 필드
+    src: "txn",
+    detail: null,
+  };
+  if (feedbackOn && tx.evlFdbkCn) ev.feedback = String(tx.evlFdbkCn);
+  if (status === "CANCELLED") {
+    const role = cancelRoleFromNm(stusNm);
+    ev.cancel = {
+      by: role,
+      byId: role === "EVALUATOR" ? ev.evaluatorId : role === "EVALUATEE" ? ev.evaluateeId : null,
+      byName: role === "EVALUATOR" ? ev.evaluatorName : role === "EVALUATEE" ? ev.evaluateeName : null,
+      reasonCd: tx.evlDmndRtrcnRsnCd || null,
+      reasonNm: tx.evlDmndRtrcnRsnNm || stusNm,
+      reason: tx.rjctRsnCn || null, // 취소/거절 사유 본문
+      at: toIso(tx.mdfcnDt),        // 수정 시각 ≈ 취소 시각 (근사)
+    };
+  }
+  return ev;
+}
+
+// 상세가 비어있는 신규 평가(요청 단계) — 목록 행으로 최소 이벤트 구성 (평가자 미상)
+function summaryToEvent(summary, evaluatee) {
+  const stusNm = summary.evlStusNm || "";
+  return {
+    evalId: `s${summary.evlNo}-${summary.evlDegr}`,
+    evlNo: String(summary.evlNo), evlDegr: String(summary.evlDegr),
+    slotDateTime: toIso(summary.evlBgngDt),
+    endTime: null,
+    evaluatorId: null, evaluatorName: null,
+    evaluateeId: String(evaluatee.mbrId), evaluateeName: evaluatee.name || null,
+    projectName: summary.uqstnNm || summary.projectNm || "",
+    trackName: summary.lcorsNm || "",
+    status: classifyStus(stusNm),
+    stusCd: String(summary.evlStusCd || ""), stusNm,
+    score: summary.evlScr != null ? summary.evlScr : null,
+    resultNm: summary.evlResltNm || null,
+    requestedAt: null,
+    src: "summary",
+    detail: null,
+  };
+}
+
 /* ---------------- main ---------------- */
 async function main() {
   const cfg = parseArgs();
   SESSION = loadSession();
+  const feedbackOn = process.env.COLLECT_FEEDBACK === "1";
 
-  let fromYmd, toYmd, outY, outM;
+  let fromDate, toDate, outY, outM;
   if (cfg.days > 0) {
-    const end = new Date();
-    const start = new Date(); start.setDate(start.getDate() - (cfg.days - 1));
-    fromYmd = dotYmd(start.getFullYear(), start.getMonth() + 1, start.getDate());
-    toYmd = dotYmd(end.getFullYear(), end.getMonth() + 1, end.getDate());
-    outY = end.getFullYear(); outM = end.getMonth() + 1;
+    const end = new Date(); const start = new Date(); start.setDate(start.getDate() - (cfg.days - 1));
+    fromDate = start; toDate = end; outY = end.getFullYear(); outM = end.getMonth() + 1;
   } else {
-    fromYmd = dotYmd(cfg.year, cfg.month, 1);
-    toYmd = dotYmd(cfg.year, cfg.month, new Date(cfg.year, cfg.month, 0).getDate());
+    fromDate = new Date(cfg.year, cfg.month - 1, 1);
+    toDate = new Date(cfg.year, cfg.month, 0, 23, 59, 59);
     outY = cfg.year; outM = cfg.month;
   }
+  const inRange = (iso) => { if (!iso) return false; const t = new Date(iso); return t >= fromDate && t <= toDate; };
 
-  console.log(`▶ 1단계: 멤버 명부 수집`);
+  console.log("▶ 1단계: 멤버 명부 수집");
   const roster = await fetchRoster(cfg);
   console.log(`  명부 ${roster.length}명`);
 
-  console.log(`▶ 2단계: 스케줄 수집 (${fromYmd} ~ ${toYmd}, 멤버 ${roster.length}명)`);
-  const partials = [];
-  const slotList = [];
-
-  // 먼저 2명 프로브: 두 응답의 서명(scdlId 집합)이 같으면
-  // API가 mbrId 파라미터를 무시하고 세션 소유자 스케줄만 반환하는 것 (2026-07-17 실측 확정)
-  const sign = (x) =>
-    [...x.evalPartials.map((p) => p.scdlId), ...x.slots.map((s) => String(s.id))].sort().join(",");
-  const probe1 = await fetchMemberSchedule(roster[0], fromYmd, toYmd, cfg);
-  let selfOnly = false;
-  if (roster.length > 1) {
-    await sleep(cfg.delay);
-    const probe2 = await fetchMemberSchedule(roster[1], fromYmd, toYmd, cfg);
-    selfOnly = sign(probe1) === sign(probe2);
-    if (!selfOnly) {
-      for (const p of probe2.evalPartials) partials.push(p);
-      for (const s of probe2.slots) slotList.push(s);
-    }
-  }
-
-  if (selfOnly) {
-    console.log("⚠️ scheduleAllList가 mbrId를 무시합니다 — 세션 소유자 스케줄 1회 수집 모드로 전환");
-    console.log("   (수집 범위: 세션 소유자가 참여한 평가와 소유자 오픈 슬롯. --self/--SELF_MBR_ID로 소유자 지정 가능)");
-    const selfId = cfg.selfId || null;
-    for (const p of probe1.evalPartials) partials.push({ ...p, ownerId: selfId });
-    for (const s of probe1.slots) slotList.push({ ...s, m: selfId });
-  } else {
-    for (const p of probe1.evalPartials) partials.push(p);
-    for (const s of probe1.slots) slotList.push(s);
-    const startIdx = roster.length > 1 ? 2 : 1;
-    for (let i = startIdx; i < roster.length; i++) {
-      const m = roster[i];
-      try {
-        const { evalPartials, slots } = await fetchMemberSchedule(m, fromYmd, toYmd, cfg);
-        partials.push(...evalPartials);
-        slotList.push(...slots);
-        if ((i + 1) % 10 === 0 || i === roster.length - 1) {
-          console.log(`  [${i + 1}/${roster.length}] 누적 행 ${partials.length}, 슬롯 ${slotList.length}`);
-        }
-      } catch (err) {
-        if (err.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
-        console.warn(`  ⚠️ ${m.name || m.mbrId} 실패: ${err.message}`);
-      }
-      await sleep(cfg.delay);
-    }
-  }
-
-  // 교차 멤버 조회 검증:
-  // 정상이라면 같은 scdlId의 R행(피평가자 행)은 요청자 본인 스케줄에서만 1명 owner로 나타난다.
-  // API가 mbrId 파라미터를 무시하고 세션 사용자 스케줄만 반환하면
-  // 같은 scdlId의 R행 owner가 여러 명으로 찍히므로 이를 감지한다.
-  const rOwners = new Map(); // scdlId → Set(ownerId)
-  for (const p of partials) {
-    if (p.role !== "EVALUATEE") continue;
-    if (!rOwners.has(p.scdlId)) rOwners.set(p.scdlId, new Set());
-    rOwners.get(p.scdlId).add(p.ownerId);
-  }
-  const conflicts = [...rOwners.values()].filter((s) => s.size > 1).length;
-  const ownershipConflict = rOwners.size > 0 && conflicts / rOwners.size > 0.5;
-  const selfOnlyWarning = selfOnly || ownershipConflict;
-  if (ownershipConflict && !selfOnly) {
-    console.warn("⚠️ R행 소유자가 다수 멤버에서 중복됩니다 — API가 mbrId 파라미터를 받아주지 않고");
-    console.warn("   세션 사용자 기준으로만 반환하는 것으로 보입니다.");
-  }
-
-  console.log(`▶ 3단계: scdlId 병합`);
-  const events = buildFinalEvents(partials, roster);
-  const both = events.filter((e) => e.evaluatorId && e.evaluateeId).length;
-  const oneSide = events.filter((e) => (e.evaluatorId || e.evaluateeId) && !(e.evaluatorId && e.evaluateeId)).length;
-  console.log(`  이벤트 ${events.length}건 (양쪽 식별 ${both}, 한쪽만 ${oneSide}, 이름만 ${events.length - both - oneSide})`);
-
-  // 기존 파일과 병합
+  // 기존 데이터 로드 (증분 수집 + 병합용)
   fs.mkdirSync(cfg.outDir, { recursive: true });
   const outFile = path.join(cfg.outDir, `${outY}-${pad(outM)}.json`);
   let existing = { events: [], members: [], slots: [] };
   try { existing = JSON.parse(fs.readFileSync(outFile, "utf-8")); } catch (_) {}
-  if (selfOnly) {
-    // selfOnly 모드에서는 세션 소유자 귀속 슬롯만 유효 — 과거에 타인으로 잘못 귀속된 슬롯 제거
+  // v1(scheduleAllList 기반, src 없음) 이벤트는 v2(mbrSearch 기반, src 있음)로 대체 — 중복 방지
+  existing.events = (existing.events || []).filter((e) => e && e.src);
+  // 기존 세션-뷰 슬롯(타인 귀속 오염 가능분) 제거 — 슬롯 소유자는 세션 소유자뿐
+  {
     const selfKey = String(cfg.selfId || null);
-    existing.slots = (existing.slots || []).filter((s) => String(s.m) === selfKey);
+    existing.slots = (existing.slots || []).filter((s) => String(s.m) === selfKey || String(s.m) === "null");
   }
+
+  // 2단계: 오픈 슬롯 — scheduleAllList는 mbrId를 무시하므로 세션 소유자 1회만
+  console.log("▶ 2단계: 오픈 슬롯 수집 (세션 소유자 — API가 타인 슬롯 미제공)");
+  const slotList = [];
+  try {
+    const probe = await fetchMemberSchedule(roster[0],
+      dotYmd(fromDate.getFullYear(), fromDate.getMonth() + 1, fromDate.getDate()),
+      dotYmd(toDate.getFullYear(), toDate.getMonth() + 1, toDate.getDate()), cfg);
+    const selfId = cfg.selfId || null;
+    for (const sRow of probe.slots) slotList.push({ ...sRow, m: selfId });
+    console.log(`  슬롯 ${slotList.length}개 (매칭 ${slotList.filter((x) => x.matched).length})`);
+  } catch (e) {
+    if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
+    console.warn(`  ⚠️ 슬롯 수집 실패: ${e.message}`);
+  }
+
+  // 3단계: 멤버별 평가 목록 (mbrSearch — mbrId 반영 실측 확정)
+  console.log(`▶ 3단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
+  const summaries = [];
+  for (let i = 0; i < roster.length; i++) {
+    const m = roster[i];
+    try {
+      const rows = await fetchMemberEvals(m.mbrId, cfg);
+      for (const r of rows) summaries.push({ member: m, row: r });
+    } catch (e) {
+      if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
+      console.warn(`  ⚠️ ${m.name || m.mbrId} 목록 실패: ${e.message}`);
+    }
+    if ((i + 1) % 10 === 0 || i === roster.length - 1) console.log(`  [${i + 1}/${roster.length}] 누적 ${summaries.length}건`);
+    await sleep(cfg.delay);
+  }
+  const uniq = new Map();
+  for (const sm of summaries) {
+    const k = `${sm.member.mbrId}|${sm.row.evlNo}|${sm.row.evlDegr}`;
+    if (!uniq.has(k)) uniq.set(k, sm);
+  }
+  console.log(`  고유 평가 ${uniq.size}건 (중복 제거 후)`);
+
+  // 4단계: 상세 수집 — 신규이거나 상태(stusCd)가 바뀐 평가만 (증분)
+  const storedStus = new Map();
+  for (const ev of (existing.events || [])) {
+    if (!ev.evlNo) continue;
+    const k = `${ev.evlNo}|${ev.evlDegr}`;
+    if (!storedStus.has(k)) storedStus.set(k, new Set());
+    storedStus.get(k).add(String(ev.stusCd || ""));
+  }
+  const targets = [...uniq.values()].filter(({ row }) => {
+    const st = storedStus.get(`${row.evlNo}|${row.evlDegr}`);
+    return !st || !st.has(String(row.evlStusCd));
+  });
+  console.log(`▶ 4단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건)`);
+  const newEvents = [];
+  let done = 0;
+  for (const { member, row } of targets) {
+    let txs = [];
+    try {
+      txs = await fetchEvalDetail(row.evlNo, row.evlDegr);
+    } catch (e) {
+      if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
+      console.warn(`  ⚠️ 상세 실패 (evlNo ${row.evlNo}): ${e.message}`);
+    }
+    if (txs.length) {
+      for (const tx of txs) newEvents.push(txnToEvent(tx, row, member, feedbackOn));
+    } else {
+      newEvents.push(summaryToEvent(row, member));
+    }
+    done++;
+    if (done % 20 === 0 || done === targets.length) console.log(`  [${done}/${targets.length}]`);
+    await sleep(cfg.delay);
+  }
+
+  // 5단계: 병합 (기간 밖 이벤트 제외 — 기본값은 해당 월 ± 없음)
+  console.log("▶ 5단계: 병합 및 저장");
   const merged = new Map((existing.events || []).map((e) => [String(e.evalId), e]));
-  for (const ev of events) merged.set(String(ev.evalId), ev);
-  const slotMerged = new Map((existing.slots || []).map((s) => [`${s.d}|${s.t}|${s.m}`, s]));
-  for (const s of slotList) slotMerged.set(`${s.d}|${s.t}|${s.m}`, s);
+  let droppedOut = 0;
+  for (const ev of newEvents) {
+    if (ev.slotDateTime && !inRange(ev.slotDateTime)) { droppedOut++; continue; }
+    merged.set(String(ev.evalId), ev);
+  }
+  const slotMerged = new Map((existing.slots || []).map((x) => [`${x.d}|${x.t}|${x.m}`, x]));
+  for (const x of slotList) slotMerged.set(`${x.d}|${x.t}|${x.m}`, x);
 
   const out = {
     meta: {
@@ -414,20 +561,25 @@ async function main() {
       eventCount: merged.size,
       slotCount: slotMerged.size,
       roster: roster.length,
-      selfOnlyWarning,
+      selfOnlyWarning: false,          // mbrSearch로 타인 평가 수집 성공 (2026-07-17 확정)
+      source: "mbrSearch+pkList",
+      slotsSource: "scheduleAllList(세션 소유자 슬롯만)",
+      feedbackCollected: feedbackOn,
+      droppedOutOfRange: droppedOut,
     },
     members: roster.map((m) => ({ mbrId: m.mbrId, name: m.name, level: m.level, guild: m.guild })),
-    events: [...merged.values()].sort((x, y) => String(x.slotDateTime).localeCompare(String(y.slotDateTime))),
-    slots: [...slotMerged.values()].sort((x, y) => `${x.d}T${x.t}`.localeCompare(`${y.d}T${y.t}`)),
+    events: [...merged.values()].sort((a, b) => String(a.slotDateTime).localeCompare(String(b.slotDateTime))),
+    slots: [...slotMerged.values()].sort((a, b) => `${a.d}T${a.t}`.localeCompare(`${b.d}T${b.t}`)),
   };
 
   if (cfg.dryRun) {
     console.log("▶ dry-run: 저장 생략. 샘플 3건:");
     console.log(JSON.stringify(out.events.slice(0, 3), null, 2));
+    console.log(`  (기간 밖 제외 ${droppedOut}건, 총 ${out.events.length}건)`);
     return;
   }
   fs.writeFileSync(outFile, JSON.stringify(out, null, 2), "utf-8");
-  console.log(`✅ 저장: ${outFile} (이벤트 ${out.meta.eventCount}건)`);
+  console.log(`✅ 저장: ${outFile} (이벤트 ${out.meta.eventCount}건, 신규/갱신 ${newEvents.length}건)`);
 }
 
 main().catch((err) => {
