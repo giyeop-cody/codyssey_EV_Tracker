@@ -2,9 +2,8 @@
 /**
  * Codyssey 동료평가 이력 수집기 v2 (2026-07-17 개편)
  *
- * 수집 경로:
+ * 수집 경로 (2026-07-17 슬롯 수집 폐기판 — 세션 소유자 단독 데이터 비대칭 이슈로 제거):
  *   1) 길드 detail API → 멤버 명부 (또는 --members 직접 지정)
- *   2) 오픈 슬롯: schedule/scheduleAllList/ — ⚠️ mbrId 무시(세션 소유자 슬롯만) 임의 1회 호출
  *   3) 평가 목록: ev/request/mbrSearch/searchList — ✅ mbrId 반영 (타인 평가 목록 수집 가능)
  *   4) 평가 상세: ev/request/mtlEvlTxnDtoByPkList (evlNo+evlDegr) — 평가자 mbrId/실명,
  *      상태, 점수, 취소 사유, 요청 시각(regDt) 포함. 신규/상태변경 건에만 증분 호출
@@ -17,7 +16,7 @@
  *
  * 필요 환경변수:
  *   CODYSSEY_SESSION (필수)  "JSESSIONID=xxx" 또는 값만
- *   INST_CD         (선택, 기본 00021) / SELF_MBR_ID (선택, 슬롯 귀속)
+ *   INST_CD         (선택, 기본 00021)
  */
 
 const fs = require("fs");
@@ -186,141 +185,6 @@ async function fetchRoster(cfg) {
   return [...roster.values()];
 }
 
-/* ---------------- 2) 멤버별 스케줄 → 평가 이벤트(부분) ---------------- */
-function toPartial(row, owner) {
-  if (row.scdlGubunCd !== "EV") return null;
-  const detail = String(row.reqDetail || "");
-  let role = null; // owner 입장에서의 역할
-  if (detail.startsWith("R||")) role = "EVALUATEE";   // owner가 평가 요청(피평가)
-  else if (detail.startsWith("A||")) role = "EVALUATOR"; // owner가 평가 수락(평가자)
-  if (!role) return null;
-
-  const d = String(row.bgngYmd || "").replace(/\D/g, "");
-  const tm = /^\d{2}:\d{2}$/.test(row.bgngTm || "") ? row.bgngTm : "00:00";
-  if (d.length !== 8) return null;
-
-  return {
-    scdlId: String(row.scdlId),
-    slotDateTime: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}T${tm}:00+09:00`,
-    endTime: typeof row.endTm === "string" ? row.endTm : null,
-    projectName: row.title || "",
-    trackName: row.divNm || "",
-    fixedCd: String(row.fixedCd || ""),
-    fixedNm: row.fixedNm || "",
-    rtrcnRsnCd: row.evlDmndRtrcnRsnCd || null,
-    ownerId: owner.mbrId,
-    role,
-    // A행에서 scdlReqUsr = 상대(피평가자) 이름 / R행에서 scdlReqUsr = 상대(평가자) 이름
-    counterpartName: row.scdlReqUsr || null,
-  };
-}
-
-/**
- * 멤버 스케줄 1회 호출로 평가 이벤트(reqList) + 오픈 슬롯(timeList)을 함께 추출.
- * timeList = 해당 멤버가 "평가 가능"으로 열어둔 슬롯 (reqYn==="Y" 이면 평가와 매칭된 슬롯)
- */
-async function fetchMemberSchedule(member, fromYmd, toYmd, cfg) {
-  const q = new URLSearchParams({
-    mbrId: member.mbrId,
-    instCd: CONF.instCd,
-    bgngYmd: fromYmd,
-    endYmd: toYmd,
-    scheduleType: CONF.scheduleType,
-  });
-  const result = await fetchJson(`${API_BASE}schedule/scheduleAllList/?${q.toString()}`, { body: "null" });
-  const evalPartials = ((result && result.reqList) || [])
-    .map((r) => toPartial(r, member))
-    .filter(Boolean);
-  const slots = ((result && result.timeList) || [])
-    .map((row) => {
-      // evlPsblYmdTm: "2026-07-16 14:00" 우선, 없으면 bgngYmd + fixedNm("14:00 ~ 14:30")
-      let d = null, t = null;
-      if (row.evlPsblYmdTm) {
-        d = String(row.evlPsblYmdTm).slice(0, 10);
-        t = String(row.evlPsblYmdTm).slice(11, 16);
-      } else if (row.bgngYmd) {
-        const digits = String(row.bgngYmd).replace(/\D/g, "");
-        if (digits.length === 8) d = `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
-        t = String(row.fixedNm || "").split("~")[0].trim();
-      }
-      if (!d || !/^\d{2}:\d{2}$/.test(t || "")) return null;
-      return {
-        d, t,
-        m: member.mbrId,
-        id: row.scdlId ?? null,
-        matched: row.reqYn === "Y", // 이미 평가와 매칭된 슬롯 여부
-      };
-    })
-    .filter(Boolean);
-  return { evalPartials, slots };
-}
-
-/* ---------------- 3) scdlId 병합 → 최종 이벤트 ---------------- */
-function buildFinalEvents(partials, roster) {
-  const nameOf = new Map(roster.map((m) => [m.mbrId, m.name]));
-  const uniqueNameToId = new Map();
-  {
-    const count = new Map();
-    for (const m of roster) count.set(m.name, (count.get(m.name) || 0) + 1);
-    for (const m of roster) if (count.get(m.name) === 1) uniqueNameToId.set(m.name, m.mbrId);
-  }
-
-  const byScdl = new Map();
-  for (const p of partials) {
-    if (!byScdl.has(p.scdlId)) byScdl.set(p.scdlId, []);
-    byScdl.get(p.scdlId).push(p);
-  }
-
-  const events = [];
-  for (const [scdlId, list] of byScdl) {
-    const a = list.find((x) => x.role === "EVALUATOR") || null;   // 평가자 소유 행
-    const r = list.find((x) => x.role === "EVALUATEE") || null;   // 피평가자 소유 행
-    const base = a || r;
-
-    let evaluatorId = a ? a.ownerId : null;
-    let evaluateeId = r ? r.ownerId : (a && a.counterpartName ? uniqueNameToId.get(a.counterpartName) || null : null);
-    // R행만 있는 경우: scdlReqUsr(상대=평가자) 이름으로 평가자 보강
-    if (!evaluatorId && r && r.counterpartName) {
-      evaluatorId = uniqueNameToId.get(r.counterpartName) || null;
-    }
-    const evaluatorName = evaluatorId
-      ? (nameOf.get(evaluatorId) || null)
-      : (r && r.counterpartName) || null;
-    const evaluateeName = evaluateeId
-      ? (nameOf.get(evaluateeId) || null)
-      : (a && a.counterpartName) || null;
-
-    const status = CONF.status[base.fixedCd] || "REQUESTED";
-    const ev = {
-      evalId: scdlId,
-      slotDateTime: base.slotDateTime,
-      endTime: base.endTime,
-      evaluatorId, evaluatorName,
-      evaluateeId, evaluateeName,
-      projectName: base.projectName,
-      trackName: base.trackName,
-      fixedCd: base.fixedCd,
-      status,
-      detail: null,
-    };
-    if (status === "CANCELLED") {
-      const by = CONF.cancelRole[base.fixedCd] || null;
-      ev.cancel = {
-        by,
-        byId: by === "EVALUATOR" ? evaluatorId : by === "EVALUATEE" ? evaluateeId : null,
-        byName: by === "EVALUATOR" ? evaluatorName : by === "EVALUATEE" ? evaluateeName : null,
-        reasonCd: base.rtrcnRsnCd,
-        reasonNm: base.fixedNm, // "평가거절" / "평가요청취소"
-        at: null,               // 이 API는 취소 시각을 제공하지 않음
-      };
-      // selfOnly 모드에서 취소 주체가 이름 없는 세션 소유자인 경우 표기
-      if (ev.cancel.byId == null && ev.cancel.byName == null) ev.cancel.byName = "세션 소유자";
-    }
-    events.push(ev);
-  }
-  return events;
-}
-
 /* ---------------- 4) mbrSearch 계열 (타인 mbrId 반영 확정, 2026-07-17) ----------------
  * ev/request/mbrSearch/searchList  : 멤버별 평가 목록 (evlNo/evlDegr/상태/과제/기간)
  * ev/request/mtlEvlTxnDtoByPkList  : 평가 1건의 트랜잭션 행들 — 평가자 mbrId/실명,
@@ -465,29 +329,9 @@ async function main() {
   try { existing = JSON.parse(fs.readFileSync(outFile, "utf-8")); } catch (_) {}
   // v1(scheduleAllList 기반, src 없음) 이벤트는 v2(mbrSearch 기반, src 있음)로 대체 — 중복 방지
   existing.events = (existing.events || []).filter((e) => e && e.src);
-  // 기존 세션-뷰 슬롯(타인 귀속 오염 가능분) 제거 — 슬롯 소유자는 세션 소유자뿐
-  {
-    const selfKey = String(cfg.selfId || null);
-    existing.slots = (existing.slots || []).filter((s) => String(s.m) === selfKey || String(s.m) === "null");
-  }
-
-  // 2단계: 오픈 슬롯 — scheduleAllList는 mbrId를 무시하므로 세션 소유자 1회만
-  console.log("▶ 2단계: 오픈 슬롯 수집 (세션 소유자 — API가 타인 슬롯 미제공)");
-  const slotList = [];
-  try {
-    const probe = await fetchMemberSchedule(roster[0],
-      dotYmd(fromDate.getFullYear(), fromDate.getMonth() + 1, fromDate.getDate()),
-      dotYmd(toDate.getFullYear(), toDate.getMonth() + 1, toDate.getDate()), cfg);
-    const selfId = cfg.selfId || null;
-    for (const sRow of probe.slots) slotList.push({ ...sRow, m: selfId });
-    console.log(`  슬롯 ${slotList.length}개 (매칭 ${slotList.filter((x) => x.matched).length})`);
-  } catch (e) {
-    if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
-    console.warn(`  ⚠️ 슬롯 수집 실패: ${e.message}`);
-  }
 
   // 3단계: 멤버별 평가 목록 (mbrSearch — mbrId 반영 실측 확정)
-  console.log(`▶ 3단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
+  console.log(`▶ 2단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
   const summaries = [];
   for (let i = 0; i < roster.length; i++) {
     const m = roster[i];
@@ -520,7 +364,7 @@ async function main() {
     const st = storedStus.get(`${row.evlNo}|${row.evlDegr}`);
     return !st || !st.has(String(row.evlStusCd));
   });
-  console.log(`▶ 4단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건)`);
+  console.log(`▶ 3단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건)`);
   const newEvents = [];
   let done = 0;
   for (const { member, row } of targets) {
@@ -541,17 +385,14 @@ async function main() {
     await sleep(cfg.delay);
   }
 
-  // 5단계: 병합 (기간 밖 이벤트 제외 — 기본값은 해당 월 ± 없음)
-  console.log("▶ 5단계: 병합 및 저장");
+  // 4단계: 병합 (기간 밖 이벤트 제외 — 기본값은 해당 월 ± 없음)
+  console.log("▶ 4단계: 병합 및 저장");
   const merged = new Map((existing.events || []).map((e) => [String(e.evalId), e]));
   let droppedOut = 0;
   for (const ev of newEvents) {
     if (ev.slotDateTime && !inRange(ev.slotDateTime)) { droppedOut++; continue; }
     merged.set(String(ev.evalId), ev);
   }
-  const slotMerged = new Map((existing.slots || []).map((x) => [`${x.d}|${x.t}|${x.m}`, x]));
-  for (const x of slotList) slotMerged.set(`${x.d}|${x.t}|${x.m}`, x);
-
   const out = {
     meta: {
       generatedAt: new Date().toISOString(),
@@ -559,17 +400,15 @@ async function main() {
       month: outM,
       mock: false,
       eventCount: merged.size,
-      slotCount: slotMerged.size,
       roster: roster.length,
       selfOnlyWarning: false,          // mbrSearch로 타인 평가 수집 성공 (2026-07-17 확정)
       source: "mbrSearch+pkList",
-      slotsSource: "scheduleAllList(세션 소유자 슬롯만)",
       feedbackCollected: feedbackOn,
       droppedOutOfRange: droppedOut,
     },
     members: roster.map((m) => ({ mbrId: m.mbrId, name: m.name, level: m.level, guild: m.guild })),
     events: [...merged.values()].sort((a, b) => String(a.slotDateTime).localeCompare(String(b.slotDateTime))),
-    slots: [...slotMerged.values()].sort((a, b) => `${a.d}T${a.t}`.localeCompare(`${b.d}T${b.t}`)),
+    slots: [], // 슬롯 오픈 분석 폐기 (2026-07-17) — 세션 소유자 단독 데이터 비대칭 이슈
   };
 
   if (cfg.dryRun) {
