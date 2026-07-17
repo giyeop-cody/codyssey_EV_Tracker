@@ -1,3 +1,6 @@
+/* 표준 리셋: hidden 속성이 display를 지정한 작성자 규칙에 지지 않도록 */
+[hidden] { display: none !important; }
+
 :root {
   --bg: #0f1420;
   --panel: #171f30;
