@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-17T18:36:58.295Z",
+    "generatedAt": "2026-07-17T20:05:54.038Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -159,6 +159,42 @@
       "guild": "오션"
     },
     {
+      "mbrId": "sha1:bd63aa71",
+      "name": "김수정",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:40eb6a3b",
+      "name": "김승우",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:01afc40a",
+      "name": "정현석",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:0f052b0a",
+      "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:e83ffab8",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:4ff6a055",
+      "name": "최대한",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
       "mbrId": "sha1:56cfa71c",
       "name": "정인철",
       "level": 1,
@@ -185,42 +221,6 @@
     {
       "mbrId": "sha1:dff52c4a",
       "name": "김준태",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:01afc40a",
-      "name": "정현석",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:bd63aa71",
-      "name": "김수정",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:40eb6a3b",
-      "name": "김승우",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:0f052b0a",
-      "name": "고한결",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:e83ffab8",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:4ff6a055",
-      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -405,24 +405,6 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:22b146eb",
-      "name": "조영래",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:be3204a2",
-      "name": "오철호",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:03cffad8",
-      "name": "이호규",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "sha1:52536857",
       "name": "임효정",
       "level": 1,
@@ -447,14 +429,32 @@
       "guild": "오로라"
     },
     {
+      "mbrId": "sha1:54895e88",
+      "name": "안재혁",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
       "mbrId": "sha1:42f129bc",
       "name": "오상진",
       "level": 1,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:54895e88",
-      "name": "안재혁",
+      "mbrId": "sha1:22b146eb",
+      "name": "조영래",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:be3204a2",
+      "name": "오철호",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:03cffad8",
+      "name": "이호규",
       "level": 1,
       "guild": "오로라"
     },
@@ -627,20 +627,26 @@
       "guild": "앰버"
     },
     {
+      "mbrId": "sha1:4e03dd17",
+      "name": "나영흠",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
       "mbrId": "sha1:b7fd1c02",
       "name": "구자원",
       "level": 1,
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:ec83fec5",
-      "name": "이교원",
+      "mbrId": "sha1:8d7ce41a",
+      "name": "변재혁",
       "level": 1,
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:8d7ce41a",
-      "name": "변재혁",
+      "mbrId": "sha1:ec83fec5",
+      "name": "이교원",
       "level": 1,
       "guild": "앰버"
     },
@@ -671,12 +677,6 @@
     {
       "mbrId": "sha1:a98dfa69",
       "name": "이용규",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "sha1:4e03dd17",
-      "name": "나영흠",
       "level": 1,
       "guild": "앰버"
     },
@@ -861,18 +861,6 @@
       "guild": "시에나"
     },
     {
-      "mbrId": "sha1:5a8dd315",
-      "name": "이민경",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "sha1:ef0ce43b",
-      "name": "조창래",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
       "mbrId": "sha1:89cce81d",
       "name": "한택진",
       "level": 1,
@@ -893,6 +881,18 @@
     {
       "mbrId": "sha1:910fd374",
       "name": "이동섭",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "sha1:5a8dd315",
+      "name": "이민경",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "sha1:ef0ce43b",
+      "name": "조창래",
       "level": 1,
       "guild": "시에나"
     },
