@@ -108,13 +108,18 @@ async function codysseyPost(endpoint, params) {
   return json || { __invalid: true };
 }
 
-// 세션 유효성 프로브: 인증이 필요하지만 파라미터가 가벼운 조회 API 하나로 확인
+// 세션 유효성 프로브: 레퍼런스(codyssey_Jail_Tracker)가 실환경 검증한 길드 조회 API 사용
+// (GET /guild/3/detail — 인증 필요 + 응답 가벼움 + code===200 확인 가능)
 async function validateSession() {
   if (!session.cookies.JSESSIONID) return false;
   try {
-    const json = await codysseyPost("user/getStudyUsers/", { search: "a" });
-    if (json.__unauthenticated || json.__invalid) return false;
-    return json.code === 200;
+    const res = await fetch(`${API_BASE}guild/3/detail?guildSeasonId=5&weekNo=9`, {
+      headers: { ...COMMON_HEADERS, Cookie: cookieHeader() },
+    });
+    applySetCookies(res);
+    if (res.status === 401 || res.status === 403) return false;
+    const json = await res.json().catch(() => null);
+    return !!(json && json.code === 200 && json.result);
   } catch (_) {
     return false;
   }
