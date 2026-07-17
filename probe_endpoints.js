@@ -72,55 +72,60 @@ async function probe(name, ep, { method = "POST", params } = {}) {
 }
 
 (async () => {
-  console.log("\u25b6 2\ub77c\uc6b4\ub4dc \ud504\ub85c\ube0c (\uac12 \ub9c8\uc2a4\ud0b9 \uc801\uc6a9)");
+  console.log("\u25b6 3\ub77c\uc6b4\ub4dc \ud504\ub85c\ube0c (\uac12 \ub9c8\uc2a4\ud0b9 \uc801\uc6a9)");
 
-  // 길드 3 명부에서 멤버 mbrId 2개 확보 (비교용, 이름은 출력 안 함)
+  // 명부(길드 3) 상위 3명으로 검증
   let ids = [];
   try {
     const res = await fetch(API_BASE + "guild/3/detail?guildSeasonId=5&weekNo=9", { headers: HEADERS });
     const j = await res.json();
     ids = ((j.result && j.result.members) || []).slice(0, 3).map((m) => String(m.mbrId));
-  } catch (e) { console.log("명부 실패:", e.message); }
-  console.log("비교 멤버 수:", ids.length);
+  } catch (e) { console.log("\uba85\ubd80 \uc2e4\ud328:", e.message); }
 
-  const sha = (x) => require("crypto").createHash("sha256").update(x).digest("hex").slice(0, 12);
-  const evlSig = (arr) => (arr || []).map((r) => String(r.evlNo) + ":" + String(r.evlDegr) + ":" + String(r.evlStusCd)).sort().join(",");
+  const post = (ep, params) => fetch(API_BASE + ep, {
+    method: "POST",
+    headers: { ...HEADERS, "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(params).toString(),
+  }).then(async (r) => { let j = null; try { j = JSON.parse(await r.text()); } catch (_) {} return { http: r.status, j }; });
 
-  // 1) mbrSearch/searchList — mbrId를 바꿔가며 응답이 달라지는지 (교차 조회 결정적 검증)
-  const sigs = {};
-  for (const id of ids.slice(0, 2)) {
+  // 1) 멤버별 mbrSearch — 행 수/상태코드 분포/최다 보유자
+  let best = null; const cdCount = {};
+  for (const id of ids) {
     await sleep(400);
-    const res = await fetch(API_BASE + "ev/request/mbrSearch/searchList", {
-      method: "POST",
-      headers: { ...HEADERS, "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ mbrId: id, instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" }).toString(),
-    });
-    const text = await res.text();
-    let j = null; try { j = JSON.parse(text); } catch (_) {}
-    let arr = null, total = null;
-    if (j) {
-      if (Array.isArray(j.result)) arr = j.result;
-      else if (j.result && Array.isArray(j.result.list)) { arr = j.result.list; total = j.result.totalCnt; }
-    }
-    if (arr) sigs[id] = sha(evlSig(arr));
-    console.log(`\nmbrSearch mbrId=\u203b\u203b\u203b | HTTP ${res.status} | code=${j && j.code} | rows=${arr ? arr.length : "-"} | total=${total} | sig=${sigs[id] || "-"}`);
-    if (!arr && j) console.log("  result shape:", typeof j.result, JSON.stringify(mask(j.result || j)).slice(0, 160));
-    if (arr && arr.length) {
-      console.log("  rowKeys:", Object.keys(arr[0]).join(","));
-      console.log("  sample:", JSON.stringify(mask(arr[0])).replace(/\n/g, " ").slice(0, 500));
-    }
+    const { http, j } = await post("ev/request/mbrSearch/searchList", { mbrId: id, instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" });
+    const arr = j && Array.isArray(j.result) ? j.result : [];
+    for (const r of arr) { const k = `${r.evlStusCd}/${r.evlResltCd}`; cdCount[k] = (cdCount[k] || 0) + 1; }
+    console.log(`  mbr \u203b\u203b\u203b: rows=${arr.length} (http ${http}, code=${j && j.code})`);
+    if (!best || arr.length > best.rows.length) best = { id, rows: arr };
   }
-  if (Object.keys(sigs).length >= 2) {
-    const same = new Set(Object.values(sigs)).size === 1;
-    console.log("\n\u25b6 \uacb0\ud310: mbrSearch\uac00 mbrId\ub97c", same ? "\ubb34\uc2dc\ud569\ub2c8\ub2e4 (\ubaa8\ub450 \ub3d9\uc77c \uc751\ub2f5)" : "\ubc18\uc601\ud569\ub2c8\ub2e4 \u2605 \uad50\ucc28 \uc870\ud68c \uac00\ub2a5");
-  }
+  console.log("\uc0c1\ud0dc/\uacb0\uacfc \ucf54\ub4dc \ubd84\ud3ec (stus/reslt):", JSON.stringify(cdCount));
 
-  // 2) 참여 검색 — 화면과 동일하게 전부 빈 문자열
-  await probe("\ucc38\uc5ec \uac80\uc0c9(\ud654\uba74 \uae30\ubcf8)", "ev/participation/seachParticipationList", {
-    params: { projectNm: "", reqMbrNm: "", mtlEvlStusCd: "", mtlEvlPamBgngDt: "", mtlEvlPamBgngDted: "", evlStdtFirst: "", evlStdtLast: "", mtlEvlResltCd: "", evlMbrId: "", evlInstCd: "", page: "1", pagePerRows: "20" },
-  });
-  // 3) 참여 검색 — 기간 지정(20260501 ~ 20260731)
-  await probe("\ucc38\uc5ec \uac80\uc0c9(\uae30\uac04 \uc9c0\uc815)", "ev/participation/seachParticipationList", {
-    params: { mtlEvlPamBgngDt: "20260501", mtlEvlPamBgngDted: "20260731", page: "1", pagePerRows: "20" },
-  });
+  // 2) PK 상세: 최다 보유 멤버의 첫 2건
+  if (best && best.rows.length) {
+    for (const row of best.rows.slice(0, 2)) {
+      await sleep(400);
+      const { http, j } = await post("ev/request/mtlEvlTxnDtoByPkList", { evlNo: String(row.evlNo), evlDegr: String(row.evlDegr) });
+      const r = j && j.result; const arr = Array.isArray(r) ? r : (r && Array.isArray(r.list)) ? r.list : null;
+      console.log(`\n### mtlEvlTxnDtoByPkList (evlNo/Degr \u203b\u203b\u203b)`);
+      console.log(`  http=${http} code=${j && j.code} type=${arr ? `array(${arr.length})` : typeof r}`);
+      if (arr && arr.length) {
+        console.log("  rowKeys:", Object.keys(arr[0]).join(","));
+        console.log("  sample:", JSON.stringify(mask(arr[0])).replace(/\n/g, " ").slice(0, 700));
+      } else if (r) {
+        console.log("  keys:", Object.keys(r).slice(0, 20).join(","));
+        console.log("  sample:", JSON.stringify(mask(r)).replace(/\n/g, " ").slice(0, 700));
+      }
+    }
+    // 3) evlTotList(프로젝트 키 경로)도 1건 실험
+    const row = best.rows[0];
+    await sleep(400);
+    const { http, j } = await post("ev/request/evlTotList", {
+      projectNo: String(row.projectNo), lcorsNo: String(row.lcorsNo), uqstnNo: String(row.uqstnNo),
+      instCd: row.instCd || "00021", mbrId: best.id, lrnTmcnt: "0",
+    });
+    const r = j && j.result;
+    console.log(`\n### evlTotList (project/uqstn/mbr)`);
+    console.log(`  http=${http} code=${j && j.code} type=${Array.isArray(r) ? `array(${r.length})` : typeof r}`);
+    if (r) console.log("  sample:", JSON.stringify(mask(r)).replace(/\n/g, " ").slice(0, 700));
+  }
 })().catch((e) => { console.error("\uc2e4\ud328:", e.message); process.exit(1); });
