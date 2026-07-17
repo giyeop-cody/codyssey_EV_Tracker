@@ -105,3 +105,16 @@ GET https://api.usr.codyssey.kr/rest/secom/detail?mbrId={mbrId}&year={year}&mont
 우리가 쓰는 `schedule/scheduleAllList/?mbrId=...`도 **타인 교차 조회가 허용될 가능성이 높습니다.**
 그래도 수집기의 `selfOnlyWarning`(R행 소유권 충돌 감지)은 그대로 둡니다 — 실제 거부 시 자동 경고.
 세션 유효성 프로브는 이 부록의 길드 상세 API를 쓰도록 서버를 맞춰뒀습니다 (`dashboard/server.js`의 `validateSession`).
+
+## 2026-07-17 실측 확정: scheduleAllList는 mbrId를 무시함 ❗
+
+GitHub Actions 실수행(149명 순회) 결과:
+- 멤버 149명 전원에게 요청했으나 응답이 전부 동일 (이벤트 6건×149=894행, 슬롯 50개×149=7450)
+- 즉 `schedule/scheduleAllList/?mbrId=...`는 **mbrId 파라미터를 무시하고 세션 소유자 스케줄만 반환**
+- (참고: `/rest/secom/detail`은 mbrId가 먹혀서 레퍼런스가 타인 출입을 수집함 — API마다 다름)
+
+대응 (collect_eval.js에 반영 완료):
+1. 첫 2명만 조회해 응답 서명(전체 scdlId 집합)이 같으면 즉시 **selfOnly 모드**로 전환 → 149번 루프 대신 2회 조회로 종료
+2. 이벤트/슬롯 소유자는 쿼리 멤버가 아닌 **세션 소유자**(`--self <mbrId>` 또는 repo 변수 `SELF_MBR_ID`, 없으면 null)로 귀속
+3. 수집 범위 = **세션 소유자가 참여한 평가 전부**(상대방 이름 포함, 명부 일치 시 mbrId로 연결) + 소유자 오픈 슬롯
+4. mbrId 미기재 시 R행만 있는 이벤트의 평가자 이름(scdlReqUsr)이 누락되던 버그도 함께 수정

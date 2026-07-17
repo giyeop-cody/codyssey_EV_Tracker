@@ -50,6 +50,7 @@ function parseArgs() {
     outDir: path.join(__dirname, "docs", "data"),
     delay: 300,
     dryRun: false,
+    selfId: process.env.SELF_MBR_ID || null, // 세션 소유자 mbrId (selfOnly 모드 귀속용)
   };
   const args = process.argv.slice(2);
   for (let i = 0; i < args.length; i++) {
@@ -65,6 +66,7 @@ function parseArgs() {
       case "--inst": CONF.instCd = args[++i]; break;
       case "--out": cfg.outDir = args[++i]; break;
       case "--delay": cfg.delay = parseInt(args[++i], 10); break;
+      case "--self": cfg.selfId = String(args[++i]); break;
       case "--dry-run": cfg.dryRun = true; break;
       case "-h": case "--help":
         console.log("사용법: CODYSSEY_SESSION=... node collect_eval.js [--month M] [--members ids] [--guilds 3,4,5,6] [--dry-run]");
@@ -184,7 +186,8 @@ function toPartial(row, owner) {
     rtrcnRsnCd: row.evlDmndRtrcnRsnCd || null,
     ownerId: owner.mbrId,
     role,
-    counterpartName: role === "EVALUATOR" ? (row.scdlReqUsr || null) : null, // A행: 상대(피평가자) 이름
+    // A행에서 scdlReqUsr = 상대(피평가자) 이름 / R행에서 scdlReqUsr = 상대(평가자) 이름
+    counterpartName: row.scdlReqUsr || null,
   };
 }
 
@@ -250,10 +253,18 @@ function buildFinalEvents(partials, roster) {
     const r = list.find((x) => x.role === "EVALUATEE") || null;   // 피평가자 소유 행
     const base = a || r;
 
-    const evaluatorId = a ? a.ownerId : null;
-    const evaluateeId = r ? r.ownerId : (a && a.counterpartName ? uniqueNameToId.get(a.counterpartName) || null : null);
-    const evaluatorName = evaluatorId ? nameOf.get(evaluatorId) || null : null;
-    const evaluateeName = evaluateeId ? nameOf.get(evaluateeId) || null : (a ? a.counterpartName : null);
+    let evaluatorId = a ? a.ownerId : null;
+    let evaluateeId = r ? r.ownerId : (a && a.counterpartName ? uniqueNameToId.get(a.counterpartName) || null : null);
+    // R행만 있는 경우: scdlReqUsr(상대=평가자) 이름으로 평가자 보강
+    if (!evaluatorId && r && r.counterpartName) {
+      evaluatorId = uniqueNameToId.get(r.counterpartName) || null;
+    }
+    const evaluatorName = evaluatorId
+      ? (nameOf.get(evaluatorId) || null)
+      : (r && r.counterpartName) || null;
+    const evaluateeName = evaluateeId
+      ? (nameOf.get(evaluateeId) || null)
+      : (a && a.counterpartName) || null;
 
     const status = CONF.status[base.fixedCd] || "REQUESTED";
     const ev = {
@@ -309,20 +320,48 @@ async function main() {
   console.log(`▶ 2단계: 스케줄 수집 (${fromYmd} ~ ${toYmd}, 멤버 ${roster.length}명)`);
   const partials = [];
   const slotList = [];
-  for (let i = 0; i < roster.length; i++) {
-    const m = roster[i];
-    try {
-      const { evalPartials, slots } = await fetchMemberSchedule(m, fromYmd, toYmd, cfg);
-      partials.push(...evalPartials);
-      slotList.push(...slots);
-      if ((i + 1) % 10 === 0 || i === roster.length - 1) {
-        console.log(`  [${i + 1}/${roster.length}] 누적 행 ${partials.length}, 슬롯 ${slotList.length}`);
-      }
-    } catch (err) {
-      if (err.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
-      console.warn(`  ⚠️ ${m.name || m.mbrId} 실패: ${err.message}`);
-    }
+
+  // 먼저 2명 프로브: 두 응답의 서명(scdlId 집합)이 같으면
+  // API가 mbrId 파라미터를 무시하고 세션 소유자 스케줄만 반환하는 것 (2026-07-17 실측 확정)
+  const sign = (x) =>
+    [...x.evalPartials.map((p) => p.scdlId), ...x.slots.map((s) => String(s.id))].sort().join(",");
+  const probe1 = await fetchMemberSchedule(roster[0], fromYmd, toYmd, cfg);
+  let selfOnly = false;
+  if (roster.length > 1) {
     await sleep(cfg.delay);
+    const probe2 = await fetchMemberSchedule(roster[1], fromYmd, toYmd, cfg);
+    selfOnly = sign(probe1) === sign(probe2);
+    if (!selfOnly) {
+      for (const p of probe2.evalPartials) partials.push(p);
+      for (const s of probe2.slots) slotList.push(s);
+    }
+  }
+
+  if (selfOnly) {
+    console.log("⚠️ scheduleAllList가 mbrId를 무시합니다 — 세션 소유자 스케줄 1회 수집 모드로 전환");
+    console.log("   (수집 범위: 세션 소유자가 참여한 평가와 소유자 오픈 슬롯. --self/--SELF_MBR_ID로 소유자 지정 가능)");
+    const selfId = cfg.selfId || null;
+    for (const p of probe1.evalPartials) partials.push({ ...p, ownerId: selfId });
+    for (const s of probe1.slots) slotList.push({ ...s, m: selfId });
+  } else {
+    for (const p of probe1.evalPartials) partials.push(p);
+    for (const s of probe1.slots) slotList.push(s);
+    const startIdx = roster.length > 1 ? 2 : 1;
+    for (let i = startIdx; i < roster.length; i++) {
+      const m = roster[i];
+      try {
+        const { evalPartials, slots } = await fetchMemberSchedule(m, fromYmd, toYmd, cfg);
+        partials.push(...evalPartials);
+        slotList.push(...slots);
+        if ((i + 1) % 10 === 0 || i === roster.length - 1) {
+          console.log(`  [${i + 1}/${roster.length}] 누적 행 ${partials.length}, 슬롯 ${slotList.length}`);
+        }
+      } catch (err) {
+        if (err.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
+        console.warn(`  ⚠️ ${m.name || m.mbrId} 실패: ${err.message}`);
+      }
+      await sleep(cfg.delay);
+    }
   }
 
   // 교차 멤버 조회 검증:
@@ -336,11 +375,11 @@ async function main() {
     rOwners.get(p.scdlId).add(p.ownerId);
   }
   const conflicts = [...rOwners.values()].filter((s) => s.size > 1).length;
-  const selfOnlyWarning = rOwners.size > 0 && conflicts / rOwners.size > 0.5;
-  if (selfOnlyWarning) {
+  const ownershipConflict = rOwners.size > 0 && conflicts / rOwners.size > 0.5;
+  const selfOnlyWarning = selfOnly || ownershipConflict;
+  if (ownershipConflict && !selfOnly) {
     console.warn("⚠️ R행 소유자가 다수 멤버에서 중복됩니다 — API가 mbrId 파라미터를 받아주지 않고");
     console.warn("   세션 사용자 기준으로만 반환하는 것으로 보입니다.");
-    console.warn("   (이 경우 수집 범위는 '본인 세션이 열어볼 수 있는 평가'로 제한됩니다)");
   }
 
   console.log(`▶ 3단계: scdlId 병합`);
@@ -354,6 +393,11 @@ async function main() {
   const outFile = path.join(cfg.outDir, `${outY}-${pad(outM)}.json`);
   let existing = { events: [], members: [], slots: [] };
   try { existing = JSON.parse(fs.readFileSync(outFile, "utf-8")); } catch (_) {}
+  if (selfOnly) {
+    // selfOnly 모드에서는 세션 소유자 귀속 슬롯만 유효 — 과거에 타인으로 잘못 귀속된 슬롯 제거
+    const selfKey = String(cfg.selfId || null);
+    existing.slots = (existing.slots || []).filter((s) => String(s.m) === selfKey);
+  }
   const merged = new Map((existing.events || []).map((e) => [String(e.evalId), e]));
   for (const ev of events) merged.set(String(ev.evalId), ev);
   const slotMerged = new Map((existing.slots || []).map((s) => [`${s.d}|${s.t}|${s.m}`, s]));

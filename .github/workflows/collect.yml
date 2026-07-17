@@ -51,6 +51,7 @@ jobs:
         if: steps.check.outputs.skip != 'true'
         env:
           CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+          SELF_MBR_ID: ${{ vars.SELF_MBR_ID }}
           YEAR: ${{ inputs.year }}
           MONTH: ${{ inputs.month }}
           DAYS: ${{ inputs.days }}
