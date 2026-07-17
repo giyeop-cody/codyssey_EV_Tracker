@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-17T09:56:29.364Z",
+    "generatedAt": "2026-07-17T11:22:24.582Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 171,
+    "eventCount": 174,
     "slotCount": 50,
     "roster": 149,
     "selfOnlyWarning": false,
@@ -189,6 +189,12 @@
       "guild": "오션"
     },
     {
+      "mbrId": "1000275088",
+      "name": "정현석",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
       "mbrId": "1000276103",
       "name": "김수정",
       "level": 1,
@@ -197,12 +203,6 @@
     {
       "mbrId": "1000266041",
       "name": "김승우",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000275088",
-      "name": "정현석",
       "level": 1,
       "guild": "오션"
     },
@@ -267,6 +267,12 @@
       "guild": "오로라"
     },
     {
+      "mbrId": "1000272065",
+      "name": "백예지",
+      "level": 3,
+      "guild": "오로라"
+    },
+    {
       "mbrId": "1000276225",
       "name": "백동재",
       "level": 3,
@@ -321,20 +327,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000271084",
-      "name": "이초롱",
-      "level": 2,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "1000275048",
       "name": "이지헌",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000272065",
-      "name": "백예지",
+      "mbrId": "1000271084",
+      "name": "이초롱",
       "level": 2,
       "guild": "오로라"
     },
@@ -381,14 +381,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000272087",
-      "name": "김은수",
+      "mbrId": "1000275036",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275036",
-      "name": "김동조",
+      "mbrId": "1000272087",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
@@ -401,18 +401,6 @@
     {
       "mbrId": "1000276047",
       "name": "정호준",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276190",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276193",
-      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -441,20 +429,32 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000276033",
-      "name": "조영래",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "1000267034",
       "name": "오철호",
       "level": 1,
       "guild": "오로라"
     },
     {
+      "mbrId": "1000276033",
+      "name": "조영래",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
       "mbrId": "1000276224",
       "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276190",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276193",
+      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -627,36 +627,6 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "1000275100",
-      "name": "나영흠",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000276048",
-      "name": "구자원",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000266038",
-      "name": "변재혁",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000276180",
-      "name": "이교원",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000276107",
-      "name": "김태우",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
       "mbrId": "1000276095",
       "name": "서지민",
       "level": 1,
@@ -677,6 +647,36 @@
     {
       "mbrId": "1000269047",
       "name": "이용규",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275100",
+      "name": "나영흠",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276048",
+      "name": "구자원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276180",
+      "name": "이교원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000266038",
+      "name": "변재혁",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276107",
+      "name": "김태우",
       "level": 1,
       "guild": "앰버"
     },
@@ -861,6 +861,12 @@
       "guild": "시에나"
     },
     {
+      "mbrId": "1000276084",
+      "name": "이연재",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
       "mbrId": "1000275053",
       "name": "김명서",
       "level": 1,
@@ -887,12 +893,6 @@
     {
       "mbrId": "1000276228",
       "name": "한택진",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "1000276084",
-      "name": "이연재",
       "level": 1,
       "guild": "시에나"
     },
@@ -3100,6 +3100,69 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-17T07:44:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "632101",
+      "evlNo": "620023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T14:30:00+09:00",
+      "endTime": "15:00",
+      "evaluatorId": "1000270053",
+      "evaluatorName": "배재민",
+      "evaluateeId": "1000272065",
+      "evaluateeName": "백예지",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-16T22:24:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "632106",
+      "evlNo": "620023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T15:30:00+09:00",
+      "endTime": "16:00",
+      "evaluatorId": "1000267035",
+      "evaluatorName": "이상헌",
+      "evaluateeId": "1000272065",
+      "evaluateeName": "백예지",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-17T01:17:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "632100",
+      "evlNo": "620023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "1000267033",
+      "evaluatorName": "반가희",
+      "evaluateeId": "1000272065",
+      "evaluateeName": "백예지",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-16T22:17:00+09:00",
       "src": "txn",
       "detail": null
     },
