@@ -128,7 +128,11 @@ function nameOf(mm, id) {
 function sideName(mm, ev, side) {
   const id = ev[side + "Id"];
   const m = id && mm.get(String(id));
-  return (m && m.name) || ev[side + "Name"] || (id ? String(id) : "-");
+  const named = (m && m.name) || ev[side + "Name"] || null;
+  if (named) return named;
+  // selfOnly(세션 뷰) 데이터에서 이름이 없는 쪽은 세션 소유자 본인
+  if (state.data && state.data.meta && state.data.meta.selfOnlyWarning) return "세션 소유자";
+  return id ? String(id) : "-";
 }
 
 /* 재예약 신호 판정:

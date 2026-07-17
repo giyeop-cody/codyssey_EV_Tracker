@@ -289,6 +289,8 @@ function buildFinalEvents(partials, roster) {
         reasonNm: base.fixedNm, // "평가거절" / "평가요청취소"
         at: null,               // 이 API는 취소 시각을 제공하지 않음
       };
+      // selfOnly 모드에서 취소 주체가 이름 없는 세션 소유자인 경우 표기
+      if (ev.cancel.byId == null && ev.cancel.byName == null) ev.cancel.byName = "세션 소유자";
     }
     events.push(ev);
   }
