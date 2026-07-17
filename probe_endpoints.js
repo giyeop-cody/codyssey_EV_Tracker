@@ -93,9 +93,7 @@ async function probe(name, ep, { method = "POST", params } = {}) {
   for (const id of ids) {
     await sleep(400);
     const { http, j } = await post("ev/request/mbrSearch/searchList", { mbrId: id, instCd: "00021", page: "1", pagePerRows: "50", orderBy: "DESC" });
-    const isArr = j && Array.isArray(j.result);
-    const arr = isArr ? j.result : [];
-    if (!isArr && j) console.log("  shape:", typeof j.result, JSON.stringify(mask(j.result)).slice(0, 100));
+    const arr = j ? (Array.isArray(j.result) ? j.result : (j.result && Array.isArray(j.result.list) ? j.result.list : [])) : [];
     for (const r of arr) { const k = `${r.evlStusCd}/${r.evlResltCd}`; cdCount[k] = (cdCount[k] || 0) + 1; }
     console.log(`  mbr \u203b\u203b\u203b: rows=${arr.length} (http ${http}, code=${j && j.code})`);
     if (!best || arr.length > best.rows.length) best = { id, rows: arr };
