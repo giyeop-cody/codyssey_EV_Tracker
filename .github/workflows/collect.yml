@@ -53,6 +53,16 @@ jobs:
         with:
           node-version: 20
 
+      # 명부(mbrId·이름·레벨·길드)는 준정적 데이터라 actions/cache에 보관해 두고
+      # 8시간 이내이면 길드 API를 생략한다 (하루 3~4회 갱신 수준).
+      - name: Restore roster cache
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .roster-cache
+          key: eval-roster-${{ github.run_id }}
+          restore-keys: eval-roster-
+
       - name: Collect evaluations
         if: steps.check.outputs.skip != 'true'
         env:
@@ -66,6 +76,20 @@ jobs:
           [ -n "$YEAR" ] && ARGS="$ARGS --year $YEAR"
           [ -n "$MONTH" ] && ARGS="$ARGS --month $MONTH"
           [ -n "$DAYS" ] && ARGS="$ARGS --days $DAYS"
+
+          ROSTER_JSON=.roster-cache/roster.json
+          ARGS="$ARGS --roster-cache $ROSTER_JSON"
+          if [ -f "$ROSTER_JSON" ] && [ -f "$ROSTER_JSON.fetched" ]; then
+            AGE=$(( $(date +%s) - $(cat "$ROSTER_JSON.fetched") ))
+            if [ "$AGE" -lt 28800 ]; then
+              echo "::notice::로스터 캐시 신선 (${AGE}초 경과) → 길드 API 생략"
+              ARGS="$ARGS --roster-file $ROSTER_JSON"
+            else
+              echo "::notice::로스터 캐시 만료 (${AGE}초 경과) → 길드 API 새로 조회"
+            fi
+          else
+            echo "::notice::로스터 캐시 없음 → 길드 API 조회"
+          fi
           node collect_eval.js $ARGS
 
       - name: Commit data
@@ -83,6 +107,13 @@ jobs:
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Save roster cache
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .roster-cache
+          key: eval-roster-${{ github.run_id }}
 
       # GITHUB_TOKEN으로 한 push는 다른 워크플로를 트리거하지 못하므로(GitHub 재귀 방지)
       # 데이터가 실제로 바뀐 경우에만 Pages 배포 워크플로를 직접 디스패치한다.
