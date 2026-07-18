@@ -45,6 +45,7 @@ function parseArgs() {
     days: 0,
     members: null,      // "id1,id2" → 명부 없이 직접 지정
     rosterFile: null,   // JSON 파일 [{mbrId,name,level,guild}]
+    rosterCache: null,  // 네트워크 명부 조회 후 저장할 캐시 경로 (Actions cache와 연동)
     guilds: (process.env.GUILDS || "3,4,5,6").split(",").map((s) => parseInt(s, 10)).filter(Boolean),
     outDir: path.join(__dirname, "docs", "data"),
     delay: 300,
@@ -59,6 +60,7 @@ function parseArgs() {
       case "--days": cfg.days = parseInt(args[++i], 10); break;
       case "--members": cfg.members = args[++i].split(",").map((s) => s.trim()).filter(Boolean); break;
       case "--roster-file": cfg.rosterFile = args[++i]; break;
+      case "--roster-cache": cfg.rosterCache = args[++i]; break;
       case "--guilds": cfg.guilds = args[++i].split(",").map((s) => parseInt(s, 10)).filter(Boolean); break;
       case "--season": CONF.guildSeasonId = parseInt(args[++i], 10); break;
       case "--week": CONF.weekNo = parseInt(args[++i], 10); break;
@@ -149,6 +151,7 @@ async function fetchFormJson(endpoint, params) {
 /* ---------------- 1) 멤버 명부 ---------------- */
 async function fetchRoster(cfg) {
   if (cfg.rosterFile) {
+    console.log(`  로스터 캐시 사용 (${cfg.rosterFile}) — 길드 API 생략`);
     const list = JSON.parse(fs.readFileSync(cfg.rosterFile, "utf-8"));
     return list.map((m) => ({ mbrId: String(m.mbrId), name: m.name || m.mbrNm || "", level: m.level ?? null, guild: m.guild || m.guildNm || null }));
   }
@@ -321,6 +324,20 @@ async function main() {
   console.log("▶ 1단계: 멤버 명부 수집");
   const roster = await fetchRoster(cfg);
   console.log(`  명부 ${roster.length}명`);
+
+  // 네트워크에서 새로 얻은 명부만 캐시에 저장한다.
+  // (--roster-file/--members 경유는 신선도 스탬프를 오염시키므로 제외)
+  // 명부(mbrId·이름·레벨·길드)는 준정적이라 하루 3~4회 갱신이면 충분하다.
+  if (cfg.rosterCache && roster.length && !cfg.rosterFile && !cfg.members) {
+    try {
+      fs.mkdirSync(path.dirname(cfg.rosterCache), { recursive: true });
+      fs.writeFileSync(cfg.rosterCache, JSON.stringify(roster));
+      fs.writeFileSync(`${cfg.rosterCache}.fetched`, String(Math.floor(Date.now() / 1000)));
+      console.log(`  로스터 캐시 저장 (${cfg.rosterCache})`);
+    } catch (err) {
+      console.warn(`  ⚠️ 로스터 캐시 저장 실패 (무시): ${err.message}`);
+    }
+  }
 
   // 기존 데이터 로드 (증분 수집 + 병합용)
   fs.mkdirSync(cfg.outDir, { recursive: true });
