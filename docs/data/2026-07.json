@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T19:00:15.570Z",
+    "generatedAt": "2026-07-18T19:45:43.492Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 190,
+    "eventCount": 191,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -157,6 +157,18 @@
       "guild": "오션"
     },
     {
+      "mbrId": "1000271074",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276046",
+      "name": "최대한",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
       "mbrId": "1000276053",
       "name": "정인철",
       "level": 1,
@@ -207,18 +219,6 @@
     {
       "mbrId": "1000275118",
       "name": "고한결",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000271074",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000276046",
-      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -331,14 +331,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000271084",
-      "name": "이초롱",
+      "mbrId": "1000275048",
+      "name": "이지헌",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275048",
-      "name": "이지헌",
+      "mbrId": "1000271084",
+      "name": "이초롱",
       "level": 2,
       "guild": "오로라"
     },
@@ -379,14 +379,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000272087",
-      "name": "김은수",
+      "mbrId": "1000275036",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275036",
-      "name": "김동조",
+      "mbrId": "1000272087",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
@@ -403,18 +403,6 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000276190",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "1000276193",
-      "name": "양용택",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "1000276231",
       "name": "호정숙",
       "level": 1,
@@ -427,14 +415,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275083",
-      "name": "안재혁",
+      "mbrId": "1000277045",
+      "name": "오상진",
       "level": 1,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000277045",
-      "name": "오상진",
+      "mbrId": "1000275083",
+      "name": "안재혁",
       "level": 1,
       "guild": "오로라"
     },
@@ -453,6 +441,18 @@
     {
       "mbrId": "1000276224",
       "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276190",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276193",
+      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -535,14 +535,14 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "1000276099",
-      "name": "허준",
+      "mbrId": "1000275078",
+      "name": "김태우",
       "level": 2,
       "guild": "앰버"
     },
     {
-      "mbrId": "1000275078",
-      "name": "김태우",
+      "mbrId": "1000276099",
+      "name": "허준",
       "level": 2,
       "guild": "앰버"
     },
@@ -625,6 +625,30 @@
       "guild": "앰버"
     },
     {
+      "mbrId": "1000275067",
+      "name": "권영찬",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000272110",
+      "name": "최채원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000269047",
+      "name": "이용규",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275100",
+      "name": "나영흠",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
       "mbrId": "1000276048",
       "name": "구자원",
       "level": 1,
@@ -651,30 +675,6 @@
     {
       "mbrId": "1000276095",
       "name": "서지민",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000275067",
-      "name": "권영찬",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000272110",
-      "name": "최채원",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000269047",
-      "name": "이용규",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000275100",
-      "name": "나영흠",
       "level": 1,
       "guild": "앰버"
     },
@@ -859,6 +859,18 @@
       "guild": "시에나"
     },
     {
+      "mbrId": "1000275053",
+      "name": "김명서",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276040",
+      "name": "이동섭",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
       "mbrId": "1000276204",
       "name": "이민경",
       "level": 1,
@@ -879,18 +891,6 @@
     {
       "mbrId": "1000276084",
       "name": "이연재",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "1000275053",
-      "name": "김명서",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "1000276040",
-      "name": "이동섭",
       "level": 1,
       "guild": "시에나"
     },
@@ -4897,6 +4897,27 @@
       "evaluateeId": "1000276142",
       "evaluateeName": "이재훈",
       "projectName": "시스템 관제 자동화 스크립트 개발",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s624004-1",
+      "evlNo": "624004",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276142",
+      "evaluateeName": "이재훈",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
