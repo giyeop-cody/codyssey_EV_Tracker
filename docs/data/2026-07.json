@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T18:37:31.170Z",
+    "generatedAt": "2026-07-18T18:43:08.794Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 189,
+    "eventCount": 190,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -157,6 +157,18 @@
       "guild": "오션"
     },
     {
+      "mbrId": "1000271074",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276046",
+      "name": "최대한",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
       "mbrId": "1000276053",
       "name": "정인철",
       "level": 1,
@@ -207,18 +219,6 @@
     {
       "mbrId": "1000275118",
       "name": "고한결",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000271074",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000276046",
-      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -625,30 +625,6 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "1000276095",
-      "name": "서지민",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000275067",
-      "name": "권영찬",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000272110",
-      "name": "최채원",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "1000269047",
-      "name": "이용규",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
       "mbrId": "1000275100",
       "name": "나영흠",
       "level": 1,
@@ -675,6 +651,30 @@
     {
       "mbrId": "1000276107",
       "name": "김태우",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000276095",
+      "name": "서지민",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000275067",
+      "name": "권영찬",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000272110",
+      "name": "최채원",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "1000269047",
+      "name": "이용규",
       "level": 1,
       "guild": "앰버"
     },
@@ -859,6 +859,18 @@
       "guild": "시에나"
     },
     {
+      "mbrId": "1000275053",
+      "name": "김명서",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276040",
+      "name": "이동섭",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
       "mbrId": "1000276204",
       "name": "이민경",
       "level": 1,
@@ -879,18 +891,6 @@
     {
       "mbrId": "1000276084",
       "name": "이연재",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "1000275053",
-      "name": "김명서",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "1000276040",
-      "name": "이동섭",
       "level": 1,
       "guild": "시에나"
     },
@@ -4877,6 +4877,27 @@
       "evaluateeName": "송지윤",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s624003-1",
+      "evlNo": "624003",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276142",
+      "evaluateeName": "이재훈",
+      "projectName": "시스템 관제 자동화 스크립트 개발",
+      "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
