@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T08:23:51.238Z",
+    "generatedAt": "2026-07-18T10:00:48.422Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 179,
+    "eventCount": 184,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -39,6 +39,12 @@
     {
       "mbrId": "1000276075",
       "name": "정세영",
+      "level": 2,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000275114",
+      "name": "임준현",
       "level": 2,
       "guild": "오션"
     },
@@ -87,12 +93,6 @@
     {
       "mbrId": "1000275098",
       "name": "서예영",
-      "level": 2,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000275114",
-      "name": "임준현",
       "level": 2,
       "guild": "오션"
     },
@@ -157,18 +157,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "1000271074",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "1000276046",
-      "name": "최대한",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "1000276053",
       "name": "정인철",
       "level": 1,
@@ -219,6 +207,18 @@
     {
       "mbrId": "1000275118",
       "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000271074",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "1000276046",
+      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -325,14 +325,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000275048",
-      "name": "이지헌",
+      "mbrId": "1000271084",
+      "name": "이초롱",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "1000271084",
-      "name": "이초롱",
+      "mbrId": "1000275048",
+      "name": "이지헌",
       "level": 2,
       "guild": "오로라"
     },
@@ -403,12 +403,6 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "1000276231",
-      "name": "호정숙",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
       "mbrId": "1000275058",
       "name": "권영후",
       "level": 1,
@@ -453,6 +447,12 @@
     {
       "mbrId": "1000276193",
       "name": "양용택",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "1000276231",
+      "name": "호정숙",
       "level": 1,
       "guild": "오로라"
     },
@@ -859,12 +859,6 @@
       "guild": "시에나"
     },
     {
-      "mbrId": "1000276228",
-      "name": "한택진",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
       "mbrId": "1000276084",
       "name": "이연재",
       "level": 1,
@@ -891,6 +885,12 @@
     {
       "mbrId": "1000276172",
       "name": "조창래",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "1000276228",
+      "name": "한택진",
       "level": 1,
       "guild": "시에나"
     },
@@ -3207,6 +3207,27 @@
       "detail": null
     },
     {
+      "evalId": "632102",
+      "evlNo": "621012",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "1000270053",
+      "evaluatorName": "배재민",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-16T23:06:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "632103",
       "evlNo": "621035",
       "evlDegr": "1",
@@ -3224,6 +3245,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-16T23:08:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "632104",
+      "evlNo": "621012",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-17T21:30:00+09:00",
+      "endTime": "22:00",
+      "evaluatorId": "1000272065",
+      "evaluatorName": "백예지",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-16T23:17:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -3266,6 +3308,48 @@
       "score": "0",
       "resultNm": "FAIL",
       "requestedAt": "2026-07-17T23:06:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "633056",
+      "evlNo": "621012",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-18T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "1000270057",
+      "evaluatorName": "박주선",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-17T21:56:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "634048",
+      "evlNo": "603017",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-18T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "1000272065",
+      "evaluatorName": "백예지",
+      "evaluateeId": "1000275114",
+      "evaluateeName": "임준현",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-18T16:46:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -4667,6 +4751,27 @@
       "evaluateeName": "강성현",
       "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s623013-1",
+      "evlNo": "623013",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000275114",
+      "evaluateeName": "임준현",
+      "projectName": "시스템 관제 자동화 스크립트 개발",
+      "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
