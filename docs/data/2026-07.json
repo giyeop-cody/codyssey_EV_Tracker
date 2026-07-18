@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T13:56:33.191Z",
+    "generatedAt": "2026-07-18T14:38:22.661Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -157,36 +157,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "sha1:56cfa71c",
-      "name": "정인철",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:5e6bf9a5",
-      "name": "유성훈",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:8b51ce8e",
-      "name": "최민수",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:71b3d758",
-      "name": "이우태",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:dff52c4a",
-      "name": "김준태",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "sha1:bd63aa71",
       "name": "김수정",
       "level": 1,
@@ -219,6 +189,36 @@
     {
       "mbrId": "sha1:4ff6a055",
       "name": "최대한",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:56cfa71c",
+      "name": "정인철",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:5e6bf9a5",
+      "name": "유성훈",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:8b51ce8e",
+      "name": "최민수",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:71b3d758",
+      "name": "이우태",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:dff52c4a",
+      "name": "김준태",
       "level": 1,
       "guild": "오션"
     },
@@ -331,14 +331,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:a332e770",
-      "name": "이초롱",
+      "mbrId": "sha1:5581c4f7",
+      "name": "이지헌",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:5581c4f7",
-      "name": "이지헌",
+      "mbrId": "sha1:a332e770",
+      "name": "이초롱",
       "level": 2,
       "guild": "오로라"
     },
@@ -379,14 +379,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:de42a127",
-      "name": "김은수",
+      "mbrId": "sha1:98dfc86c",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:98dfc86c",
-      "name": "김동조",
+      "mbrId": "sha1:de42a127",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
@@ -399,18 +399,6 @@
     {
       "mbrId": "sha1:143eca29",
       "name": "정호준",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:52536857",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:63e034da",
-      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -453,6 +441,18 @@
     {
       "mbrId": "sha1:03cffad8",
       "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:52536857",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:63e034da",
+      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -535,14 +535,14 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:7b9de5ec",
-      "name": "김태우",
+      "mbrId": "sha1:b75de667",
+      "name": "허준",
       "level": 2,
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:b75de667",
-      "name": "허준",
+      "mbrId": "sha1:7b9de5ec",
+      "name": "김태우",
       "level": 2,
       "guild": "앰버"
     },
@@ -625,24 +625,6 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:3d1f6c6d",
-      "name": "권영찬",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "sha1:cd0297bc",
-      "name": "최채원",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
-      "mbrId": "sha1:a98dfa69",
-      "name": "이용규",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
       "mbrId": "sha1:4e03dd17",
       "name": "나영흠",
       "level": 1,
@@ -655,14 +637,14 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:8d7ce41a",
-      "name": "변재혁",
+      "mbrId": "sha1:ec83fec5",
+      "name": "이교원",
       "level": 1,
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:ec83fec5",
-      "name": "이교원",
+      "mbrId": "sha1:8d7ce41a",
+      "name": "변재혁",
       "level": 1,
       "guild": "앰버"
     },
@@ -675,6 +657,24 @@
     {
       "mbrId": "sha1:1c0639ab",
       "name": "서지민",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "sha1:3d1f6c6d",
+      "name": "권영찬",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "sha1:a98dfa69",
+      "name": "이용규",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "sha1:cd0297bc",
+      "name": "최채원",
       "level": 1,
       "guild": "앰버"
     },
@@ -859,6 +859,18 @@
       "guild": "시에나"
     },
     {
+      "mbrId": "sha1:5a8dd315",
+      "name": "이민경",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
+      "mbrId": "sha1:ef0ce43b",
+      "name": "조창래",
+      "level": 1,
+      "guild": "시에나"
+    },
+    {
       "mbrId": "sha1:89cce81d",
       "name": "한택진",
       "level": 1,
@@ -879,18 +891,6 @@
     {
       "mbrId": "sha1:910fd374",
       "name": "이동섭",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "sha1:5a8dd315",
-      "name": "이민경",
-      "level": 1,
-      "guild": "시에나"
-    },
-    {
-      "mbrId": "sha1:ef0ce43b",
-      "name": "조창래",
       "level": 1,
       "guild": "시에나"
     },
@@ -3407,11 +3407,11 @@
       "evaluateeName": "김두운",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-18T21:46:00+09:00",
       "src": "txn",
       "detail": null
