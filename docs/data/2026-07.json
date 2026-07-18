@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T17:45:46.560Z",
+    "generatedAt": "2026-07-18T17:57:05.187Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -157,18 +157,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "sha1:e83ffab8",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:4ff6a055",
-      "name": "최대한",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "sha1:56cfa71c",
       "name": "정인철",
       "level": 1,
@@ -219,6 +207,18 @@
     {
       "mbrId": "sha1:0f052b0a",
       "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:e83ffab8",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:4ff6a055",
+      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
@@ -331,14 +331,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:5581c4f7",
-      "name": "이지헌",
+      "mbrId": "sha1:a332e770",
+      "name": "이초롱",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:a332e770",
-      "name": "이초롱",
+      "mbrId": "sha1:5581c4f7",
+      "name": "이지헌",
       "level": 2,
       "guild": "오로라"
     },
@@ -379,14 +379,14 @@
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:98dfc86c",
-      "name": "김동조",
+      "mbrId": "sha1:de42a127",
+      "name": "김은수",
       "level": 2,
       "guild": "오로라"
     },
     {
-      "mbrId": "sha1:de42a127",
-      "name": "김은수",
+      "mbrId": "sha1:98dfc86c",
+      "name": "김동조",
       "level": 2,
       "guild": "오로라"
     },
@@ -399,6 +399,36 @@
     {
       "mbrId": "sha1:143eca29",
       "name": "정호준",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:be3204a2",
+      "name": "오철호",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:22b146eb",
+      "name": "조영래",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:03cffad8",
+      "name": "이호규",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:52536857",
+      "name": "임효정",
+      "level": 1,
+      "guild": "오로라"
+    },
+    {
+      "mbrId": "sha1:63e034da",
+      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -423,36 +453,6 @@
     {
       "mbrId": "sha1:42f129bc",
       "name": "오상진",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:22b146eb",
-      "name": "조영래",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:be3204a2",
-      "name": "오철호",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:03cffad8",
-      "name": "이호규",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:52536857",
-      "name": "임효정",
-      "level": 1,
-      "guild": "오로라"
-    },
-    {
-      "mbrId": "sha1:63e034da",
-      "name": "양용택",
       "level": 1,
       "guild": "오로라"
     },
@@ -535,14 +535,14 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:b75de667",
-      "name": "허준",
+      "mbrId": "sha1:7b9de5ec",
+      "name": "김태우",
       "level": 2,
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:7b9de5ec",
-      "name": "김태우",
+      "mbrId": "sha1:b75de667",
+      "name": "허준",
       "level": 2,
       "guild": "앰버"
     },
@@ -625,12 +625,6 @@
       "guild": "앰버"
     },
     {
-      "mbrId": "sha1:1c0639ab",
-      "name": "서지민",
-      "level": 1,
-      "guild": "앰버"
-    },
-    {
       "mbrId": "sha1:3d1f6c6d",
       "name": "권영찬",
       "level": 1,
@@ -675,6 +669,12 @@
     {
       "mbrId": "sha1:f07c72f3",
       "name": "김태우",
+      "level": 1,
+      "guild": "앰버"
+    },
+    {
+      "mbrId": "sha1:1c0639ab",
+      "name": "서지민",
       "level": 1,
       "guild": "앰버"
     },
