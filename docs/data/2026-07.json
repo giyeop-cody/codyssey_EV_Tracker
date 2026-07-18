@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-18T13:47:49.705Z",
+    "generatedAt": "2026-07-18T13:56:33.191Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -157,18 +157,6 @@
       "guild": "오션"
     },
     {
-      "mbrId": "sha1:e83ffab8",
-      "name": "김명재",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
-      "mbrId": "sha1:4ff6a055",
-      "name": "최대한",
-      "level": 1,
-      "guild": "오션"
-    },
-    {
       "mbrId": "sha1:56cfa71c",
       "name": "정인철",
       "level": 1,
@@ -219,6 +207,18 @@
     {
       "mbrId": "sha1:0f052b0a",
       "name": "고한결",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:e83ffab8",
+      "name": "김명재",
+      "level": 1,
+      "guild": "오션"
+    },
+    {
+      "mbrId": "sha1:4ff6a055",
+      "name": "최대한",
       "level": 1,
       "guild": "오션"
     },
