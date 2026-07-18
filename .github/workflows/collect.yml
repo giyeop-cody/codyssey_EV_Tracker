@@ -4,6 +4,8 @@ on:
   schedule:
     # 30분 주기 (UTC). KST 24시간 커버.
     - cron: "*/30 * * * *"
+    # 스케줄러 누락 대비 이중 스트림 (2026-07-18: */30 단독 3시간 공백 관측됨)
+    - cron: "5,35 * * * *"
   workflow_dispatch:
     inputs:
       year:
