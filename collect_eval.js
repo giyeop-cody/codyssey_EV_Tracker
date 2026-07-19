@@ -21,6 +21,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const evalPlan = require("./lib/eval-plan");
 
 const API_BASE = "https://api.usr.codyssey.kr/";
 
@@ -346,6 +347,8 @@ async function main() {
   try { existing = JSON.parse(fs.readFileSync(outFile, "utf-8")); } catch (_) {}
   // v1(scheduleAllList 기반, src 없음) 이벤트는 v2(mbrSearch 기반, src 있음)로 대체 — 중복 방지
   existing.events = (existing.events || []).filter((e) => e && e.src);
+  // 평가 단위별 마지막 확인 base 코드 (Trigger A 판정 기준, 첫 실행이면 비어 있어 전체 대상)
+  const evalStatus = (existing.meta && existing.meta.evalStatus) || {};
 
   // 3단계: 멤버별 평가 목록 (mbrSearch — mbrId 반영 실측 확정)
   console.log(`▶ 2단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
@@ -369,25 +372,23 @@ async function main() {
   }
   console.log(`  고유 평가 ${uniq.size}건 (중복 제거 후)`);
 
-  // 4단계: 상세 수집 — 신규이거나 상태(stusCd)가 바뀐 평가만 (증분)
-  const storedStus = new Map();
-  for (const ev of (existing.events || [])) {
-    if (!ev.evlNo) continue;
-    const k = `${ev.evlNo}|${ev.evlDegr}`;
-    if (!storedStus.has(k)) storedStus.set(k, new Set());
-    storedStus.get(k).add(String(ev.stusCd || ""));
-  }
-  const targets = [...uniq.values()].filter(({ row }) => {
-    const st = storedStus.get(`${row.evlNo}|${row.evlDegr}`);
-    return !st || !st.has(String(row.evlStusCd));
-  });
+  // 4단계: 상세 수집 — Trigger A(base 코드 변화)만 증분 대상으로 선정한다.
+  // 과거 구현은 base/txn 도메인의 stusCd를 한 Set에 섞어 비교해 코드 충돌 시
+  // 갱신이 영구 스킵되고, 대부분 평가가 매번 재조회됐다 (2026-07-19 사례, 매 실행 323건).
+  const targets = [...uniq.values()].filter(({ row }) => evalPlan.isBaseChanged(row, evalStatus));
   console.log(`▶ 3단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건)`);
   const newEvents = [];
+  const fetchedKeys = new Set(); // 이번 실행에 상세를 본 평가 (스윕 중복 호출 방지)
   let done = 0;
   for (const { member, row } of targets) {
+    const key = evalPlan.evalKey(row.evlNo, row.evlDegr);
+    fetchedKeys.add(key);
     let txs = [];
     try {
       txs = await fetchEvalDetail(row.evlNo, row.evlDegr);
+      // 목록이 알려준 base 코드를 기록해 다음 실행의 판정 기준으로 삼는다.
+      // (호출 실패 시 기록하지 않아 다음 실행에 자동 재시도)
+      evalPlan.recordBaseCd(evalStatus, key, row.evlStusCd);
     } catch (e) {
       if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
       console.warn(`  ⚠️ 상세 실패 (evlNo ${row.evlNo}): ${e.message}`);
@@ -402,6 +403,40 @@ async function main() {
     await sleep(cfg.delay);
   }
 
+  // 3.5단계: 비종결 평가 스윕 — 목록 변화 감지가 회복시켜주지 못하는 평가
+  // (완료 후 목록에서 밀려난 경우 등)를 상세 API로 직접 다시 본다.
+  // 평가 단위당 1회 호출로 그 평가의 트랜잭션 전체가 갱신된다.
+  const sweep = evalPlan.planStaleSweep(existing.events, Date.now(), { cap: 20 })
+    .filter((item) => !fetchedKeys.has(item.key));
+  if (sweep.length) {
+    console.log(`▶ 3.5단계: 비종결 평가 스윕 재조회 (${sweep.length}건, 오래된 종료 순)`);
+    const rosterById = new Map(roster.map((m) => [String(m.mbrId), m]));
+    for (const item of sweep) {
+      const rep = item.representative;
+      const memberObj = rosterById.get(String(rep.evaluateeId))
+        || { mbrId: rep.evaluateeId, name: rep.evaluateeName || null };
+      // 프로젝트/트랙명은 기존 이벤트 값으로 채워 갱신 이벤트가 정보를 잃지 않게 한다.
+      const synth = {
+        evlNo: rep.evlNo, evlDegr: rep.evlDegr, evlBgngDt: null,
+        uqstnNm: rep.projectName, projectNm: rep.projectName, lcorsNm: rep.trackName,
+        evlScr: null, evlResltNm: null, evlStusNm: rep.stusNm
+      };
+      let txs = [];
+      try {
+        txs = await fetchEvalDetail(rep.evlNo, rep.evlDegr);
+      } catch (e) {
+        if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
+        console.warn(`  ⚠️ 스윕 상세 실패 (${item.key}): ${e.message}`);
+      }
+      if (txs.length) {
+        for (const tx of txs) newEvents.push(txnToEvent(tx, synth, memberObj, feedbackOn));
+      } else {
+        console.log(`  - 스윕: ${item.key} 상세 비어있음 (기존 상태 유지)`);
+      }
+      await sleep(cfg.delay);
+    }
+  }
+
   // 4단계: 병합 (기간 밖 이벤트 제외 — 기본값은 해당 월 ± 없음)
   console.log("▶ 4단계: 병합 및 저장");
   const merged = new Map((existing.events || []).map((e) => [String(e.evalId), e]));
@@ -410,21 +445,28 @@ async function main() {
     if (ev.slotDateTime && !inRange(ev.slotDateTime)) { droppedOut++; continue; }
     merged.set(String(ev.evalId), ev);
   }
+
+  // 같은 평가에 txn 상세가 있으면 평가자 미상 summary 잔재는 정리한다.
+  const dedupe = evalPlan.dropRedundantSummaries([...merged.values()]);
+  if (dedupe.dropped) console.log(`  summary 잔재 정리: ${dedupe.dropped}건 제거`);
   const out = {
     meta: {
       generatedAt: new Date().toISOString(),
       year: outY,
       month: outM,
       mock: false,
-      eventCount: merged.size,
+      eventCount: dedupe.kept.length,
       roster: roster.length,
       selfOnlyWarning: false,          // mbrSearch로 타인 평가 수집 성공 (2026-07-17 확정)
       source: "mbrSearch+pkList",
       feedbackCollected: feedbackOn,
       droppedOutOfRange: droppedOut,
+      sweepTargets: sweep.length,
+      dedupedSummaries: dedupe.dropped,
+      evalStatus, // 평가 단위별 마지막 확인 base 코드 (Trigger A 판정 기준)
     },
     members: roster.map((m) => ({ mbrId: m.mbrId, name: m.name, level: m.level, guild: m.guild })),
-    events: [...merged.values()].sort((a, b) => String(a.slotDateTime).localeCompare(String(b.slotDateTime))),
+    events: dedupe.kept.sort((a, b) => String(a.slotDateTime).localeCompare(String(b.slotDateTime))),
     slots: [], // 슬롯 오픈 분석 폐기 (2026-07-17) — 세션 소유자 단독 데이터 비대칭 이슈
   };
 
