@@ -63,39 +63,19 @@ jobs:
           key: eval-roster-${{ github.run_id }}
           restore-keys: eval-roster-
 
-      # 공유 로스터 허브(codyssey_roster_hub, 비공개)의 최신본이 8시간 이내이면
-      # actions/cache 로스터보다 우선 적용한다. 실패/만료 시 조용히 폐기해
-      # 기존 캐시 → 길드 API 경로를 탄다.
+      # 공유 로스터 허브(비공개)의 최신본이 신선하면 actions/cache 로스터보다 우선 적용한다.
+      # 페치 구현은 codyssey_commons(공개)에서 받아 실행 — 허브 구조 변경 시 한 곳만 고친다.
+      # 실패/만료 시 조용히 폐기해 기존 캐시 → 길드 API 경로를 탄다.
       - name: Fetch shared roster from hub
         if: steps.check.outputs.skip != 'true'
         env:
           HUB_PAT: ${{ secrets.HUB_PAT }}
         run: |
-          [ -z "$HUB_PAT" ] && { echo "::notice::HUB_PAT 미등록 — 허브 로스터 없이 자체 경로 사용"; exit 0; }
-          # fine-grained PAT는 raw 호스트 비공개 접근이 안 돼 contents API + raw 미디어타입을 쓴다.
-          RAW='application/vnd.github.raw+json'
-          API='https://api.github.com/repos/giyeop-cody/codyssey_roster_hub/contents'
-          if curl -sfL -H "Authorization: Bearer $HUB_PAT" -H "Accept: $RAW" \
-              "$API/roster.json?ref=main" -o /tmp/hub-roster.json \
-          && curl -sfL -H "Authorization: Bearer $HUB_PAT" -H "Accept: $RAW" \
-              "$API/roster-ev.json?ref=main" -o /tmp/hub-roster-ev.json; then
-            node - <<'NODE'
-          const fs = require('fs');
-          const hub = JSON.parse(fs.readFileSync('/tmp/hub-roster.json', 'utf-8'));
-          const ev = JSON.parse(fs.readFileSync('/tmp/hub-roster-ev.json', 'utf-8'));
-          const ageSec = (Date.now() - Date.parse(hub.fetchedAt)) / 1000;
-          if (!Array.isArray(ev) || !ev.length || !(ageSec >= 0 && ageSec < 28800)) {
-            console.log(`::notice::허브 로스터 부적합 (멤버 ${Array.isArray(ev) ? ev.length : 0}명, ${Math.round(ageSec)}초 경과) — 자체 경로 사용`);
-            process.exit(0);
-          }
-          fs.mkdirSync('.roster-cache', { recursive: true });
-          fs.writeFileSync('.roster-cache/roster.json', JSON.stringify(ev));
-          fs.writeFileSync('.roster-cache/roster.json.fetched', String(Math.floor(Date.parse(hub.fetchedAt) / 1000)));
-          console.log(`::notice::허브 로스터 적용 (${ev.length}명, fetchedAt ${hub.fetchedAt})`);
-          NODE
-          else
-            echo "::notice::허브 로스터 다운로드 실패 — 자체 경로 사용"
+          if ! curl -sfL https://raw.githubusercontent.com/giyeop-cody/codyssey_commons/main/roster/fetch_hub_roster.cjs -o /tmp/fetch_hub_roster.cjs; then
+            echo "::notice::페처 다운로드 실패 — 자체 경로 사용"
+            exit 0
           fi
+          node /tmp/fetch_hub_roster.cjs --mode ev --file .roster-cache/roster.json
 
       - name: Collect evaluations
         if: steps.check.outputs.skip != 'true'
