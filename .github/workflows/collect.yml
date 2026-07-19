@@ -103,8 +103,23 @@ jobs:
             echo "변경 없음"
           else
             git commit -m "data: update evaluation data $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase
-            git push
+            # 동시 실행 run이 같은 생성 JSON을 push하면 rebase 충돌로 실패했다가
+            # 다음 run에서야 회복됐다 (2026-07-18 22:13 UTC 관측). 최대 3회 재시도하고
+            # 충돌 시에는 이번 run 생성본(가장 최신)을 채택해 rebase를 이어간다.
+            for i in 1 2 3; do
+              if git pull --rebase; then
+                git push && break
+              fi
+              if git checkout --theirs -- docs/data/ 2>/dev/null; then
+                echo "생성 데이터 충돌 → 이번 run 생성본 채택 (${i}회차)"
+                git add docs/data/
+                if GIT_EDITOR=true git rebase --continue; then
+                  git push && break
+                fi
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
