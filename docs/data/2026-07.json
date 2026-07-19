@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-19T10:08:01.756Z",
+    "generatedAt": "2026-07-19T10:42:39.157Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 189,
+    "eventCount": 190,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1496,6 +1496,10 @@
       "553003|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-19T01:34:00.087Z"
+      },
+      "624017|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-19T10:42:38.855Z"
       }
     }
   },
@@ -6365,6 +6369,27 @@
       "evaluateeName": "이재훈",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s624017-1",
+      "evlNo": "624017",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000272109",
+      "evaluateeName": "이현민",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
