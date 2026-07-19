@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-19T07:05:18.589Z",
+    "generatedAt": "2026-07-19T08:20:38.790Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -4842,24 +4842,24 @@
       "detail": null
     },
     {
-      "evalId": "s621037-1",
+      "evalId": "635011",
       "evlNo": "621037",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-19T14:01:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-19T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "1000272065",
+      "evaluatorName": "백예지",
       "evaluateeId": "1000275098",
       "evaluateeName": "서예영",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-19T13:57:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
