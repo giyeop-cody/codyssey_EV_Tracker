@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-19T04:25:19.636Z",
+    "generatedAt": "2026-07-19T05:54:55.939Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -218,8 +218,8 @@
         "detailAt": "2026-07-19T01:31:10.269Z"
       },
       "621037|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:31:10.763Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-19T05:54:55.637Z"
       },
       "599024|1": {
         "baseCd": "00003",
@@ -4842,6 +4842,27 @@
       "detail": null
     },
     {
+      "evalId": "s621037-1",
+      "evlNo": "621037",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-19T14:01:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000275098",
+      "evaluateeName": "서예영",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -5063,27 +5084,6 @@
       "evaluateeName": "이종석",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s621037-1",
-      "evlNo": "621037",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000275098",
-      "evaluateeName": "서예영",
-      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
