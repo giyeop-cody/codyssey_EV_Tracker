@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-19T09:26:47.638Z",
+    "generatedAt": "2026-07-19T10:08:01.756Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 187,
+    "eventCount": 189,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -218,8 +218,8 @@
         "detailAt": "2026-07-19T01:31:10.269Z"
       },
       "621037|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T05:54:55.637Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-19T10:08:01.455Z"
       },
       "599024|1": {
         "baseCd": "00003",
@@ -4859,6 +4859,48 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-19T13:57:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "635012",
+      "evlNo": "621037",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-19T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "1000276084",
+      "evaluatorName": "이연재",
+      "evaluateeId": "1000275098",
+      "evaluateeName": "서예영",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-19T13:58:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "635037",
+      "evlNo": "621037",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-19T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "1000274056",
+      "evaluatorName": "이주성",
+      "evaluateeId": "1000275098",
+      "evaluateeName": "서예영",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-19T17:52:00+09:00",
       "src": "txn",
       "detail": null
     },
