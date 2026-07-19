@@ -153,6 +153,8 @@ Settings → Secrets and variables → Actions
   Name:  SELF_MBR_ID
   Value: <본인 Codyssey mbrId>   (selfOnly 귀속 분석에 사용, 선택 사항)
 ```
+> **(선택) 공유 로스터 허브 연동**: `codyssey_roster_hub`(비공개)를 쓰는 환경이면 Secret `HUB_PAT`(허브 Contents:Read PAT)를 등록하세요. 4시간마다 갱신되는 길드 로스터를 허브에서 받아 길드 API 호출을 줄입니다. 미등록이면 알아서 자체 수집으로 돌아갑니다.
+
 
 JSESSIONID 캡처 방법:
 
