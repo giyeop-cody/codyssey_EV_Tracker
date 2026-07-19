@@ -63,6 +63,39 @@ jobs:
           key: eval-roster-${{ github.run_id }}
           restore-keys: eval-roster-
 
+      # 공유 로스터 허브(codyssey_roster_hub, 비공개)의 최신본이 8시간 이내이면
+      # actions/cache 로스터보다 우선 적용한다. 실패/만료 시 조용히 폐기해
+      # 기존 캐시 → 길드 API 경로를 탄다.
+      - name: Fetch shared roster from hub
+        if: steps.check.outputs.skip != 'true'
+        env:
+          HUB_PAT: ${{ secrets.HUB_PAT }}
+        run: |
+          [ -z "$HUB_PAT" ] && { echo "::notice::HUB_PAT 미등록 — 허브 로스터 없이 자체 경로 사용"; exit 0; }
+          if curl -sfL -H "Authorization: Bearer $HUB_PAT" \
+              https://raw.githubusercontent.com/giyeop-cody/codyssey_roster_hub/main/roster.json \
+              -o /tmp/hub-roster.json \
+          && curl -sfL -H "Authorization: Bearer $HUB_PAT" \
+              https://raw.githubusercontent.com/giyeop-cody/codyssey_roster_hub/main/roster-ev.json \
+              -o /tmp/hub-roster-ev.json; then
+            node - <<'NODE'
+          const fs = require('fs');
+          const hub = JSON.parse(fs.readFileSync('/tmp/hub-roster.json', 'utf-8'));
+          const ev = JSON.parse(fs.readFileSync('/tmp/hub-roster-ev.json', 'utf-8'));
+          const ageSec = (Date.now() - Date.parse(hub.fetchedAt)) / 1000;
+          if (!Array.isArray(ev) || !ev.length || !(ageSec >= 0 && ageSec < 28800)) {
+            console.log(`::notice::허브 로스터 부적합 (멤버 ${Array.isArray(ev) ? ev.length : 0}명, ${Math.round(ageSec)}초 경과) — 자체 경로 사용`);
+            process.exit(0);
+          }
+          fs.mkdirSync('.roster-cache', { recursive: true });
+          fs.writeFileSync('.roster-cache/roster.json', JSON.stringify(ev));
+          fs.writeFileSync('.roster-cache/roster.json.fetched', String(Math.floor(Date.parse(hub.fetchedAt) / 1000)));
+          console.log(`::notice::허브 로스터 적용 (${ev.length}명, fetchedAt ${hub.fetchedAt})`);
+          NODE
+          else
+            echo "::notice::허브 로스터 다운로드 실패 — 자체 경로 사용"
+          fi
+
       - name: Collect evaluations
         if: steps.check.outputs.skip != 'true'
         env:
