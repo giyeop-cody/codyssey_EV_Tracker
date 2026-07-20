@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-20T07:33:39.807Z",
+    "generatedAt": "2026-07-20T07:59:51.389Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1270,8 +1270,8 @@
         "detailAt": "2026-07-19T01:33:29.402Z"
       },
       "607003|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:33:29.896Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T07:59:51.088Z"
       },
       "596010|1": {
         "baseCd": "00003",
@@ -4909,6 +4909,27 @@
       "detail": null
     },
     {
+      "evalId": "s607003-1",
+      "evlNo": "607003",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T16:50:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276125",
+      "evaluateeName": "주재문",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -6054,27 +6075,6 @@
       "evaluateeName": "손재현",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s607003-1",
-      "evlNo": "607003",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000276125",
-      "evaluateeName": "주재문",
-      "projectName": "Mini Redis 구축",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
