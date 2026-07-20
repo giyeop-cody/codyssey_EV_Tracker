@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-20T16:43:49.197Z",
+    "generatedAt": "2026-07-20T16:57:35.550Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "sweepTargets": 3,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -5085,24 +5085,24 @@
       "detail": null
     },
     {
-      "evalId": "s622025-1",
+      "evalId": "636076",
       "evlNo": "622025",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-21T00:09:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-21T00:30:00+09:00",
+      "endTime": "01:00",
+      "evaluatorId": "1000263033",
+      "evaluatorName": "류성은",
       "evaluateeId": "1000275127",
       "evaluateeName": "강성현",
       "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-20T23:55:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
