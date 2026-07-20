@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-20T08:23:57.161Z",
+    "generatedAt": "2026-07-20T10:30:25.122Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 190,
+    "eventCount": 192,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 0,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 2,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -74,8 +74,8 @@
         "detailAt": "2026-07-19T01:30:51.941Z"
       },
       "607023|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:30:52.434Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T10:30:22.616Z"
       },
       "585013|1": {
         "baseCd": "00003",
@@ -562,8 +562,8 @@
         "detailAt": "2026-07-19T01:31:55.313Z"
       },
       "619021|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:31:55.809Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T10:30:23.500Z"
       },
       "589007|1": {
         "baseCd": "00003",
@@ -910,8 +910,8 @@
         "detailAt": "2026-07-19T01:32:42.396Z"
       },
       "618029|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:42.890Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T10:30:24.379Z"
       },
       "596013|1": {
         "baseCd": "00003",
@@ -1270,8 +1270,8 @@
         "detailAt": "2026-07-19T01:33:29.402Z"
       },
       "607003|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-20T07:59:51.088Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-20T10:30:24.820Z"
       },
       "596010|1": {
         "baseCd": "00003",
@@ -1500,6 +1500,14 @@
       "624017|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-19T10:42:38.855Z"
+      },
+      "625015|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T10:30:23.058Z"
+      },
+      "625020|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T10:30:23.939Z"
       }
     }
   },
@@ -4909,17 +4917,38 @@
       "detail": null
     },
     {
-      "evalId": "s607003-1",
+      "evalId": "636046",
       "evlNo": "607003",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-20T16:50:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-20T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "1000263033",
+      "evaluatorName": "류성은",
       "evaluateeId": "1000276125",
       "evaluateeName": "주재문",
       "projectName": "Mini Redis 구축",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-20T16:46:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s619021-1",
+      "evlNo": "619021",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T17:39:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000270063",
+      "evaluateeName": "성원모",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "IN_PROGRESS",
       "stusCd": "00002",
       "stusNm": "진행중",
@@ -4927,6 +4956,90 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s625015-1",
+      "evlNo": "625015",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T17:47:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s618029-1",
+      "evlNo": "618029",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T19:07:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000263033",
+      "evaluateeName": "류성은",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s625020-1",
+      "evlNo": "625020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T19:29:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000270057",
+      "evaluateeName": "박주선",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "636063",
+      "evlNo": "607023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-20T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "1000276225",
+      "evaluatorName": "백동재",
+      "evaluateeId": "1000272108",
+      "evaluateeName": "김도희",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-20T18:35:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
@@ -5067,27 +5180,6 @@
       "evaluateeName": "김도희",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s607023-1",
-      "evlNo": "607023",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000272108",
-      "evaluateeName": "김도희",
-      "projectName": "SQL로 만드는 나만의 데이터베이스",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
@@ -5340,27 +5432,6 @@
       "evaluateeName": "김현중",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s619021-1",
-      "evlNo": "619021",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000270063",
-      "evaluateeName": "성원모",
-      "projectName": "SQL로 만드는 나만의 데이터베이스",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
@@ -5800,27 +5871,6 @@
       "evaluatorName": null,
       "evaluateeId": "1000271063",
       "evaluateeName": "김창환",
-      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s618029-1",
-      "evlNo": "618029",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000263033",
-      "evaluateeName": "류성은",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
