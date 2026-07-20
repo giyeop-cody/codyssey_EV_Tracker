@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-20T14:55:51.919Z",
+    "generatedAt": "2026-07-20T15:23:38.347Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 3,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -1198,8 +1198,8 @@
         "detailAt": "2026-07-19T01:33:20.009Z"
       },
       "622025|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:33:20.503Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-20T15:23:37.177Z"
       },
       "614033|1": {
         "baseCd": "00003",
@@ -5085,6 +5085,27 @@
       "detail": null
     },
     {
+      "evalId": "s622025-1",
+      "evlNo": "622025",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T00:09:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000275127",
+      "evaluateeName": "강성현",
+      "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -6356,27 +6377,6 @@
       "evaluateeName": "정창석",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s622025-1",
-      "evlNo": "622025",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000275127",
-      "evaluateeName": "강성현",
-      "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
