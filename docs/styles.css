@@ -85,8 +85,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid
 .day.empty { background: transparent; border-color: transparent; cursor: default; }
 .day.today-cell { border-color: var(--accent); }
 .day .dnum { font-weight: 700; font-size: 13px; }
-.day .counts { font-size: 11px; margin: 2px 0; display: flex; gap: 8px; }
+.day .counts { font-size: 11px; margin: 2px 0; display: flex; gap: 8px; flex-wrap: wrap; }
 .day .ok { color: var(--good); }
+.day .ip { color: var(--warn); }
+.day .rq { color: var(--accent); }
 .day .cx { color: var(--bad); }
 .day .names { font-size: 10.5px; color: var(--muted); line-height: 1.35; }
 .day .names .more { color: var(--accent); }
