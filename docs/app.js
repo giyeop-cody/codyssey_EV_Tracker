@@ -230,6 +230,8 @@ function renderCalendar(stats) {
     const dk = `${state.year}-${pad(state.month)}-${pad(d)}`;
     const events = byDay.get(dk) || [];
     const ok = events.filter((e) => e.status === "COMPLETED").length;
+    const ip = events.filter((e) => e.status === "IN_PROGRESS").length;
+    const rq = events.filter((e) => e.status === "REQUESTED").length;
     const cx = events.filter((e) => e.status === "CANCELLED").length;
     const people = new Set();
     events.forEach((e) => { people.add(nameOf(stats.mm, e.evaluatorId)); people.add(nameOf(stats.mm, e.evaluateeId)); });
@@ -240,6 +242,8 @@ function renderCalendar(stats) {
         <div class="dnum">${d}</div>
         <div class="counts">
           ${ok ? `<span class="ok">✔ ${ok}</span>` : ""}
+          ${ip ? `<span class="ip">◔ ${ip}</span>` : ""}
+          ${rq ? `<span class="rq">▷ ${rq}</span>` : ""}
           ${cx ? `<span class="cx">✖ ${cx}</span>` : ""}
         </div>
         <div class="names">
