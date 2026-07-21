@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T09:19:24.746Z",
+    "generatedAt": "2026-07-21T10:08:24.679Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 3,
+    "sweepTargets": 2,
     "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
@@ -1520,6 +1520,10 @@
       "626025|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-21T09:19:23.119Z"
+      },
+      "626025|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-21T10:08:23.417Z"
       }
     }
   },
@@ -5181,27 +5185,6 @@
       "detail": null
     },
     {
-      "evalId": "s626025-1",
-      "evlNo": "626025",
-      "evlDegr": "1",
-      "slotDateTime": "2026-07-21T18:11:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000276079",
-      "evaluateeName": "박채연",
-      "projectName": "SQL로 만드는 나만의 데이터베이스",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s626026-1",
       "evlNo": "626026",
       "evlDegr": "1",
@@ -5220,6 +5203,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "637078",
+      "evlNo": "626025",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "1000276131",
+      "evaluatorName": "정창석",
+      "evaluateeId": "1000276079",
+      "evaluateeName": "박채연",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-21T17:40:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
