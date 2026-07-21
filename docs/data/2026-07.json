@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T10:39:41.423Z",
+    "generatedAt": "2026-07-21T11:31:29.098Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 198,
+    "eventCount": 201,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
+    "sweepTargets": 3,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -846,8 +846,8 @@
         "detailAt": "2026-07-19T01:32:33.484Z"
       },
       "586007|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:32:33.979Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-21T11:31:27.313Z"
       },
       "586006|1": {
         "baseCd": "00003",
@@ -1522,8 +1522,12 @@
         "detailAt": "2026-07-21T09:19:23.119Z"
       },
       "626025|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-21T10:08:23.417Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-21T11:31:26.321Z"
+      },
+      "626033|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-21T11:31:26.817Z"
       }
     }
   },
@@ -5224,6 +5228,69 @@
       "resultNm": "FAIL",
       "requestedAt": "2026-07-21T17:40:00+09:00",
       "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "637082",
+      "evlNo": "586007",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "1000276131",
+      "evaluatorName": "정창석",
+      "evaluateeId": "1000271068",
+      "evaluateeName": "고준석",
+      "projectName": "Mini Git 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-21T18:13:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "637089",
+      "evlNo": "626025",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-21T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "1000276142",
+      "evaluatorName": "이재훈",
+      "evaluateeId": "1000276079",
+      "evaluateeName": "박채연",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-21T19:01:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s626033-1",
+      "evlNo": "626033",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T20:27:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000275051",
+      "evaluateeName": "김민영",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
       "detail": null
     },
     {
