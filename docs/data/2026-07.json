@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T08:20:51.002Z",
+    "generatedAt": "2026-07-21T08:30:20.385Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
+    "sweepTargets": 3,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -5121,11 +5121,11 @@
       "evaluateeName": "문선곤",
       "projectName": "SQL로 만드는 나만의 데이터베이스",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-21T15:27:00+09:00",
       "src": "txn",
       "detail": null
