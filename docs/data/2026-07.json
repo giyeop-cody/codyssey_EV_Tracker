@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T05:52:42.795Z",
+    "generatedAt": "2026-07-21T06:44:19.109Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 194,
+    "eventCount": 195,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1508,6 +1508,10 @@
       "625020|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-20T10:30:23.939Z"
+      },
+      "626012|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-21T06:44:17.922Z"
       }
     }
   },
@@ -6482,6 +6486,27 @@
       "evaluateeName": "이현민",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s626012-1",
+      "evlNo": "626012",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000269045",
+      "evaluateeName": "문선곤",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
