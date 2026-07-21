@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T07:17:44.133Z",
+    "generatedAt": "2026-07-21T08:20:51.002Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 195,
+    "eventCount": 196,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -446,8 +446,8 @@
         "detailAt": "2026-07-19T01:33:41.792Z"
       },
       "622004|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:31:39.965Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-21T08:20:49.756Z"
       },
       "597017|1": {
         "baseCd": "00003",
@@ -5127,6 +5127,27 @@
       "score": "0",
       "resultNm": null,
       "requestedAt": "2026-07-21T15:27:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "637022",
+      "evlNo": "622004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "1000276116",
+      "evaluatorName": "모성우",
+      "evaluateeId": "1000272076",
+      "evaluateeName": "장현준",
+      "projectName": "Mini Git 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-21T12:27:00+09:00",
       "src": "txn",
       "detail": null
     },
