@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-21T08:30:20.385Z",
+    "generatedAt": "2026-07-21T09:19:24.746Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 196,
+    "eventCount": 198,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 3,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1512,6 +1512,14 @@
       "626012|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-21T07:17:42.870Z"
+      },
+      "626026|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-21T09:19:22.676Z"
+      },
+      "626025|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-21T09:19:23.119Z"
       }
     }
   },
@@ -5152,17 +5160,59 @@
       "detail": null
     },
     {
-      "evalId": "s616016-1",
+      "evalId": "637061",
       "evlNo": "616016",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-21T16:04:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-21T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "1000271068",
+      "evaluatorName": "고준석",
       "evaluateeId": "1000272068",
       "evaluateeName": "이종석",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-21T16:02:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s626025-1",
+      "evlNo": "626025",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T18:11:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276079",
+      "evaluateeName": "박채연",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s626026-1",
+      "evlNo": "626026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T18:13:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276079",
+      "evaluateeName": "박채연",
+      "projectName": "React 핵심 개념 마스터: SPA 서비스 구현",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "IN_PROGRESS",
       "stusCd": "00002",
       "stusNm": "진행중",
