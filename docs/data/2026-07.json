@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-07-22T05:52:16.639Z",
+    "generatedAt": "2026-07-22T07:08:34.914Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 211,
+    "eventCount": 213,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1022,8 +1022,8 @@
         "detailAt": "2026-07-19T01:32:57.234Z"
       },
       "591008|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:32:57.733Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-22T07:08:33.714Z"
       },
       "573016|1": {
         "baseCd": "00003",
@@ -5364,6 +5364,48 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-20T17:25:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "638027",
+      "evlNo": "591008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-22T13:30:00+09:00",
+      "endTime": "14:00",
+      "evaluatorId": "1000276225",
+      "evaluatorName": "백동재",
+      "evaluateeId": "1000276099",
+      "evaluateeName": "허준",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-22T13:02:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "638031",
+      "evlNo": "591008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-22T14:30:00+09:00",
+      "endTime": "15:00",
+      "evaluatorId": "1000272087",
+      "evaluatorName": "김은수",
+      "evaluateeId": "1000276099",
+      "evaluateeName": "허준",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-22T13:19:00+09:00",
       "src": "txn",
       "detail": null
     },
