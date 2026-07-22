@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-22T07:27:00.137Z",
+    "generatedAt": "2026-07-22T08:30:54.170Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 215,
+    "eventCount": 216,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1560,6 +1560,10 @@
       "627006|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-22T02:53:50.337Z"
+      },
+      "627022|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-22T08:30:52.907Z"
       }
     }
   },
@@ -5448,6 +5452,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-20T17:26:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "638060",
+      "evlNo": "627022",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-22T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "1000270043",
+      "evaluatorName": "장현준",
+      "evaluateeId": "1000276202",
+      "evaluateeName": "이세형",
+      "projectName": "AI 기반 Git 커밋 & PR 자동 생성기 개발",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-22T16:58:00+09:00",
       "src": "txn",
       "detail": null
     },
