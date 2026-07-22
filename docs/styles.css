@@ -114,6 +114,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid
 .badge.rj { background: rgba(255,159,67,.16); color: var(--warn, #ff9f43); }
 .badge.rq { background: rgba(79,140,255,.15); color: var(--accent); }
 .badge.ip { background: rgba(247,167,38,.15); color: var(--warn); }
+/* 종료(추정) 경과 진행 건 — 소스 완료 반영 대기 */
+.badge.ip.late { background: transparent; border: 1px dashed var(--warn); padding: 0 7px; }
+/* summary(요청 단계) 행의 시각 — 확정 슬롯이 아님을 "≈"로 표시 */
+.ev-row .time.est { color: var(--warn); }
 
 /* 히트맵 */
 .filter-row { display: flex; gap: 6px; margin-bottom: 12px; }
