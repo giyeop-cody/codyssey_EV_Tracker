@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-22T08:30:54.170Z",
+    "generatedAt": "2026-07-22T09:57:45.469Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 216,
+    "eventCount": 218,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1564,6 +1564,14 @@
       "627022|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-22T08:30:52.907Z"
+      },
+      "627028|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-22T09:57:43.714Z"
+      },
+      "627026|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-22T09:57:44.199Z"
       }
     }
   },
@@ -7000,6 +7008,48 @@
       "evaluateeName": "주재문",
       "projectName": "시스템 관제 자동화 스크립트 개발",
       "trackName": "Linux와 OS (Linux & OS)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s627028-1",
+      "evlNo": "627028",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000272076",
+      "evaluateeName": "장현준",
+      "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s627026-1",
+      "evlNo": "627026",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276201",
+      "evaluateeName": "이여원",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
