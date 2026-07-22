@@ -311,6 +311,21 @@ function renderHeatmap(stats, data) {
 function openModal(id) { $(id).hidden = false; }
 function closeModal(el) { el.closest(".modal-bg").hidden = true; }
 
+/* 종료 추정: endTime이 있으면 그 시각, 없으면 시작+30분 (추정 — 소스 확정값 아님.
+ * 7/22 사건 원인④: 끝난 평가도 소스 반영 지연으로 한동안 IN_PROGRESS로 남는 문제의 UI 측 완화) */
+const ASSUMED_EVAL_MIN = 30;
+function assumedEndMs(ev) {
+  if (ev.endTime && ev.slotDateTime) {
+    const d = new Date(`${String(ev.slotDateTime).slice(0, 10)}T${ev.endTime}:00+09:00`);
+    return isNaN(d) ? null : d.getTime();
+  }
+  if (ev.slotDateTime) {
+    const d = new Date(ev.slotDateTime);
+    return isNaN(d) ? null : d.getTime() + ASSUMED_EVAL_MIN * 60000;
+  }
+  return null;
+}
+
 function statusBadge(ev) {
   switch (ev.status) {
     case "COMPLETED": return `<span class="badge ok">완료</span>`;
@@ -319,7 +334,13 @@ function statusBadge(ev) {
       if ((ev.stusNm || "").includes("거절") || ev.stusCd === "00004" || (ev.cancel && ev.cancel.by === "EVALUATOR"))
         return `<span class="badge rj">거절</span>`;
       return `<span class="badge cx">취소</span>`;
-    case "IN_PROGRESS": return `<span class="badge ip">진행</span>`;
+    case "IN_PROGRESS": {
+      // 종료(추정) 시각이 지났는데도 진행중 → 소스의 완료 반영 지연일 가능성이 높음
+      const endMs = assumedEndMs(ev);
+      if (endMs && Date.now() > endMs)
+        return `<span class="badge ip late" title="슬롯 종료(추정) 경과 — 소스가 아직 진행중으로 표시 중. 완료 확정 반영 대기">진행(확정 대기)</span>`;
+      return `<span class="badge ip">진행</span>`;
+    }
     default: return `<span class="badge rq">요청</span>`;
   }
 }
@@ -337,9 +358,14 @@ function openDayModal(dk, stats) {
       const who = ev.cancel.byName || (ev.cancel.byId ? nameOf(stats.mm, ev.cancel.byId) : ev.cancel.by);
       cancelInfo = ` · 취소: ${who}${ev.cancel.reasonNm ? `(${ev.cancel.reasonNm})` : ""}`;
     }
+    // summary(요청 단계, s- 접두) 행의 시각은 evlBgngDt — 희망/신고 시각이지
+    // 확정 슬롯(:00/:30)이 아님 (7/22 시각 오인 사건 원인③). "≈" 로 구분 표시.
+    const timeCell = ev.src === "summary" && ev.slotDateTime
+      ? `<span class="time est" title="요청 단계 기준 시각 — 확정 슬롯 시각이 아닐 수 있습니다">≈${timeStr(ev.slotDateTime)}</span>`
+      : `<span class="time">${timeStr(ev.slotDateTime)}</span>`;
     return `
     <div class="ev-row" data-eval="${ev.evalId}">
-      <span class="time">${timeStr(ev.slotDateTime)}</span>
+      ${timeCell}
       <span class="who">
         <b>${a}</b><span class="arr">→</span><b>${b}</b>
         <span class="proj"> · ${ev.projectName || "-"}${cancelInfo}</span>
@@ -374,8 +400,8 @@ function openDetailModal(ev, stats) {
       <dt>평가자</dt><dd>${a}</dd>
       <dt>피평가자</dt><dd>${b}</dd>
       <dt>과제</dt><dd>${ev.projectName || "-"}${ev.trackName ? ` · ${ev.trackName}` : ""}</dd>
-      <dt>슬롯 시각</dt><dd>${(ev.slotDateTime || "").replace("T", " ").slice(0, 16)}${ev.endTime ? ` ~ ${ev.endTime}` : ""}</dd>
-      <dt>요청 시각</dt><dd>${(ev.regDateTime || "").replace("T", " ").slice(0, 16)}</dd>
+      <dt>${ev.src === "summary" ? "슬롯 시각 (요청 단계 기준)" : "슬롯 시각"}</dt><dd>${(ev.slotDateTime || "").replace("T", " ").slice(0, 16)}${ev.endTime ? ` ~ ${ev.endTime}` : ""}</dd>
+      ${ev.regDateTime ? `<dt>요청 시각</dt><dd>${(ev.regDateTime || "").replace("T", " ").slice(0, 16)}</dd>` : ""}
       <dt>상태</dt><dd>${statusBadge(ev)}</dd>
       ${cancelBlock}
       ${d && d.score != null ? `<dt>점수</dt><dd><b>${d.score}</b></dd>` : ""}
