@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-22T02:53:52.252Z",
+    "generatedAt": "2026-07-22T04:16:29.666Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 3,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -4990,27 +4990,6 @@
       "detail": null
     },
     {
-      "evalId": "s619021-1",
-      "evlNo": "619021",
-      "evlDegr": "1",
-      "slotDateTime": "2026-07-20T17:39:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000270063",
-      "evaluateeName": "성원모",
-      "projectName": "SQL로 만드는 나만의 데이터베이스",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s625015-1",
       "evlNo": "625015",
       "evlDegr": "1",
@@ -5364,6 +5343,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-22T09:57:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "636051",
+      "evlNo": "619021",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-22T12:00:00+09:00",
+      "endTime": "12:30",
+      "evaluatorId": "1000272108",
+      "evaluatorName": "김도희",
+      "evaluateeId": "1000270063",
+      "evaluateeName": "성원모",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-20T17:25:00+09:00",
       "src": "txn",
       "detail": null
     },
