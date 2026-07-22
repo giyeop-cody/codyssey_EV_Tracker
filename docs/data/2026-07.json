@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-22T19:53:10.341Z",
+    "generatedAt": "2026-07-22T20:17:42.883Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
+    "sweepTargets": 3,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -5563,11 +5563,11 @@
       "evaluateeName": "이현민",
       "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-23T03:09:00+09:00",
       "src": "txn",
       "detail": null
