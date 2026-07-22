@@ -20,6 +20,9 @@ on:
       days:
         description: "최근 N일만 수집 (비우면 해당 월 전체)"
         required: false
+  # 외부 워치독 점화용 (2026-07-22: GitHub 스케줄러 정전 2회 관측 — 플랫폼 정전은 내부 크론 대응 불가)
+  repository_dispatch:
+    types: [external-collect]
 
 permissions:
   contents: write
