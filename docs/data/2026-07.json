@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T13:00:53.577Z",
+    "generatedAt": "2026-07-23T14:28:32.378Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 234,
+    "eventCount": 237,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -242,8 +242,8 @@
         "detailAt": "2026-07-19T01:31:13.236Z"
       },
       "591004|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:31:13.731Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-23T14:28:30.191Z"
       },
       "590014|1": {
         "baseCd": "00001",
@@ -314,8 +314,8 @@
         "detailAt": "2026-07-19T01:31:22.147Z"
       },
       "594011|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:31:22.641Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T14:28:31.129Z"
       },
       "570003|1": {
         "baseCd": "00003",
@@ -1592,6 +1592,10 @@
       "628029|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-23T12:57:54.391Z"
+      },
+      "628033|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-23T14:28:30.659Z"
       }
     }
   },
@@ -5862,6 +5866,69 @@
       "detail": null
     },
     {
+      "evalId": "639101",
+      "evlNo": "594011",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T21:30:00+09:00",
+      "endTime": "22:00",
+      "evaluatorId": "1000267033",
+      "evaluatorName": "반가희",
+      "evaluateeId": "1000270054",
+      "evaluateeName": "임익화",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T20:17:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "639089",
+      "evlNo": "594011",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "1000272070",
+      "evaluatorName": "윤솔지",
+      "evaluateeId": "1000270054",
+      "evaluateeName": "임익화",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T19:25:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s591004-1",
+      "evlNo": "591004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T22:55:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276145",
+      "evaluateeName": "김시현",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -6041,27 +6108,6 @@
       "evaluateeName": "정세영",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s591004-1",
-      "evlNo": "591004",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000276145",
-      "evaluateeName": "김시현",
-      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
@@ -7406,6 +7452,27 @@
       "evaluateeName": "장현준",
       "projectName": "인증과 연관관계로 완성하는 FastAPI 웹 서비스",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s628033-1",
+      "evlNo": "628033",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000270054",
+      "evaluateeName": "임익화",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
