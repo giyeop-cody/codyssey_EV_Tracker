@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T12:05:27.127Z",
+    "generatedAt": "2026-07-23T12:57:56.186Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 232,
+    "eventCount": 234,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1566,8 +1566,8 @@
         "detailAt": "2026-07-22T08:30:52.907Z"
       },
       "627028|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-22T11:47:30.144Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T12:57:54.890Z"
       },
       "627026|1": {
         "baseCd": "00001",
@@ -1588,6 +1588,10 @@
       "628023|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-23T11:25:51.252Z"
+      },
+      "628029|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-23T12:57:54.391Z"
       }
     }
   },
@@ -5837,6 +5841,27 @@
       "detail": null
     },
     {
+      "evalId": "639097",
+      "evlNo": "627028",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T20:30:00+09:00",
+      "endTime": "21:00",
+      "evaluatorId": "1000267033",
+      "evaluatorName": "반가희",
+      "evaluateeId": "1000272076",
+      "evaluateeName": "장현준",
+      "projectName": "FastAPI 기반 CRUD 웹 서비스 구축",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T20:08:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -7360,6 +7385,27 @@
       "evaluateeName": "이여원",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s628029-1",
+      "evlNo": "628029",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000272076",
+      "evaluateeName": "장현준",
+      "projectName": "인증과 연관관계로 완성하는 FastAPI 웹 서비스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
