@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T04:59:56.507Z",
+    "generatedAt": "2026-07-23T06:16:02.658Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 1,
+    "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1578,8 +1578,8 @@
         "detailAt": "2026-07-22T11:47:30.615Z"
       },
       "628009|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-23T04:59:54.709Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-23T06:16:01.412Z"
       }
     }
   },
@@ -5619,6 +5619,27 @@
       "detail": null
     },
     {
+      "evalId": "639034",
+      "evlNo": "628009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T15:00:00+09:00",
+      "endTime": "15:30",
+      "evaluatorId": "1000275035",
+      "evaluatorName": "남상훈",
+      "evaluateeId": "1000268041",
+      "evaluateeName": "김대웅",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T14:31:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -7142,27 +7163,6 @@
       "evaluateeName": "이여원",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s628009-1",
-      "evlNo": "628009",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000268041",
-      "evaluateeName": "김대웅",
-      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
-      "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
