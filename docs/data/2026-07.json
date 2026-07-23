@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T07:16:00.450Z",
+    "generatedAt": "2026-07-23T07:46:15.658Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -5010,27 +5010,6 @@
       "detail": null
     },
     {
-      "evalId": "s625015-1",
-      "evlNo": "625015",
-      "evlDegr": "1",
-      "slotDateTime": "2026-07-20T17:47:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000267033",
-      "evaluateeName": "반가희",
-      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "636063",
       "evlNo": "607023",
       "evlDegr": "1",
@@ -5636,6 +5615,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-23T14:31:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "636055",
+      "evlNo": "625015",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "1000272108",
+      "evaluatorName": "김도희",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-20T17:32:00+09:00",
       "src": "txn",
       "detail": null
     },
