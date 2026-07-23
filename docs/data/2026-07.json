@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T16:16:44.828Z",
+    "generatedAt": "2026-07-23T16:56:34.628Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 238,
+    "eventCount": 239,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1596,6 +1596,10 @@
       "628033|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-23T14:28:30.659Z"
+      },
+      "628034|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-23T16:56:33.365Z"
       }
     }
   },
@@ -7494,6 +7498,27 @@
       "evaluateeName": "임익화",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s628034-1",
+      "evlNo": "628034",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276198",
+      "evaluateeName": "이지영",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
