@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T10:08:24.741Z",
+    "generatedAt": "2026-07-23T11:25:53.347Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 228,
+    "eventCount": 232,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -1502,8 +1502,8 @@
         "detailAt": "2026-07-22T18:45:00.628Z"
       },
       "625015|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-20T10:30:23.058Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T11:25:51.700Z"
       },
       "625020|1": {
         "baseCd": "00003",
@@ -1526,8 +1526,8 @@
         "detailAt": "2026-07-21T11:31:26.321Z"
       },
       "626033|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-21T11:31:26.817Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T11:25:52.148Z"
       },
       "627013|1": {
         "baseCd": "00001",
@@ -1584,6 +1584,10 @@
       "628020|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-23T09:08:46.813Z"
+      },
+      "628023|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-23T11:25:51.252Z"
       }
     }
   },
@@ -5308,6 +5312,27 @@
       "detail": null
     },
     {
+      "evalId": "637097",
+      "evlNo": "626033",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-21T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "1000275036",
+      "evaluatorName": "김동조",
+      "evaluateeId": "1000275051",
+      "evaluateeName": "김민영",
+      "projectName": "Mini Redis 구축",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-21T20:27:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "637098",
       "evlNo": "626033",
       "evlDegr": "1",
@@ -5718,11 +5743,11 @@
       "evaluateeName": "정경재",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-23T17:11:00+09:00",
       "src": "txn",
       "detail": null
@@ -5745,6 +5770,69 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-23T17:16:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "639078",
+      "evlNo": "628020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "1000276099",
+      "evaluatorName": "허준",
+      "evaluateeId": "1000275121",
+      "evaluateeName": "정경재",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T18:25:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s628023-1",
+      "evlNo": "628023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T19:23:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "1000276147",
+      "evaluateeName": "이송하",
+      "projectName": "파일 기반 가계부 콘솔 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "636057",
+      "evlNo": "625015",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T20:00:00+09:00",
+      "endTime": "20:30",
+      "evaluatorId": "1000270057",
+      "evaluatorName": "박주선",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-20T17:35:00+09:00",
       "src": "txn",
       "detail": null
     },
