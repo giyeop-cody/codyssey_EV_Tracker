@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T09:08:48.110Z",
+    "generatedAt": "2026-07-23T10:04:34.379Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 226,
+    "eventCount": 228,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1578,8 +1578,8 @@
         "detailAt": "2026-07-22T11:47:30.615Z"
       },
       "628009|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-23T06:16:01.412Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T10:04:33.194Z"
       },
       "628020|1": {
         "baseCd": "00002",
@@ -5623,6 +5623,27 @@
       "detail": null
     },
     {
+      "evalId": "639043",
+      "evlNo": "628009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "1000270057",
+      "evaluatorName": "박주선",
+      "evaluateeId": "1000268041",
+      "evaluateeName": "김대웅",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T15:14:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "636055",
       "evlNo": "625015",
       "evlDegr": "1",
@@ -5676,11 +5697,11 @@
       "evaluateeName": "반가희",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-20T17:32:00+09:00",
       "src": "txn",
       "detail": null
@@ -5703,6 +5724,27 @@
       "score": "0",
       "resultNm": null,
       "requestedAt": "2026-07-23T17:11:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "639070",
+      "evlNo": "628009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T18:00:00+09:00",
+      "endTime": "18:30",
+      "evaluatorId": "1000276147",
+      "evaluatorName": "이송하",
+      "evaluateeId": "1000268041",
+      "evaluateeName": "김대웅",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T17:16:00+09:00",
       "src": "txn",
       "detail": null
     },
