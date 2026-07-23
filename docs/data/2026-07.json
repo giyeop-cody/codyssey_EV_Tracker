@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-23T07:46:15.658Z",
+    "generatedAt": "2026-07-23T09:08:48.110Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 223,
+    "eventCount": 226,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1506,8 +1506,8 @@
         "detailAt": "2026-07-20T10:30:23.058Z"
       },
       "625020|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-20T10:30:23.939Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-23T09:08:46.315Z"
       },
       "626012|1": {
         "baseCd": "00002",
@@ -1580,6 +1580,10 @@
       "628009|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-23T06:16:01.412Z"
+      },
+      "628020|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-23T09:08:46.813Z"
       }
     }
   },
@@ -5630,12 +5634,75 @@
       "evaluateeName": "반가희",
       "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-20T17:32:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "639057",
+      "evlNo": "625020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "1000276147",
+      "evaluatorName": "이송하",
+      "evaluateeId": "1000270057",
+      "evaluateeName": "박주선",
+      "projectName": "SQL로 만드는 나만의 데이터베이스",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-23T16:35:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "636056",
+      "evlNo": "625015",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "1000276165",
+      "evaluatorName": "박영세",
+      "evaluateeId": "1000267033",
+      "evaluateeName": "반가희",
+      "projectName": "웹 기초 완성, 나만의 포트폴리오 구축",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "IN_PROGRESS",
       "stusCd": "00003",
       "stusNm": "평가진행중",
       "score": "0",
       "resultNm": null,
       "requestedAt": "2026-07-20T17:32:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "639067",
+      "evlNo": "628020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-23T18:00:00+09:00",
+      "endTime": "18:30",
+      "evaluatorId": "1000270057",
+      "evaluatorName": "박주선",
+      "evaluateeId": "1000275121",
+      "evaluateeName": "정경재",
+      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-23T17:11:00+09:00",
       "src": "txn",
       "detail": null
     },
