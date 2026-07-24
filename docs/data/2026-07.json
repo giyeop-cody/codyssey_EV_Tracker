@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-24T22:14:37.818Z",
+    "generatedAt": "2026-07-24T22:41:12.094Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1254,8 +1254,8 @@
         "detailAt": "2026-07-19T01:33:27.424Z"
       },
       "624004|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:33:27.919Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-24T22:41:11.293Z"
       },
       "624003|1": {
         "baseCd": "00001",
@@ -6264,6 +6264,27 @@
       "detail": null
     },
     {
+      "evalId": "s624004-1",
+      "evlNo": "624004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-25T07:31:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:6023f708",
+      "evaluateeName": "이재훈",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -7513,27 +7534,6 @@
       "evaluateeId": "sha1:6023f708",
       "evaluateeName": "이재훈",
       "projectName": "시스템 관제 자동화 스크립트 개발",
-      "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s624004-1",
-      "evlNo": "624004",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:6023f708",
-      "evaluateeName": "이재훈",
-      "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
