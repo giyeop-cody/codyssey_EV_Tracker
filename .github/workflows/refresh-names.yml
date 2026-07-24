@@ -1,0 +1,88 @@
+# 과거 평가 이벤트의 과제명/과정명을 라이브 목록 기준으로 교정한다 (2026-07-25).
+# 배경: 2026-07-24 사이트 배포로 과제 13종 전면 개명. 병합 수집은 과거 명칭을 갱신하지
+# 않으므로 이 수동 워크플로로만 교정 가능. 커밋되면 pages.yml이 자동 배포한다.
+name: Refresh Evaluation Project Names
+
+on:
+  workflow_dispatch:
+    inputs:
+      months:
+        description: "대상 월 목록 (쉼표 구분 YYYY-MM)"
+        required: false
+        default: "2026-05,2026-06,2026-07"
+      dry_run:
+        description: "계획만 보고 (쓰기/커밋 없음)"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: eval-refresh-names
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 세션 시크릿 확인
+        id: check
+        env:
+          CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+        run: |
+          if [ -z "$CODYSSEY_SESSION" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::CODYSSEY_SESSION 미등록 — 로그인 전까지 교정을 건 너뜁니다."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.skip != 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          node-version: 20
+
+      - name: 명칭 교정 실행
+        if: steps.check.outputs.skip != 'true'
+        env:
+          CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+          MONTHS: ${{ inputs.months }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          ARGS="--months $MONTHS"
+          [ "$DRY_RUN" = "true" ] && ARGS="$ARGS --dry-run"
+          node refresh_names.js $ARGS
+
+      - name: Commit data
+        if: steps.check.outputs.skip != 'true' && inputs.dry_run != 'true'
+        run: |
+          git config user.name "eval-tracker-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/data/
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "data: refresh project/track names $(date -u +'%Y-%m-%d %H:%M UTC')"
+            # collect.yml과 동일 패턴: 동시 run 충돌 시 최대 3회 재시도
+            for i in 1 2 3; do
+              if git pull --rebase; then
+                git push && break
+              fi
+              if git checkout --theirs -- docs/data/ 2>/dev/null; then
+                echo "생성 데이터 충돌 → 이번 run 생성본 채택 (${i}회차)"
+                git add docs/data/
+                if GIT_EDITOR=true git rebase --continue; then
+                  git push && break
+                fi
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
+          fi
