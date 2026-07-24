@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-24T13:47:02.565Z",
+    "generatedAt": "2026-07-24T14:08:47.588Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 249,
+    "eventCount": 251,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1570,8 +1570,8 @@
         "detailAt": "2026-07-23T12:57:54.890Z"
       },
       "627026|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-24T10:52:54.021Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-24T14:08:46.850Z"
       },
       "589004|2": {
         "baseCd": "00001",
@@ -6201,6 +6201,27 @@
       "detail": null
     },
     {
+      "evalId": "640082",
+      "evlNo": "627026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-24T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "1000276122",
+      "evaluatorName": "이현민",
+      "evaluateeId": "1000276201",
+      "evaluateeName": "이여원",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-24T20:24:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "640085",
       "evlNo": "591009",
       "evlDegr": "1",
@@ -6218,6 +6239,27 @@
       "score": "0",
       "resultNm": "FAIL",
       "requestedAt": "2026-07-24T20:45:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "640089",
+      "evlNo": "627026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-24T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "1000276036",
+      "evaluatorName": "손보람",
+      "evaluateeId": "1000276201",
+      "evaluateeName": "이여원",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-24T21:29:00+09:00",
       "src": "txn",
       "detail": null
     },
