@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-24T11:58:11.898Z",
+    "generatedAt": "2026-07-24T13:27:59.814Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -938,8 +938,8 @@
         "detailAt": "2026-07-19T01:32:45.861Z"
       },
       "591009|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:46.356Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-24T13:27:59.017Z"
       },
       "589010|1": {
         "baseCd": "00002",
@@ -6201,6 +6201,27 @@
       "detail": null
     },
     {
+      "evalId": "640085",
+      "evlNo": "591009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-24T21:30:00+09:00",
+      "endTime": "22:00",
+      "evaluatorId": "1000276202",
+      "evaluatorName": "이세형",
+      "evaluateeId": "1000276036",
+      "evaluateeName": "손보람",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-24T20:45:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -7010,27 +7031,6 @@
       "evaluateeName": "류성은",
       "projectName": "리눅스 프로세스 및 시스템 리소스 트러블슈팅",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s591009-1",
-      "evlNo": "591009",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "1000276036",
-      "evaluateeName": "손보람",
-      "projectName": "클라우드 환경에서 웹 서비스 인프라 구축",
-      "trackName": "클라우드와 AI API (Cloud & AI API)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
