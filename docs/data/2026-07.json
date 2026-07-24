@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-24T10:52:55.333Z",
+    "generatedAt": "2026-07-24T11:40:00.663Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 2,
+    "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 4,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -6191,11 +6191,11 @@
       "evaluateeName": "이여원",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-24T18:12:00+09:00",
       "src": "txn",
       "detail": null
