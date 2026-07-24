@@ -63,8 +63,8 @@ function parseArgs() {
       case "--roster-file": cfg.rosterFile = args[++i]; break;
       case "--roster-cache": cfg.rosterCache = args[++i]; break;
       case "--guilds": cfg.guilds = args[++i].split(",").map((s) => parseInt(s, 10)).filter(Boolean); break;
-      case "--season": CONF.guildSeasonId = parseInt(args[++i], 10); break;
-      case "--week": CONF.weekNo = parseInt(args[++i], 10); break;
+      case "--season": CONF.guildSeasonId = parseInt(args[++i], 10); cfg.cliSeason = true; break;
+      case "--week": CONF.weekNo = parseInt(args[++i], 10); cfg.cliWeek = true; break;
       case "--inst": CONF.instCd = args[++i]; break;
       case "--out": cfg.outDir = args[++i]; break;
       case "--delay": cfg.delay = parseInt(args[++i], 10); break;
@@ -150,14 +150,55 @@ async function fetchFormJson(endpoint, params) {
 }
 
 /* ---------------- 1) 멤버 명부 ---------------- */
+// 캐시 파일은 두 형식을 지원: EV 배열 [{mbrId,...}] / 허브·Jail 객체 {members,season,week}
+function parseRosterAny(parsed) {
+  if (Array.isArray(parsed)) return { members: parsed, season: null, week: null };
+  if (parsed && Array.isArray(parsed.members)) {
+    return { members: parsed.members, season: parsed.season ?? null, week: parsed.week ?? null };
+  }
+  return null;
+}
+function normalizeMember(m) {
+  return {
+    mbrId: String(m.mbrId),
+    name: m.name || m.mbrNm || "",
+    level: m.level ?? null,
+    guild: m.guild || m.guildNm || (Array.isArray(m.guildNames) ? m.guildNames[0] : null) || null,
+  };
+}
+// 캐시 파일을 신선도 무관하게 읽음 (갱신 실패 시의 폴 백원 — 2026-07-24 사태)
+function readRosterFallback(cfg) {
+  if (!cfg.rosterCache) return null;
+  try {
+    const r = parseRosterAny(JSON.parse(fs.readFileSync(cfg.rosterCache, "utf-8")));
+    if (r && r.members.length) return r;
+  } catch (_) { /* 없음/파손 */ }
+  return null;
+}
+let ROSTER_FALLBACK_USED = false; // main에서 캐시 스탬프 갱신 억제용
+
 async function fetchRoster(cfg) {
   if (cfg.rosterFile) {
     console.log(`  로스터 캐시 사용 (${cfg.rosterFile}) — 길드 API 생략`);
-    const list = JSON.parse(fs.readFileSync(cfg.rosterFile, "utf-8"));
-    return list.map((m) => ({ mbrId: String(m.mbrId), name: m.name || m.mbrNm || "", level: m.level ?? null, guild: m.guild || m.guildNm || null }));
+    const parsed = parseRosterAny(JSON.parse(fs.readFileSync(cfg.rosterFile, "utf-8")));
+    return (parsed ? parsed.members : []).map(normalizeMember);
   }
   if (cfg.members) {
     return cfg.members.map((id) => ({ mbrId: id, name: id, level: null, guild: null }));
+  }
+
+  // 시즌/주차 우선순위 (Jail resolveSeasonWeek와 동일 규칙): env/CLI > 캐시 meta > 기본 상수.
+  // 허브 vars를 갱신하면 허브 로스터 meta를 따라 수집 대상이 자연 이동한다.
+  const meta = readRosterFallback(cfg);
+  if (meta) {
+    if (!process.env.GUILD_SEASON && !cfg.cliSeason && meta.season != null) {
+      console.log(`  시즌 ${CONF.guildSeasonId} → ${meta.season} (로스터 meta 추종)`);
+      CONF.guildSeasonId = meta.season;
+    }
+    if (!process.env.GUILD_WEEK && !cfg.cliWeek && meta.week != null) {
+      console.log(`  주차 ${CONF.weekNo} → ${meta.week} (로스터 meta 추종)`);
+      CONF.weekNo = meta.week;
+    }
   }
 
   const roster = new Map();
@@ -178,13 +219,22 @@ async function fetchRoster(cfg) {
       }
       console.log(`  길드 #${gid} "${guildNm}" → 멤버 ${members.length}명`);
     } catch (err) {
+      if (err.sessionExpired) throw err; // 세션 만료를 명부 0명과 혼동하지 않음 (캐시 폴 백 우회)
       console.warn(`  ⚠️ 길드 #${gid} 명부 실패: ${err.message}`);
     }
     await sleep(cfg.delay);
   }
   if (roster.size === 0) {
-    console.error("❌ 길드 명부를 얻지 못했습니다. --guilds/--season/--week 또는 --members 확인");
-    process.exit(2);
+    // 갱신 실패/0명(사이트 멤버십 초기화 등) → 마지막 알려진 명부로 폴 백 (Jail과 동일 정책)
+    const back = readRosterFallback(cfg);
+    if (back) {
+      console.warn(`  ⚠️ 길드 API에서 명부를 얻지 못함 — 캐시 ${back.members.length}명으로 폴 백`);
+      for (const m of back.members) roster.set(String(m.mbrId), normalizeMember(m));
+      ROSTER_FALLBACK_USED = true;
+    } else {
+      console.error("❌ 길드 명부를 얻지 못했고 캐시 폴 백도 없습니다. --guilds/--season/--week 또는 --members 확인");
+      process.exit(2);
+    }
   }
   return [...roster.values()];
 }
@@ -327,9 +377,10 @@ async function main() {
   console.log(`  명부 ${roster.length}명`);
 
   // 네트워크에서 새로 얻은 명부만 캐시에 저장한다.
-  // (--roster-file/--members 경유는 신선도 스탬프를 오염시키므로 제외)
+  // (--roster-file/--members 경유는 신선도 스탬프를 오염시키므로 제외.
+  //  캐시 폴 백으로 얻은 명부도 재저장 금지 — 오래된 데이터를 신선한 것처럼 스탬프하지 않기 위해)
   // 명부(mbrId·이름·레벨·길드)는 준정적이라 하루 3~4회 갱신이면 충분하다.
-  if (cfg.rosterCache && roster.length && !cfg.rosterFile && !cfg.members) {
+  if (cfg.rosterCache && roster.length && !cfg.rosterFile && !cfg.members && !ROSTER_FALLBACK_USED) {
     try {
       fs.mkdirSync(path.dirname(cfg.rosterCache), { recursive: true });
       fs.writeFileSync(cfg.rosterCache, JSON.stringify(roster));
