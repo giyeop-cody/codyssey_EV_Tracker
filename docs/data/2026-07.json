@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-24T23:33:46.948Z",
+    "generatedAt": "2026-07-24T23:44:15.297Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1617,15 +1617,6 @@
         "baseCd": "00003",
         "detailAt": "2026-07-24T10:52:53.521Z"
       }
-    },
-    "nameRefreshedAt": "2026-07-24T23:32:33.978Z",
-    "nameRefresh": {
-      "renamed": 232,
-      "unchanged": 18,
-      "missing": 1,
-      "source": "mbrSearch",
-      "tableCorrected": 1,
-      "tableBasis": "999건 라이브 searchList 매칭으로 확정된 1:1 개명 테이블 (목록 윈도우 밖 평가에 적용)"
     }
   },
   "members": [
