@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-25T12:03:55.078Z",
+    "generatedAt": "2026-07-25T12:48:07.486Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 254,
+    "eventCount": 255,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1624,6 +1624,10 @@
       "630020|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-25T11:40:24.645Z"
+      },
+      "630023|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-25T12:48:06.195Z"
       }
     }
   },
@@ -7863,6 +7867,27 @@
       "evaluateeId": "sha1:2996bab7",
       "evaluateeName": "이규민",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s630023-1",
+      "evlNo": "630023",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
