@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-25T10:36:33.815Z",
+    "generatedAt": "2026-07-25T11:40:25.830Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 253,
+    "eventCount": 254,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1620,6 +1620,10 @@
       "630007|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-25T05:51:59.131Z"
+      },
+      "630020|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-25T11:40:24.645Z"
       }
     }
   },
@@ -7839,6 +7843,27 @@
       "evaluateeName": "이주성",
       "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s630020-1",
+      "evlNo": "630020",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:2996bab7",
+      "evaluateeName": "이규민",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
