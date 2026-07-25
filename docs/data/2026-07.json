@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-07-25T00:06:51.540Z",
+    "generatedAt": "2026-07-25T01:05:04.772Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 251,
+    "eventCount": 252,
     "roster": 149,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -346,8 +346,8 @@
         "detailAt": "2026-07-19T01:31:26.103Z"
       },
       "615021|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:31:26.597Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-25T01:05:03.473Z"
       },
       "560003|1": {
         "baseCd": "00002",
@@ -6282,6 +6282,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "641004",
+      "evlNo": "615021",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-25T08:00:00+09:00",
+      "endTime": "08:30",
+      "evaluatorId": "sha1:e4ac97fc",
+      "evaluatorName": "윤솔지",
+      "evaluateeId": "sha1:da89b372",
+      "evaluateeName": "이현민",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-25T07:36:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
