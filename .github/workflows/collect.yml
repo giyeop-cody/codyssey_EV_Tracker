@@ -56,6 +56,11 @@ jobs:
         with:
           node-version: 20
 
+      # 테스트 게이트 (2026-07-25 회귀 점검) — 무의존 유닛으로 증분 로직 회귀 차단
+      - name: Test gate
+        if: steps.check.outputs.skip != 'true'
+        run: node --test test/eval-plan.test.js
+
       # 명부(mbrId·이름·레벨·길드)는 준정적 데이터라 actions/cache에 보관해 두고
       # 8시간 이내이면 길드 API를 생략한다 (하루 3~4회 갱신 수준).
       - name: Restore roster cache
