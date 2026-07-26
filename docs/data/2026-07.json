@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-26T12:19:37.688Z",
+    "generatedAt": "2026-07-26T13:10:53.140Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 274,
+    "eventCount": 276,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1254,8 +1254,8 @@
         "detailAt": "2026-07-19T01:33:27.424Z"
       },
       "624004|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-24T22:41:11.293Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-26T13:10:52.396Z"
       },
       "624003|1": {
         "baseCd": "00001",
@@ -6709,6 +6709,27 @@
       "detail": null
     },
     {
+      "evalId": "641104",
+      "evlNo": "624004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-26T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "sha1:4a7b1e7c",
+      "evaluatorName": "정경재",
+      "evaluateeId": "sha1:6023f708",
+      "evaluateeName": "이재훈",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-25T22:25:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s631026-1",
       "evlNo": "631026",
       "evlDegr": "1",
@@ -6727,6 +6748,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "641105",
+      "evlNo": "624004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-26T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:1fbb617d",
+      "evaluatorName": "이희정",
+      "evaluateeId": "sha1:6023f708",
+      "evaluateeName": "이재훈",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-25T22:25:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
