@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-26T14:19:01.264Z",
+    "generatedAt": "2026-07-26T14:48:53.302Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1654,8 +1654,8 @@
         "detailAt": "2026-07-26T08:26:06.254Z"
       },
       "631026|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-26T11:44:53.747Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-26T14:48:52.506Z"
       }
     }
   },
@@ -6804,11 +6804,11 @@
       "evaluateeName": "정재윤",
       "projectName": "친구 3~5명과 함께 프로그램 만드는 법 연습하기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-26T21:48:00+09:00",
       "src": "txn",
       "detail": null
