@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-26T07:07:09.543Z",
+    "generatedAt": "2026-07-26T08:26:08.331Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 268,
+    "eventCount": 273,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 3,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1574,8 +1574,8 @@
         "detailAt": "2026-07-24T14:08:46.850Z"
       },
       "589004|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-22T11:47:30.615Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-26T08:26:07.143Z"
       },
       "628009|1": {
         "baseCd": "00003",
@@ -1642,8 +1642,16 @@
         "detailAt": "2026-07-25T23:09:12.103Z"
       },
       "631006|1": {
+        "baseCd": "00003",
+        "detailAt": "2026-07-26T08:26:06.698Z"
+      },
+      "631009|1": {
         "baseCd": "00002",
-        "detailAt": "2026-07-26T06:21:45.934Z"
+        "detailAt": "2026-07-26T08:26:05.809Z"
+      },
+      "631010|1": {
+        "baseCd": "00003",
+        "detailAt": "2026-07-26T08:26:06.254Z"
       }
     }
   },
@@ -5605,6 +5613,27 @@
       "detail": null
     },
     {
+      "evalId": "638069",
+      "evlNo": "589004",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-22T20:30:00+09:00",
+      "endTime": "21:00",
+      "evaluatorId": "sha1:207fd4e2",
+      "evaluatorName": "박주선",
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-22T19:51:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "638070",
       "evlNo": "627028",
       "evlDegr": "1",
@@ -6529,6 +6558,27 @@
       "detail": null
     },
     {
+      "evalId": "642016",
+      "evlNo": "589004",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-26T14:00:00+09:00",
+      "endTime": "14:30",
+      "evaluatorId": "sha1:3bd57def",
+      "evaluatorName": "임대균",
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-26T11:21:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "642024",
       "evlNo": "624017",
       "evlDegr": "1",
@@ -6571,24 +6621,87 @@
       "detail": null
     },
     {
-      "evalId": "s631006-1",
+      "evalId": "642031",
       "evlNo": "631006",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-26T15:13:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-26T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "sha1:e5a87f06",
+      "evaluatorName": "김대웅",
       "evaluateeId": "sha1:94f4782b",
       "evaluateeName": "김현서",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-26T15:10:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "642015",
+      "evlNo": "589004",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-26T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "sha1:b75de667",
+      "evaluatorName": "허준",
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-26T11:19:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "642041",
+      "evlNo": "631009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-26T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "sha1:b75de667",
+      "evaluatorName": "허준",
+      "evaluateeId": "sha1:2828d50b",
+      "evaluateeName": "이현민",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-26T16:30:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "642043",
+      "evlNo": "631010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-26T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "sha1:26887c4f",
+      "evaluatorName": "주재문",
+      "evaluateeId": "sha1:94f4782b",
+      "evaluateeName": "김현서",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-26T16:36:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
