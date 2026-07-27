@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T14:02:31.996Z",
+    "generatedAt": "2026-07-27T15:30:51.652Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 285,
+    "eventCount": 287,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -910,8 +910,8 @@
         "detailAt": "2026-07-19T01:32:42.396Z"
       },
       "618029|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-20T10:30:24.379Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-27T15:30:50.915Z"
       },
       "596013|1": {
         "baseCd": "00003",
@@ -1680,6 +1680,10 @@
       "632023|1": {
         "baseCd": "00002",
         "detailAt": "2026-07-27T10:28:07.377Z"
+      },
+      "559010|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-27T15:30:50.479Z"
       }
     }
   },
@@ -6922,6 +6926,27 @@
       "detail": null
     },
     {
+      "evalId": "643087",
+      "evlNo": "618029",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-27T20:00:00+09:00",
+      "endTime": "20:30",
+      "evaluatorId": "sha1:03785f23",
+      "evaluatorName": "강희영",
+      "evaluateeId": "sha1:c2ddc6d9",
+      "evaluateeName": "류성은",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-27T18:56:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "643090",
       "evlNo": "632023",
       "evlDegr": "1",
@@ -6939,6 +6964,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-27T19:07:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "643102",
+      "evlNo": "618029",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T00:00:00+09:00",
+      "endTime": "00:30",
+      "evaluatorId": "sha1:b57bb58f",
+      "evaluatorName": "백동재",
+      "evaluateeId": "sha1:c2ddc6d9",
+      "evaluateeName": "류성은",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-27T22:00:00+09:00",
       "src": "txn",
       "detail": null
     },
