@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T22:08:50.296Z",
+    "generatedAt": "2026-07-27T22:44:57.771Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -818,8 +818,8 @@
         "detailAt": "2026-07-19T01:32:29.525Z"
       },
       "557011|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:30.020Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-27T22:44:57.021Z"
       },
       "557014|1": {
         "baseCd": "00003",
@@ -7031,6 +7031,27 @@
       "detail": null
     },
     {
+      "evalId": "s557011-1",
+      "evlNo": "557011",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T07:42:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:ada4026c",
+      "evaluateeName": "김병철",
+      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "644001",
       "evlNo": "586013",
       "evlDegr": "1",
@@ -7777,27 +7798,6 @@
       "evaluateeName": "김병철",
       "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s557011-1",
-      "evlNo": "557011",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:ada4026c",
-      "evaluateeName": "김병철",
-      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
