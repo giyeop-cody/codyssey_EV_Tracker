@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T06:32:30.552Z",
+    "generatedAt": "2026-07-27T08:17:37.985Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 279,
+    "eventCount": 281,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -1664,6 +1664,10 @@
       "632004|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-27T04:28:21.939Z"
+      },
+      "632014|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-27T08:17:36.747Z"
       }
     }
   },
@@ -6833,12 +6837,33 @@
       "evaluateeName": "고준석",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-27T14:17:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "643057",
+      "evlNo": "586008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-27T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "sha1:02bcb006",
+      "evaluatorName": "이종석",
+      "evaluateeId": "sha1:0c3e0c35",
+      "evaluateeName": "고준석",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-27T15:26:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -8428,6 +8453,27 @@
       "evaluateeId": "sha1:a014b8bb",
       "evaluateeName": "박성현",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s632014-1",
+      "evlNo": "632014",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:e3399b2c",
+      "evaluateeName": "손재현",
+      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
