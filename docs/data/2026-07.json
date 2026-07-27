@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T02:57:15.448Z",
+    "generatedAt": "2026-07-27T04:28:22.709Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 278,
+    "eventCount": 279,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1660,6 +1660,10 @@
       "553004|6": {
         "baseCd": "00001",
         "detailAt": "2026-07-27T01:17:18.320Z"
+      },
+      "632004|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-27T04:28:21.939Z"
       }
     }
   },
@@ -8404,6 +8408,27 @@
       "evaluateeName": "김동조",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s632004-1",
+      "evlNo": "632004",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:a014b8bb",
+      "evaluateeName": "박성현",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
