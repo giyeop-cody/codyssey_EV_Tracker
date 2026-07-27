@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T23:18:53.574Z",
+    "generatedAt": "2026-07-27T23:34:15.214Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -818,8 +818,8 @@
         "detailAt": "2026-07-19T01:32:29.525Z"
       },
       "557011|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-27T22:44:57.021Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-27T23:34:14.413Z"
       },
       "557014|1": {
         "baseCd": "00003",
@@ -7031,24 +7031,24 @@
       "detail": null
     },
     {
-      "evalId": "s557011-1",
+      "evalId": "644007",
       "evlNo": "557011",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-28T07:42:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-28T08:00:00+09:00",
+      "endTime": "08:30",
+      "evaluatorId": "sha1:3f0e32eb",
+      "evaluatorName": "박범규",
       "evaluateeId": "sha1:ada4026c",
       "evaluateeName": "김병철",
       "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-28T07:29:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
