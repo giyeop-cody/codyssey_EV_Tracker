@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T05:31:06.292Z",
+    "generatedAt": "2026-07-27T06:06:47.196Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -862,8 +862,8 @@
         "detailAt": "2026-07-19T01:32:35.464Z"
       },
       "586008|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:35.958Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-27T06:06:46.448Z"
       },
       "558003|1": {
         "baseCd": "00003",
@@ -6822,6 +6822,27 @@
       "detail": null
     },
     {
+      "evalId": "643042",
+      "evlNo": "586008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-27T15:00:00+09:00",
+      "endTime": "15:30",
+      "evaluatorId": "sha1:03785f23",
+      "evaluatorName": "강희영",
+      "evaluateeId": "sha1:0c3e0c35",
+      "evaluateeName": "고준석",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-27T14:17:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -7568,27 +7589,6 @@
       "evaluateeName": "고준석",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s586008-1",
-      "evlNo": "586008",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:0c3e0c35",
-      "evaluateeName": "고준석",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
