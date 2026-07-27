@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-27T11:46:37.934Z",
+    "generatedAt": "2026-07-27T12:36:28.697Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "sweepTargets": 2,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -6922,24 +6922,24 @@
       "detail": null
     },
     {
-      "evalId": "s632023-1",
+      "evalId": "643090",
       "evlNo": "632023",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-27T19:15:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-27T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:bc593e41",
+      "evaluatorName": "김시현",
       "evaluateeId": "sha1:b57bb58f",
       "evaluateeName": "백동재",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-27T19:07:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
