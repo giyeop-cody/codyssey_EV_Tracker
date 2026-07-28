@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T01:02:18.606Z",
+    "generatedAt": "2026-07-28T02:06:08.569Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -7067,11 +7067,11 @@
       "evaluateeName": "박범규",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-28T09:02:00+09:00",
       "src": "txn",
       "detail": null
