@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T10:57:55.042Z",
+    "generatedAt": "2026-07-28T11:31:02.063Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,8 +9,8 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 1,
-    "sweepTargets": 2,
+    "droppedOutOfRange": 0,
+    "sweepTargets": 3,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -7309,11 +7309,11 @@
       "evaluateeName": "이초롱",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-28T17:58:00+09:00",
       "src": "txn",
       "detail": null
