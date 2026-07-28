@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T11:31:02.063Z",
+    "generatedAt": "2026-07-28T12:22:08.438Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
-    "sweepTargets": 3,
-    "dedupedSummaries": 0,
+    "droppedOutOfRange": 1,
+    "sweepTargets": 2,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -614,8 +614,8 @@
         "detailAt": "2026-07-19T01:32:02.802Z"
       },
       "599009|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:03.297Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-28T12:22:07.122Z"
       },
       "589016|1": {
         "baseCd": "00003",
@@ -802,8 +802,8 @@
         "detailAt": "2026-07-19T01:32:27.548Z"
       },
       "551006|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-28T10:57:53.250Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T12:22:06.622Z"
       },
       "557012|1": {
         "baseCd": "00001",
@@ -1720,6 +1720,10 @@
       "633036|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-28T10:07:20.593Z"
+      },
+      "603012|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-28T12:22:06.121Z"
       }
     }
   },
@@ -7319,17 +7323,38 @@
       "detail": null
     },
     {
-      "evalId": "s551006-1",
+      "evalId": "644083",
       "evlNo": "551006",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-28T19:48:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-28T20:00:00+09:00",
+      "endTime": "20:30",
+      "evaluatorId": "sha1:2996bab7",
+      "evaluatorName": "이규민",
       "evaluateeId": "sha1:ada4026c",
       "evaluateeName": "김병철",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-28T19:33:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s599009-1",
+      "evlNo": "599009",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T20:55:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:2e30d670",
+      "evaluateeName": "남상훈",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
       "status": "IN_PROGRESS",
       "stusCd": "00002",
       "stusNm": "진행중",
@@ -7750,27 +7775,6 @@
       "evaluateeName": "황정현",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s599009-1",
-      "evlNo": "599009",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:2e30d670",
-      "evaluateeName": "남상훈",
-      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
-      "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
