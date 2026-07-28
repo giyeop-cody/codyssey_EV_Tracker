@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T12:25:13.918Z",
+    "generatedAt": "2026-07-28T12:53:59.982Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 305,
+    "eventCount": 307,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1724,6 +1724,14 @@
       "603012|2": {
         "baseCd": "00001",
         "detailAt": "2026-07-28T12:22:06.121Z"
+      },
+      "633046|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-28T12:53:58.243Z"
+      },
+      "633047|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-28T12:53:58.723Z"
       }
     }
   },
@@ -7376,6 +7384,48 @@
       "evaluateeName": "반가희",
       "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s633047-1",
+      "evlNo": "633047",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T21:31:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:66a2d32d",
+      "evaluateeName": "윤대영",
+      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s633046-1",
+      "evlNo": "633046",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T21:50:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:66a2d32d",
+      "evaluateeName": "윤대영",
+      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "IN_PROGRESS",
       "stusCd": "00002",
       "stusNm": "진행중",
