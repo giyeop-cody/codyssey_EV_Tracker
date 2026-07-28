@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T07:22:44.313Z",
+    "generatedAt": "2026-07-28T08:02:08.184Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 294,
+    "eventCount": 295,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 2,
     "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1700,6 +1700,14 @@
       "633020|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-28T06:16:18.936Z"
+      },
+      "607003|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-28T08:02:06.462Z"
+      },
+      "597007|3": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-28T08:02:06.947Z"
       }
     }
   },
@@ -7085,6 +7093,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-28T09:02:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "644059",
+      "evlNo": "607003",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-28T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "sha1:94f4782b",
+      "evaluatorName": "김현서",
+      "evaluateeId": "sha1:26887c4f",
+      "evaluateeName": "주재문",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-28T16:28:00+09:00",
       "src": "txn",
       "detail": null
     },
