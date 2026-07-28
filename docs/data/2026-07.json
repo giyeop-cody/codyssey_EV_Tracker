@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-28T08:02:08.184Z",
+    "generatedAt": "2026-07-28T09:11:39.463Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 295,
+    "eventCount": 301,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 2,
+    "droppedOutOfRange": 3,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -162,8 +162,8 @@
         "detailAt": "2026-07-19T01:31:03.337Z"
       },
       "616016|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-21T07:17:42.374Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T09:11:35.195Z"
       },
       "579016|1": {
         "baseCd": "00003",
@@ -1038,8 +1038,8 @@
         "detailAt": "2026-07-19T01:32:59.217Z"
       },
       "603011|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:32:59.712Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T09:11:37.178Z"
       },
       "573009|1": {
         "baseCd": "00003",
@@ -1178,8 +1178,8 @@
         "detailAt": "2026-07-19T01:33:17.536Z"
       },
       "579008|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:33:18.030Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T09:11:36.682Z"
       },
       "579006|1": {
         "baseCd": "00002",
@@ -1702,12 +1702,20 @@
         "detailAt": "2026-07-28T06:16:18.936Z"
       },
       "607003|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-28T08:02:06.462Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T09:11:36.187Z"
       },
       "597007|3": {
+        "baseCd": "00003",
+        "detailAt": "2026-07-28T09:11:37.674Z"
+      },
+      "633029|1": {
         "baseCd": "00001",
-        "detailAt": "2026-07-28T08:02:06.947Z"
+        "detailAt": "2026-07-28T09:11:35.691Z"
+      },
+      "633026|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-28T09:11:38.169Z"
       }
     }
   },
@@ -7097,6 +7105,48 @@
       "detail": null
     },
     {
+      "evalId": "644036",
+      "evlNo": "616016",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "sha1:33cc1f09",
+      "evaluatorName": "이상우",
+      "evaluateeId": "sha1:02bcb006",
+      "evaluateeName": "이종석",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-28T15:12:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "644055",
+      "evlNo": "603011",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "sha1:45be952a",
+      "evaluatorName": "권창범",
+      "evaluateeId": "sha1:10808f2f",
+      "evaluateeName": "김완태",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-28T16:08:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "644059",
       "evlNo": "607003",
       "evlDegr": "2",
@@ -7108,12 +7158,75 @@
       "evaluateeName": "주재문",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-07-28T16:28:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "644035",
+      "evlNo": "616016",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "sha1:9014b79b",
+      "evaluatorName": "곽현일",
+      "evaluateeId": "sha1:02bcb006",
+      "evaluateeName": "이종석",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-28T15:10:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "644065",
+      "evlNo": "597007",
+      "evlDegr": "3",
+      "slotDateTime": "2026-07-28T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "sha1:d8cc5582",
+      "evaluatorName": "차종민",
+      "evaluateeId": "sha1:03785f23",
+      "evaluateeName": "강희영",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-28T17:01:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "644069",
+      "evlNo": "579008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-28T18:00:00+09:00",
+      "endTime": "18:30",
+      "evaluatorId": "sha1:ba976915",
+      "evaluatorName": "조명환",
+      "evaluateeId": "sha1:81d47ff9",
+      "evaluateeName": "배재민",
+      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-28T17:24:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -8084,27 +8197,6 @@
       "detail": null
     },
     {
-      "evalId": "s579008-1",
-      "evlNo": "579008",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:81d47ff9",
-      "evaluateeName": "배재민",
-      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s618036-1",
       "evlNo": "618036",
       "evlDegr": "1",
@@ -8809,6 +8901,48 @@
       "evaluateeName": "이상우",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s633029-1",
+      "evlNo": "633029",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:bc593e41",
+      "evaluateeName": "김시현",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s633026-1",
+      "evlNo": "633026",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:0153224d",
+      "evaluateeName": "반가희",
+      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
