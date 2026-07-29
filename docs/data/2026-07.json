@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T05:37:03.789Z",
+    "generatedAt": "2026-07-29T07:20:00.667Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 312,
+    "eventCount": 314,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 4,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -646,8 +646,8 @@
         "detailAt": "2026-07-19T01:32:06.765Z"
       },
       "599020|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-28T10:07:21.088Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-29T07:19:58.407Z"
       },
       "557006|1": {
         "baseCd": "00003",
@@ -1618,8 +1618,8 @@
         "detailAt": "2026-07-24T10:52:53.521Z"
       },
       "630007|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-25T05:51:59.131Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T07:19:57.432Z"
       },
       "630020|1": {
         "baseCd": "00001",
@@ -1738,8 +1738,8 @@
         "detailAt": "2026-07-29T01:01:55.852Z"
       },
       "634010|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-29T04:14:28.812Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T07:19:57.920Z"
       }
     }
   },
@@ -7444,6 +7444,27 @@
       "detail": null
     },
     {
+      "evalId": "644106",
+      "evlNo": "599020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T00:30:00+09:00",
+      "endTime": "01:00",
+      "evaluatorId": "sha1:a2d1bd82",
+      "evaluatorName": "임익화",
+      "evaluateeId": "sha1:a332e770",
+      "evaluateeName": "이초롱",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-28T23:26:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "645001",
       "evlNo": "600012",
       "evlDegr": "2",
@@ -7525,6 +7546,69 @@
       "resultNm": "PASS",
       "requestedAt": "2026-07-28T12:00:00+09:00",
       "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645041",
+      "evlNo": "634010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T15:30:00+09:00",
+      "endTime": "16:00",
+      "evaluatorId": "sha1:052e6874",
+      "evaluatorName": "최건영",
+      "evaluateeId": "sha1:045cdec4",
+      "evaluateeName": "문성현",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T15:05:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645037",
+      "evlNo": "599020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T15:30:00+09:00",
+      "endTime": "16:00",
+      "evaluatorId": "sha1:c7ed2c82",
+      "evaluatorName": "김민준",
+      "evaluateeId": "sha1:a332e770",
+      "evaluateeName": "이초롱",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T14:53:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s630007-1",
+      "evlNo": "630007",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T16:02:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:091f48a3",
+      "evaluateeName": "이주성",
+      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
       "detail": null
     },
     {
@@ -8956,27 +9040,6 @@
       "detail": null
     },
     {
-      "evalId": "s630007-1",
-      "evlNo": "630007",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:091f48a3",
-      "evaluateeName": "이주성",
-      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s630020-1",
       "evlNo": "630020",
       "evlDegr": "1",
@@ -9177,27 +9240,6 @@
       "evaluateeName": "황준호",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s634010-1",
-      "evlNo": "634010",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:045cdec4",
-      "evaluateeName": "문성현",
-      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
