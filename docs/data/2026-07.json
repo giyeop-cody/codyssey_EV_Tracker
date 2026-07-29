@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T22:30:33.869Z",
+    "generatedAt": "2026-07-29T22:36:41.707Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,7 +9,7 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 5,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1760,6 +1760,10 @@
       "612028|2": {
         "baseCd": "00002",
         "detailAt": "2026-07-29T12:30:11.612Z"
+      },
+      "605016|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-29T22:36:39.238Z"
       }
     }
   },
