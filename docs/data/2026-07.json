@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T01:12:24.635Z",
+    "generatedAt": "2026-07-29T02:09:47.000Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 4,
-    "dedupedSummaries": 0,
+    "sweepTargets": 5,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -7440,24 +7440,24 @@
       "detail": null
     },
     {
-      "evalId": "s634007-1",
+      "evalId": "645002",
       "evlNo": "634007",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-29T09:09:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-29T10:00:00+09:00",
+      "endTime": "10:30",
+      "evaluatorId": "sha1:045cdec4",
+      "evaluatorName": "문성현",
       "evaluateeId": "sha1:31b32f69",
       "evaluateeName": "이성준",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T09:09:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
