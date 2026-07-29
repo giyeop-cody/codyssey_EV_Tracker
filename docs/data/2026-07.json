@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T11:22:38.190Z",
+    "generatedAt": "2026-07-29T12:30:14.796Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 322,
+    "eventCount": 323,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 4,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -658,8 +658,8 @@
         "detailAt": "2026-07-19T01:32:49.817Z"
       },
       "621004|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:08.745Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T12:30:12.572Z"
       },
       "596019|1": {
         "baseCd": "00001",
@@ -1750,8 +1750,16 @@
         "detailAt": "2026-07-29T10:08:57.616Z"
       },
       "634048|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T12:30:12.093Z"
+      },
+      "603012|3": {
         "baseCd": "00001",
-        "detailAt": "2026-07-29T10:08:58.509Z"
+        "detailAt": "2026-07-29T12:30:11.131Z"
+      },
+      "612028|2": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T12:30:11.612Z"
       }
     }
   },
@@ -7792,6 +7800,69 @@
       "detail": null
     },
     {
+      "evalId": "645124",
+      "evlNo": "603012",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-29T20:30:00+09:00",
+      "endTime": "21:00",
+      "evaluatorId": "sha1:e3399b2c",
+      "evaluatorName": "손재현",
+      "evaluateeId": "sha1:163d972a",
+      "evaluateeName": "설영빈",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-29T19:57:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645129",
+      "evlNo": "634048",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:030d2a99",
+      "evaluatorName": "신재은",
+      "evaluateeId": "sha1:052e6874",
+      "evaluateeName": "최건영",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-29T20:15:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s621004-1",
+      "evlNo": "621004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T21:27:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:edcc1d8a",
+      "evaluateeName": "장현준",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "644001",
       "evlNo": "586013",
       "evlDegr": "1",
@@ -8202,27 +8273,6 @@
       "evaluateeName": "황정현",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s621004-1",
-      "evlNo": "621004",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:edcc1d8a",
-      "evaluateeName": "장현준",
-      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
@@ -9397,27 +9447,6 @@
       "evaluatorName": null,
       "evaluateeId": "sha1:7b9de5ec",
       "evaluateeName": "김태우",
-      "projectName": "나만의 용돈 기입장 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s634048-1",
-      "evlNo": "634048",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:052e6874",
-      "evaluateeName": "최건영",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
