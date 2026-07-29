@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T10:21:06.710Z",
+    "generatedAt": "2026-07-29T11:22:38.190Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 320,
+    "eventCount": 322,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -862,8 +862,8 @@
         "detailAt": "2026-07-19T01:32:35.464Z"
       },
       "586008|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-27T06:06:46.448Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-29T11:22:35.547Z"
       },
       "558003|1": {
         "baseCd": "00003",
@@ -1698,8 +1698,8 @@
         "detailAt": "2026-07-28T04:11:00.148Z"
       },
       "633020|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-29T10:08:58.063Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-29T11:22:36.018Z"
       },
       "607003|2": {
         "baseCd": "00003",
@@ -7719,11 +7719,11 @@
       "evaluateeName": "이상우",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-29T17:10:00+09:00",
       "src": "txn",
       "detail": null
@@ -7746,6 +7746,48 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-29T18:15:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645113",
+      "evlNo": "586008",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "sha1:163d972a",
+      "evaluatorName": "설영빈",
+      "evaluateeId": "sha1:0c3e0c35",
+      "evaluateeName": "고준석",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T18:53:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645091",
+      "evlNo": "633020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "sha1:61ef3a2f",
+      "evaluatorName": "이건탁",
+      "evaluateeId": "sha1:33cc1f09",
+      "evaluateeName": "이상우",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T17:11:00+09:00",
       "src": "txn",
       "detail": null
     },
