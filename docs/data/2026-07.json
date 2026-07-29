@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T18:04:37.718Z",
+    "generatedAt": "2026-07-29T19:17:45.184Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 324,
+    "eventCount": 326,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 4,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1030,8 +1030,8 @@
         "detailAt": "2026-07-19T01:32:58.228Z"
       },
       "605004|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-19T01:32:58.722Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-29T19:17:42.907Z"
       },
       "569017|1": {
         "baseCd": "00003",
@@ -7880,6 +7880,48 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-29T21:23:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645153",
+      "evlNo": "605004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T23:00:00+09:00",
+      "endTime": "23:30",
+      "evaluatorId": "sha1:e4b54514",
+      "evaluatorName": "정세영",
+      "evaluateeId": "sha1:eaafe960",
+      "evaluateeName": "모성우",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-29T22:15:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645170",
+      "evlNo": "605004",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-30T02:30:00+09:00",
+      "endTime": "03:00",
+      "evaluatorId": "sha1:e4b37685",
+      "evaluatorName": "김민영",
+      "evaluateeId": "sha1:eaafe960",
+      "evaluateeName": "모성우",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-07-30T01:46:00+09:00",
       "src": "txn",
       "detail": null
     },
