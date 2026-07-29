@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T07:34:22.967Z",
+    "generatedAt": "2026-07-29T08:33:08.387Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 4,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -966,8 +966,8 @@
         "detailAt": "2026-07-19T01:32:50.312Z"
       },
       "621014|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:32:50.806Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T08:33:06.164Z"
       },
       "599004|1": {
         "baseCd": "00001",
@@ -7612,6 +7612,27 @@
       "detail": null
     },
     {
+      "evalId": "645083",
+      "evlNo": "621014",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-29T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "sha1:9014b79b",
+      "evaluatorName": "곽현일",
+      "evaluateeId": "sha1:ecf0f700",
+      "evaluateeName": "채민성",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-29T17:02:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "644001",
       "evlNo": "586013",
       "evlDegr": "1",
@@ -8358,27 +8379,6 @@
       "evaluateeName": "류성은",
       "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s621014-1",
-      "evlNo": "621014",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:ecf0f700",
-      "evaluateeName": "채민성",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
