@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T17:59:14.443Z",
+    "generatedAt": "2026-07-29T18:04:37.718Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1718,8 +1718,8 @@
         "detailAt": "2026-07-28T12:25:12.677Z"
       },
       "633036|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-28T10:07:20.593Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-29T18:04:35.679Z"
       },
       "603012|2": {
         "baseCd": "00001",
@@ -7884,6 +7884,27 @@
       "detail": null
     },
     {
+      "evalId": "s633036-1",
+      "evlNo": "633036",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-30T02:59:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:ad93fac7",
+      "evaluateeName": "황준호",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "644001",
       "evlNo": "586013",
       "evlDegr": "1",
@@ -9428,27 +9449,6 @@
       "evaluateeName": "김시현",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s633036-1",
-      "evlNo": "633036",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:ad93fac7",
-      "evaluateeName": "황준호",
-      "projectName": "나만의 용돈 기입장 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
