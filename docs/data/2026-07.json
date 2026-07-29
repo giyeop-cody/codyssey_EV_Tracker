@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-29T10:17:16.970Z",
+    "generatedAt": "2026-07-29T10:21:06.710Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1618,8 +1618,8 @@
         "detailAt": "2026-07-24T10:52:53.521Z"
       },
       "630007|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-29T07:19:57.432Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-29T10:21:04.638Z"
       },
       "630020|1": {
         "baseCd": "00001",
@@ -7740,11 +7740,11 @@
       "evaluateeName": "이주성",
       "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-29T18:15:00+09:00",
       "src": "txn",
       "detail": null
