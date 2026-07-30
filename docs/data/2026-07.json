@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T18:02:13.844Z",
+    "generatedAt": "2026-07-30T18:19:55.627Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -1808,6 +1808,10 @@
       "605006|2": {
         "baseCd": "00001",
         "detailAt": "2026-07-30T14:29:17.788Z"
+      },
+      "635057|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T18:19:53.987Z"
       }
     }
   },
@@ -8384,11 +8388,11 @@
       "evaluateeName": "김성훈",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-07-31T00:33:00+09:00",
       "src": "txn",
       "detail": null
