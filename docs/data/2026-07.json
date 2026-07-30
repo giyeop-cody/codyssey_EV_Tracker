@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T11:30:23.736Z",
+    "generatedAt": "2026-07-30T12:03:10.639Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 340,
+    "eventCount": 342,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 2,
-    "sweepTargets": 4,
-    "dedupedSummaries": 2,
+    "droppedOutOfRange": 0,
+    "sweepTargets": 3,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1792,6 +1792,14 @@
       "635051|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-30T10:06:41.814Z"
+      },
+      "635056|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-30T12:03:08.550Z"
+      },
+      "635057|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T12:03:08.996Z"
       }
     }
   },
@@ -7465,9 +7473,9 @@
       "evaluateeName": "윤대영",
       "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-28T21:30:00+09:00",
@@ -8290,6 +8298,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-30T18:49:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "646170",
+      "evlNo": "635056",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-30T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:bf005853",
+      "evaluatorName": "장현준",
+      "evaluateeId": "sha1:d8cc5582",
+      "evaluateeName": "차종민",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-30T20:33:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -9838,6 +9867,27 @@
       "evaluateeName": "권창범",
       "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s635057-1",
+      "evlNo": "635057",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:50438081",
+      "evaluateeName": "김성훈",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
