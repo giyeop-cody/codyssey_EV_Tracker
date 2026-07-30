@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T03:58:08.449Z",
+    "generatedAt": "2026-07-30T04:17:14.905Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 328,
+    "eventCount": 329,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1766,8 +1766,8 @@
         "detailAt": "2026-07-29T22:36:39.238Z"
       },
       "635011|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-30T03:41:19.375Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-30T04:17:12.385Z"
       },
       "635015|1": {
         "baseCd": "00001",
@@ -7997,6 +7997,27 @@
       "score": "0",
       "resultNm": null,
       "requestedAt": "2026-07-28T06:31:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "646028",
+      "evlNo": "635011",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-30T13:00:00+09:00",
+      "endTime": "13:30",
+      "evaluatorId": "sha1:a014b8bb",
+      "evaluatorName": "박성현",
+      "evaluateeId": "sha1:d900415f",
+      "evaluateeName": "김명률",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-30T12:33:00+09:00",
       "src": "txn",
       "detail": null
     },
