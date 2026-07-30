@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T12:07:25.141Z",
+    "generatedAt": "2026-07-30T13:08:30.305Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 342,
+    "eventCount": 343,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1800,6 +1800,10 @@
       "635057|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-30T12:03:08.996Z"
+      },
+      "635056|2": {
+        "baseCd": "00003",
+        "detailAt": "2026-07-30T13:08:29.118Z"
       }
     }
   },
@@ -8313,12 +8317,33 @@
       "evaluateeName": "차종민",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-07-30T20:33:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "646174",
+      "evlNo": "635056",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-30T21:30:00+09:00",
+      "endTime": "22:00",
+      "evaluatorId": "sha1:98dfc86c",
+      "evaluatorName": "김동조",
+      "evaluateeId": "sha1:d8cc5582",
+      "evaluateeName": "차종민",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-30T20:52:00+09:00",
       "src": "txn",
       "detail": null
     },
