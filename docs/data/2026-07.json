@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T10:03:18.936Z",
+    "generatedAt": "2026-07-30T10:06:43.591Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 338,
+    "eventCount": 339,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 4,
-    "dedupedSummaries": 1,
+    "sweepTargets": 3,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1788,6 +1788,10 @@
       "635047|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-30T10:03:16.861Z"
+      },
+      "635051|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T10:06:41.814Z"
       }
     }
   },
@@ -9792,6 +9796,27 @@
       "evaluateeName": "송지윤",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s635051-1",
+      "evlNo": "635051",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:45be952a",
+      "evaluateeName": "권창범",
+      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
