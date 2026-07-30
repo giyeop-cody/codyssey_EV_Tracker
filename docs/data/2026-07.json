@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T22:49:05.909Z",
+    "generatedAt": "2026-07-30T23:01:58.607Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 343,
+    "eventCount": 344,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1812,6 +1812,10 @@
       "635057|2": {
         "baseCd": "00002",
         "detailAt": "2026-07-30T18:55:16.880Z"
+      },
+      "620005|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T23:01:57.410Z"
       }
     }
   },
@@ -8398,24 +8402,45 @@
       "detail": null
     },
     {
-      "evalId": "s620005-1",
+      "evalId": "647009",
       "evlNo": "620005",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-31T06:46:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-31T07:30:00+09:00",
+      "endTime": "08:00",
+      "evaluatorId": "sha1:3f0e32eb",
+      "evaluatorName": "박범규",
+      "evaluateeId": "sha1:e4b54514",
+      "evaluateeName": "정세영",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-31T06:44:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "647010",
+      "evlNo": "620005",
+      "evlDegr": "2",
+      "slotDateTime": "2026-07-31T08:00:00+09:00",
+      "endTime": "08:30",
+      "evaluatorId": "sha1:45be952a",
+      "evaluatorName": "권창범",
       "evaluateeId": "sha1:e4b54514",
       "evaluateeName": "정세영",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
       "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "requestedAt": "2026-07-31T06:44:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
