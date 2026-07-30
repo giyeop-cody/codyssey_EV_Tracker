@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T01:06:44.422Z",
+    "generatedAt": "2026-07-30T03:41:22.328Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 326,
+    "eventCount": 328,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1764,6 +1764,14 @@
       "605016|2": {
         "baseCd": "00001",
         "detailAt": "2026-07-29T22:36:39.238Z"
+      },
+      "635011|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T03:41:19.375Z"
+      },
+      "635015|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T03:41:19.817Z"
       }
     }
   },
@@ -7951,6 +7959,27 @@
       "detail": null
     },
     {
+      "evalId": "646021",
+      "evlNo": "635011",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-30T12:00:00+09:00",
+      "endTime": "12:30",
+      "evaluatorId": "sha1:61ef3a2f",
+      "evaluatorName": "이건탁",
+      "evaluateeId": "sha1:d900415f",
+      "evaluateeName": "김명률",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-30T11:38:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "644001",
       "evlNo": "586013",
       "evlDegr": "1",
@@ -9516,6 +9545,27 @@
       "evaluateeName": "김태우",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s635015-1",
+      "evlNo": "635015",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:15bc500f",
+      "evaluateeName": "주현호",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
