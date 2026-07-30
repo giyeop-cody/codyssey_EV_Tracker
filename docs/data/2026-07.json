@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T21:41:47.031Z",
+    "generatedAt": "2026-07-30T22:36:58.098Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -114,8 +114,8 @@
         "detailAt": "2026-07-19T01:30:56.892Z"
       },
       "620005|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:30:57.386Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-30T22:36:56.918Z"
       },
       "603015|1": {
         "baseCd": "00001",
@@ -8398,6 +8398,27 @@
       "detail": null
     },
     {
+      "evalId": "s620005-1",
+      "evlNo": "620005",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T06:46:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:e4b54514",
+      "evaluateeName": "정세영",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -8514,27 +8535,6 @@
       "evaluateeName": "김도희",
       "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s620005-1",
-      "evlNo": "620005",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:e4b54514",
-      "evaluateeName": "정세영",
-      "projectName": "나만의 용돈 기입장 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
