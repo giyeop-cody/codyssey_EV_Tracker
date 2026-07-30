@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T17:05:26.367Z",
+    "generatedAt": "2026-07-30T17:54:51.645Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "sweepTargets": 3,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -8373,24 +8373,24 @@
       "detail": null
     },
     {
-      "evalId": "s635057-1",
+      "evalId": "646198",
       "evlNo": "635057",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-31T00:59:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-07-31T01:30:00+09:00",
+      "endTime": "02:00",
+      "evaluatorId": "sha1:3f0e32eb",
+      "evaluatorName": "박범규",
       "evaluateeId": "sha1:50438081",
       "evaluateeName": "김성훈",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
       "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
+      "requestedAt": "2026-07-31T00:33:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
