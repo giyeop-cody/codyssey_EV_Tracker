@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T09:15:18.843Z",
+    "generatedAt": "2026-07-30T10:03:18.936Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 336,
+    "eventCount": 338,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 4,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1780,6 +1780,14 @@
       "598017|2": {
         "baseCd": "00001",
         "detailAt": "2026-07-30T09:13:13.174Z"
+      },
+      "635050|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T10:03:16.419Z"
+      },
+      "635047|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-30T10:03:16.861Z"
       }
     }
   },
@@ -7946,27 +7954,6 @@
       "detail": null
     },
     {
-      "evalId": "s633036-1",
-      "evlNo": "633036",
-      "evlDegr": "1",
-      "slotDateTime": "2026-07-30T02:59:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:ad93fac7",
-      "evaluateeName": "황준호",
-      "projectName": "나만의 용돈 기입장 프로그램 만들기",
-      "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "646021",
       "evlNo": "635011",
       "evlDegr": "1",
@@ -8236,6 +8223,27 @@
       "score": "100",
       "resultNm": "PASS",
       "requestedAt": "2026-07-30T17:17:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "645155",
+      "evlNo": "633036",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-30T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "sha1:e38a767f",
+      "evaluatorName": "박주영",
+      "evaluateeId": "sha1:ad93fac7",
+      "evaluateeName": "황준호",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-29T22:33:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -9741,6 +9749,48 @@
       "evaluateeId": "sha1:b57bb58f",
       "evaluateeName": "백동재",
       "projectName": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s635050-1",
+      "evlNo": "635050",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:030d2a99",
+      "evaluateeName": "신재은",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s635047-1",
+      "evlNo": "635047",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:a7ef10a2",
+      "evaluateeName": "송지윤",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
