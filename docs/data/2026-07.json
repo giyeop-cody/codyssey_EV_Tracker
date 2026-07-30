@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T14:29:19.431Z",
+    "generatedAt": "2026-07-30T14:36:06.551Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
-    "droppedOutOfRange": 2,
+    "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
