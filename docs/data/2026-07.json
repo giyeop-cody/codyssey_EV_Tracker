@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T04:57:10.353Z",
+    "generatedAt": "2026-07-31T06:30:41.888Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 3,
+    "sweepTargets": 2,
     "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
@@ -1694,8 +1694,8 @@
         "detailAt": "2026-07-29T04:14:29.310Z"
       },
       "633012|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-28T04:11:00.148Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-31T06:30:40.587Z"
       },
       "633020|1": {
         "baseCd": "00003",
@@ -8469,6 +8469,27 @@
       "detail": null
     },
     {
+      "evalId": "s633012-1",
+      "evlNo": "633012",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T15:08:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:9014b79b",
+      "evaluateeName": "곽현일",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -9866,27 +9887,6 @@
       "evaluateeName": "이여원",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s633012-1",
-      "evlNo": "633012",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:9014b79b",
-      "evaluateeName": "곽현일",
-      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
