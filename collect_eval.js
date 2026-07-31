@@ -38,11 +38,24 @@ const CONF = {
 };
 /* ------------------------------------------------------------------ */
 
+// KST(UTC+9) 기준 현재 연/월/일 — 월/년 경계 판정은 항상 이 함수로 (서버/런너 TZ 무관)
+function kstNowParts() {
+  const d = new Date(Date.now() + 9 * 3600 * 1000);
+  return {
+    year: d.getUTCFullYear(),
+    month: d.getUTCMonth() + 1,
+    day: d.getUTCDate(),
+  };
+}
+
 function parseArgs() {
-  const now = new Date();
+  // 월 경계 일관성: 수집 기준 연/월은 KST(대시보드와 동일)로 고정한다.
+  // 런너 로컬(UTC) Date를 쓰면 KST 1일 00:00~08:59에 수집기만 전 달을 바라보는
+  // 어긋남이 생긴다 (2026-08-01 월경계 장애 원인).
+  const now = kstNowParts();
   const cfg = {
-    year: now.getFullYear(),
-    month: now.getMonth() + 1,
+    year: now.year,
+    month: now.month,
     days: 0,
     members: null,      // "id1,id2" → 명부 없이 직접 지정
     rosterFile: null,   // JSON 파일 [{mbrId,name,level,guild}]
@@ -364,7 +377,8 @@ async function main() {
   let fromDate, toDate, outY, outM;
   if (cfg.days > 0) {
     const end = new Date(); const start = new Date(); start.setDate(start.getDate() - (cfg.days - 1));
-    fromDate = start; toDate = end; outY = end.getFullYear(); outM = end.getMonth() + 1;
+    const kst = kstNowParts();
+    fromDate = start; toDate = end; outY = kst.year; outM = kst.month;
   } else {
     fromDate = new Date(cfg.year, cfg.month - 1, 1);
     toDate = new Date(cfg.year, cfg.month, 0, 23, 59, 59);

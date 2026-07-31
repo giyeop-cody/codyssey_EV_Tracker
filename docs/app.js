@@ -422,14 +422,32 @@ async function refresh() {
   $("#statusLine").textContent = "불러오는 중...";
   let data = await fetchMonth(state.year, state.month);
   let emptyMonth = false;
+  let fallbackNote = null;
   if (data) {
     state.everHadReal = true;
-  } else if (!state.everHadReal) {
-    data = mockMonth(state.year, state.month); // 초기 데모 상태
   } else {
+    // 월/년 경계 보호: 현재 달 첫 파일이 아직 없으면(수집 지연) 지난달을 자동 표시
+    const today = kstToday();
+    const isCurrent = state.year === today.year && state.month === today.month;
+    if (isCurrent) {
+      const prev = state.month === 1 ? { year: state.year - 1, month: 12 } : { year: state.year, month: state.month - 1 };
+      const prevData = await fetchMonth(prev.year, prev.month);
+      if (prevData) {
+        fallbackNote = `${state.year}-${pad(state.month)} 수집 전 → ${prev.year}-${pad(prev.month)} 표시 중`;
+        state.year = prev.year; state.month = prev.month;
+        data = prevData;
+        state.everHadReal = true;
+      }
+    }
+    if (!data) {
+      if (!state.everHadReal) {
+        data = mockMonth(state.year, state.month); // 초기 데모 상태
+      } else {
     // 과거/미래의 미수집 달: MOCK 대신 빈 달로 표시 (가짜 데이터 혼동 방지)
-    emptyMonth = true;
-    data = { meta: { generatedAt: null, year: state.year, month: state.month, mock: false }, members: [], events: [], slots: [] };
+        emptyMonth = true;
+        data = { meta: { generatedAt: null, year: state.year, month: state.month, mock: false }, members: [], events: [], slots: [] };
+      }
+    }
   }
   // 취소/거절(불참 등) 기록은 표시하지 않음 (2026-07-18 요청) — 데이터는 JSON에 유지
   data.events = (data.events || []).filter((e) => e.status !== "CANCELLED");
@@ -437,11 +455,12 @@ async function refresh() {
   const stats = computeStats(data);
 
   $("#mockBanner").hidden = !data.meta.mock;
+  const notePrefix = fallbackNote ? `${fallbackNote} · ` : "";
   $("#statusLine").textContent = emptyMonth
     ? `${state.year}-${pad(state.month)} · 수집된 데이터가 없습니다`
     : data.meta.generatedAt
-      ? `마지막 수집: ${fmtKst(data.meta.generatedAt)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
-      : "";
+      ? `${notePrefix}마지막 수집: ${fmtKst(data.meta.generatedAt)} · 이벤트 ${data.events.length}건${data.meta.selfOnlyWarning ? " · 🔒 세션 뷰 (세션 소유자 참여 평가만 — API가 타인 스케줄 조회를 허용하지 않음)" : ""}`
+      : (fallbackNote || "");
 
   $("#ymInput").value = `${state.year}-${pad(state.month)}`;
   renderSummary(stats, data);
