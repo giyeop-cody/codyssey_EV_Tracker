@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T23:01:58.607Z",
+    "generatedAt": "2026-07-31T00:02:49.229Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1814,8 +1814,8 @@
         "detailAt": "2026-07-30T18:55:16.880Z"
       },
       "620005|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-30T23:01:57.410Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-31T00:02:47.938Z"
       }
     }
   },
@@ -8434,11 +8434,11 @@
       "evaluateeName": "정세영",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-07-31T06:44:00+09:00",
       "src": "txn",
       "detail": null
