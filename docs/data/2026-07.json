@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T01:03:50.122Z",
+    "generatedAt": "2026-07-31T03:23:49.075Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 344,
+    "eventCount": 345,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1790,8 +1790,8 @@
         "detailAt": "2026-07-30T10:03:16.861Z"
       },
       "635051|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-30T10:06:41.814Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-31T03:23:47.281Z"
       },
       "635056|1": {
         "baseCd": "00002",
@@ -1816,6 +1816,10 @@
       "620005|2": {
         "baseCd": "00003",
         "detailAt": "2026-07-31T00:02:47.938Z"
+      },
+      "636014|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-31T03:23:47.778Z"
       }
     }
   },
@@ -8444,6 +8448,27 @@
       "detail": null
     },
     {
+      "evalId": "647030",
+      "evlNo": "635051",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T11:00:00+09:00",
+      "endTime": "11:30",
+      "evaluatorId": "sha1:33c2a954",
+      "evaluatorName": "박영세",
+      "evaluateeId": "sha1:45be952a",
+      "evaluateeName": "권창범",
+      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-31T10:28:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "s615026-1",
       "evlNo": "615026",
       "evlDegr": "1",
@@ -9935,17 +9960,17 @@
       "detail": null
     },
     {
-      "evalId": "s635051-1",
-      "evlNo": "635051",
+      "evalId": "s636014-1",
+      "evlNo": "636014",
       "evlDegr": "1",
       "slotDateTime": null,
       "endTime": null,
       "evaluatorId": null,
       "evaluatorName": null,
-      "evaluateeId": "sha1:45be952a",
-      "evaluateeName": "권창범",
-      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "evaluateeId": "sha1:61ef3a2f",
+      "evaluateeName": "이건탁",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
