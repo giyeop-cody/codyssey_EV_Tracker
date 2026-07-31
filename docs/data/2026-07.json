@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T11:39:37.906Z",
+    "generatedAt": "2026-07-31T12:13:00.796Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 354,
+    "eventCount": 355,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1828,6 +1828,10 @@
       "636047|1": {
         "baseCd": "00003",
         "detailAt": "2026-07-31T11:39:36.720Z"
+      },
+      "636051|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-07-31T12:12:59.599Z"
       }
     }
   },
@@ -8719,6 +8723,27 @@
       "evaluateeName": "김진우",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s636051-1",
+      "evlNo": "636051",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T20:48:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:45be952a",
+      "evaluateeName": "권창범",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "IN_PROGRESS",
       "stusCd": "00002",
       "stusNm": "진행중",
