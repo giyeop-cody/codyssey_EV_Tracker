@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T07:17:21.088Z",
+    "generatedAt": "2026-07-31T07:49:43.469Z",
     "year": 2026,
     "month": 7,
     "mock": false,
-    "eventCount": 348,
+    "eventCount": 349,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
-    "dedupedSummaries": 0,
+    "sweepTargets": 3,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1820,6 +1820,10 @@
       "636014|1": {
         "baseCd": "00001",
         "detailAt": "2026-07-31T03:23:47.778Z"
+      },
+      "636037|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-07-31T07:49:41.766Z"
       }
     }
   },
@@ -8532,27 +8536,6 @@
       "detail": null
     },
     {
-      "evalId": "s633012-1",
-      "evlNo": "633012",
-      "evlDegr": "1",
-      "slotDateTime": "2026-07-31T15:08:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:9014b79b",
-      "evaluateeName": "곽현일",
-      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s635047-1",
       "evlNo": "635047",
       "evlDegr": "1",
@@ -8571,6 +8554,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "647087",
+      "evlNo": "633012",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T16:30:00+09:00",
+      "endTime": "17:00",
+      "evaluatorId": "sha1:0c3e0c35",
+      "evaluatorName": "고준석",
+      "evaluateeId": "sha1:9014b79b",
+      "evaluateeName": "곽현일",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-07-31T15:03:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
@@ -10034,6 +10038,27 @@
       "evaluateeName": "이건탁",
       "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s636037-1",
+      "evlNo": "636037",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:ce2931f5",
+      "evaluateeName": "김진우",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
