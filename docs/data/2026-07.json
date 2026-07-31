@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T04:06:01.297Z",
+    "generatedAt": "2026-07-31T04:57:10.353Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -8459,11 +8459,11 @@
       "evaluateeName": "권창범",
       "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-07-31T10:28:00+09:00",
       "src": "txn",
       "detail": null
