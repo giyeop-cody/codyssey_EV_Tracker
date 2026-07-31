@@ -160,19 +160,19 @@ function computeStats(data) {
     return per.get(id);
   };
   const byDay = new Map();
-  const total = { requested: 0, completed: 0, cancelled: 0 };
+  const total = { shown: 0, completed: 0, inProgress: 0 };
 
   for (const ev of data.events) {
     const dk = dayKey(ev.slotDateTime || ev.regDateTime);
     if (!byDay.has(dk)) byDay.set(dk, []);
     byDay.get(dk).push(ev);
 
-    total.requested++;
+    total.shown++;
     const a = ev.evaluatorId ? ensure(ev.evaluatorId) : null;
     const b = ev.evaluateeId ? ensure(ev.evaluateeId) : null;
 
-    if (ev.status === "CANCELLED") {
-      total.cancelled++;
+    if (ev.status === "IN_PROGRESS") {
+      total.inProgress++;
     } else if (ev.status === "COMPLETED") {
       total.completed++;
       if (a) a.given++;
@@ -202,11 +202,10 @@ function renderSummary(stats, data) {
   };
 
   const cards = [
-    { label: "총 평가 요청", value: total.requested, cls: "accent", sub: `${state.year}-${pad(state.month)}` },
-    { label: "완료된 평가", value: total.completed, cls: "good", sub: `완료율 ${total.requested ? Math.round((total.completed / total.requested) * 100) : 0}%` },
-    { label: "피크 시간대", value: total.requested ? `${pad(peakHour)}시` : "-", cls: "warn", sub: `누적 ${Math.max(...hourCount)}건` },
+    { label: "완료된 평가", value: total.completed, cls: "accent", sub: `${state.year}-${pad(state.month)}` },
+    { label: "피크 시간대", value: total.shown ? `${pad(peakHour)}시` : "-", cls: "warn", sub: `누적 ${Math.max(...hourCount)}건` },
     { label: "최다 평가자", value: top("given"), cls: "", sub: "완료 기준" },
-    { label: "최다 피평가자", value: top("received"), cls: "", sub: "완료 기준" },
+    { label: "최다 피평가자", value: top("received"), cls: "good", sub: "완료 기준" },
   ];
   $("#summary").innerHTML = cards.map((c) => `
     <div class="card ${c.cls}">
@@ -231,8 +230,6 @@ function renderCalendar(stats) {
     const events = byDay.get(dk) || [];
     const ok = events.filter((e) => e.status === "COMPLETED").length;
     const ip = events.filter((e) => e.status === "IN_PROGRESS").length;
-    const rq = events.filter((e) => e.status === "REQUESTED").length;
-    const cx = events.filter((e) => e.status === "CANCELLED").length;
     const people = new Set();
     events.forEach((e) => { people.add(nameOf(stats.mm, e.evaluatorId)); people.add(nameOf(stats.mm, e.evaluateeId)); });
     const names = [...people];
@@ -243,8 +240,6 @@ function renderCalendar(stats) {
         <div class="counts">
           ${ok ? `<span class="ok">✔ ${ok}</span>` : ""}
           ${ip ? `<span class="ip">◔ ${ip}</span>` : ""}
-          ${rq ? `<span class="rq">▷ ${rq}</span>` : ""}
-          ${cx ? `<span class="cx">✖ ${cx}</span>` : ""}
         </div>
         <div class="names">
           ${names.slice(0, 3).join("<br>")}
@@ -327,13 +322,9 @@ function assumedEndMs(ev) {
 }
 
 function statusBadge(ev) {
+  // 화면에는 완료/진행만 올라온다 (refresh에서 요청·예약·취소·거절 건 필터)
   switch (ev.status) {
     case "COMPLETED": return `<span class="badge ok">완료</span>`;
-    case "CANCELLED":
-      // stusNm/stusCd 기준으로 평가자 '거절'과 피평가자 '요청취소'를 구분 표시
-      if ((ev.stusNm || "").includes("거절") || ev.stusCd === "00004" || (ev.cancel && ev.cancel.by === "EVALUATOR"))
-        return `<span class="badge rj">거절</span>`;
-      return `<span class="badge cx">취소</span>`;
     case "IN_PROGRESS": {
       // 종료(추정) 시각이 지났는데도 진행중 → 소스의 완료 반영 지연일 가능성이 높음
       const endMs = assumedEndMs(ev);
@@ -341,7 +332,7 @@ function statusBadge(ev) {
         return `<span class="badge ip late" title="슬롯 종료(추정) 경과 — 소스가 아직 진행중으로 표시 중. 완료 확정 반영 대기">진행(확정 대기)</span>`;
       return `<span class="badge ip">진행</span>`;
     }
-    default: return `<span class="badge rq">요청</span>`;
+    default: return "";
   }
 }
 
@@ -353,22 +344,12 @@ function openDayModal(dk, stats) {
   $("#dayModalBody").innerHTML = events.map((ev) => {
     const a = sideName(stats.mm, ev, "evaluator");
     const b = sideName(stats.mm, ev, "evaluatee");
-    let cancelInfo = "";
-    if (ev.status === "CANCELLED" && ev.cancel && (ev.cancel.byId || ev.cancel.byName || ev.cancel.by)) {
-      const who = ev.cancel.byName || (ev.cancel.byId ? nameOf(stats.mm, ev.cancel.byId) : ev.cancel.by);
-      cancelInfo = ` · 취소: ${who}${ev.cancel.reasonNm ? `(${ev.cancel.reasonNm})` : ""}`;
-    }
-    // summary(요청 단계, s- 접두) 행의 시각은 evlBgngDt — 희망/신고 시각이지
-    // 확정 슬롯(:00/:30)이 아님 (7/22 시각 오인 사건 원인③). "≈" 로 구분 표시.
-    const timeCell = ev.src === "summary" && ev.slotDateTime
-      ? `<span class="time est" title="요청 단계 기준 시각 — 확정 슬롯 시각이 아닐 수 있습니다">≈${timeStr(ev.slotDateTime)}</span>`
-      : `<span class="time">${timeStr(ev.slotDateTime)}</span>`;
     return `
     <div class="ev-row" data-eval="${ev.evalId}">
-      ${timeCell}
+      <span class="time">${timeStr(ev.slotDateTime)}</span>
       <span class="who">
         <b>${a}</b><span class="arr">→</span><b>${b}</b>
-        <span class="proj"> · ${ev.projectName || "-"}${cancelInfo}</span>
+        <span class="proj"> · ${ev.projectName || "-"}</span>
       </span>
       <span class="meta">${statusBadge(ev)}</span>
     </div>`;
@@ -388,22 +369,14 @@ function openDetailModal(ev, stats) {
   const b = sideName(stats.mm, ev, "evaluatee");
   $("#detailModalTitle").textContent = `평가 상세 — ${ev.evalId}`;
   const d = ev.detail;
-  let cancelBlock = "";
-  if (ev.status === "CANCELLED" && ev.cancel) {
-    cancelBlock = `
-      <dt>취소 주체</dt><dd>${ev.cancel.byName || (ev.cancel.byId ? nameOf(stats.mm, ev.cancel.byId) : ev.cancel.by || "-")}${ev.cancel.reasonNm ? ` (${ev.cancel.reasonNm})` : ""}</dd>
-      <dt>취소 시각</dt><dd>${ev.cancel.at || "-"}</dd>
-      ${ev.cancel.reason ? `<dt>취소 사유</dt><dd>${ev.cancel.reason}</dd>` : ""}`;
-  }
   $("#detailModalBody").innerHTML = `
     <dl class="detail-kv">
       <dt>평가자</dt><dd>${a}</dd>
       <dt>피평가자</dt><dd>${b}</dd>
       <dt>과제</dt><dd>${ev.projectName || "-"}${ev.trackName ? ` · ${ev.trackName}` : ""}</dd>
-      <dt>${ev.src === "summary" ? "슬롯 시각 (요청 단계 기준)" : "슬롯 시각"}</dt><dd>${(ev.slotDateTime || "").replace("T", " ").slice(0, 16)}${ev.endTime ? ` ~ ${ev.endTime}` : ""}</dd>
+      <dt>슬롯 시각</dt><dd>${(ev.slotDateTime || "").replace("T", " ").slice(0, 16)}${ev.endTime ? ` ~ ${ev.endTime}` : ""}</dd>
       ${ev.regDateTime ? `<dt>요청 시각</dt><dd>${(ev.regDateTime || "").replace("T", " ").slice(0, 16)}</dd>` : ""}
       <dt>상태</dt><dd>${statusBadge(ev)}</dd>
-      ${cancelBlock}
       ${d && d.score != null ? `<dt>점수</dt><dd><b>${d.score}</b></dd>` : ""}
       ${d && d.comment ? `<dt>코멘트</dt><dd>${d.comment}</dd>` : ""}
     </dl>
@@ -449,8 +422,10 @@ async function refresh() {
       }
     }
   }
-  // 취소/거절(불참 등) 기록은 표시하지 않음 (2026-07-18 요청) — 데이터는 JSON에 유지
-  data.events = (data.events || []).filter((e) => e.status !== "CANCELLED");
+  // 표시 정책: 완료·진행 중인 평가만 노출 (2026-08-01 요청 —
+  // 예정된 평가 기능 제거: 요청/예약(REQUESTED)·취소·거절(CANCELLED) 건은 화면에 표시하지 않음)
+  // 데이터 자체는 JSON에 그대로 유지한다.
+  data.events = (data.events || []).filter((e) => e.status === "COMPLETED" || e.status === "IN_PROGRESS");
   state.data = data;
   const stats = computeStats(data);
 
