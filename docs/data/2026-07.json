@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T10:35:22.560Z",
+    "generatedAt": "2026-07-31T11:39:37.906Z",
     "year": 2026,
     "month": 7,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
-    "sweepTargets": 3,
-    "dedupedSummaries": 0,
+    "sweepTargets": 2,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "589018|1": {
         "baseCd": "00003",
@@ -1402,8 +1402,8 @@
         "detailAt": "2026-07-19T01:33:48.224Z"
       },
       "571010|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-19T01:33:48.719Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-31T11:39:36.277Z"
       },
       "603012|1": {
         "baseCd": "00003",
@@ -1822,12 +1822,12 @@
         "detailAt": "2026-07-31T03:23:47.778Z"
       },
       "636037|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-31T07:49:41.766Z"
+        "baseCd": "00002",
+        "detailAt": "2026-07-31T11:39:35.832Z"
       },
       "636047|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-07-31T10:02:30.147Z"
+        "baseCd": "00003",
+        "detailAt": "2026-07-31T11:39:36.720Z"
       }
     }
   },
@@ -8666,15 +8666,57 @@
       "detail": null
     },
     {
-      "evalId": "s636047-1",
+      "evalId": "647132",
       "evlNo": "636047",
       "evlDegr": "1",
-      "slotDateTime": "2026-07-31T18:58:00+09:00",
+      "slotDateTime": "2026-07-31T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "sha1:8a113ccf",
+      "evaluatorName": "강성현",
+      "evaluateeId": "sha1:7b9de5ec",
+      "evaluateeName": "김태우",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-07-31T18:27:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s571010-1",
+      "evlNo": "571010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T19:52:00+09:00",
       "endTime": null,
       "evaluatorId": null,
       "evaluatorName": null,
-      "evaluateeId": "sha1:7b9de5ec",
-      "evaluateeName": "김태우",
+      "evaluateeId": "sha1:c7ed2c82",
+      "evaluateeName": "김민준",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s636037-1",
+      "evlNo": "636037",
+      "evlDegr": "1",
+      "slotDateTime": "2026-07-31T20:08:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:ce2931f5",
+      "evaluateeName": "김진우",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "IN_PROGRESS",
@@ -9569,27 +9611,6 @@
       "detail": null
     },
     {
-      "evalId": "s571010-1",
-      "evlNo": "571010",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:c7ed2c82",
-      "evaluateeName": "김민준",
-      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
-      "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
       "evalId": "s590008-1",
       "evlNo": "590008",
       "evlDegr": "1",
@@ -10147,27 +10168,6 @@
       "evaluateeName": "이건탁",
       "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s636037-1",
-      "evlNo": "636037",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:ce2931f5",
-      "evaluateeName": "김진우",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
