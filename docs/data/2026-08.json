@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T13:45:05.054Z",
+    "generatedAt": "2026-08-01T13:54:23.799Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 0,
-    "dedupedSummaries": 0,
+    "sweepTargets": 1,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -2659,25 +2659,26 @@
   ],
   "events": [
     {
-      "evalId": "s635019-1",
+      "evalId": "648037",
       "evlNo": "635019",
       "evlDegr": "1",
-      "slotDateTime": "2026-08-01T21:10:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-08-01T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:5eef1cc0",
+      "evaluatorName": "이진걸",
       "evaluateeId": "sha1:b57bb58f",
       "evaluateeName": "백동재",
       "projectName": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-01T19:32:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "4-4. [버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기] 문제풀이를 진행해 주셨습니다.\n제가 처음 보는 솔루션(React 등등)에 대한 설명을 매우 친절하게 해 주셨습니다.\nSPA의 개념을 설명받으면서 다양한 질문들을 진행했는데, 커리어를 웹 개발로 시작하셨던 만큼 제가 가지고 있던 궁금증이 매우 크게 해소가 되었습니다.\nFirebase, Supabase 등등 BAAS (Backend-as-a-service)의 개념을 여기서 이해했는데, 현업자 입장(그러니까 엔지니어링에 리소스와 코스트를 고려하는)에서 해주는 설명이 크게 와닿았습니다.\n\n이외에 vercel을 활용해서 배포한 것을 실제로 CRUD 테스트를 할 때 옆의 노트북에서 바로 DB가 업데이트되는 것을 보여주는 것이 인상깊었습니다.\nB4-2 [ 버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기] 문제풀이 하느라 고생하셨습니다!!"
     },
     {
       "evalId": "648041",
