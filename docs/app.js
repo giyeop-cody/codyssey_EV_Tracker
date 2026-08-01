@@ -367,15 +367,49 @@ function openDayModal(dk, stats) {
 
 /* ================= 검색 =================
  * 표시 정책과 동일한 집합(완료·진행)을 이름/과제명으로 필터.
- * 이름은 평가자·피평가자 양쪽 매칭, 두 조건 동시 입력 시 AND.
+ * 이름은 평가한 사람(평가자) 기준만 매칭 — 피평가(받은 평가)는 제외 (2026-08-01 요청).
+ * 두 조건 동시 입력 시 AND. "전체 월" 체크 시 data/index.json의 전 월을 스캔한다.
  */
 const SEARCH_MAX_ROWS = 200;
+const monthCache = new Map(); // "YYYY-MM" → 월 데이터 (이름 검색 세션 내 캐시)
+let monthListPromise = null;
+
+async function fetchMonthList() {
+  if (!monthListPromise) {
+    monthListPromise = (async () => {
+      try {
+        const r = await fetch("data/index.json", { cache: "no-store" });
+        if (r.ok) {
+          const arr = await r.json();
+          if (Array.isArray(arr) && arr.length) return arr;
+        }
+      } catch (_) { /* 폐지 */ }
+      // 매니페스트 없으면 첫 수집월(2026-05)부터 이번 달까지 순회 추정
+      const t = kstToday(); const out = [];
+      for (let y = 2026, m = 5; y < t.year || (y === t.year && m <= t.month);) {
+        out.push(`${y}-${pad(m)}`);
+        if (++m > 12) { m = 1; y++; }
+      }
+      return out;
+    })();
+  }
+  return monthListPromise;
+}
+
+async function loadAllMonthsData() {
+  const list = await fetchMonthList();
+  await Promise.all(list.map(async (ym) => {
+    if (monthCache.has(ym)) return;
+    const [y, m] = ym.split("-").map(Number);
+    const d = await fetchMonth(y, m);
+    if (d) monthCache.set(ym, d);
+  }));
+}
 
 function searchMatch(ev, mm, nameQ, projQ) {
   if (nameQ) {
     const a = (sideName(mm, ev, "evaluator") + " " + (ev.evaluatorName || "")).toLowerCase();
-    const b = (sideName(mm, ev, "evaluatee") + " " + (ev.evaluateeName || "")).toLowerCase();
-    if (!a.includes(nameQ) && !b.includes(nameQ)) return false;
+    if (!a.includes(nameQ)) return false;
   }
   if (projQ) {
     const p = ((ev.projectName || "") + " " + (ev.trackName || "")).toLowerCase();
@@ -386,36 +420,72 @@ function searchMatch(ev, mm, nameQ, projQ) {
 
 function runSearch() {
   if (!state.data || !lastStats) return;
-  const mm = lastStats.mm;
   const nameQ = ($("#searchName").value || "").trim().toLowerCase();
   const projQ = ($("#searchProj").value || "").trim().toLowerCase();
-  const all = state.data.events || [];
-  const totalShown = all.length;
+  const allScope = $("#searchAll").checked;
+  $("#searchScope").textContent = allScope ? "· 전체 월" : `· ${state.year}-${pad(state.month)}`;
 
   if (!nameQ && !projQ) {
-    $("#searchInfo").textContent = totalShown
-      ? `${state.year}-${pad(state.month)} 표시 중인 평가 ${totalShown}건 — 이름이나 과제명을 입력하면 바로 필터됩니다`
-      : `${state.year}-${pad(state.month)} 표시 중인 평가가 없습니다`;
+    $("#searchInfo").textContent = allScope
+      ? "이름(평가자)이나 과제명을 입력하면 전체 월에서 바로 필터됩니다"
+      : `${state.year}-${pad(state.month)} 표시 중인 평가 ${state.data.events.length}건 — 이름(평가자)이나 과제명을 입력하면 바로 필터됩니다`;
     $("#searchResults").innerHTML = "";
     return;
   }
 
-  const hits = all
-    .filter((ev) => searchMatch(ev, mm, nameQ, projQ))
-    .sort((a, b) => String(b.slotDateTime || "").localeCompare(String(a.slotDateTime || "")));
+  if (allScope) {
+    $("#searchInfo").textContent = "전체 월 데이터 불러오는 중...";
+    loadAllMonthsData()
+      .then(() => renderSearchResults(nameQ, projQ, true))
+      .catch(() => { $("#searchInfo").textContent = "전체 월 데이터 로드 실패 — 네트워크를 확인하세요"; });
+    return;
+  }
+  renderSearchResults(nameQ, projQ, false);
+}
+
+function renderSearchResults(nameQ, projQ, allScope) {
+  const mm = new Map(); // 머지된 명부 (mbrId → 멤버)
+  const pool = [];      // {ym, ev}
+  if (allScope) {
+    for (const [ym, d] of [...monthCache.entries()].sort()) {
+      (d.members || []).forEach((x) => mm.set(String(x.mbrId), x));
+      for (const ev of (d.events || [])) {
+        if (ev.status !== "COMPLETED" && ev.status !== "IN_PROGRESS") continue;
+        pool.push({ ym, ev });
+      }
+    }
+  } else {
+    lastStats.mm.forEach((v, k) => mm.set(k, v));
+    const ym = `${state.year}-${pad(state.month)}`;
+    for (const ev of (state.data.events || [])) pool.push({ ym, ev });
+  }
+
+  const hits = pool
+    .filter(({ ev }) => searchMatch(ev, mm, nameQ, projQ))
+    .sort((a, b) => String(b.ev.slotDateTime || "").localeCompare(String(a.ev.slotDateTime || "")));
 
   $("#searchInfo").textContent = hits.length
-    ? `${hits.length}건 일치${hits.length > SEARCH_MAX_ROWS ? ` · 최근 ${SEARCH_MAX_ROWS}건까지 표시` : ""}`
+    ? `${hits.length}건 일치${allScope ? " · 전체 월" : ""}${hits.length > SEARCH_MAX_ROWS ? ` · 최근 ${SEARCH_MAX_ROWS}건까지 표시` : ""}`
     : "일치하는 평가가 없습니다";
 
-  $("#searchResults").innerHTML = hits.slice(0, SEARCH_MAX_ROWS).map((ev) => {
+  const counts = {};
+  hits.forEach((h) => { counts[h.ym] = (counts[h.ym] || 0) + 1; });
+  const showGroups = allScope && Object.keys(counts).length > 1;
+
+  let html = "";
+  let curYm = null;
+  hits.slice(0, SEARCH_MAX_ROWS).forEach(({ ym, ev }, i) => {
+    if (showGroups && ym !== curYm) {
+      curYm = ym;
+      html += `<div class="group-head">${ym} · ${counts[ym]}건</div>`;
+    }
     const a = sideName(mm, ev, "evaluator");
     const b = sideName(mm, ev, "evaluatee");
     const scoreBit = ev.score != null && ev.score !== ""
       ? ` <span class="score-chip">${ev.score}점${ev.resultNm ? ` · ${ev.resultNm}` : ""}</span>` : "";
     const fbBit = ev.feedback ? ` <span class="fb-chip" title="피드백 코멘트 있음">💬</span>` : "";
-    return `
-    <div class="ev-row" data-eval="${ev.evalId}">
+    html += `
+    <div class="ev-row" data-idx="${i}">
       <span class="date">${dayKey(ev.slotDateTime || ev.regDateTime).slice(5)}</span>
       <span class="time">${timeStr(ev.slotDateTime)}</span>
       <span class="who">
@@ -424,18 +494,18 @@ function runSearch() {
       </span>
       <span class="meta">${statusBadge(ev)}</span>
     </div>`;
-  }).join("");
+  });
+  $("#searchResults").innerHTML = html;
 
   $("#searchResults").querySelectorAll(".ev-row").forEach((row) => {
     row.addEventListener("click", () => {
-      const ev = hits.find((e) => e.evalId === row.dataset.eval);
-      if (ev) openDetailModal(ev, lastStats);
+      const h = hits[Number(row.dataset.idx)];
+      if (h) openDetailModal(h.ev, { mm });
     });
   });
 }
 
 function openSearchModal() {
-  $("#searchScope").textContent = `· ${state.year}-${pad(state.month)}`;
   openModal("#searchModal");
   runSearch();
   setTimeout(() => $("#searchName").focus(), 0);
@@ -569,6 +639,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#btnSearch").addEventListener("click", openSearchModal);
   $("#searchName").addEventListener("input", runSearch);
   $("#searchProj").addEventListener("input", runSearch);
+  $("#searchAll").addEventListener("change", runSearch);
   $("#btnPrev").addEventListener("click", () => shiftMonth(-1));
   $("#btnNext").addEventListener("click", () => shiftMonth(1));
   $("#btnToday").addEventListener("click", () => {

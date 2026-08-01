@@ -546,6 +546,18 @@ async function main() {
   }
   fs.writeFileSync(outFile, JSON.stringify(out, null, 2), "utf-8");
   console.log(`✅ 저장: ${outFile} (이벤트 ${out.meta.eventCount}건, 신규/갱신 ${newEvents.length}건)`);
+
+  // 월 목록 매니페스트 갱신 — 대시보드 "전체 월 검색"이 최신본까지 스캔하는 기준 (2026-08-01)
+  const manifestFile = path.join(cfg.outDir, "index.json");
+  let months = [];
+  try { months = JSON.parse(fs.readFileSync(manifestFile, "utf-8")); } catch (_) {}
+  const ym = `${outY}-${pad(outM)}`;
+  if (!months.includes(ym)) {
+    months.push(ym);
+    months.sort();
+    fs.writeFileSync(manifestFile, JSON.stringify(months) + "\n", "utf-8");
+    console.log(`📇 월 매니페스트 갱신: ${months.join(", ")}`);
+  }
 }
 
 main().catch((err) => {

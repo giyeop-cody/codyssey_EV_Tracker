@@ -77,8 +77,11 @@
     </div>
     <div class="modal-body">
       <div class="search-row">
-        <input id="searchName" type="text" placeholder="이름 (평가자 또는 피평가자)" autocomplete="off">
+        <input id="searchName" type="text" placeholder="이름 (평가한 사람 — 피평가자 제외)" autocomplete="off">
         <input id="searchProj" type="text" placeholder="과제명" autocomplete="off">
+        <label class="scope-toggle" title="현재 월 대신 과거 전체 월을 대상으로 검색">
+          <input id="searchAll" type="checkbox"> 전체 월
+        </label>
       </div>
       <div id="searchInfo" class="hint search-info"></div>
       <div id="searchResults"></div>
