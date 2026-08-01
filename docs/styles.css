@@ -177,6 +177,23 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid
 .detail-kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 12px; font-size: 13px; }
 .detail-kv dt { color: var(--muted); }
 .detail-kv dd { margin: 0; white-space: pre-wrap; word-break: break-word; }
+
+/* 검색 모달 */
+.modal.modal-wide { max-width: 720px; width: 94vw; }
+.search-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.search-row input {
+  flex: 1; min-width: 160px; background: var(--panel-2); border: 1px solid var(--line);
+  color: var(--fg); border-radius: 8px; padding: 9px 12px; font-size: 13px; outline: none;
+}
+.search-row input:focus { border-color: var(--accent); }
+.search-info { margin: 2px 0 10px; }
+#searchResults { max-height: 56vh; overflow-y: auto; }
+#searchResults .ev-row { grid-template-columns: 46px 44px 1fr auto; }
+.ev-row .date { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+.score-chip {
+  color: var(--good); font-size: 11px; border: 1px solid var(--line);
+  border-radius: 10px; padding: 0 7px; margin-left: 6px; white-space: nowrap;
+}
 .detail-items { margin-top: 12px; width: 100%; border-collapse: collapse; font-size: 12px; }
 .detail-items th, .detail-items td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; }
 

@@ -10,6 +10,7 @@
 <header class="topbar">
   <h1>📊 Codyssey 동료평가 트래커</h1>
   <div class="month-nav">
+    <button id="btnSearch" class="nav-btn" title="이름·과제명 검색">🔍</button>
     <button id="btnPrev" class="nav-btn">‹</button>
     <input id="ymInput" type="month" aria-label="연월 선택">
     <button id="btnNext" class="nav-btn">›</button>
@@ -66,6 +67,24 @@
 
 
 </main>
+
+<!-- 평가 검색 모달 -->
+<div id="searchModal" class="modal-bg" hidden>
+  <div class="modal modal-wide">
+    <div class="modal-head">
+      <h3>🔍 평가 검색 <span id="searchScope" class="hint"></span></h3>
+      <button class="close" data-close>✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="search-row">
+        <input id="searchName" type="text" placeholder="이름 (평가자 또는 피평가자)" autocomplete="off">
+        <input id="searchProj" type="text" placeholder="과제명" autocomplete="off">
+      </div>
+      <div id="searchInfo" class="hint search-info"></div>
+      <div id="searchResults"></div>
+    </div>
+  </div>
+</div>
 
 <!-- 일별 이벤트 모달 -->
 <div id="dayModal" class="modal-bg" hidden>

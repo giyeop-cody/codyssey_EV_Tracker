@@ -26,6 +26,7 @@ const state = {
 };
 
 const $ = (sel) => document.querySelector(sel);
+let lastStats = null; // refresh()에서 갱신 — 검색/모달이 공유하는 최신 집계
 
 /* ================= MOCK 데이터 (데이터 파일 없을 때) ================= */
 function seeded(seed) {
@@ -364,28 +365,107 @@ function openDayModal(dk, stats) {
   openModal("#dayModal");
 }
 
+/* ================= 검색 =================
+ * 표시 정책과 동일한 집합(완료·진행)을 이름/과제명으로 필터.
+ * 이름은 평가자·피평가자 양쪽 매칭, 두 조건 동시 입력 시 AND.
+ */
+const SEARCH_MAX_ROWS = 200;
+
+function searchMatch(ev, mm, nameQ, projQ) {
+  if (nameQ) {
+    const a = (sideName(mm, ev, "evaluator") + " " + (ev.evaluatorName || "")).toLowerCase();
+    const b = (sideName(mm, ev, "evaluatee") + " " + (ev.evaluateeName || "")).toLowerCase();
+    if (!a.includes(nameQ) && !b.includes(nameQ)) return false;
+  }
+  if (projQ) {
+    const p = ((ev.projectName || "") + " " + (ev.trackName || "")).toLowerCase();
+    if (!p.includes(projQ)) return false;
+  }
+  return true;
+}
+
+function runSearch() {
+  if (!state.data || !lastStats) return;
+  const mm = lastStats.mm;
+  const nameQ = ($("#searchName").value || "").trim().toLowerCase();
+  const projQ = ($("#searchProj").value || "").trim().toLowerCase();
+  const all = state.data.events || [];
+  const totalShown = all.length;
+
+  if (!nameQ && !projQ) {
+    $("#searchInfo").textContent = totalShown
+      ? `${state.year}-${pad(state.month)} 표시 중인 평가 ${totalShown}건 — 이름이나 과제명을 입력하면 바로 필터됩니다`
+      : `${state.year}-${pad(state.month)} 표시 중인 평가가 없습니다`;
+    $("#searchResults").innerHTML = "";
+    return;
+  }
+
+  const hits = all
+    .filter((ev) => searchMatch(ev, mm, nameQ, projQ))
+    .sort((a, b) => String(b.slotDateTime || "").localeCompare(String(a.slotDateTime || "")));
+
+  $("#searchInfo").textContent = hits.length
+    ? `${hits.length}건 일치${hits.length > SEARCH_MAX_ROWS ? ` · 최근 ${SEARCH_MAX_ROWS}건까지 표시` : ""}`
+    : "일치하는 평가가 없습니다";
+
+  $("#searchResults").innerHTML = hits.slice(0, SEARCH_MAX_ROWS).map((ev) => {
+    const a = sideName(mm, ev, "evaluator");
+    const b = sideName(mm, ev, "evaluatee");
+    const scoreBit = ev.score != null && ev.score !== ""
+      ? ` <span class="score-chip">${ev.score}점${ev.resultNm ? ` · ${ev.resultNm}` : ""}</span>` : "";
+    return `
+    <div class="ev-row" data-eval="${ev.evalId}">
+      <span class="date">${dayKey(ev.slotDateTime || ev.regDateTime).slice(5)}</span>
+      <span class="time">${timeStr(ev.slotDateTime)}</span>
+      <span class="who">
+        <b>${a}</b><span class="arr">→</span><b>${b}</b>
+        <span class="proj"> · ${ev.projectName || "-"}</span>${scoreBit}
+      </span>
+      <span class="meta">${statusBadge(ev)}</span>
+    </div>`;
+  }).join("");
+
+  $("#searchResults").querySelectorAll(".ev-row").forEach((row) => {
+    row.addEventListener("click", () => {
+      const ev = hits.find((e) => e.evalId === row.dataset.eval);
+      if (ev) openDetailModal(ev, lastStats);
+    });
+  });
+}
+
+function openSearchModal() {
+  $("#searchScope").textContent = `· ${state.year}-${pad(state.month)}`;
+  openModal("#searchModal");
+  runSearch();
+  setTimeout(() => $("#searchName").focus(), 0);
+}
+
 function openDetailModal(ev, stats) {
   const a = sideName(stats.mm, ev, "evaluator");
   const b = sideName(stats.mm, ev, "evaluatee");
   $("#detailModalTitle").textContent = `평가 상세 — ${ev.evalId}`;
-  const d = ev.detail;
+  const d = ev.detail; // 구형/MOCK 스키마 호환 (현 수집기는 최상위 score/resultNm 사용)
+  const reqAt = ev.requestedAt || ev.regDateTime;
   $("#detailModalBody").innerHTML = `
     <dl class="detail-kv">
       <dt>평가자</dt><dd>${a}</dd>
       <dt>피평가자</dt><dd>${b}</dd>
-      <dt>과제</dt><dd>${ev.projectName || "-"}${ev.trackName ? ` · ${ev.trackName}` : ""}</dd>
+      <dt>과제</dt><dd>${ev.projectName || "-"}</dd>
+      ${ev.trackName ? `<dt>트랙</dt><dd>${ev.trackName}</dd>` : ""}
       <dt>슬롯 시각</dt><dd>${(ev.slotDateTime || "").replace("T", " ").slice(0, 16)}${ev.endTime ? ` ~ ${ev.endTime}` : ""}</dd>
-      ${ev.regDateTime ? `<dt>요청 시각</dt><dd>${(ev.regDateTime || "").replace("T", " ").slice(0, 16)}</dd>` : ""}
-      <dt>상태</dt><dd>${statusBadge(ev)}</dd>
+      ${reqAt ? `<dt>요청 시각</dt><dd>${String(reqAt).replace("T", " ").slice(0, 16)}</dd>` : ""}
+      <dt>상태</dt><dd>${statusBadge(ev)}${ev.stusNm ? ` <span class="hint">${ev.stusNm}</span>` : ""}</dd>
+      ${ev.score != null && ev.score !== "" ? `<dt>점수</dt><dd><b>${ev.score}</b></dd>` : ""}
+      ${ev.resultNm ? `<dt>결과</dt><dd>${ev.resultNm}</dd>` : ""}
       ${d && d.score != null ? `<dt>점수</dt><dd><b>${d.score}</b></dd>` : ""}
       ${d && d.comment ? `<dt>코멘트</dt><dd>${d.comment}</dd>` : ""}
+      ${ev.feedback ? `<dt>피드백</dt><dd>${ev.feedback}</dd>` : ""}
     </dl>
     ${d && Array.isArray(d.items) && d.items.length ? `
       <table class="detail-items">
         <thead><tr><th>항목</th><th>점수</th></tr></thead>
         <tbody>${d.items.map((it) => `<tr><td>${it.label}</td><td>${it.score}</td></tr>`).join("")}</tbody>
       </table>` : ""}
-    ${!d ? `<p class="hint" style="margin-top:10px">상세 데이터가 없습니다. 수집기에서 detail 수집을 켜면 점수/코멘트가 표시됩니다.</p>` : ""}
   `;
   openModal("#detailModal");
 }
@@ -428,6 +508,7 @@ async function refresh() {
   data.events = (data.events || []).filter((e) => e.status === "COMPLETED" || e.status === "IN_PROGRESS");
   state.data = data;
   const stats = computeStats(data);
+  lastStats = stats;
 
   $("#mockBanner").hidden = !data.meta.mock;
   const notePrefix = fallbackNote ? `${fallbackNote} · ` : "";
@@ -484,6 +565,9 @@ document.addEventListener("visibilitychange", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  $("#btnSearch").addEventListener("click", openSearchModal);
+  $("#searchName").addEventListener("input", runSearch);
+  $("#searchProj").addEventListener("input", runSearch);
   $("#btnPrev").addEventListener("click", () => shiftMonth(-1));
   $("#btnNext").addEventListener("click", () => shiftMonth(1));
   $("#btnToday").addEventListener("click", () => {
