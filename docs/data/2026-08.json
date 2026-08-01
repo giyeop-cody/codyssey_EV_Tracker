@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T15:59:45.915Z",
+    "generatedAt": "2026-08-01T16:02:50.254Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 72,
+    "eventCount": 74,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1202,8 +1202,8 @@
         "detailAt": "2026-08-01T09:27:24.932Z"
       },
       "589010|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-01T09:27:25.429Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-01T16:02:49.953Z"
       },
       "568007|1": {
         "baseCd": "00003",
@@ -2701,6 +2701,50 @@
       "src": "txn",
       "detail": null,
       "feedback": "평가 진행하면서, 기본적으로 페이지 배포 및 실제 작동이 되는 부분을 검수 진행했고, 과제에 대해 많은 논의를 진행했습니다. 세세한 부분에 디테일이 떨어지는 부분에 대해서는 본인이 자신 있어하는 내용으로 가져와서 이해를 도울 수 있도록 하는 방법에 대해서 소개를 드렸습니다. 진행하느라 고생하셨습니다."
+    },
+    {
+      "evalId": "648044",
+      "evlNo": "589010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-01T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "sha1:5eef1cc0",
+      "evaluatorName": "이진걸",
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-01T21:28:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "B3-1, [정보를 엄청 빠르게 찾아주는 작은 저장소 만들기] 문제풀이를 해 주셨습니다.\nRedis라는 개념을 처음부터 잡아주셔서 매우 감사하게 개념들을 배울 수 있었습니다.\n다만 클래스, 노드, 이중 연결 리스트, heap 등 매우 다양한 자료구조 및 서칭 개념들을 이해한 뒤에 Redis가 어떻게 동작하는지 이해할 수 있게 되었으나, 제 지식이 일천하여 method 구현 및 결과 보기 위주로 항목 1 평가를 한 뒤에는 여러모로 강의를 듣는 느낌으로 평가를 진행했습니다.\n\n역시 42 서울의 격언 \"혼자 고민하면 42시간, 함께 고민하면 42분\"이 공감이 되었던 게, 혼자서 3-1을 공부하려 했다면 어디서부터 시작해야 했을 지 엄청 헤매었겠다는 생각이 많이 드는 문제였습니다.\n\n그리고 Repository에 있는 내용들을 Codespace에 띄워서 바로 시연하는 모습이 인상깊었고, 그 외에도 Figma를 활용해서 개념 설명을 도식화해주셔서 이해가 더욱 빠르게 되었습니다.\n\n3-1.  [정보를 엄청 빠르게 찾아주는 작은 저장소 만들기] 문제풀이하시느라 고생하셨습니다."
+    },
+    {
+      "evalId": "648046",
+      "evlNo": "589010",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-02T00:00:00+09:00",
+      "endTime": "00:30",
+      "evaluatorId": "sha1:9238e2ed",
+      "evaluatorName": "김희준",
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-01T21:40:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "레디스 내부 구조에 대해서 따로 지금까지 조사해본 적은 없었으나, 일반적인 내용을 인지하고 있는 상황에서 코디세이 과정에서 봤던 동료평가 세션 중에 가장 명쾌하고 가장 명료하게 잘 설명해주신 세션이었던 거 같습니다. 코드 구현에 대해서 궁금한 점을 중간에 많이 여쭤봤는데,  ai를 당연하게 활용하지만 이렇게 이해도를 높게 가져가시면서 설명한 분은 별로 없으셔서 감탄하면서 들었던 거 같습니다. 과제 고생하셨습니다."
     },
     {
       "evalId": "646085",
