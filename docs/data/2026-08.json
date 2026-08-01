@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T22:14:30.420Z",
+    "generatedAt": "2026-08-01T22:56:51.084Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -1754,8 +1754,8 @@
         "detailAt": "2026-08-01T13:38:58.719Z"
       },
       "638003|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-01T20:45:22.791Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-01T22:56:50.782Z"
       }
     }
   },
@@ -2749,6 +2749,27 @@
       "src": "txn",
       "detail": null,
       "feedback": "레디스 내부 구조에 대해서 따로 지금까지 조사해본 적은 없었으나, 일반적인 내용을 인지하고 있는 상황에서 코디세이 과정에서 봤던 동료평가 세션 중에 가장 명쾌하고 가장 명료하게 잘 설명해주신 세션이었던 거 같습니다. 코드 구현에 대해서 궁금한 점을 중간에 많이 여쭤봤는데,  ai를 당연하게 활용하지만 이렇게 이해도를 높게 가져가시면서 설명한 분은 별로 없으셔서 감탄하면서 들었던 거 같습니다. 과제 고생하셨습니다."
+    },
+    {
+      "evalId": "s638003-1",
+      "evlNo": "638003",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-02T07:40:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
     },
     {
       "evalId": "646085",
@@ -4211,27 +4232,6 @@
       "evaluateeName": "장현준",
       "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s638003-1",
-      "evlNo": "638003",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:12d8d122",
-      "evaluateeName": "손보람",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
