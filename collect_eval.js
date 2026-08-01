@@ -373,6 +373,9 @@ async function main() {
   const cfg = parseArgs();
   SESSION = loadSession();
   const feedbackOn = process.env.COLLECT_FEEDBACK === "1";
+  // FORCE_DETAIL=1: base 코드 변화(Trigger A)와 무관하게 이번 달 전체 평가의 상세를 재조회.
+  // 피드백 수집을 새로 켰을 때 과거 월 백필처럼 1회성 재수집에 사용 (증분 마커 무시).
+  const forceDetail = process.env.FORCE_DETAIL === "1";
 
   let fromDate, toDate, outY, outM;
   if (cfg.days > 0) {
@@ -440,8 +443,8 @@ async function main() {
   // 4단계: 상세 수집 — Trigger A(base 코드 변화)만 증분 대상으로 선정한다.
   // 과거 구현은 base/txn 도메인의 stusCd를 한 Set에 섞어 비교해 코드 충돌 시
   // 갱신이 영구 스킵되고, 대부분 평가가 매번 재조회됐다 (2026-07-19 사례, 매 실행 323건).
-  const targets = [...uniq.values()].filter(({ row }) => evalPlan.isBaseChanged(row, evalStatus));
-  console.log(`▶ 3단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건)`);
+  const targets = [...uniq.values()].filter(({ row }) => forceDetail || evalPlan.isBaseChanged(row, evalStatus));
+  console.log(`▶ 3단계: 평가 상세 수집 (대상 ${targets.length}건 / 전체 ${uniq.size}건${forceDetail ? " · FORCE_DETAIL 전체 재조회" : ""})`);
   const newEvents = [];
   const fetchedKeys = new Set(); // 이번 실행에 상세를 본 평가 (스윕 중복 호출 방지)
   let done = 0;
