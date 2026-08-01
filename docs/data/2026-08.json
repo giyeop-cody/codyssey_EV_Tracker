@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T20:01:12.537Z",
+    "generatedAt": "2026-08-01T20:45:23.092Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 74,
+    "eventCount": 75,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1752,6 +1752,10 @@
       "556007|2": {
         "baseCd": "00001",
         "detailAt": "2026-08-01T13:38:58.719Z"
+      },
+      "638003|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-01T20:45:22.791Z"
       }
     }
   },
@@ -4207,6 +4211,27 @@
       "evaluateeName": "장현준",
       "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s638003-1",
+      "evlNo": "638003",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
