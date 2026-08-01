@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T12:15:57.095Z",
+    "generatedAt": "2026-08-01T13:38:59.464Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 0,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1746,8 +1746,12 @@
         "detailAt": "2026-08-01T09:28:40.590Z"
       },
       "637020|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-01T13:38:59.163Z"
+      },
+      "556007|2": {
         "baseCd": "00001",
-        "detailAt": "2026-08-01T12:00:51.277Z"
+        "detailAt": "2026-08-01T13:38:58.719Z"
       }
     }
   },
@@ -2673,6 +2677,27 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "648041",
+      "evlNo": "637020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-01T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "sha1:9238e2ed",
+      "evaluatorName": "김희준",
+      "evaluateeId": "sha1:83db6dd3",
+      "evaluateeName": "서강식",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-01T21:19:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
@@ -4136,27 +4161,6 @@
       "evaluateeName": "장현준",
       "projectName": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s637020-1",
-      "evlNo": "637020",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:83db6dd3",
-      "evaluateeName": "서강식",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
