@@ -413,13 +413,14 @@ function runSearch() {
     const b = sideName(mm, ev, "evaluatee");
     const scoreBit = ev.score != null && ev.score !== ""
       ? ` <span class="score-chip">${ev.score}점${ev.resultNm ? ` · ${ev.resultNm}` : ""}</span>` : "";
+    const fbBit = ev.feedback ? ` <span class="fb-chip" title="피드백 코멘트 있음">💬</span>` : "";
     return `
     <div class="ev-row" data-eval="${ev.evalId}">
       <span class="date">${dayKey(ev.slotDateTime || ev.regDateTime).slice(5)}</span>
       <span class="time">${timeStr(ev.slotDateTime)}</span>
       <span class="who">
         <b>${a}</b><span class="arr">→</span><b>${b}</b>
-        <span class="proj"> · ${ev.projectName || "-"}</span>${scoreBit}
+        <span class="proj"> · ${ev.projectName || "-"}</span>${scoreBit}${fbBit}
       </span>
       <span class="meta">${statusBadge(ev)}</span>
     </div>`;
