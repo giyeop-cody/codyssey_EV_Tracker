@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T14:03:26.186Z",
+    "generatedAt": "2026-08-01T14:57:11.363Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -10,7 +10,7 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 0,
+    "sweepTargets": 1,
     "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
@@ -2692,14 +2692,15 @@
       "evaluateeName": "서강식",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-01T21:19:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "평가 진행하면서, 기본적으로 페이지 배포 및 실제 작동이 되는 부분을 검수 진행했고, 과제에 대해 많은 논의를 진행했습니다. 세세한 부분에 디테일이 떨어지는 부분에 대해서는 본인이 자신 있어하는 내용으로 가져와서 이해를 도울 수 있도록 하는 방법에 대해서 소개를 드렸습니다. 진행하느라 고생하셨습니다."
     },
     {
       "evalId": "646085",
