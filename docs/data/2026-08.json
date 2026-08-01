@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T07:11:33.367Z",
+    "generatedAt": "2026-08-01T07:39:27.776Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": false,
     "droppedOutOfRange": 0,
     "sweepTargets": 0,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -234,8 +234,8 @@
         "detailAt": "2026-07-31T15:21:37.774Z"
       },
       "615023|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-07-31T15:21:38.269Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-01T07:39:27.474Z"
       },
       "564003|2": {
         "baseCd": "00003",
@@ -2693,6 +2693,27 @@
       "detail": null
     },
     {
+      "evalId": "648027",
+      "evlNo": "615023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-12T15:00:00+09:00",
+      "endTime": "15:30",
+      "evaluatorId": "sha1:26887c4f",
+      "evaluatorName": "주재문",
+      "evaluateeId": "sha1:090dc56a",
+      "evaluateeName": "김기엽",
+      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "REQUESTED",
+      "stusCd": "00002",
+      "stusNm": "평가대기중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-01T16:15:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "646182",
       "evlNo": "586014",
       "evlDegr": "1",
@@ -2892,27 +2913,6 @@
       "evaluateeId": "sha1:090dc56a",
       "evaluateeName": "김기엽",
       "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
-      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s615023-1",
-      "evlNo": "615023",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:090dc56a",
-      "evaluateeName": "김기엽",
-      "projectName": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
