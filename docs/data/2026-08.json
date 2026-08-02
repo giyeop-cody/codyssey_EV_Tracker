@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-02T05:59:12.088Z",
+    "generatedAt": "2026-08-02T06:44:04.520Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 78,
+    "eventCount": 79,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 2,
     "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -758,8 +758,8 @@
         "detailAt": "2026-08-01T09:26:27.180Z"
       },
       "635047|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-01T09:26:27.678Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-02T06:44:04.218Z"
       },
       "623017|1": {
         "baseCd": "00001",
@@ -2819,6 +2819,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "포트폴리오는 외부 프레임워크에 의존하지 않고 순수 HTML, CSS, JavaScript만으로 웹 서비스의 기본 구조와 핵심 동작을 충실하게 구현한 완성도 높은 결과물입니다.\n\n시맨틱 태그와 웹 접근성 속성을 적절히 적용하여 문서 구조의 명확성과 사용 편의성을 확보했으며, 모바일 우선 반응형 레이아웃, 햄버거 메뉴, 다크 모드, 부드러운 화면 이동, 상단 이동 버튼 등 다양한 사용자 인터랙션을 체계적으로 구성했습니다.\n\n특히 GitHub API 연동 과정에서 로딩, 성공, 오류, 빈 데이터 상태를 구분하고 재시도 기능과 언어별 필터를 제공한 점은 비동기 데이터 처리와 예외 상황에 대한 이해가 잘 드러나는 부분입니다.\n\n또한 로컬스토리지를 활용한 테마 상태 유지, Intersection Observer 기반 애니메이션, 입력 폼 유효성 검사 등 실무에서 활용되는 기능을 폭넓게 적용했습니다.\n\nCSS와 JavaScript 파일을 기능별로 분리하고 공통 설정을 별도 관리한 구조는 유지보수성과 확장성 측면에서도 우수합니다.\n\n전체적으로 미션 요구사항에 대한 이해도가 높고, 기능 구현뿐 아니라 접근성, 사용자 경험, 보안, 예외 처리까지 함께 고려하였습니다.\n\nCSS, JavaScript, html 의 구조적인 내용을 코드와 함께 설명을 자세히 해 주셨습니다.\n\nmap 과 filter 등 전반적인 코드를 Figma에 정리해 주신 내용과 판서, 설명으로 쉽게 이해되었습니다.\n\n수고하셨습니다. 감사합니다."
+    },
+    {
+      "evalId": "649027",
+      "evlNo": "635047",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-02T14:00:00+09:00",
+      "endTime": "14:30",
+      "evaluatorId": "sha1:02bcb006",
+      "evaluatorName": "이종석",
+      "evaluateeId": "sha1:a7ef10a2",
+      "evaluateeName": "송지윤",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-02T13:27:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "코드 설명 부분에서, aria 속성에 대해 설명이 서투셨지만, 같이 ai 를 활용해 미션 수행 간의 부족한 부분을 충분히 채우고 넘어갈 수 있어서 좋았습니다. 프론트엔드 부분을 자주 접하지 않으셨음에도 전체적인 기능이나 구현이 명세에 맞게 잘 되어있었습니다. 다만\n- 새로 고침시 스크롤 y 좌표가 원래 위치가 아닌 곳으로 이동 하는 것\n- Set, Map, dict의 차이에 대해서 추가적인 학습\n등이 이루어 진다면, 더 좋은 개발자로 성잘 하시는데 도움이 될 것 같아요. 미션 하시느라 고생하셨습니다! 화이팅 ~"
     },
     {
       "evalId": "646085",
