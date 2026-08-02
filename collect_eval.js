@@ -69,9 +69,9 @@ function parseArgs() {
   const args = process.argv.slice(2);
   for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
-      case "--year": cfg.year = parseInt(args[++i], 10); break;
-      case "--month": cfg.month = parseInt(args[++i], 10); break;
-      case "--days": cfg.days = parseInt(args[++i], 10); break;
+      case "--year": cfg.year = parseInt(args[++i], 10); cfg.manualTarget = true; break;
+      case "--month": cfg.month = parseInt(args[++i], 10); cfg.manualTarget = true; break;
+      case "--days": cfg.days = parseInt(args[++i], 10); cfg.manualTarget = true; break;
       case "--members": cfg.members = args[++i].split(",").map((s) => s.trim()).filter(Boolean); break;
       case "--roster-file": cfg.rosterFile = args[++i]; break;
       case "--roster-cache": cfg.rosterCache = args[++i]; break;
@@ -388,6 +388,25 @@ async function main() {
     outY = cfg.year; outM = cfg.month;
   }
   const inRange = (iso) => { if (!iso) return false; const t = new Date(iso); return t >= fromDate && t <= toDate; };
+
+  // ── 수집 간격 하한 게이트 (2026-08-01 리팩토링 승인안 ①)
+  // 마지막 성공 수집(이번 달 파일 meta.generatedAt) 후 COLLECT_MIN_INTERVAL_MIN분(기본 30) 미만이면
+  // codyssey 호출 0건으로 조용히 종료. 4중 크론의 실제 발화가 슬롯당 ~1.65회(실측 79회/일)라
+  // 게이트 없이는 하루 ~1.3만 회 호출된다. 우회: --year/--month/--days 지정, FORCE_DETAIL=1, COLLECT_FORCE=1.
+  const minGapMin = parseInt(process.env.COLLECT_MIN_INTERVAL_MIN || "30", 10);
+  const gateBypass = forceDetail || process.env.COLLECT_FORCE === "1" || cfg.manualTarget;
+  if (!gateBypass && minGapMin > 0) {
+    try {
+      const prevFile = path.join(cfg.outDir, `${outY}-${pad(outM)}.json`);
+      const prev = JSON.parse(fs.readFileSync(prevFile, "utf-8"));
+      const last = prev && prev.meta && prev.meta.generatedAt ? Date.parse(prev.meta.generatedAt) : 0;
+      const ageMin = last ? (Date.now() - last) / 60000 : Infinity;
+      if (ageMin < minGapMin) {
+        console.log(`⏭️ 수집 간격 하한(${minGapMin}분) 미만 — 마지막 수집 ${Math.floor(ageMin)}분 전. 이번 run 스킵 (codyssey 호출 0건)`);
+        process.exit(0);
+      }
+    } catch (_) { /* 파일 없음 → 첫 수집 진행 */ }
+  }
 
   console.log("▶ 1단계: 멤버 명부 수집");
   const roster = await fetchRoster(cfg);
