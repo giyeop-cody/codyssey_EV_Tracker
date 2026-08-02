@@ -270,12 +270,12 @@ async function fetchMemberEvals(mbrId, cfg) {
       mbrId: String(mbrId),
       instCd: CONF.instCd,
       page: String(page),
-      pagePerRows: "50",
+      pagePerRows: "200", // 🧪 08-02 실측: 200 수용 — 대부분 멤버 1페이지화 (허브 API-REFERENCE)
       orderBy: "DESC",
     });
     const list = Array.isArray(result) ? result : (result && result.list) || [];
     out.push(...list);
-    if (list.length < 50) break;
+    if (list.length < 200) break;
     await sleep(cfg.delay);
   }
   return out;
