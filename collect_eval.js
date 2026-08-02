@@ -21,9 +21,30 @@
 
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const evalPlan = require("./lib/eval-plan");
 
 const API_BASE = "https://api.usr.codyssey.kr/";
+
+/* 공개 JSON에 개인 식별자(mbrId)를 원문으로 싣지 않는다.
+ * 10자리 숫자(1000 접두) 형식의 값·객체 키를 sha1 앞 8자리로 마스킹한다.
+ * 해시는 결정적이라 월별 파일 간 조인 키로 계속 사용할 수 있다. */
+const PUBLIC_ID_RE = /^1000\d{6}$/;
+function maskPublicId(s) {
+  return "sha1:" + crypto.createHash("sha1").update(String(s)).digest("hex").slice(0, 8);
+}
+function maskPublicIds(v) {
+  if (typeof v === "string" || typeof v === "number") {
+    return PUBLIC_ID_RE.test(String(v)) ? maskPublicId(v) : v;
+  }
+  if (Array.isArray(v)) return v.map(maskPublicIds);
+  if (v && typeof v === "object") {
+    const o = {};
+    for (const [k, x] of Object.entries(v)) o[PUBLIC_ID_RE.test(k) ? maskPublicId(k) : k] = maskPublicIds(x);
+    return o;
+  }
+  return v;
+}
 
 /* ---------------- 확정된 실측 설정 (2026-07-16 확인) ---------------- */
 const CONF = {
@@ -590,7 +611,7 @@ async function main() {
     console.log(`  (기간 밖 제외 ${droppedOut}건, 총 ${out.events.length}건)`);
     return;
   }
-  fs.writeFileSync(outFile, JSON.stringify(out, null, 2), "utf-8");
+  fs.writeFileSync(outFile, JSON.stringify(maskPublicIds(out), null, 2), "utf-8");
   console.log(`✅ 저장: ${outFile} (이벤트 ${out.meta.eventCount}건, 신규/갱신 ${newEvents.length}건)`);
 
   // 월 목록 매니페스트 갱신 — 대시보드 "전체 월 검색"이 최신본까지 스캔하는 기준 (2026-08-01)
