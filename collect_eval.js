@@ -390,10 +390,10 @@ async function main() {
   const inRange = (iso) => { if (!iso) return false; const t = new Date(iso); return t >= fromDate && t <= toDate; };
 
   // ── 수집 간격 하한 게이트 (2026-08-01 리팩토링 승인안 ①)
-  // 마지막 성공 수집(이번 달 파일 meta.generatedAt) 후 COLLECT_MIN_INTERVAL_MIN분(기본 30) 미만이면
+  // 마지막 성공 수집(이번 달 파일 meta.generatedAt) 후 COLLECT_MIN_INTERVAL_MIN분(기본 60) 미만이면
   // codyssey 호출 0건으로 조용히 종료. 4중 크론의 실제 발화가 슬롯당 ~1.65회(실측 79회/일)라
   // 게이트 없이는 하루 ~1.3만 회 호출된다. 우회: --year/--month/--days 지정, FORCE_DETAIL=1, COLLECT_FORCE=1.
-  const minGapMin = parseInt(process.env.COLLECT_MIN_INTERVAL_MIN || "30", 10);
+  const minGapMin = parseInt(process.env.COLLECT_MIN_INTERVAL_MIN || "60", 10);
   const gateBypass = forceDetail || process.env.COLLECT_FORCE === "1" || cfg.manualTarget;
   if (!gateBypass && minGapMin > 0) {
     try {
