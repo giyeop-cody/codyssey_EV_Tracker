@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-02T16:58:52.153Z",
+    "generatedAt": "2026-08-02T18:00:52.746Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 81,
+    "eventCount": 82,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 2,
     "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -466,8 +466,8 @@
         "detailAt": "2026-08-01T09:25:49.832Z"
       },
       "622025|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-01T09:25:50.331Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-02T18:00:52.444Z"
       },
       "614033|1": {
         "baseCd": "00003",
@@ -2889,6 +2889,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "docker 파일 작동 흐름에 대해 자세하게 설명해주셔서 과제 흐름에 따른 이해가 쉬웠고, 특히 요구사항 하나하나 세세하게 짚어주셔서 많이 배워갈 수 있었습니다. 작성해주신 쉘 스크립트 출력도 잘되는 것을 확인했고, 포트포워딩과 크론탭 별 관련해서도 질문드렸는데 다 쉽게 알려주셔서 이해도가 높다는 것을 느낄 수 있었습니다. 명령어 쓰시는 게 고수의 향기가 느껴졌습니다! 많이 배우고 갑니다~~"
+    },
+    {
+      "evalId": "649087",
+      "evlNo": "622025",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T00:30:00+09:00",
+      "endTime": "01:00",
+      "evaluatorId": "sha1:bc593e41",
+      "evaluatorName": "김시현",
+      "evaluateeId": "sha1:8a113ccf",
+      "evaluateeName": "강성현",
+      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-02T23:50:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "과제의 디렉토리가 역할에 따라 잘 분리가 되어있고, 모든 기능이 정상적으로 작동합니다. 추가로 Makefile을 통해 과제에 필요한 환경을 빠르게 만드는 것을 보여주셨는데, 빠른 환경 구축 및 버전 관리 차원에서 Makefile이 유리하다는 설명을 들었습니다. \n많은 것을 배워가는 평가가 되었던 것 같습니다. 수고하셨습니다!"
     },
     {
       "evalId": "646085",
