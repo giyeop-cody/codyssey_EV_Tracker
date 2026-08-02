@@ -263,7 +263,23 @@ function toIso(dt) {
   return m ? `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00+09:00` : null;
 }
 
-async function fetchMemberEvals(mbrId, cfg) {
+/* ── 허브 census (2026-08-02 승인안 ③): EV+Quest 중복 mbrSearch 폴 링 통합.
+ * 허브(비공개)가 60분 주기로 전원 목록을 수집해 census.json으로 제공하고,
+ * 워크플로가 .census-cache/census.json에 날짜 신선본(≤120분)을 둔다.
+ * 파일이 없으면(페치 실패/신선도 초과) 기존처럼 멤버별 API 폴 링으로 자연 복귀한다. */
+const CENSUS_FILE = process.env.EV_CENSUS_FILE || ".census-cache/census.json";
+function loadCensus() {
+  try {
+    const d = JSON.parse(fs.readFileSync(CENSUS_FILE, "utf-8"));
+    if (d && d.byMember && typeof d.fetchedAt === "string" && d.byMember && typeof d.byMember === "object") return d;
+  } catch (_) { /* 없음 → 자체 폴 링 */ }
+  return null;
+}
+
+async function fetchMemberEvals(mbrId, cfg, census) {
+  if (census && Object.prototype.hasOwnProperty.call(census.byMember, String(mbrId))) {
+    return census.byMember[String(mbrId)] || [];
+  }
   const out = [];
   for (let page = 1; page <= 10; page++) {
     const result = await fetchFormJson("ev/request/mbrSearch/searchList", {
@@ -438,20 +454,31 @@ async function main() {
   const evalStatus = (existing.meta && existing.meta.evalStatus) || {};
 
   // 3단계: 멤버별 평가 목록 (mbrSearch — mbrId 반영 실측 확정)
-  console.log(`▶ 2단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
+  const census = loadCensus();
+  if (census) {
+    const ageMin = Math.round((Date.now() - Date.parse(census.fetchedAt)) / 60000);
+    console.log(`▶ 2단계: 멤버별 평가 목록 — 허브 census ${census.members}명/${census.rows}행 (${ageMin}분 전본, mbrSearch 생략분 계수 중)`);
+  } else {
+    console.log(`▶ 2단계: 멤버별 평가 목록 (mbrSearch, ${roster.length}명)`);
+  }
   const summaries = [];
+  let censusHits = 0, apiCalls = 0;
   for (let i = 0; i < roster.length; i++) {
     const m = roster[i];
     try {
-      const rows = await fetchMemberEvals(m.mbrId, cfg);
+      const fromCensus = census && Object.prototype.hasOwnProperty.call(census.byMember, String(m.mbrId));
+      const rows = await fetchMemberEvals(m.mbrId, cfg, census);
+      if (fromCensus) censusHits++; else apiCalls++;
       for (const r of rows) summaries.push({ member: m, row: r });
+      // census 커버 멤버는 네트워크 호출이 없으므로 딜레이 생략
+      if (!fromCensus) await sleep(cfg.delay);
     } catch (e) {
       if (e.sessionExpired) { console.error("❌ 세션 만료. CODYSSEY_SESSION 갱신 필요"); process.exit(3); }
       console.warn(`  ⚠️ ${m.name || m.mbrId} 목록 실패: ${e.message}`);
     }
     if ((i + 1) % 10 === 0 || i === roster.length - 1) console.log(`  [${i + 1}/${roster.length}] 누적 ${summaries.length}건`);
-    await sleep(cfg.delay);
   }
+  if (census) console.log(`  census 커버 ${censusHits}명 / 자체 호출 ${apiCalls}명 (호출 절감 ${censusHits}회)`);
   const uniq = new Map();
   for (const sm of summaries) {
     const k = `${sm.member.mbrId}|${sm.row.evlNo}|${sm.row.evlDegr}`;
