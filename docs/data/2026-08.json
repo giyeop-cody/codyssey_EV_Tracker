@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-02T11:08:40.092Z",
+    "generatedAt": "2026-08-02T11:41:56.590Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 79,
+    "eventCount": 80,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1760,6 +1760,10 @@
       "638007|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-02T05:41:56.445Z"
+      },
+      "638029|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-02T11:41:56.289Z"
       }
     }
   },
@@ -2841,6 +2845,27 @@
       "src": "txn",
       "detail": null,
       "feedback": "코드 설명 부분에서, aria 속성에 대해 설명이 서투셨지만, 같이 ai 를 활용해 미션 수행 간의 부족한 부분을 충분히 채우고 넘어갈 수 있어서 좋았습니다. 프론트엔드 부분을 자주 접하지 않으셨음에도 전체적인 기능이나 구현이 명세에 맞게 잘 되어있었습니다. 다만\n- 새로 고침시 스크롤 y 좌표가 원래 위치가 아닌 곳으로 이동 하는 것\n- Set, Map, dict의 차이에 대해서 추가적인 학습\n등이 이루어 진다면, 더 좋은 개발자로 성잘 하시는데 도움이 될 것 같아요. 미션 하시느라 고생하셨습니다! 화이팅 ~"
+    },
+    {
+      "evalId": "s638029-1",
+      "evlNo": "638029",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-02T20:28:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:be3204a2",
+      "evaluateeName": "오철호",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
     },
     {
       "evalId": "646085",
