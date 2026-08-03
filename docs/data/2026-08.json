@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T13:48:39.836Z",
+    "generatedAt": "2026-08-03T15:19:50.506Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -9,9 +9,9 @@
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 1,
-    "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "droppedOutOfRange": 0,
+    "sweepTargets": 2,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -3200,25 +3200,26 @@
       "feedback": "자료구조와 알고리즘에 대해서 제대로 공부해 볼 수 있었습니다. 자료구조에 대해서 설명을 잘 해주셔서 이해를 잘 할 수 있습니다. 레디스라는 기술에 대해서 서로 토론하고 공부할 수 있어서 큰 도움이 되었습니다. 감사합니다."
     },
     {
-      "evalId": "s586009-1",
+      "evalId": "650124",
       "evlNo": "586009",
       "evlDegr": "1",
-      "slotDateTime": "2026-08-03T22:24:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
+      "slotDateTime": "2026-08-03T23:00:00+09:00",
+      "endTime": "23:30",
+      "evaluatorId": "sha1:df194166",
+      "evaluatorName": "정창석",
       "evaluateeId": "sha1:0c3e0c35",
       "evaluateeName": "고준석",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-08-03T22:23:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "데이터베이스 과제에 대하여 학습방향을 이야기하고, 인덱스의 중요성과 비트리 학습의 필요성을 강조해주셨습니다. 이너조인과 레프트조인에 대한 추가학습이 필요해보입니다. 조금더 추가학습하셔서 완성하시기 바랍니다."
     },
     {
       "evalId": "646085",
