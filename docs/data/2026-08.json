@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T05:03:41.895Z",
+    "generatedAt": "2026-08-03T07:41:06.802Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 83,
+    "eventCount": 86,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1768,6 +1768,14 @@
       "639009|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-03T05:03:41.593Z"
+      },
+      "639020|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-03T07:41:06.019Z"
+      },
+      "639024|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-03T07:41:06.501Z"
       }
     }
   },
@@ -2915,6 +2923,70 @@
       "src": "txn",
       "detail": null,
       "feedback": "과제의 디렉토리가 역할에 따라 잘 분리가 되어있고, 모든 기능이 정상적으로 작동합니다. 추가로 Makefile을 통해 과제에 필요한 환경을 빠르게 만드는 것을 보여주셨는데, 빠른 환경 구축 및 버전 관리 차원에서 Makefile이 유리하다는 설명을 들었습니다. \n많은 것을 배워가는 평가가 되었던 것 같습니다. 수고하셨습니다!"
+    },
+    {
+      "evalId": "650041",
+      "evlNo": "639020",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T15:30:00+09:00",
+      "endTime": "16:00",
+      "evaluatorId": "sha1:c5a72e60",
+      "evaluatorName": "송근영",
+      "evaluateeId": "sha1:2c0a394c",
+      "evaluateeName": "신희수",
+      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-08-03T15:01:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "FastAPI 에대한 개념에 대해 논의를 하였으며,  DB Schema 에 대한 전반적인 설명을 해주셨으며, postgres 에 대해서도 논의 하였습니다. PRG에 대한 설명을 해 주셨으며, 생소한 개념이 많아 많은 도움이 되었습니다."
+    },
+    {
+      "evalId": "650043",
+      "evlNo": "639020",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-03T16:00:00+09:00",
+      "endTime": "16:30",
+      "evaluatorId": "sha1:b57bb58f",
+      "evaluatorName": "백동재",
+      "evaluateeId": "sha1:2c0a394c",
+      "evaluateeName": "신희수",
+      "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-03T15:11:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "s639024-1",
+      "evlNo": "639024",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T16:28:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
     },
     {
       "evalId": "646085",
