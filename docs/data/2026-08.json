@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T07:41:06.802Z",
+    "generatedAt": "2026-08-03T09:40:01.486Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 86,
+    "eventCount": 88,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 0,
+    "sweepTargets": 1,
     "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
@@ -1770,12 +1770,16 @@
         "detailAt": "2026-08-03T05:03:41.593Z"
       },
       "639020|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-03T07:41:06.019Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-03T09:40:00.280Z"
       },
       "639024|1": {
         "baseCd": "00002",
         "detailAt": "2026-08-03T07:41:06.501Z"
+      },
+      "639026|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-03T09:40:00.733Z"
       }
     }
   },
@@ -2958,14 +2962,15 @@
       "evaluateeName": "신희수",
       "projectName": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-08-03T15:11:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "we can concuct from reasonable evidence that the testee was not knowledgable enough in given subject, and therefore conclude on giving him a fail and wish him to go break a leg smh."
     },
     {
       "evalId": "s639024-1",
@@ -2986,6 +2991,49 @@
       "resultNm": null,
       "requestedAt": null,
       "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "650063",
+      "evlNo": "639026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "sha1:b57bb58f",
+      "evaluatorName": "백동재",
+      "evaluateeId": "sha1:9e55647a",
+      "evaluateeName": "정재윤",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-03T16:46:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "전체적으로 데이터베이스 로우 레벨 구조에 대한 이해가 박식하셔서 sql문과 그에 대한 결과문에 대한 설명이 탁월하셨고, 그에 대한 내부 로직및 작동 원리를 명쾌하게 설명해주셔서 인상깊게 들었습니다. 솔직히 코디세이 1기중에서 공부열정이 제일 높은 분이라 해도 과언이 아닐정도입니다. 수고하셨습니다."
+    },
+    {
+      "evalId": "650081",
+      "evlNo": "639026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "sha1:0c3e0c35",
+      "evaluatorName": "고준석",
+      "evaluateeId": "sha1:9e55647a",
+      "evaluateeName": "정재윤",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-03T17:40:00+09:00",
+      "src": "txn",
       "detail": null
     },
     {
