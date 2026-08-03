@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T15:19:50.506Z",
+    "generatedAt": "2026-08-03T16:37:58.862Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
-    "dedupedSummaries": 1,
+    "sweepTargets": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1162,8 +1162,8 @@
         "detailAt": "2026-08-01T09:27:19.958Z"
       },
       "586009|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-03T13:48:38.549Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-03T16:37:58.118Z"
       },
       "558003|1": {
         "baseCd": "00003",
