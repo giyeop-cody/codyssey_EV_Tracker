@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T09:40:01.486Z",
+    "generatedAt": "2026-08-03T10:59:07.464Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 88,
+    "eventCount": 90,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -838,8 +838,8 @@
         "detailAt": "2026-08-01T09:26:37.642Z"
       },
       "632014|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-01T09:26:38.139Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-03T10:59:05.837Z"
       },
       "618036|1": {
         "baseCd": "00001",
@@ -1778,8 +1778,12 @@
         "detailAt": "2026-08-03T07:41:06.501Z"
       },
       "639026|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-03T09:40:00.733Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-03T10:59:06.721Z"
+      },
+      "639042|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-03T10:59:06.279Z"
       }
     }
   },
@@ -3027,12 +3031,76 @@
       "evaluateeName": "정재윤",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-03T17:40:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "인덱스로 시작해서 인덱스로 끝난 아주 좋은 평가였습니다.\n설계부터 시작해서 index, 트렌드와 동시성 , 페이지, 블록 코스트 등등 너무  많은 내용을 들었는데 시간이 부족해서 전부 듣지는 못해서 조금 아쉬웠습니다. 특히 index와 cost 관점에서 저장공간을 통해 검색 시간을 효율화한다는점에 대해 깊게 이야기 할 수 있어서 index에 대한 이해가 좋아졌습니다.\nb-tree나 설계에 대한 이야기를 좀더 듣고싶었는데 부족한점은 제가 과제하면서 보충해야겠다는 생각이 드는 평가였습니다."
+    },
+    {
+      "evalId": "s632014-1",
+      "evlNo": "632014",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T18:40:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:e3399b2c",
+      "evaluateeName": "손재현",
+      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "650082",
+      "evlNo": "639026",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "sha1:e3399b2c",
+      "evaluatorName": "손재현",
+      "evaluateeId": "sha1:9e55647a",
+      "evaluateeName": "정재윤",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
       "status": "IN_PROGRESS",
       "stusCd": "00003",
       "stusNm": "평가진행중",
       "score": "0",
       "resultNm": null,
-      "requestedAt": "2026-08-03T17:40:00+09:00",
+      "requestedAt": "2026-08-03T17:42:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
+      "evalId": "650096",
+      "evlNo": "639042",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "sha1:0c3e0c35",
+      "evaluatorName": "고준석",
+      "evaluateeId": "sha1:922092aa",
+      "evaluateeName": "김두운",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-03T19:09:00+09:00",
       "src": "txn",
       "detail": null
     },
@@ -3825,27 +3893,6 @@
       "evaluateeName": "조동현",
       "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s632014-1",
-      "evlNo": "632014",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:e3399b2c",
-      "evaluateeName": "손재현",
-      "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
