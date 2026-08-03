@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T10:59:07.464Z",
+    "generatedAt": "2026-08-03T12:23:42.002Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 90,
+    "eventCount": 93,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
-    "sweepTargets": 1,
-    "dedupedSummaries": 0,
+    "droppedOutOfRange": 1,
+    "sweepTargets": 3,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1762,8 +1762,8 @@
         "detailAt": "2026-08-02T05:41:56.445Z"
       },
       "638029|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-02T11:41:56.289Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-03T12:23:40.294Z"
       },
       "639009|1": {
         "baseCd": "00001",
@@ -1778,12 +1778,16 @@
         "detailAt": "2026-08-03T07:41:06.501Z"
       },
       "639026|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-03T10:59:06.721Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-03T12:23:39.352Z"
       },
       "639042|1": {
         "baseCd": "00002",
         "detailAt": "2026-08-03T10:59:06.279Z"
+      },
+      "551006|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-03T12:23:39.822Z"
       }
     }
   },
@@ -2911,6 +2915,28 @@
       "feedback": "docker 파일 작동 흐름에 대해 자세하게 설명해주셔서 과제 흐름에 따른 이해가 쉬웠고, 특히 요구사항 하나하나 세세하게 짚어주셔서 많이 배워갈 수 있었습니다. 작성해주신 쉘 스크립트 출력도 잘되는 것을 확인했고, 포트포워딩과 크론탭 별 관련해서도 질문드렸는데 다 쉽게 알려주셔서 이해도가 높다는 것을 느낄 수 있었습니다. 명령어 쓰시는 게 고수의 향기가 느껴졌습니다! 많이 배우고 갑니다~~"
     },
     {
+      "evalId": "649080",
+      "evlNo": "638029",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-02T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "sha1:98dfc86c",
+      "evaluatorName": "김동조",
+      "evaluateeId": "sha1:be3204a2",
+      "evaluateeName": "오철호",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-02T20:49:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "docker 스크립트를 이용해 설치자동화를 하셔서 재미있었구요 각 미션구현을 자세히 설명해주셔서 도움이 되었습니다. 실제 사용하고 계셔서 그런지 이해도도 높았구요. 모든 항목을 실제 설치 실행하면서 천천히 대화하면서 평가를 진행하여 동료학습 같은 기분이 들었어요 수고하셨어요"
+    },
+    {
       "evalId": "649087",
       "evlNo": "622025",
       "evlDegr": "1",
@@ -2975,27 +3001,6 @@
       "src": "txn",
       "detail": null,
       "feedback": "we can concuct from reasonable evidence that the testee was not knowledgable enough in given subject, and therefore conclude on giving him a fail and wish him to go break a leg smh."
-    },
-    {
-      "evalId": "s639024-1",
-      "evlNo": "639024",
-      "evlDegr": "1",
-      "slotDateTime": "2026-08-03T16:28:00+09:00",
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:b57bb58f",
-      "evaluateeName": "백동재",
-      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
-      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00002",
-      "stusNm": "진행중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
     },
     {
       "evalId": "650063",
@@ -3074,14 +3079,15 @@
       "evaluateeName": "정재윤",
       "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
       "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-03T17:42:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "PostSQL을 사용하시면서 DB에 데이터가 저장이될 때  페이지 단위인 8KB형태로 저장된다는 사실과 페이지 내부 헤더와 뒤에 저장되는 방식 그리고 만약 페이지가 8KB가 넘어간다면 포인터를 활용한 Toast table을 활용한다고 알려주셨습니다. 또한 이진트리의 진화버전인 B-Tree라는 개념도 처음 알 수 있었습니다.또한 FK랑 PK뿐만아니라 비식별 식별관계에대한 문제점과 생각 해볼점에대한 말씀을 들어보니 모르고 있던 사실과 문제점을 파악해보는 시선?의 중요점을 알 수 있었습니다.\n\nmermaid을 사용해 ERD를 쉽게 만들 수 있다는 것을 처음 알 수 있었습니다. \n\n평가를 하면서 오랜만에 즐겁게 대화도 하고 모르던 개념도 알수 있었던 시간이였던 것 같습니다. 오랜시간동안 사담이 많이 귀찮으 실 수도있는데 답변 너무 즐겁게 해주셔서 감사합니다 ! 고생하셨습니다."
     },
     {
       "evalId": "650096",
@@ -3095,14 +3101,80 @@
       "evaluateeName": "김두운",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-03T19:09:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "다른언어를 기본적으로 다룰줄 아셔서 그부분과 phthon에 대해 같이 이야기 할 수 있어서 좋았습니다.\n파이썬은 처음 다루 시다고 하셨은데 -m 으로 파이썬 스크립트를 실행하는거부터 시작해서 여려가지 호기심들을 해결해 나가고 있는 과정을 들을 수 있어서 좋았습니다. python 프로그램 만들떄 어떤식으로 만드는 지에 대한 이야기도 하고 jasonl 과 csv중에 어떤 것을 선택하는지 그 이유에 대해서도 각자의 이유를 나눌 수 있었습니다. \n그리고 현업에서 작업하셨던 방법에 대해 이야기 하면서 테스트방법에 대해서도 이런저런 이야기를 할 수 있었습니다."
+    },
+    {
+      "evalId": "650087",
+      "evlNo": "639024",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T20:00:00+09:00",
+      "endTime": "20:30",
+      "evaluatorId": "sha1:0c3e0c35",
+      "evaluatorName": "고준석",
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-03T18:23:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "redis로 실제로 현업에서 사용하셨다는 얘기를 듣고 놀랐습니다. python 샐러리와 관련해서 비동기 요청 관리를 하는데 redis를 사용한다는점이 신기했습니다. \n과제와 관련해서는ttl과 lfu, ttl_version, monotonic, 테스트 등에 대해서 집중적으로 기억이 남습니다.\n특히 monotonic이 time과 달리 스탑워치 기능으로 벤치에 적합하다는 이야기도 기억에 남네요. tll_version 도 단순히 시간만 비교하는게 아니라 버전으로 먼저 거를 수 있는 코드가 있어 효율적일 것 같다는 생각도 했습니다. \n 전체적으로 고수분의 설명을 듣는시간이라 너무 좋았습니다. 덕분에 또 부족한점이 많다는 것을 느끼고 갑니다."
+    },
+    {
+      "evalId": "650108",
+      "evlNo": "551006",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-03T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:e3399b2c",
+      "evaluatorName": "손재현",
+      "evaluateeId": "sha1:ada4026c",
+      "evaluateeName": "김병철",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "IN_PROGRESS",
       "stusCd": "00003",
       "stusNm": "평가진행중",
       "score": "0",
       "resultNm": null,
-      "requestedAt": "2026-08-03T19:09:00+09:00",
+      "requestedAt": "2026-08-03T20:35:00+09:00",
       "src": "txn",
       "detail": null
+    },
+    {
+      "evalId": "650059",
+      "evlNo": "639024",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-03T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:98dfc86c",
+      "evaluatorName": "김동조",
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-03T16:25:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "Redius 개념이 좀 생소한데 실제 구현한 내용을 천천히 잘 설명해주셨어요 해시나 링크드리스트 힙등 여러가지 자료구조를 활용해 구현하시느라 고생하신 흔적이 보입니다. 저도 이 미션을 할꺼라 관심있게 들었습니다."
     },
     {
       "evalId": "646085",
