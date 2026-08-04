@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-04T07:20:27.383Z",
+    "generatedAt": "2026-08-04T10:17:15.732Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 98,
+    "eventCount": 100,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 2,
+    "sweepTargets": 1,
     "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
@@ -1470,8 +1470,8 @@
         "detailAt": "2026-08-01T09:28:04.262Z"
       },
       "629023|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-01T09:28:04.759Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-04T10:17:14.445Z"
       },
       "628029|1": {
         "baseCd": "00001",
@@ -1510,8 +1510,8 @@
         "detailAt": "2026-08-01T09:28:09.235Z"
       },
       "608026|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-04T04:26:39.290Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-04T10:17:14.937Z"
       },
       "585011|2": {
         "baseCd": "00003",
@@ -1796,6 +1796,10 @@
       "640003|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-04T01:04:05.352Z"
+      },
+      "640019|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-04T10:17:13.951Z"
       }
     }
   },
@@ -3286,14 +3290,15 @@
       "evaluateeName": "손재현",
       "projectName": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-03T18:39:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "커밋 해쉬를 하는 부분에서 full_hash와 hash를 같이 저장을 하는데 hash 충돌을 검사하면서 확장을 하는데 이 부분에서 기존 commit에 저장된 hash와 비교를 하면서 자리수가 맞지 않는 문제가 발생했습니다.\nhash를 비교하는 부분은 전체를 비교를 해야 이런 문제를 방지할 수있어서 이 부분을 수정하면 큰 문제가 없을 것 같습니다.\n긴 평가를 했는데 고생많으셨습니다."
     },
     {
       "evalId": "651056",
@@ -3316,6 +3321,71 @@
       "src": "txn",
       "detail": null,
       "feedback": "좋은 포트폴리오 사이트를 만드셨다고 생각합니다. 평가항목에 대해서도 꼼꼼하게 설명 해주셨고 , 보너스 문제에 대한 구현도 문제없이 잘 작동했습니다. onclick 과 addEventListener의 차이가 실제로 기능상 어떠한 차이가 있는지 배워갈 수 있었습니다. 수고하셨습니다."
+    },
+    {
+      "evalId": "651087",
+      "evlNo": "640019",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-04T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "sha1:98dfc86c",
+      "evaluatorName": "김동조",
+      "evaluateeId": "sha1:40eb6a3b",
+      "evaluateeName": "김승우",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-04T16:44:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "나를 소개하는 웹페이지 처음부터 만들기 페이지를 멋지게 만드셨고 미션 구현을 성실히 수행하셨어요 평가항목도 직접 하나하나 코드를 보면서 설명해주셔서 웹프로그램 초보자인 저로서는 공부가 되었습니다. 저도 이 미션 해야하는데 도움이 되었습니다."
+    },
+    {
+      "evalId": "651101",
+      "evlNo": "629023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-04T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "sha1:40eb6a3b",
+      "evaluatorName": "김승우",
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-04T17:41:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "오랫동안 프론트앤드 관련 내용을 공부하셔서 이번 프로젝트의 개념들에 대해서 자세하게 알고 계셨습니다. 직접 설명하실 내용을 정리하고 보여주신 점이 인상이 깊었습니다. 고생하셨습니다!"
+    },
+    {
+      "evalId": "651108",
+      "evlNo": "629023",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-04T19:00:00+09:00",
+      "endTime": "19:30",
+      "evaluatorId": "sha1:bc593e41",
+      "evaluatorName": "김시현",
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-04T18:00:00+09:00",
+      "src": "txn",
+      "detail": null
     },
     {
       "evalId": "646085",
@@ -4420,27 +4490,6 @@
       "evaluateeId": "sha1:bf005853",
       "evaluateeName": "장현준",
       "projectName": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
-      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s629023-1",
-      "evlNo": "629023",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:bf005853",
-      "evaluateeName": "장현준",
-      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
       "status": "REQUESTED",
       "stusCd": "00001",
