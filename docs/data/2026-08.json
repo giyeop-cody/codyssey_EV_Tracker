@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-04T10:17:15.732Z",
+    "generatedAt": "2026-08-04T12:28:15.425Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
-    "dedupedSummaries": 1,
+    "sweepTargets": 0,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1470,8 +1470,8 @@
         "detailAt": "2026-08-01T09:28:04.262Z"
       },
       "629023|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-04T10:17:14.445Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-04T12:28:15.122Z"
       },
       "628029|1": {
         "baseCd": "00001",
@@ -3378,14 +3378,15 @@
       "evaluateeName": "장현준",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-08-04T18:00:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "과제 내용 잘 봤습니다. 특히 Java Script와 관련하여 관심이 많으신 듯 보였으며 관련 공부를 많이 하셨다는 걸 느낄 수 있었습니다. 다만 구현하고자 하셨던 내용 중 정상적으로 작동하지 않는 부분이 몇 가지 보였는데, (Hero 섹션의 커서 깜박임 효과, 웸 페이지 앵커 관련 문제, 새로고침 시 페이지 내 글자 크기가 일시적으로 달라짐) 등을 개선하시면 더 좋은 결과를 도출해 내실 수 있을 것 같습니다."
     },
     {
       "evalId": "646085",
