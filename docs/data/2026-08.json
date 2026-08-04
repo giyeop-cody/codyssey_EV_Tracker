@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T23:16:43.229Z",
+    "generatedAt": "2026-08-04T01:04:06.138Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 95,
+    "eventCount": 96,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1792,6 +1792,10 @@
       "639061|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-03T17:46:49.823Z"
+      },
+      "640003|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-04T01:04:05.352Z"
       }
     }
   },
@@ -4707,6 +4711,27 @@
       "evaluateeName": "강성현",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s640003-1",
+      "evlNo": "640003",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:9e55647a",
+      "evaluateeName": "정재윤",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
