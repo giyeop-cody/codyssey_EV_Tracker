@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-05T00:56:47.338Z",
+    "generatedAt": "2026-08-05T02:02:01.558Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -11,7 +11,7 @@
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
     "sweepTargets": 1,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -3404,14 +3404,15 @@
       "evaluateeName": "김시현",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-05T08:48:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "아침 이른 시간부터 평가 받으시는라 고생하셨습니다! 평가 요소에 맞추어 과제를 잘 진행하주셨고 보너스 과제 (타이핑 효과, 다크 모드 탐지) 를 잘 진행해주셨습니다. 과제를 진행하시면서 어려움을 격으신 다크 모드 적용시 화면이 잠시 밝아지는 문제 와 새로 고침시 화면이 잠시 최상단으로 이동하는 문제에 대해 어떻게 해결했는지 잘 설명해주셨습니다!"
     },
     {
       "evalId": "646085",
