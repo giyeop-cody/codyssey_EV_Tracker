@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-08-05T12:21:33.965Z",
+    "generatedAt": "2026-08-05T14:56:06.198Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 106,
+    "eventCount": 109,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
     "sweepTargets": 0,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1802,8 +1802,8 @@
         "detailAt": "2026-08-05T07:16:22.967Z"
       },
       "629023|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-04T15:07:48.916Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-05T14:56:05.895Z"
       },
       "641019|1": {
         "baseCd": "00001",
@@ -3533,6 +3533,50 @@
       "feedback": "하시는 것들이 많으신대도 불구하고 과제를 빨리 하고 계시네요. 전반적으로 기본 요구사항에 맞게 잘 구현하셨습니다. 아쉬운 점은 북마크 옵션 중에 url 처리하는 부분인데 이 부분은 추후에 수정해주시면 좋을 것 같습니다. 고생하셨습니다."
     },
     {
+      "evalId": "652127",
+      "evlNo": "629023",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-05T17:30:00+09:00",
+      "endTime": "18:00",
+      "evaluatorId": "sha1:2c0a394c",
+      "evaluatorName": "신희수",
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-05T16:47:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "1번부터 5번 항목까지 모든 부분을 납득가능한 수준으로 구현해주셨습니다. \n특히 왜 해당 함수 및 기능이 왜 사용되어야 하는지에 대해 과거 기술에서 부터 기술이 변경된 이유 까지 \n자세하게 설명해주셔서 각 기능에 대해 완벽히 이해하고 계신다고 판단했습니다.\n특히 js 각 함수의 세부 동작 및 css상에서 발생할 수 있는 작은 오류에 대해서도 리펙터링 하신 모습이 인상적이었습니다.\n폰트 크기의 예외적 변경사항, css상에서의 깜빡임 등이 왜 발생하는지에 대해서도 설명해주셔서 유익한 시간이었습니다.\n이번 평가도 고생 많으셨습니다."
+    },
+    {
+      "evalId": "652128",
+      "evlNo": "629023",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-05T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "sha1:3f0e32eb",
+      "evaluatorName": "박범규",
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-05T16:53:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "우선 html, css, js 에 대한 지식이 거의 없는 상태로 평가를 진행하였습니다.\n\n시멘틱 태그 부터 시작해서 arrow 를 사용하는 이유(this 사용법) 등등 해당 과제에서 마주할 수 있는 복잡한 내용들에 대해 자세히 설명 해 주셨습니다.\n\nAPI를 사용할 때 별도로 발급받지 않고 오픈되어있는 API 주소로 요청하는 것을 처음봐서 신기했습니다.\n\n전반적으로 과제에 대한 내용을 알고 계신것 같고 더 딥하게 들어가면 시간이 너무 오래걸릴 것 같아 해당 내용에 대해서는 직접 과제를 수행하며 찾아보기로 했습니다.\n\n수고하셨습니다."
+    },
+    {
       "evalId": "652169",
       "evlNo": "631003",
       "evlDegr": "1",
@@ -3553,6 +3597,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "데이터베이스에 대한 이해가 깊으시고 그에 대한 사례와 다양한 쿼리문에 대한 응용과 독특한 예시들이 특히 마음에 들었었습니다. 또한 데이터베이스의 원리와 최적화 원리에 대해 토론하면서 좋은 시간을 보냈습니다. 감사합니다."
+    },
+    {
+      "evalId": "652170",
+      "evlNo": "629023",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-05T21:00:00+09:00",
+      "endTime": "21:30",
+      "evaluatorId": "sha1:c2ddc6d9",
+      "evaluatorName": "류성은",
+      "evaluateeId": "sha1:bf005853",
+      "evaluateeName": "장현준",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-05T20:21:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "과제 요구사항 빠짐 없이 수행해주셨고, 보너스 과제 또한 하나하나 설명해주셨습니다. 전 평가에서 Fail을 받으시게 되었던 내용들의 피드백 부분을 설명해주셨는데, 웹 페이지 앵커가 달려있음에도 스크롤이 현행 유지되는 이유가 브라우저딴에서 스크롤 위치를 계속하여 백업 시도했기에 생긴 문제임을 알려주셨으며, 캐시 비활성 문제로 인해 새로고침 시 폰트가 잠깐씩 움직이는 현상도 해결하셨다는 내용을 설명해주셨습니다. 다른 분들보다 과제를 쪼개서 이해하려고 노력하신 부분이 돋보였습니다. 수고하셨습니다!"
     },
     {
       "evalId": "646085",
