@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-06T02:16:07.016Z",
+    "generatedAt": "2026-08-06T04:27:52.204Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 109,
+    "eventCount": 110,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1812,6 +1812,10 @@
       "641047|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-05T10:08:54.919Z"
+      },
+      "642006|1": {
+        "baseCd": "00002",
+        "detailAt": "2026-08-06T04:27:51.901Z"
       }
     }
   },
@@ -3619,6 +3623,27 @@
       "src": "txn",
       "detail": null,
       "feedback": "과제 요구사항 빠짐 없이 수행해주셨고, 보너스 과제 또한 하나하나 설명해주셨습니다. 전 평가에서 Fail을 받으시게 되었던 내용들의 피드백 부분을 설명해주셨는데, 웹 페이지 앵커가 달려있음에도 스크롤이 현행 유지되는 이유가 브라우저딴에서 스크롤 위치를 계속하여 백업 시도했기에 생긴 문제임을 알려주셨으며, 캐시 비활성 문제로 인해 새로고침 시 폰트가 잠깐씩 움직이는 현상도 해결하셨다는 내용을 설명해주셨습니다. 다른 분들보다 과제를 쪼개서 이해하려고 노력하신 부분이 돋보였습니다. 수고하셨습니다!"
+    },
+    {
+      "evalId": "s642006-1",
+      "evlNo": "642006",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-06T11:21:00+09:00",
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:26aaaf3c",
+      "evaluateeName": "김우종",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00002",
+      "stusNm": "진행중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
     },
     {
       "evalId": "646085",
