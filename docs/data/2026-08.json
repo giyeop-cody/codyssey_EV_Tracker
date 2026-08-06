@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-06T08:26:54.873Z",
+    "generatedAt": "2026-08-06T10:17:14.759Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 113,
+    "eventCount": 115,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1814,8 +1814,8 @@
         "detailAt": "2026-08-05T10:08:54.919Z"
       },
       "642006|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-06T04:27:51.901Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-06T10:17:14.457Z"
       },
       "642019|1": {
         "baseCd": "00002",
@@ -1824,6 +1824,10 @@
       "632004|2": {
         "baseCd": "00001",
         "detailAt": "2026-08-06T07:24:02.904Z"
+      },
+      "642036|1": {
+        "baseCd": "00003",
+        "detailAt": "2026-08-06T10:17:13.990Z"
       }
     }
   },
@@ -3710,14 +3714,59 @@
       "evaluateeName": "김우종",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-06T11:16:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "구현에 있어서 전반적으로 요구사항을 문제없이 수행한 점을 확인하였습니다. 또한 JavaScript의 비동기 실행 흐름과 async/await, map, filter 메서드에 대해 개념과 동작 원리를 명확하게 설명해 주셨습니다. 특히 loadProjects 함수에서 async/await와 try...catch를 활용하여 비동기 요청의 성공과 실패를 일관된 흐름으로 처리하고, loading → success/empty → error 상태를 별도의 상태 객체와 렌더링 함수로 관리하여 UI와 로직을 명확하게 분리한 점이 우수했습니다. \n\nAPI 응답 데이터를 filter와 map으로 필요한 형태로 가공한 뒤 sort를 통해 최신순으로 정렬하는 등, 배열 메서드를 적절히 활용하여 데이터 처리 과정을 가독성 높고 유지보수하기 쉬운 구조로 구현한 점이 인상적이었습니다."
+    },
+    {
+      "evalId": "653018",
+      "evlNo": "642006",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-06T17:00:00+09:00",
+      "endTime": "17:30",
+      "evaluatorId": "sha1:cb9af09d",
+      "evaluatorName": "이동현",
+      "evaluateeId": "sha1:26aaaf3c",
+      "evaluateeName": "김우종",
+      "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
+      "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-06T11:16:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "실제 구현된 웹페이지와 코드를 바탕으로 문항에 맞게 잘 설명해주셨습니다. 모바일과 태블릿에서 화면이 보이는 것도 실제로 보여주시면서 자연스럽게 변하는 것을 보여주셨고, 햄버거 메뉴나 상단으로 가는 스크롤 버튼도 적절히 잘 구현해주셨습니다. 로딩 화면과 다크 테마 등 요구 조건에 맞는 기능도 빠짐없이 잘 구현해주셨고 원리도 논리적으로 설명해주셨습니다. 고생하셨습니다."
+    },
+    {
+      "evalId": "653096",
+      "evlNo": "642036",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-06T18:00:00+09:00",
+      "endTime": "18:30",
+      "evaluatorId": "sha1:853eb562",
+      "evaluatorName": "김한규",
+      "evaluateeId": "sha1:10808f2f",
+      "evaluateeName": "김완태",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-08-06T17:31:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "데이터베이스 설계를 어떤 이유로 데이터타입을 지정하고 설계했는지에 대한 얘기와 PK, FK, JOIN에 대한 내용을 검색과 토론을 위주로 했습니다.\n이 부분에서 다소 부족한 부분이 보여서 아쉽게도 보완하셔서 평가를 받으시면 좋을 것 같습니다. 수고하셨습니다!"
     },
     {
       "evalId": "646085",
