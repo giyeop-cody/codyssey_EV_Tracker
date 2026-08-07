@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-07T10:37:26.708Z",
+    "generatedAt": "2026-08-07T11:41:30.458Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 121,
+    "eventCount": 122,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "droppedOutOfRange": 2,
+    "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
@@ -714,8 +714,8 @@
         "detailAt": "2026-08-01T09:26:21.704Z"
       },
       "579006|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-01T09:26:22.203Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-07T11:41:30.156Z"
       },
       "579005|1": {
         "baseCd": "00003",
@@ -1766,8 +1766,8 @@
         "detailAt": "2026-08-03T12:23:40.294Z"
       },
       "639009|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-07T09:35:01.289Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-07T11:41:29.663Z"
       },
       "639020|2": {
         "baseCd": "00003",
@@ -3880,14 +3880,15 @@
       "evaluateeName": "이주성",
       "projectName": "나를 소개하는 웹페이지 처음부터 만들기",
       "trackName": "웹 기초와 프론트엔드 (Web Core & Front-end)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-07T18:02:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "처음에 github api가 어떤 방식으로 쓰여졌는지 헷갈렸는데 같이 되짚어가면서 작동함을 확인하였습니다. 모든 기능이 작동함을 확인했지만 이메일 예외처리가 조금만 더 보강되면 좋을 것 같습니다. addEventListener가 무엇이고 어떻게 작동하는지 코드를 통해서 설명받을 수 있어서 좋았습니다."
     },
     {
       "evalId": "654103",
@@ -3910,6 +3911,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "과제에서 제시된 내용들을 충실하게 구현하셨습니다. 로그들을 상당히 꼼꼼하게 남기셔서 이해하는 게 큰 어려움이 없었던 것 같습니다. 과제를 진행하면서 필수적으로 숙지해야할 개념들을 잘 설명해주셨습니다 고생하셨습니다."
+    },
+    {
+      "evalId": "654141",
+      "evlNo": "579006",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-07T20:00:00+09:00",
+      "endTime": "20:30",
+      "evaluatorId": "sha1:c2ddc6d9",
+      "evaluatorName": "류성은",
+      "evaluateeId": "sha1:81d47ff9",
+      "evaluateeName": "배재민",
+      "projectName": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "trackName": "데이터베이스와 백엔드 (Database & Back-end)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-07T19:36:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "과제 요구사항을 모두 충족시키셨으며 보기 편한 다이어그램을 만들어 주셔서 평가에 되게 용이했습니다.\nSQLite를 사용하셨고 쿼리도 요구사항대로 작성해주셨습니다.  FK와 PK의 차이를 잘 설명해주셨습니다. 막힘 없이 과제 수행해주셔서 평가에 용이했습니다 수고하셨습니다!"
     },
     {
       "evalId": "646085",
