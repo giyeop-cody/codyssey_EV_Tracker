@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-07T13:57:16.031Z",
+    "generatedAt": "2026-08-07T15:06:40.896Z",
     "year": 2026,
     "month": 8,
     "mock": false,
@@ -10,8 +10,8 @@
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 0,
-    "dedupedSummaries": 1,
+    "sweepTargets": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -3950,14 +3950,15 @@
       "evaluateeName": "임준현",
       "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
-      "score": "0",
-      "resultNm": null,
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
       "requestedAt": "2026-08-07T21:42:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "과제 명세에 맞게 처음부터 끝까지 구현이 완료되었고 해당 내용이 잘 정리되어 있습니다.\n해당 내용들을 처음부터 따라가면서 차근차근 설명해주셔서 내용에 대한 인지가 잘 되었습니다.."
     },
     {
       "evalId": "646085",
