@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-08-07T09:35:02.089Z",
+    "generatedAt": "2026-08-07T10:37:26.708Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 119,
+    "eventCount": 121,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 0,
-    "dedupedSummaries": 1,
+    "sweepTargets": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1836,6 +1836,10 @@
       "643016|1": {
         "baseCd": "00002",
         "detailAt": "2026-08-07T09:35:01.787Z"
+      },
+      "643023|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-07T10:37:25.911Z"
       }
     }
   },
@@ -3854,14 +3858,15 @@
       "evaluateeName": "문선곤",
       "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
       "trackName": "Linux와 OS (Linux & OS)",
-      "status": "IN_PROGRESS",
-      "stusCd": "00003",
-      "stusNm": "평가진행중",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
       "score": "0",
-      "resultNm": null,
+      "resultNm": "FAIL",
       "requestedAt": "2026-08-07T17:03:00+09:00",
       "src": "txn",
-      "detail": null
+      "detail": null,
+      "feedback": "메모리 누수, CPU 사용률, 교착 상태 장애 발생 모니터링 관련 GitHub Issue 연계 설명 보완이 필요하다고 판단 하였고 과제 목표에서 요구 하는 부분에서 추가 설명 보완이 필요하다고 느꼈습니다."
     },
     {
       "evalId": "654125",
@@ -3883,6 +3888,28 @@
       "requestedAt": "2026-08-07T18:02:00+09:00",
       "src": "txn",
       "detail": null
+    },
+    {
+      "evalId": "654103",
+      "evlNo": "643016",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-07T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "sha1:81d47ff9",
+      "evaluatorName": "배재민",
+      "evaluateeId": "sha1:ecb5e57a",
+      "evaluateeName": "문선곤",
+      "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-07T17:01:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "과제에서 제시된 내용들을 충실하게 구현하셨습니다. 로그들을 상당히 꼼꼼하게 남기셔서 이해하는 게 큰 어려움이 없었던 것 같습니다. 과제를 진행하면서 필수적으로 숙지해야할 개념들을 잘 설명해주셨습니다 고생하셨습니다."
     },
     {
       "evalId": "646085",
@@ -5282,6 +5309,27 @@
       "evaluateeName": "김우종",
       "projectName": "웹 기반 AI 챗봇 서비스 개발 프로젝트",
       "trackName": "AI/SW 기초 Term Project",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s643023-1",
+      "evlNo": "643023",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:a332e770",
+      "evaluateeName": "이초롱",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
