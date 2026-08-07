@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-08-07T12:52:30.968Z",
+    "generatedAt": "2026-08-07T13:57:16.031Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 122,
+    "eventCount": 123,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
     "sweepTargets": 0,
-    "dedupedSummaries": 0,
+    "dedupedSummaries": 1,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -350,8 +350,8 @@
         "detailAt": "2026-08-01T09:25:34.393Z"
       },
       "623013|1": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-01T09:25:34.890Z"
+        "baseCd": "00002",
+        "detailAt": "2026-08-07T13:57:15.237Z"
       },
       "603017|1": {
         "baseCd": "00003",
@@ -1840,6 +1840,10 @@
       "643023|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-07T10:37:25.911Z"
+      },
+      "643031|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-07T13:57:15.730Z"
       }
     }
   },
@@ -3935,6 +3939,27 @@
       "feedback": "과제 요구사항을 모두 충족시키셨으며 보기 편한 다이어그램을 만들어 주셔서 평가에 되게 용이했습니다.\nSQLite를 사용하셨고 쿼리도 요구사항대로 작성해주셨습니다.  FK와 PK의 차이를 잘 설명해주셨습니다. 막힘 없이 과제 수행해주셔서 평가에 용이했습니다 수고하셨습니다!"
     },
     {
+      "evalId": "654160",
+      "evlNo": "623013",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-07T22:30:00+09:00",
+      "endTime": "23:00",
+      "evaluatorId": "sha1:9014b79b",
+      "evaluatorName": "곽현일",
+      "evaluateeId": "sha1:1cc5e0ae",
+      "evaluateeName": "임준현",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "IN_PROGRESS",
+      "stusCd": "00003",
+      "stusNm": "평가진행중",
+      "score": "0",
+      "resultNm": null,
+      "requestedAt": "2026-08-07T21:42:00+09:00",
+      "src": "txn",
+      "detail": null
+    },
+    {
       "evalId": "646085",
       "evlNo": "586014",
       "evlDegr": "1",
@@ -4218,27 +4243,6 @@
       "evaluateeId": "sha1:e4b54514",
       "evaluateeName": "정세영",
       "projectName": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
-      "trackName": "Linux와 OS (Linux & OS)",
-      "status": "REQUESTED",
-      "stusCd": "00001",
-      "stusNm": "대기중",
-      "score": null,
-      "resultNm": null,
-      "requestedAt": null,
-      "src": "summary",
-      "detail": null
-    },
-    {
-      "evalId": "s623013-1",
-      "evlNo": "623013",
-      "evlDegr": "1",
-      "slotDateTime": null,
-      "endTime": null,
-      "evaluatorId": null,
-      "evaluatorName": null,
-      "evaluateeId": "sha1:1cc5e0ae",
-      "evaluateeName": "임준현",
-      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
       "trackName": "Linux와 OS (Linux & OS)",
       "status": "REQUESTED",
       "stusCd": "00001",
@@ -5353,6 +5357,27 @@
       "evaluateeName": "이초롱",
       "projectName": "나만의 용돈 기입장 프로그램 만들기",
       "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s643031-1",
+      "evlNo": "643031",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:c2ddc6d9",
+      "evaluateeName": "류성은",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
