@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T05:07:39.267Z",
+    "generatedAt": "2026-08-08T06:42:38.012Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 123,
+    "eventCount": 125,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1782,8 +1782,8 @@
         "detailAt": "2026-08-03T12:23:39.352Z"
       },
       "639042|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-03T10:59:06.279Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-08T06:42:37.710Z"
       },
       "551006|2": {
         "baseCd": "00003",
@@ -3455,6 +3455,28 @@
       "feedback": "아침 이른 시간부터 평가 받으시는라 고생하셨습니다! 평가 요소에 맞추어 과제를 잘 진행하주셨고 보너스 과제 (타이핑 효과, 다크 모드 탐지) 를 잘 진행해주셨습니다. 과제를 진행하시면서 어려움을 격으신 다크 모드 적용시 화면이 잠시 밝아지는 문제 와 새로 고침시 화면이 잠시 최상단으로 이동하는 문제에 대해 어떻게 해결했는지 잘 설명해주셨습니다!"
     },
     {
+      "evalId": "652008",
+      "evlNo": "639042",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-05T09:30:00+09:00",
+      "endTime": "10:00",
+      "evaluatorId": "sha1:e48c5533",
+      "evaluatorName": "김예주",
+      "evaluateeId": "sha1:922092aa",
+      "evaluateeName": "김두운",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-05T08:50:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "요구사항에 맞게 각 명령어들이 잘 구현된 것 같습니다. 명령어가 많아서 주요 명령어들을 README에 작성하시면 더 좋을 것 같아요!\n어쩌다보니 긴 시간동안 평가를 하게 되었는데 질문들에 대해 잘 답변해주셔서 감사합니다~"
+    },
+    {
       "evalId": "652010",
       "evlNo": "640019",
       "evlDegr": "1",
@@ -3959,6 +3981,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "과제 명세에 맞게 처음부터 끝까지 구현이 완료되었고 해당 내용이 잘 정리되어 있습니다.\n해당 내용들을 처음부터 따라가면서 차근차근 설명해주셔서 내용에 대한 인지가 잘 되었습니다.."
+    },
+    {
+      "evalId": "655016",
+      "evlNo": "639042",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-08T13:00:00+09:00",
+      "endTime": "13:30",
+      "evaluatorId": "sha1:26887c4f",
+      "evaluatorName": "주재문",
+      "evaluateeId": "sha1:922092aa",
+      "evaluateeName": "김두운",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-08T12:28:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "학습한 내용을 프로그램의 시연과 함께 논리적 흐름으로 설명해주셨습니다. 그리고 요구사항에도 없는 질문으로 예상되는 결과에 대해서도 잘 설명해주시는 것으로 보아, 프로그래밍하면서 학습한 내용을 정확히 잘 숙지하신 것 같습니다. json, jsonl, csv 등의 장단점에 대해서 심도있게 대화할 좋은 기회였던 것 같습니다."
     },
     {
       "evalId": "646085",
