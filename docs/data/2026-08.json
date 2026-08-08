@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T16:49:06.681Z",
+    "generatedAt": "2026-08-08T17:56:05.578Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 133,
+    "eventCount": 136,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
     "droppedOutOfRange": 0,
-    "sweepTargets": 1,
+    "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
@@ -154,8 +154,8 @@
         "detailAt": "2026-08-01T09:25:09.497Z"
       },
       "629022|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-08T13:41:23.502Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-08T17:56:04.797Z"
       },
       "580013|1": {
         "baseCd": "00003",
@@ -350,8 +350,8 @@
         "detailAt": "2026-08-01T09:25:34.393Z"
       },
       "623013|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-07T13:57:15.237Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-08T17:56:05.277Z"
       },
       "603017|1": {
         "baseCd": "00003",
@@ -1860,6 +1860,10 @@
       "644030|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-08T12:37:05.254Z"
+      },
+      "644036|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-08T17:56:04.316Z"
       }
     }
   },
@@ -4153,6 +4157,28 @@
       "feedback": "두 번째 평가를 하게 되었습니다. 마침 저도 과제를 해서 평가를 수월하게 진행하게 되었습니다. 각 입력 테스트 케이스를 다 해보았는데 잘 되었습니다 ㅎㅎ  보너스 문제에서 파일 시스템콜에 대한 이야기도 함께 진행해보았습니다 수고하셨습니다 ㅎㅎ"
     },
     {
+      "evalId": "655086",
+      "evlNo": "623013",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-08T23:00:00+09:00",
+      "endTime": "23:30",
+      "evaluatorId": "sha1:b57bb58f",
+      "evaluatorName": "백동재",
+      "evaluateeId": "sha1:1cc5e0ae",
+      "evaluateeName": "임준현",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-08T22:19:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "과제에 대한 이해도가 높으시고, 그에 대한 구현의 독창성이 대단하다 생각합니다. 이에 대해서는 monitor.sh이 대표적이라 할수 있겠습니다. /proc/meminfo를 사용한 원초적인 접근과, 그외 awk를 사용한 로그 작성이 인상적이었습니다. 수고하셨습니다."
+    },
+    {
       "evalId": "655085",
       "evlNo": "629022",
       "evlDegr": "1",
@@ -4173,6 +4199,28 @@
       "src": "txn",
       "detail": null,
       "feedback": "저도 이 과제를 아직 하지 않은 상태이므로, 배움의 자세로 평가에 참여하게 되었습니다. 먼저 전반적으로 이 과제가 어떤 과제이며, 이 과제의 전체적인 흐름이 어떻게 동작하는지에 대해서 물어보고 확인할 수 있었습니다. 그리고 많이 접해보지 않아 잘 모르는 yield, 데코레이터를 쉽게 설명해주셔서 쉽게 이해할 수 있었습니다. 그리고 이전 평가에서 문제가 되었던 부분이 어떤 부분이 있었고 어떻게 고쳤는지에 대한 정보도 공유를 해주셔서 잘 배울 수 있었습니다. 수고하셨습니다."
+    },
+    {
+      "evalId": "655087",
+      "evlNo": "623013",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-09T00:00:00+09:00",
+      "endTime": "00:30",
+      "evaluatorId": "sha1:9e55647a",
+      "evaluatorName": "정재윤",
+      "evaluateeId": "sha1:1cc5e0ae",
+      "evaluateeName": "임준현",
+      "projectName": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "trackName": "Linux와 OS (Linux & OS)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-08T22:55:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "첫 번째 과제를 평가하게 되었습니다. 피평가자님께서는 오브스택으로 이 문제를 구현하셔서 저에게 보여주셨습니다. 함께 명령어를 실행해보면서 과제를 평가를 진행했습니다. 특히, 오브스택에서 root로 어떻게 들어가는지도 보여주셨고 함께 ssh, ufw가 뭔지 좀 더 공부해보게 되었습니다 수고하셨습니다 ㅎㅎ"
     },
     {
       "evalId": "646085",
@@ -5614,6 +5662,27 @@
       "evaluateeName": "성원모",
       "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
       "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s644036-1",
+      "evlNo": "644036",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:9238e2ed",
+      "evaluateeName": "김희준",
+      "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
