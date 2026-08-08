@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T10:03:00.974Z",
+    "generatedAt": "2026-08-08T11:28:52.693Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 126,
+    "eventCount": 128,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 4,
     "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -494,8 +494,8 @@
         "detailAt": "2026-08-01T09:25:53.319Z"
       },
       "633036|1": {
-        "baseCd": "00002",
-        "detailAt": "2026-08-01T09:25:53.817Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-08T11:28:51.476Z"
       },
       "596014|1": {
         "baseCd": "00003",
@@ -1848,6 +1848,14 @@
       "644021|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-08T10:03:00.673Z"
+      },
+      "636047|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-08T11:28:51.931Z"
+      },
+      "591009|2": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-08T11:28:52.391Z"
       }
     }
   },
@@ -4007,6 +4015,50 @@
       "src": "txn",
       "detail": null,
       "feedback": "학습한 내용을 프로그램의 시연과 함께 논리적 흐름으로 설명해주셨습니다. 그리고 요구사항에도 없는 질문으로 예상되는 결과에 대해서도 잘 설명해주시는 것으로 보아, 프로그래밍하면서 학습한 내용을 정확히 잘 숙지하신 것 같습니다. json, jsonl, csv 등의 장단점에 대해서 심도있게 대화할 좋은 기회였던 것 같습니다."
+    },
+    {
+      "evalId": "655024",
+      "evlNo": "633036",
+      "evlDegr": "1",
+      "slotDateTime": "2026-08-08T18:30:00+09:00",
+      "endTime": "19:00",
+      "evaluatorId": "sha1:2c0a394c",
+      "evaluatorName": "신희수",
+      "evaluateeId": "sha1:ad93fac7",
+      "evaluateeName": "황준호",
+      "projectName": "나만의 용돈 기입장 프로그램 만들기",
+      "trackName": "Python과 Git 심화 (Python & Git advanced)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-08T14:22:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "1번부터 4번 항목까지 모든 부분을 납득가능한 수준으로 구현해주셨습니다. \n데코레이터와 yield 등 기본적인 파이썬 문법이 어떻게 동작하며 왜 사용하는지에 대해 이해하고 계셨으며\n파일 수정시에도 파일의 무결성을 보장하기 위한 조치 또한 잘 이뤄졌음을 확인했습니다,\n또한 중간에 오류가 발생했음에도 이를 실시간으로 처리해주신 모습 또한 인상적이었습니다.\n이번 미션도 수고하셨습니다."
+    },
+    {
+      "evalId": "655065",
+      "evlNo": "591009",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-08T19:30:00+09:00",
+      "endTime": "20:00",
+      "evaluatorId": "sha1:1cc5e0ae",
+      "evaluatorName": "임준현",
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-08-08T19:03:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "aws에 대해서 심도깊은 대화를 나눴습니다. 과제에 대한 이해는 충분하신거 같습니다. 다만 필수 요구사항 몇개가 충족되지 않아서 fail을 드렸습니다. 추가적인 보완을 하신다면 충분히 통과하실 것 같습니다."
     },
     {
       "evalId": "646085",
