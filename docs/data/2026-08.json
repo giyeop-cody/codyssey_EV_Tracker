@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T13:41:23.804Z",
+    "generatedAt": "2026-08-08T14:46:15.026Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 130,
+    "eventCount": 132,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 0,
+    "droppedOutOfRange": 1,
     "sweepTargets": 0,
-    "dedupedSummaries": 1,
+    "dedupedSummaries": 0,
     "evalStatus": {
       "616016|1": {
         "baseCd": "00003",
@@ -1854,8 +1854,8 @@
         "detailAt": "2026-08-08T11:28:51.931Z"
       },
       "591009|2": {
-        "baseCd": "00001",
-        "detailAt": "2026-08-08T11:28:52.391Z"
+        "baseCd": "00003",
+        "detailAt": "2026-08-08T14:46:14.724Z"
       },
       "644030|1": {
         "baseCd": "00001",
@@ -4085,6 +4085,50 @@
       "src": "txn",
       "detail": null,
       "feedback": "파이썬 가계부 프로그램이 미션 요구사항대로 모두 작동하는걸 확인했습니다. 기능과 파이썬 언어와 컴퓨터 공학에 대해서 잘 설명해주셔서 학습에 큰 도움이 되었습니다. 미션 기능 이외에도 미션과 관련된 컴퓨터 공학 지식들을 터득할 수 있었습니다. 감사합니다."
+    },
+    {
+      "evalId": "655071",
+      "evlNo": "591009",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-08T21:30:00+09:00",
+      "endTime": "22:00",
+      "evaluatorId": "sha1:b57bb58f",
+      "evaluatorName": "백동재",
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "100",
+      "resultNm": "PASS",
+      "requestedAt": "2026-08-08T19:25:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "the trainee's compliance and understanding on the tech stacks of aws were comprehensible and well covered. good job."
+    },
+    {
+      "evalId": "655072",
+      "evlNo": "591009",
+      "evlDegr": "2",
+      "slotDateTime": "2026-08-08T22:00:00+09:00",
+      "endTime": "22:30",
+      "evaluatorId": "sha1:922092aa",
+      "evaluatorName": "김두운",
+      "evaluateeId": "sha1:12d8d122",
+      "evaluateeName": "손보람",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
+      "status": "COMPLETED",
+      "stusCd": "00006",
+      "stusNm": "평가완료",
+      "score": "0",
+      "resultNm": "FAIL",
+      "requestedAt": "2026-08-08T19:25:00+09:00",
+      "src": "txn",
+      "detail": null,
+      "feedback": "평가를 참여 할 수 있는 기회를 얻게 되어서 좋았습니다. 이번 미션에 대해서 같이 학습 할 수 있었습니다. 다음에 완성된 미션으로 다시 평가 받으시면 통과하실거 같습니다. 감사합니다."
     },
     {
       "evalId": "655083",
