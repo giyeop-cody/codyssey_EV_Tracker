@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T08:56:00.787Z",
+    "generatedAt": "2026-08-08T10:03:00.974Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 125,
+    "eventCount": 126,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
@@ -1844,6 +1844,10 @@
       "643031|1": {
         "baseCd": "00001",
         "detailAt": "2026-08-07T13:57:15.730Z"
+      },
+      "644021|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-08T10:03:00.673Z"
       }
     }
   },
@@ -5423,6 +5427,27 @@
       "evaluateeName": "류성은",
       "projectName": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
       "trackName": "자료구조와 알고리즘 (Data Structures & Algorithms)",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s644021-1",
+      "evlNo": "644021",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:b57bb58f",
+      "evaluateeName": "백동재",
+      "projectName": "웹 기반 AI 챗봇 서비스 개발 프로젝트",
+      "trackName": "AI/SW 기초 Term Project",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
