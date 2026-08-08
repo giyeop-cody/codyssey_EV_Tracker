@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-08-08T11:28:52.693Z",
+    "generatedAt": "2026-08-08T12:37:05.555Z",
     "year": 2026,
     "month": 8,
     "mock": false,
-    "eventCount": 128,
+    "eventCount": 129,
     "roster": 150,
     "selfOnlyWarning": false,
     "source": "mbrSearch+pkList",
     "feedbackCollected": true,
-    "droppedOutOfRange": 4,
+    "droppedOutOfRange": 0,
     "sweepTargets": 0,
     "dedupedSummaries": 0,
     "evalStatus": {
@@ -1856,6 +1856,10 @@
       "591009|2": {
         "baseCd": "00001",
         "detailAt": "2026-08-08T11:28:52.391Z"
+      },
+      "644030|1": {
+        "baseCd": "00001",
+        "detailAt": "2026-08-08T12:37:05.254Z"
       }
     }
   },
@@ -5500,6 +5504,27 @@
       "evaluateeName": "백동재",
       "projectName": "웹 기반 AI 챗봇 서비스 개발 프로젝트",
       "trackName": "AI/SW 기초 Term Project",
+      "status": "REQUESTED",
+      "stusCd": "00001",
+      "stusNm": "대기중",
+      "score": null,
+      "resultNm": null,
+      "requestedAt": null,
+      "src": "summary",
+      "detail": null
+    },
+    {
+      "evalId": "s644030-1",
+      "evlNo": "644030",
+      "evlDegr": "1",
+      "slotDateTime": null,
+      "endTime": null,
+      "evaluatorId": null,
+      "evaluatorName": null,
+      "evaluateeId": "sha1:db297104",
+      "evaluateeName": "성원모",
+      "projectName": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "trackName": "클라우드와 AI API (Cloud & AI API)",
       "status": "REQUESTED",
       "stusCd": "00001",
       "stusNm": "대기중",
