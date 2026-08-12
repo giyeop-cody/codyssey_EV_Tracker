@@ -1,0 +1,5 @@
+node_modules/
+.session-cookies.json
+*.har
+.DS_Store
+.roster-cache/

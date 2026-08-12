@@ -1,0 +1,181 @@
+name: Collect Evaluation Data
+
+on:
+  schedule:
+    # 30분 주기 (UTC). KST 24시간 커버.
+    - cron: "*/30 * * * *"
+    # 스케줄러 누락 대비 다중 스트림 (2026-07-18: */30 단독 3시간 공백 관측,
+    # 실측 평균 배달 간격 82~110분). 30분 슬롯당 발화 기회 4회로 확대.
+    - cron: "5,35 * * * *"
+    - cron: "11,41 * * * *"
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "수집 연도 (비우면 현재)"
+        required: false
+      month:
+        description: "수집 월 (비우면 현재)"
+        required: false
+      days:
+        description: "최근 N일만 수집 (비우면 해당 월 전체)"
+        required: false
+      force_detail:
+        description: "전체 평가 상세 강제 재조회 (백필용, 1회성)"
+        type: boolean
+        default: false
+  # 외부 워치독 점화용 (2026-07-22: GitHub 스케줄러 정전 2회 관측 — 플랫폼 정전은 내부 크론 대응 불가)
+  repository_dispatch:
+    types: [external-collect]
+
+permissions:
+  contents: write
+  actions: write  # 데이터 커밋 후 pages.yml 디스패치용
+
+concurrency:
+  group: eval-collect
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 세션 시크릿 확인
+        id: check
+        env:
+          CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+        run: |
+          if [ -z "$CODYSSEY_SESSION" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::CODYSSEY_SESSION 미등록 — 로그인 전까지 수집을 건너뜁니다."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          node-version: 20
+
+      # 테스트 게이트 (2026-07-25 회귀 점검) — 무의존 유닛으로 증분 로직 회귀 차단
+      - name: Test gate
+        if: steps.check.outputs.skip != 'true'
+        run: node --test test/eval-plan.test.js
+
+      # 명부(mbrId·이름·레벨·길드)는 준정적 데이터라 actions/cache에 보관해 두고
+      # 8시간 이내이면 길드 API를 생략한다 (하루 3~4회 갱신 수준).
+      - name: Restore roster cache
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .roster-cache
+          key: eval-roster-${{ github.run_id }}
+          restore-keys: eval-roster-
+
+      # 공유 로스터 허브(비공개)의 최신본이 신선하면 actions/cache 로스터보다 우선 적용한다.
+      # 페치 구현은 codyssey_commons(공개)에서 받아 실행 — 허브 구조 변경 시 한 곳만 고친다.
+      # 실패/만료 시 조용히 폐기해 기존 캐시 → 길드 API 경로를 탄다.
+      - name: Fetch shared roster from hub
+        if: steps.check.outputs.skip != 'true'
+        env:
+          HUB_PAT: ${{ secrets.HUB_PAT }}
+        run: |
+          if ! curl -sfL https://raw.githubusercontent.com/giyeop-cody/codyssey_commons/main/roster/fetch_hub_roster.cjs -o /tmp/fetch_hub_roster.cjs; then
+            echo "::notice::페처 다운로드 실패 — 자체 경로 사용"
+            exit 0
+          fi
+          node /tmp/fetch_hub_roster.cjs --mode ev --file .roster-cache/roster.json
+
+      # 허브 census (EV+Quest mbrSearch 통합, ③): 신선(≤120분) census가 오면 2단계 폴 링이 생략된다.
+      # 실패/만료 시 조용히 폐기 → collect_eval.js가 자체 멤버별 폴 링 경로로 복귀.
+      - name: Fetch eval census from hub
+        if: steps.check.outputs.skip != 'true'
+        env:
+          HUB_PAT: ${{ secrets.HUB_PAT }}
+        run: |
+          if ! curl -sfL https://raw.githubusercontent.com/giyeop-cody/codyssey_commons/main/census/fetch_hub_census.cjs -o /tmp/fetch_hub_census.cjs; then
+            echo "::notice::census 페처 다운로드 실패 — 자체 폴 링 사용"
+            exit 0
+          fi
+          node /tmp/fetch_hub_census.cjs --file .census-cache/census.json --max-age 120 || true
+
+      - name: Collect evaluations
+        if: steps.check.outputs.skip != 'true'
+        env:
+          CODYSSEY_SESSION: ${{ secrets.CODYSSEY_SESSION }}
+          SELF_MBR_ID: ${{ vars.SELF_MBR_ID }}
+          YEAR: ${{ inputs.year }}
+          MONTH: ${{ inputs.month }}
+          DAYS: ${{ inputs.days }}
+          # 피드백 본문 수집 ON (2026-08-01 사용자 승인 — 공개 Pages 노출 알고 켬)
+          COLLECT_FEEDBACK: "1"
+          FORCE_DETAIL: ${{ inputs.force_detail && '1' || '' }}
+        run: |
+          ARGS=""
+          [ -n "$YEAR" ] && ARGS="$ARGS --year $YEAR"
+          [ -n "$MONTH" ] && ARGS="$ARGS --month $MONTH"
+          [ -n "$DAYS" ] && ARGS="$ARGS --days $DAYS"
+
+          ROSTER_JSON=.roster-cache/roster.json
+          ARGS="$ARGS --roster-cache $ROSTER_JSON"
+          if [ -f "$ROSTER_JSON" ] && [ -f "$ROSTER_JSON.fetched" ]; then
+            AGE=$(( $(date +%s) - $(cat "$ROSTER_JSON.fetched") ))
+            if [ "$AGE" -lt 28800 ]; then
+              echo "::notice::로스터 캐시 신선 (${AGE}초 경과) → 길드 API 생략"
+              ARGS="$ARGS --roster-file $ROSTER_JSON"
+            else
+              echo "::notice::로스터 캐시 만료 (${AGE}초 경과) → 길드 API 새로 조회"
+            fi
+          else
+            echo "::notice::로스터 캐시 없음 → 길드 API 조회"
+          fi
+          node collect_eval.js $ARGS
+
+      - name: Commit data
+        if: steps.check.outputs.skip != 'true'
+        id: commit
+        run: |
+          git config user.name "eval-tracker-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/data/
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "data: update evaluation data $(date -u +'%Y-%m-%d %H:%M UTC')"
+            # 동시 실행 run이 같은 생성 JSON을 push하면 rebase 충돌로 실패했다가
+            # 다음 run에서야 회복됐다 (2026-07-18 22:13 UTC 관측). 최대 3회 재시도하고
+            # 충돌 시에는 이번 run 생성본(가장 최신)을 채택해 rebase를 이어간다.
+            for i in 1 2 3; do
+              if git pull --rebase; then
+                git push && break
+              fi
+              if git checkout --theirs -- docs/data/ 2>/dev/null; then
+                echo "생성 데이터 충돌 → 이번 run 생성본 채택 (${i}회차)"
+                git add docs/data/
+                if GIT_EDITOR=true git rebase --continue; then
+                  git push && break
+                fi
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Save roster cache
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .roster-cache
+          key: eval-roster-${{ github.run_id }}
+
+      # GITHUB_TOKEN으로 한 push는 다른 워크플로를 트리거하지 못하므로(GitHub 재귀 방지)
+      # 데이터가 실제로 바뀐 경우에만 Pages 배포 워크플로를 직접 디스패치한다.
+      - name: Trigger Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run pages.yml || echo "::notice::Pages 디스패치 실패 — 다음 수동 push 시 자동 배포됩니다"
